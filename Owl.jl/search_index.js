@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Flux 홈",
     "title": "Flux 홈",
     "category": "page",
-    "text": ""
+    "text": "https://github.com/FluxML/Flux.jl 자료를 번역하는 곳입니다"
 },
 
 {
