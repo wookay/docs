@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Flux 홈",
     "title": "Flux 홈",
     "category": "page",
-    "text": "https://github.com/FluxML/Flux.jl 자료를 번역하는 곳입니다"
+    "text": "https://github.com/FluxML/Flux.jl 자료를 번역하는 곳입니당"
 },
 
 {
@@ -29,7 +29,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Flux 홈",
     "title": "Flux: 줄리아 머신 러닝 라이브러리",
     "category": "section",
-    "text": "Flux는 머신러닝을 위한 라이브러리. \"배터리-포함(batteries-included, 제품의 완전한 유용성을 위해 필요한 모든 부품을 함께 제공한다는 소프트웨어쪽 용어)\" 많은 유용한 도구를 제공. 줄리아 언어를 풀파워(full power)로 사용할 수 있다. 전체 스택을 줄리아 코드로 구현함. GPU 커널도 가능하고, 개별 파트를 개인 취향에 맞게 조작할 수 있다."
+    "text": "Flux는 머신러닝을 위한 라이브러리. \"배터리-포함(batteries-included, 제품의 완전한 유용성을 위해 필요한 모든 부품을 함께 제공한다는 소프트웨어쪽 용어)\" 많은 유용한 도구를 제공. 줄리아 언어를 풀파워(full power)로 사용할 수 있음. 전체 스택을 줄리아 코드로 구현함. GPU 커널도 가능하고, 개별 파트를 개인 취향에 맞게 조작할 수 있음."
 },
 
 {
@@ -37,7 +37,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Flux 홈",
     "title": "설치",
     "category": "section",
-    "text": "줄리아 0.6.0 이상을 아직 안깔았으면 설치.Pkg.add(\"Flux\")\n# 선택인데 추천\nPkg.update() # 패키지를 최신 버전으로 업뎃\nPkg.test(\"Flux\") # 설치 똑바로 된건가 확인해 봄기본적인 것 부터 시작하자. 동물원 모델(model zoo)은 여러가지 공통 모델을 다루는데 그걸로 시작해도 좋다."
+    "text": "줄리아 0.6.0 이상, 아직 안깔았으면 설치.Pkg.add(\"Flux\")\n# 선택인데 추천\nPkg.update() # 패키지를 최신 버전으로 업뎃\nPkg.test(\"Flux\") # 설치 똑바로 된건가 확인해 봄기본적인 것 부터 시작하자. 동물원 모델(model zoo)은 여러가지 공통 모델을 다루는데 그걸로 시작해도 좋음."
 },
 
 {
@@ -49,9 +49,9 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Flux/models/basics/#모델-빌딩-기초-1",
+    "location": "Flux/models/basics/#모델-만들기-기초-1",
     "page": "기본적인 것",
-    "title": "모델-빌딩 기초",
+    "title": "모델 만들기 기초",
     "category": "section",
     "text": ""
 },
@@ -61,31 +61,31 @@ var documenterSearchIndex = {"docs": [
     "page": "기본적인 것",
     "title": "기울기(Gradients, 경사) 구하기",
     "category": "section",
-    "text": "간단한 linear regression(선 모양으로 그려지는)을 생각해보자. 입력 x에 대해 출력 배열 y 가 어떤 모양으로 나올지 예측하는 것이다. (줄리아 REPL에서 예제를 따라해보면 좋다)W = rand(2, 5)\nb = rand(2)\n\npredict(x) = W*x .+ b\nloss(x, y) = sum((predict(x) .- y).^2)\n\nx, y = rand(5), rand(2) # 더미 데이터\nloss(x, y) # ~ 3예측을 더 잘하기 위해 W와 b의 기울기를 구하자. loss function과 gradient descent를 해보면서. 직접 손으로 기울기를 계산할 수 있지만 Flux에서는 W와 b를 훈련시키는 파라미터(parameters)로 둘 수 있다.using Flux.Tracker\n\nW = param(W)\nb = param(b)\n\nl = loss(x, y)\n\nback!(l)loss(x, y)는 같은 수를 리턴, 그런데 이제부터는 기울어지는 모양을 관찰 기록하여 값을 추적(tracked) 한다. back!을 호출하면 W와 b의 기울기를 계산한다. 기울기가 뭔지 알아냈고 W를 고쳐가면서 모델을 훈련한다.W.grad\n\n# 파라미터 업뎃\nW.data .-= 0.1(W.grad)\n\nloss(x, y) # ~ 2.5loss가 조금 줄어들었다, 예측 x가 타겟 y에 좀 더 가까워졌다는 것을 의미한다. 데이터가 있으면 모델 훈련하기도 시도할 수 있다.복잡한 딥러닝이 Flux에서는 이와 같은 예제처럼 단순해진다. 물론 모델의 파라미터 갯수가 백만개가 넘어가고 복잡한 제어 흐름을 갖게 되면 다른 모양을 갖겠지. 그리고 이러한 복잡성을 다루는 법이 있다. 어떤 것인지 살펴보자."
+    "text": "간단한 linear regression(리니어 리그레션, 직선 모양으로 그려지는 함수)을 생각해 보자. 이것은 입력 x에 대해 출력 배열 y가 어떤 값이 나올지 예측하는 거임. (줄리아 REPL에서 예제를 따라해보면 좋음)julia> W = rand(2, 5)\n2×5 Array{Float64,2}:\n 0.857747   0.291713  0.179873  0.938979  0.51022\n 0.0852085  0.977716  0.246164  0.460672  0.772312\n\njulia> b = rand(2)\n2-element Array{Float64,1}:\n 0.663369\n 0.132996\n\njulia> predict(x) = W*x .+ b\npredict (generic function with 1 method)\n\njulia> loss(x, y) = sum((predict(x) .- y).^2)\nloss (generic function with 1 method)\n\njulia> x, y = rand(5), rand(2) # 더미 데이터\n([0.496864, 0.947507, 0.874288, 0.251528, 0.192234], [0.901991, 0.0802404])\n\njulia> loss(x, y) # ~ 3\n3.1660692660286722예측을 더 잘하기 위해 W와 b의 기울기를 구하자. loss function(손실, 예측 실패율 함수)과 gradient descent(경사 하강, 내리막 기울기)를 해보면서. 직접 손으로 기울기를 계산할 수 있지만 Flux에서는 W와 b를 훈련시키는 파라미터(parameters)로 둘 수 있음.julia> using Flux.Tracker\n\njulia> W = param(W)\nTracked 2×5 Array{Float64,2}:\n 0.857747   0.291713  0.179873  0.938979  0.51022\n 0.0852085  0.977716  0.246164  0.460672  0.772312\n\njulia> b = param(b)\nTracked 2-element Array{Float64,1}:\n 0.663369\n 0.132996\n\njulia> l = loss(x, y)\n3.1660692660286722 (tracked)\n\njulia> back!(l)\nloss(x, y)는 방금 전과 같은 수(3.1660692660286722)를 리턴, 그런데 이제부터는 기울어지는 모양을 관찰 기록하여 값을 추적(tracked) 함. back!을 호출하면 W와 b의 기울기를 계산해. 기울기가 뭔지 알아냈으니 W를 고쳐가면서 모델을 훈련하자.julia> W.grad\n2×5 Array{Float64,2}:\n 0.949491  1.81066  1.67074  0.480662  0.367352\n 1.49163   2.84449  2.62468  0.755107  0.577101\n\njulia> # 파라미터 업뎃\n       W.data .-= 0.1(W.grad)\n2×5 Array{Float64,2}:\n  0.762798   0.110647   0.0127989  0.890913  0.473484\n -0.0639541  0.693267  -0.0163046  0.385161  0.714602\n\njulia> loss(x, y) # ~ 2.5\n1.1327711929294395 (tracked)예측 실패(loss)가 조금 줄어들었음, x 예측이 목표 타겟 y에 좀 더 가까워졌다는 것을 의미함. 데이터가 있으면 모델 훈련하기도 시도할 수 있음.복잡한 딥러닝이 Flux에서는 이와 같은 예제처럼 단순해 짐. 물론 모델의 파라미터 갯수가 백만개가 넘어가고 복잡한 제어 흐름을 갖게 되면 다른 모양을 갖겠지. 그리고 이러한 복잡성을 다루는 법이 있음. 그런 것이 뭐가 있는지 한번 살펴보겠음."
 },
 
 {
-    "location": "Flux/models/basics/#Building-Layers-1",
+    "location": "Flux/models/basics/#레이어-만들기-1",
     "page": "기본적인 것",
-    "title": "Building Layers",
+    "title": "레이어 만들기",
     "category": "section",
-    "text": "It's common to create more complex models than the linear regression above. For example, we might want to have two linear layers with a nonlinearity like sigmoid (σ) in between them. In the above style we could write this as:W1 = param(rand(3, 5))\nb1 = param(rand(3))\nlayer1(x) = W1 * x .+ b1\n\nW2 = param(rand(2, 3))\nb2 = param(rand(2))\nlayer2(x) = W2 * x .+ b2\n\nmodel(x) = layer2(σ.(layer1(x)))\n\nmodel(rand(5)) # => 2-element vectorThis works but is fairly unwieldy, with a lot of repetition – especially as we add more layers. One way to factor this out is to create a function that returns linear layers.function linear(in, out)\n  W = param(randn(out, in))\n  b = param(randn(out))\n  x -> W * x .+ b\nend\n\nlinear1 = linear(5, 3) # we can access linear1.W etc\nlinear2 = linear(3, 2)\n\nmodel(x) = linear2(σ.(linear1(x)))\n\nmodel(x) # => 2-element vectorAnother (equivalent) way is to create a struct that explicitly represents the affine layer.struct Affine\n  W\n  b\nend\n\nAffine(in::Integer, out::Integer) =\n  Affine(param(randn(out, in)), param(randn(out)))\n\n# Overload call, so the object can be used as a function\n(m::Affine)(x) = m.W * x .+ m.b\n\na = Affine(10, 5)\n\na(rand(10)) # => 5-element vectorCongratulations! You just built the Dense layer that comes with Flux. Flux has many interesting layers available, but they're all things you could have built yourself very easily.(There is one small difference with Dense – for convenience it also takes an activation function, like Dense(10, 5, σ).)"
+    "text": "이제부터는 linear regression 보다 복잡한 모델을 만듦. 예를 들어, 두 개의 linear 레이어 사이에 시그모이드 (σ) 처럼 nonlinearity(비선형, 커브처럼 직선이 아닌 거)를 갖는 넘이 있을때. 위의 스타일은 아래와 같이 쓸 수 있음:julia> using Flux\n\njulia> W1 = param(rand(3, 5))\nTracked 3×5 Array{Float64,2}:\n 0.540422  0.680087  0.743124  0.0216563  0.377793\n 0.416939  0.51823   0.464998  0.419852   0.446143\n 0.260294  0.392582  0.46784   0.549495   0.373124\n\njulia> b1 = param(rand(3))\nTracked 3-element Array{Float64,1}:\n 0.213799\n 0.373862\n 0.243417\n\njulia> layer1(x) = W1 * x .+ b1\nlayer1 (generic function with 1 method)\n\njulia> W2 = param(rand(2, 3))\nTracked 2×3 Array{Float64,2}:\n 0.789744  0.389376  0.172613\n 0.472963  0.21518   0.220236\n\njulia> b2 = param(rand(2))\nTracked 2-element Array{Float64,1}:\n 0.121207\n 0.502486\n\njulia> layer2(x) = W2 * x .+ b2\nlayer2 (generic function with 1 method)\n\njulia> model(x) = layer2(σ.(layer1(x)))\nmodel (generic function with 1 method)\n\njulia> model(rand(5)) # => 2-엘러먼트 벡터\nTracked 2-element Array{Float64,1}:\n 1.06727\n 1.13835작동은 하는데 중복 작업이 많아 보기에 좋지 않다 - 특히 레이어를 더 추가한다면. linear 레이어를 돌려주는 함수를 하나 만들어 이것들을 정리함.julia> function linear(in, out)\n         W = param(randn(out, in))\n         b = param(randn(out))\n         x -> W * x .+ b\n       end\nlinear (generic function with 1 method)\n\njulia> linear1 = linear(5, 3) # linear1.W 할 수 있음 (x -> W * x .+ b 익명함수 리턴)\n(::#3) (generic function with 1 method)\n\njulia> linear1.W\nTracked 3×5 Array{Float64,2}:\n -1.72011   -1.07297   0.396755  -0.117604   0.25952\n -0.16694    0.99327  -0.589717  -1.87123    0.141679\n -0.972281  -1.84836   2.55071   -0.136674  -0.147826\n\njulia> linear2 = linear(3, 2)\n(::#3) (generic function with 1 method)\n\njulia> model(x) = linear2(σ.(linear1(x)))\nmodel (generic function with 1 method)\n\njulia> model(x) # => 2-엘리먼트 벡터\nTracked 2-element Array{Float64,1}:\n 2.75582\n 0.416809다른 방법으로는 struct로 타입을 만들어서 affine(어파인) 레이어를 명시적으로 표현하는 것이 있음.julia> struct Affine\n         W\n         b\n       end\n\njulia> Affine(in::Integer, out::Integer) =\n         Affine(param(randn(out, in)), param(randn(out)))\nAffine\n\njulia> # 오버로드 하면 객체를 함수처럼 호출할 수 있음\n       (m::Affine)(x) = m.W * x .+ m.b\n\njulia> a = Affine(10, 5)\nAffine(param([0.0252182 -1.99122 … -0.191235 0.294728; 1.13559 1.50226 … -2.43917 0.56976; … ; -0.735177 0.202646 … -0.301945 -0.183598; 1.05967 0.986786 … -1.57835 -0.0893871]), param([-0.39419, -1.26818, 0.757665, 0.941398, -0.783242]))\n\njulia> a(rand(10)) # => 5-엘리먼트 벡터\nTracked 5-element Array{Float64,1}:\n -0.945544\n -0.575674\n  2.93741\n  0.111253\n -0.843172축하드려염! Flux에서 나오는 Dense 레이어 만들기 성공한 거임. Flux는 많은 재밌는 레이어들이 있는데, 그것들을 직접 만드는 것 역시 아주 쉬움.(Dense와 다른 한가지 - 편의를 위해 activation(활성) 함수를 추가하는 거도 됨. Dense(10, 5, σ) 요런식으로.)"
 },
 
 {
-    "location": "Flux/models/basics/#Stacking-It-Up-1",
+    "location": "Flux/models/basics/#이쁘게-쌓아보자-1",
     "page": "기본적인 것",
-    "title": "Stacking It Up",
+    "title": "이쁘게 쌓아보자",
     "category": "section",
-    "text": "It's pretty common to write models that look something like:layer1 = Dense(10, 5, σ)\n# ...\nmodel(x) = layer3(layer2(layer1(x)))For long chains, it might be a bit more intuitive to have a list of layers, like this:using Flux\n\nlayers = [Dense(10, 5, σ), Dense(5, 2), softmax]\n\nmodel(x) = foldl((x, m) -> m(x), x, layers)\n\nmodel(rand(10)) # => 2-element vectorHandily, this is also provided for in Flux:model2 = Chain(\n  Dense(10, 5, σ),\n  Dense(5, 2),\n  softmax)\n\nmodel2(rand(10)) # => 2-element vectorThis quickly starts to look like a high-level deep learning library; yet you can see how it falls out of simple abstractions, and we lose none of the power of Julia code.A nice property of this approach is that because \"models\" are just functions (possibly with trainable parameters), you can also see this as simple function composition.m = Dense(5, 2) ∘ Dense(10, 5, σ)\n\nm(rand(10))Likewise, Chain will happily work with any Julia function.m = Chain(x -> x^2, x -> x+1)\n\nm(5) # => 26"
+    "text": "다음과 같은 모델을 만드는 것은 흔한 일임: (layer1 이름이 겹치니 REPL 새로 띄우자)julia> layer1 = Dense(10, 5, σ)\nDense(10, 5, NNlib.σ)\n\njulia> # ...\n       model(x) = layer3(layer2(layer1(x)))\nmodel (generic function with 1 method)기다랗게 연결(chains) 할라믄, 다음과 같이 레이어의 리스트를 만드는게 좀 더 직관적임:using Flux\n\nlayers = [Dense(10, 5, σ), Dense(5, 2), softmax]\n\nmodel(x) = foldl((x, m) -> m(x), x, layers)\n\nmodel(rand(10)) # => 2-엘리먼트 벡터편리하게 쓰라고 이것 역시 Flux에서 제공함:julia> model2 = Chain(\n         Dense(10, 5, σ),\n         Dense(5, 2),\n         softmax)\nChain(Dense(10, 5, NNlib.σ), Dense(5, 2), NNlib.softmax)\n\njulia> model2(rand(10)) # => 2-엘리먼트 벡터\nTracked 2-element Array{Float64,1}:\n 0.172085\n 0.827915고오급 딥러닝 라이브러리를 보기 시작한다; 어느만큼 간단하게 추상화 하는지 봤을 거임. 줄리아 코드의 강력함을 잃지 않았음.이런 접근법의 좋은 점은 \"모델\"은 그냥 함수라는거 (아마도 훈련가능한 파라미터와 함께), 그마저도 함수 합성(∘)으로 간단하게 할 수 있음.julia> m = Dense(5, 2) ∘ Dense(10, 5, σ)\n(::#55) (generic function with 1 method)\n\njulia> m(rand(10))\nTracked 2-element Array{Float64,1}:\n -1.28749\n -0.202492마찬가지로, Chain은 줄리아 함수와 이쁘게 동작함.julia> m = Chain(x -> x^2, x -> x+1)\nChain(#3, #4)\n\njulia> m(5) # => 26\n26"
 },
 
 {
-    "location": "Flux/models/basics/#Layer-helpers-1",
+    "location": "Flux/models/basics/#레이어-도우미들-1",
     "page": "기본적인 것",
-    "title": "Layer helpers",
+    "title": "레이어 도우미들",
     "category": "section",
-    "text": "Flux provides a set of helpers for custom layers, which you can enable by callingFlux.treelike(Affine)This enables a useful extra set of functionality for our Affine layer, such as collecting its parameters or moving it to the GPU."
+    "text": "Flux는 사용자의 커스텀 레이어를 도와주는 함수를 제공함, 다음과 같이 호출하면julia> Flux.treelike(Affine)\nadapt (generic function with 1 method)Affine 레이어에 부가적인 유용한 기능이 추가됨, 파라미터 모으기(collecting)나 GPU에서 처리하기 같은 거."
 },
 
 {
@@ -93,7 +93,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Recurrence",
     "title": "Recurrence",
     "category": "page",
-    "text": ""
+    "text": "똥싸고 나중에 번역함"
 },
 
 {
