@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>기본적인 것 · Owl.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><h1>Owl.jl</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Flux</span><ul><li><a class="toctext" href="../index.html">Flux 홈</a></li><li><span class="toctext">모델 만들기</span><ul><li class="current"><a class="toctext" href="basics.html">기본적인 것</a><ul class="internal"><li><a class="toctext" href="#기울기(Gradients,-경사)-구하기-1">기울기(Gradients, 경사) 구하기</a></li><li><a class="toctext" href="#Building-Layers-1">Building Layers</a></li><li><a class="toctext" href="#Stacking-It-Up-1">Stacking It Up</a></li><li><a class="toctext" href="#Layer-helpers-1">Layer helpers</a></li></ul></li><li><a class="toctext" href="recurrence.html">Recurrence</a></li><li><a class="toctext" href="regularisation.html">Regularisation</a></li><li><a class="toctext" href="layers.html">Model Reference</a></li></ul></li><li><span class="toctext">Training Models</span><ul><li><a class="toctext" href="../training/optimisers.html">Optimisers</a></li><li><a class="toctext" href="../training/training.html">Training</a></li></ul></li><li><a class="toctext" href="../data/onehot.html">One-Hot Encoding</a></li><li><a class="toctext" href="../gpu.html">GPU Support</a></li><li><a class="toctext" href="../community.html">Community</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Flux</li><li>모델 만들기</li><li><a href="basics.html">기본적인 것</a></li></ul><a class="edit-page" href="https://github.com/wookay/Owl.jl/blob/master/docs/src/Flux/models/basics.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>기본적인 것</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="모델-빌딩-기초-1" href="#모델-빌딩-기초-1">모델-빌딩 기초</a></h1><h2><a class="nav-anchor" id="기울기(Gradients,-경사)-구하기-1" href="#기울기(Gradients,-경사)-구하기-1">기울기(Gradients, 경사) 구하기</a></h2><p>간단한 linear regression(선 모양으로 그려지는)을 생각해보자. 입력 <code>x</code>에 대해 출력 배열 <code>y</code> 가 어떤 모양으로 나올지 예측하는 것이다. (줄리아 REPL에서 예제를 따라해보면 좋다)</p><pre><code class="language-julia">W = rand(2, 5)
+b = rand(2)
+
+predict(x) = W*x .+ b
+loss(x, y) = sum((predict(x) .- y).^2)
+
+x, y = rand(5), rand(2) # 더미 데이터
+loss(x, y) # ~ 3</code></pre><p>예측을 더 잘하기 위해 <code>W</code>와 <code>b</code>의 기울기를 구하자. loss function과 gradient descent를 해보면서. 직접 손으로 기울기를 계산할 수 있지만 Flux에서는 <code>W</code>와 <code>b</code>를 훈련시키는 <em>파라미터(parameters)</em>로 둘 수 있다.</p><pre><code class="language-julia">using Flux.Tracker
+
+W = param(W)
+b = param(b)
+
+l = loss(x, y)
+
+back!(l)</code></pre><p><code>loss(x, y)</code>는 같은 수를 리턴, 그런데 이제부터는 기울어지는 모양을 관찰 기록하여 값을 <em>추적(tracked)</em> 한다. <code>back!</code>을 호출하면 <code>W</code>와 <code>b</code>의 기울기를 계산한다. 기울기가 뭔지 알아냈고 <code>W</code>를 고쳐가면서 모델을 훈련한다.</p><pre><code class="language-julia">W.grad
+
+# 파라미터 업뎃
+W.data .-= 0.1(W.grad)
+
+loss(x, y) # ~ 2.5</code></pre><p>loss가 조금 줄어들었다, 예측 <code>x</code>가 타겟 <code>y</code>에 좀 더 가까워졌다는 것을 의미한다. 데이터가 있으면 <a href="../training/training.html">모델 훈련하기</a>도 시도할 수 있다.</p><p>복잡한 딥러닝이 Flux에서는 이와 같은 예제처럼 단순해진다. 물론 모델의 파라미터 갯수가 백만개가 넘어가고 복잡한 제어 흐름을 갖게 되면 다른 모양을 갖겠지. 그리고 이러한 복잡성을 다루는 법이 있다. 어떤 것인지 살펴보자.</p><h2><a class="nav-anchor" id="Building-Layers-1" href="#Building-Layers-1">Building Layers</a></h2><p>It&#39;s common to create more complex models than the linear regression above. For example, we might want to have two linear layers with a nonlinearity like <a href="https://en.wikipedia.org/wiki/Sigmoid_function">sigmoid</a> (<code>σ</code>) in between them. In the above style we could write this as:</p><pre><code class="language-julia">W1 = param(rand(3, 5))
+b1 = param(rand(3))
+layer1(x) = W1 * x .+ b1
+
+W2 = param(rand(2, 3))
+b2 = param(rand(2))
+layer2(x) = W2 * x .+ b2
+
+model(x) = layer2(σ.(layer1(x)))
+
+model(rand(5)) # =&gt; 2-element vector</code></pre><p>This works but is fairly unwieldy, with a lot of repetition – especially as we add more layers. One way to factor this out is to create a function that returns linear layers.</p><pre><code class="language-julia">function linear(in, out)
+  W = param(randn(out, in))
+  b = param(randn(out))
+  x -&gt; W * x .+ b
+end
+
+linear1 = linear(5, 3) # we can access linear1.W etc
+linear2 = linear(3, 2)
+
+model(x) = linear2(σ.(linear1(x)))
+
+model(x) # =&gt; 2-element vector</code></pre><p>Another (equivalent) way is to create a struct that explicitly represents the affine layer.</p><pre><code class="language-julia">struct Affine
+  W
+  b
+end
+
+Affine(in::Integer, out::Integer) =
+  Affine(param(randn(out, in)), param(randn(out)))
+
+# Overload call, so the object can be used as a function
+(m::Affine)(x) = m.W * x .+ m.b
+
+a = Affine(10, 5)
+
+a(rand(10)) # =&gt; 5-element vector</code></pre><p>Congratulations! You just built the <code>Dense</code> layer that comes with Flux. Flux has many interesting layers available, but they&#39;re all things you could have built yourself very easily.</p><p>(There is one small difference with <code>Dense</code> – for convenience it also takes an activation function, like <code>Dense(10, 5, σ)</code>.)</p><h2><a class="nav-anchor" id="Stacking-It-Up-1" href="#Stacking-It-Up-1">Stacking It Up</a></h2><p>It&#39;s pretty common to write models that look something like:</p><pre><code class="language-julia">layer1 = Dense(10, 5, σ)
+# ...
+model(x) = layer3(layer2(layer1(x)))</code></pre><p>For long chains, it might be a bit more intuitive to have a list of layers, like this:</p><pre><code class="language-julia">using Flux
+
+layers = [Dense(10, 5, σ), Dense(5, 2), softmax]
+
+model(x) = foldl((x, m) -&gt; m(x), x, layers)
+
+model(rand(10)) # =&gt; 2-element vector</code></pre><p>Handily, this is also provided for in Flux:</p><pre><code class="language-julia">model2 = Chain(
+  Dense(10, 5, σ),
+  Dense(5, 2),
+  softmax)
+
+model2(rand(10)) # =&gt; 2-element vector</code></pre><p>This quickly starts to look like a high-level deep learning library; yet you can see how it falls out of simple abstractions, and we lose none of the power of Julia code.</p><p>A nice property of this approach is that because &quot;models&quot; are just functions (possibly with trainable parameters), you can also see this as simple function composition.</p><pre><code class="language-julia">m = Dense(5, 2) ∘ Dense(10, 5, σ)
+
+m(rand(10))</code></pre><p>Likewise, <code>Chain</code> will happily work with any Julia function.</p><pre><code class="language-julia">m = Chain(x -&gt; x^2, x -&gt; x+1)
+
+m(5) # =&gt; 26</code></pre><h2><a class="nav-anchor" id="Layer-helpers-1" href="#Layer-helpers-1">Layer helpers</a></h2><p>Flux provides a set of helpers for custom layers, which you can enable by calling</p><pre><code class="language-julia">Flux.treelike(Affine)</code></pre><p>This enables a useful extra set of functionality for our <code>Affine</code> layer, such as <a href="../training/optimisers.html">collecting its parameters</a> or <a href="../gpu.html">moving it to the GPU</a>.</p><footer><hr/><a class="previous" href="../index.html"><span class="direction">Previous</span><span class="title">Flux 홈</span></a><a class="next" href="recurrence.html"><span class="direction">Next</span><span class="title">Recurrence</span></a></footer></article></body></html>
