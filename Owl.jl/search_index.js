@@ -138,58 +138,58 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "Flux/models/regularisation/#",
-    "page": "Regularisation",
-    "title": "Regularisation",
-    "category": "page",
-    "text": "똥 좀 누고 번역 할 것"
-},
-
-{
-    "location": "Flux/models/regularisation/#Regularisation-1",
-    "page": "Regularisation",
-    "title": "Regularisation",
-    "category": "section",
-    "text": "Applying regularisation to model parameters is straightforward. We just need to apply an appropriate regulariser, such as norm, to each model parameter and add the result to the overall loss.For example, say we have a simple regression.m = Dense(10, 5)\nloss(x, y) = crossentropy(softmax(m(x)), y)We can regularise this by taking the (L2) norm of the parameters, m.W and m.b.penalty() = norm(m.W) + norm(m.b)\nloss(x, y) = crossentropy(softmax(m(x)), y) + penalty()When working with layers, Flux provides the params function to grab all parameters at once. We can easily penalise everything with sum(norm, params).julia> params(m)\n2-element Array{Any,1}:\n param([0.355408 0.533092; … 0.430459 0.171498])\n param([0.0, 0.0, 0.0, 0.0, 0.0])\n\njulia> sum(norm, params(m))\n26.01749952921026 (tracked)Here's a larger example with a multi-layer perceptron.m = Chain(\n  Dense(28^2, 128, relu),\n  Dense(128, 32, relu),\n  Dense(32, 10), softmax)\n\nloss(x, y) = crossentropy(m(x), y) + sum(norm, params(m))\n\nloss(rand(28^2), rand(10))"
-},
-
-{
-    "location": "Flux/models/layers/#",
-    "page": "Model Reference",
-    "title": "Model Reference",
+    "page": "정규화(Regularisation)",
+    "title": "정규화(Regularisation)",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "Flux/models/layers/#Basic-Layers-1",
-    "page": "Model Reference",
-    "title": "Basic Layers",
+    "location": "Flux/models/regularisation/#정규화(Regularisation)-1",
+    "page": "정규화(Regularisation)",
+    "title": "정규화(Regularisation)",
     "category": "section",
-    "text": "These core layers form the foundation of almost all neural networks.Chain\nDense\nConv2D"
+    "text": "이번에는 모델 파라미터를 정규화 해 보자. norm과 같은 정규화를 해주는 적절한 함수를 각 모델 파라미터에 적용하여 그 결과를 모든 loss에 더하도록 하자.예를 들어, 다음과 같은 간단한 regression을 보자.julia> using Flux\n\njulia> m = Dense(10, 5)\nDense(10, 5)\n\njulia> loss(x, y) = Flux.crossentropy(softmax(m(x)), y)\nloss (generic function with 1 method)m.W와 m.b 파라미터에 L2 norm을 취하여 정규화 해보자.julia> penalty() = norm(m.W) + norm(m.b)\npenalty (generic function with 1 method)\n\njulia> loss(x, y) = Flux.crossentropy(softmax(m(x)), y) + penalty()\nloss (generic function with 1 method)레이어를 이용하는 경우, Flux는 params 함수를 제공하여 모든 파라미터를 한번에 가져올 수 있다. sum(norm, params)를 사용하여 전체를 쉽게 적용할 수 있다.julia> params(m)\n2-element Array{Any,1}:\n param([-0.61839 -0.556047 … -0.460808 -0.107646; 0.346293 -0.375076 … -0.608704 -0.181025; … ; -0.2226 -0.0992159 … 0.0707984 -0.429173; -0.331058 -0.291995 … 0.383368 0.156716])\n param([0.0, 0.0, 0.0, 0.0, 0.0])\n\njulia> sum(norm, params(m))\n2.4130860599427706 (tracked)좀 더 큰 규모의 예로, 멀티-레이어 퍼셉트론(perceptron)은 다음과 같다.julia> m = Chain(\n         Dense(28^2, 128, relu),\n         Dense(128, 32, relu),\n         Dense(32, 10), softmax)\nChain(Dense(784, 128, NNlib.relu), Dense(128, 32, NNlib.relu), Dense(32, 10), NNlib.softmax)\n\njulia> loss(x, y) = Flux.crossentropy(m(x), y) + sum(norm, params(m))\nloss (generic function with 1 method)\n\njulia> loss(rand(28^2), rand(10))\n39.128892409412174 (tracked)"
 },
 
 {
-    "location": "Flux/models/layers/#Recurrent-Layers-1",
-    "page": "Model Reference",
-    "title": "Recurrent Layers",
-    "category": "section",
-    "text": "Much like the core layers above, but can be used to process sequence data (as well as other kinds of structured data).RNN\nLSTM\nFlux.Recur"
+    "location": "Flux/models/layers/#",
+    "page": "모델 참조(Model Reference)",
+    "title": "모델 참조(Model Reference)",
+    "category": "page",
+    "text": ""
 },
 
 {
-    "location": "Flux/models/layers/#Activation-Functions-1",
-    "page": "Model Reference",
-    "title": "Activation Functions",
+    "location": "Flux/models/layers/#기본-레이어-1",
+    "page": "모델 참조(Model Reference)",
+    "title": "기본 레이어",
     "category": "section",
-    "text": "Non-linearities that go between layers of your model. Most of these functions are defined in NNlib but are available by default in Flux.Note that, unless otherwise stated, activation functions operate on scalars. To apply them to an array you can call σ.(xs), relu.(xs) and so on.σ\nrelu\nleakyrelu\nelu\nswish"
+    "text": "거의 모든 신경망(neural networks)의 토대를 다음의 핵심 레이어로 구성한다.Chain\nDense\nConv2D"
 },
 
 {
-    "location": "Flux/models/layers/#Normalisation-and-Regularisation-1",
-    "page": "Model Reference",
-    "title": "Normalisation & Regularisation",
+    "location": "Flux/models/layers/#순환-레이어(Recurrent-Layers)-1",
+    "page": "모델 참조(Model Reference)",
+    "title": "순환 레이어(Recurrent Layers)",
     "category": "section",
-    "text": "These layers don't affect the structure of the network but may improve training times or reduce overfitting.Flux.testmode!\nBatchNorm\nDropout\nLayerNorm"
+    "text": "위의 핵심 레이어와 함께, 시퀀스 데이터(다른 종류의 구조화된 데이터)를 처리할 때 사용할 수 있다.RNN\nLSTM\nFlux.Recur"
+},
+
+{
+    "location": "Flux/models/layers/#활성-함수(Activation-Functions)-1",
+    "page": "모델 참조(Model Reference)",
+    "title": "활성 함수(Activation Functions)",
+    "category": "section",
+    "text": "모델의 레이어 중간에 비선형성(Non-linearities)을 갖을 때 사용한다. 함수의 대부분은 NNlib에 정의되어 있고 Flux에서 기본적으로 사용할 수 있다.특별한 언급이 없으면 활성 함수는 보통 스칼라(scalars) 값을 처리한다. 배열에 적용하려면 σ.(xs), relu.(xs) 처럼 .으로 브로드캐스팅 해 주자.σ\nrelu\nleakyrelu\nelu\nswish"
+},
+
+{
+    "location": "Flux/models/layers/#정상화(Normalisation)-and-정규화(Regularisation)-1",
+    "page": "모델 참조(Model Reference)",
+    "title": "정상화(Normalisation) & 정규화(Regularisation)",
+    "category": "section",
+    "text": "이 레이어들은 네트워크의 구조에는 영향을 주지 않으면서 훈련 시간(training times)의 개선 그리고 overfitting(오버피팅, 과적합)을 줄여 준다.Flux.testmode!\nBatchNorm\nDropout\nLayerNorm"
 },
 
 {
@@ -197,7 +197,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Optimisers",
     "title": "Optimisers",
     "category": "page",
-    "text": ""
+    "text": "다음 똥 타임"
 },
 
 {
