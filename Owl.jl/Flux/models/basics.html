@@ -1,72 +1,171 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>기본적인 것 · Owl.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><h1>Owl.jl</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Flux</span><ul><li><a class="toctext" href="../index.html">Flux 홈</a></li><li><span class="toctext">모델 만들기</span><ul><li class="current"><a class="toctext" href="basics.html">기본적인 것</a><ul class="internal"><li><a class="toctext" href="#기울기(Gradients,-경사)-구하기-1">기울기(Gradients, 경사) 구하기</a></li><li><a class="toctext" href="#Building-Layers-1">Building Layers</a></li><li><a class="toctext" href="#Stacking-It-Up-1">Stacking It Up</a></li><li><a class="toctext" href="#Layer-helpers-1">Layer helpers</a></li></ul></li><li><a class="toctext" href="recurrence.html">Recurrence</a></li><li><a class="toctext" href="regularisation.html">Regularisation</a></li><li><a class="toctext" href="layers.html">Model Reference</a></li></ul></li><li><span class="toctext">Training Models</span><ul><li><a class="toctext" href="../training/optimisers.html">Optimisers</a></li><li><a class="toctext" href="../training/training.html">Training</a></li></ul></li><li><a class="toctext" href="../data/onehot.html">One-Hot Encoding</a></li><li><a class="toctext" href="../gpu.html">GPU Support</a></li><li><a class="toctext" href="../community.html">Community</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Flux</li><li>모델 만들기</li><li><a href="basics.html">기본적인 것</a></li></ul><a class="edit-page" href="https://github.com/wookay/Owl.jl/blob/master/docs/src/Flux/models/basics.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>기본적인 것</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="모델-빌딩-기초-1" href="#모델-빌딩-기초-1">모델-빌딩 기초</a></h1><h2><a class="nav-anchor" id="기울기(Gradients,-경사)-구하기-1" href="#기울기(Gradients,-경사)-구하기-1">기울기(Gradients, 경사) 구하기</a></h2><p>간단한 linear regression(선 모양으로 그려지는)을 생각해보자. 입력 <code>x</code>에 대해 출력 배열 <code>y</code> 가 어떤 모양으로 나올지 예측하는 것이다. (줄리아 REPL에서 예제를 따라해보면 좋다)</p><pre><code class="language-julia">W = rand(2, 5)
-b = rand(2)
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>기본적인 것 · 🦉</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><h1>🦉</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Flux</span><ul><li><a class="toctext" href="../index.html">Flux 홈</a></li><li><span class="toctext">모델 만들기</span><ul><li class="current"><a class="toctext" href="basics.html">기본적인 것</a><ul class="internal"><li><a class="toctext" href="#기울기(Gradients,-경사)-구하기-1">기울기(Gradients, 경사) 구하기</a></li><li><a class="toctext" href="#레이어-만들기-1">레이어 만들기</a></li><li><a class="toctext" href="#이쁘게-쌓아보자-1">이쁘게 쌓아보자</a></li><li><a class="toctext" href="#레이어-도우미들-1">레이어 도우미들</a></li></ul></li><li><a class="toctext" href="recurrence.html">순환(Recurrence)</a></li><li><a class="toctext" href="regularisation.html">정규화(Regularisation)</a></li><li><a class="toctext" href="layers.html">모델 참조(Model Reference)</a></li></ul></li><li><span class="toctext">Training Models</span><ul><li><a class="toctext" href="../training/optimisers.html">Optimisers</a></li><li><a class="toctext" href="../training/training.html">Training</a></li></ul></li><li><a class="toctext" href="../data/onehot.html">One-Hot Encoding</a></li><li><a class="toctext" href="../gpu.html">GPU Support</a></li><li><a class="toctext" href="../saving.html">Saving &amp; Loading</a></li><li><a class="toctext" href="../community.html">Community</a></li></ul></li><li><span class="toctext">GSoC</span><ul><li><a class="toctext" href="../../soc/guidelines/index.html">Application Guidelines</a></li><li><a class="toctext" href="../../soc/projects/ml.html">Data Science &amp; Machine Learning</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Flux</li><li>모델 만들기</li><li><a href="basics.html">기본적인 것</a></li></ul><a class="edit-page" href="https://github.com/wookay/Owl.jl/blob/master/docs/src/Flux/models/basics.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>기본적인 것</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="모델-만들기-기초-1" href="#모델-만들기-기초-1">모델 만들기 기초</a></h1><h2><a class="nav-anchor" id="기울기(Gradients,-경사)-구하기-1" href="#기울기(Gradients,-경사)-구하기-1">기울기(Gradients, 경사) 구하기</a></h2><p>간단한 linear regression(리니어 리그레션, 직선 모양으로 그려지는 함수)을 생각해 보자. 이것은 입력 <code>x</code>에 대한 출력 배열 <code>y</code>를 예측한다. (줄리아 REPL에서 예제를 따라해보면 좋다)</p><pre><code class="language-julia-repl">julia&gt; W = rand(2, 5)
+2×5 Array{Float64,2}:
+ 0.857747   0.291713  0.179873  0.938979  0.51022
+ 0.0852085  0.977716  0.246164  0.460672  0.772312
 
-predict(x) = W*x .+ b
-loss(x, y) = sum((predict(x) .- y).^2)
+julia&gt; b = rand(2)
+2-element Array{Float64,1}:
+ 0.663369
+ 0.132996
 
-x, y = rand(5), rand(2) # 더미 데이터
-loss(x, y) # ~ 3</code></pre><p>예측을 더 잘하기 위해 <code>W</code>와 <code>b</code>의 기울기를 구하자. loss function과 gradient descent를 해보면서. 직접 손으로 기울기를 계산할 수 있지만 Flux에서는 <code>W</code>와 <code>b</code>를 훈련시키는 <em>파라미터(parameters)</em>로 둘 수 있다.</p><pre><code class="language-julia">using Flux.Tracker
+julia&gt; predict(x) = W*x .+ b
+predict (generic function with 1 method)
 
-W = param(W)
-b = param(b)
+julia&gt; loss(x, y) = sum((predict(x) .- y).^2)
+loss (generic function with 1 method)
 
-l = loss(x, y)
+julia&gt; x, y = rand(5), rand(2) # 더미 데이터
+([0.496864, 0.947507, 0.874288, 0.251528, 0.192234], [0.901991, 0.0802404])
 
-back!(l)</code></pre><p><code>loss(x, y)</code>는 같은 수를 리턴, 그런데 이제부터는 기울어지는 모양을 관찰 기록하여 값을 <em>추적(tracked)</em> 한다. <code>back!</code>을 호출하면 <code>W</code>와 <code>b</code>의 기울기를 계산한다. 기울기가 뭔지 알아냈고 <code>W</code>를 고쳐가면서 모델을 훈련한다.</p><pre><code class="language-julia">W.grad
+julia&gt; loss(x, y) # ~ 3
+3.1660692660286722</code></pre><p>예측을 더 잘하기 위해 <code>W</code>와 <code>b</code>의 기울기를 구하자. loss function(손실, 예측 실패 함수)과 gradient descent(경사 하강, 내리막 기울기)를 해보면서. 직접 손으로 기울기를 계산할 수도 있지만 Flux에서는 <code>W</code>와 <code>b</code>를 훈련시키는 <em>파라미터(parameters)</em>로 둘 수 있다.</p><pre><code class="language-julia-repl">julia&gt; using Flux.Tracker
 
-# 파라미터 업뎃
-W.data .-= 0.1(W.grad)
+julia&gt; W = param(W)
+Tracked 2×5 Array{Float64,2}:
+ 0.857747   0.291713  0.179873  0.938979  0.51022
+ 0.0852085  0.977716  0.246164  0.460672  0.772312
 
-loss(x, y) # ~ 2.5</code></pre><p>loss가 조금 줄어들었다, 예측 <code>x</code>가 타겟 <code>y</code>에 좀 더 가까워졌다는 것을 의미한다. 데이터가 있으면 <a href="../training/training.html">모델 훈련하기</a>도 시도할 수 있다.</p><p>복잡한 딥러닝이 Flux에서는 이와 같은 예제처럼 단순해진다. 물론 모델의 파라미터 갯수가 백만개가 넘어가고 복잡한 제어 흐름을 갖게 되면 다른 모양을 갖겠지. 그리고 이러한 복잡성을 다루는 법이 있다. 어떤 것인지 살펴보자.</p><h2><a class="nav-anchor" id="Building-Layers-1" href="#Building-Layers-1">Building Layers</a></h2><p>It&#39;s common to create more complex models than the linear regression above. For example, we might want to have two linear layers with a nonlinearity like <a href="https://en.wikipedia.org/wiki/Sigmoid_function">sigmoid</a> (<code>σ</code>) in between them. In the above style we could write this as:</p><pre><code class="language-julia">W1 = param(rand(3, 5))
-b1 = param(rand(3))
-layer1(x) = W1 * x .+ b1
+julia&gt; b = param(b)
+Tracked 2-element Array{Float64,1}:
+ 0.663369
+ 0.132996
 
-W2 = param(rand(2, 3))
-b2 = param(rand(2))
-layer2(x) = W2 * x .+ b2
+julia&gt; l = loss(x, y)
+3.1660692660286722 (tracked)
 
-model(x) = layer2(σ.(layer1(x)))
+julia&gt; back!(l)
+</code></pre><p><code>loss(x, y)</code>는 방금 전과 같은 수(3.1660692660286722)를 리턴, 그런데 이제부터는 기울어지는 모양을 관찰 기록하여 값을 <em>추적(tracked)</em>  한다. <code>back!</code>을 호출하면 <code>W</code>와 <code>b</code>의 기울기를 계산한다. 기울기가 뭔지 알아냈으니 <code>W</code>를 고쳐가면서 모델을 훈련하자.</p><pre><code class="language-julia-repl">julia&gt; W.grad
+2×5 Array{Float64,2}:
+ 0.949491  1.81066  1.67074  0.480662  0.367352
+ 1.49163   2.84449  2.62468  0.755107  0.577101
 
-model(rand(5)) # =&gt; 2-element vector</code></pre><p>This works but is fairly unwieldy, with a lot of repetition – especially as we add more layers. One way to factor this out is to create a function that returns linear layers.</p><pre><code class="language-julia">function linear(in, out)
-  W = param(randn(out, in))
-  b = param(randn(out))
-  x -&gt; W * x .+ b
-end
+julia&gt; # 파라미터 업뎃
+       W.data .-= 0.1(W.grad)
+2×5 Array{Float64,2}:
+  0.762798   0.110647   0.0127989  0.890913  0.473484
+ -0.0639541  0.693267  -0.0163046  0.385161  0.714602
 
-linear1 = linear(5, 3) # we can access linear1.W etc
-linear2 = linear(3, 2)
+julia&gt; loss(x, y) # ~ 2.5
+1.1327711929294395 (tracked)</code></pre><p>예측 실패(loss)가 조금 줄어들었다. <code>x</code> 예측이 목표 대상(target) <code>y</code>에 좀 더 가까워졌다는 것을 의미한다. 데이터가 있으면 <a href="../training/training.html">모델 훈련하기</a>도 시도할 수 있다.</p><p>복잡한 딥러닝이 Flux에서는 이와 같은 예제처럼 단순해진다. 물론 모델의 파라미터 갯수가 백만개가 넘어가고 복잡한 제어 흐름을 갖게 되면 다른 모양을 갖겠지. 그리고 이러한 복잡성을 다루는 것에는 뭐가 있는지 한번 살펴보자.</p><h2><a class="nav-anchor" id="레이어-만들기-1" href="#레이어-만들기-1">레이어 만들기</a></h2><p>이제부터는 linear regression 보다 복잡한 모델을 만들어 보자. 예를 들어, 두 개의 linear 레이어 사이에 <a href="https://en.wikipedia.org/wiki/Sigmoid_function">시그모이드</a> (<code>σ</code>) 처럼 nonlinearity(비선형, 커브처럼 직선이 아닌 거)를 갖는 넘이 있을때, 위의 스타일은 아래와 같이 쓸 수 있다:</p><pre><code class="language-julia-repl">julia&gt; using Flux
 
-model(x) = linear2(σ.(linear1(x)))
+julia&gt; W1 = param(rand(3, 5))
+Tracked 3×5 Array{Float64,2}:
+ 0.540422  0.680087  0.743124  0.0216563  0.377793
+ 0.416939  0.51823   0.464998  0.419852   0.446143
+ 0.260294  0.392582  0.46784   0.549495   0.373124
 
-model(x) # =&gt; 2-element vector</code></pre><p>Another (equivalent) way is to create a struct that explicitly represents the affine layer.</p><pre><code class="language-julia">struct Affine
-  W
-  b
-end
+julia&gt; b1 = param(rand(3))
+Tracked 3-element Array{Float64,1}:
+ 0.213799
+ 0.373862
+ 0.243417
 
-Affine(in::Integer, out::Integer) =
-  Affine(param(randn(out, in)), param(randn(out)))
+julia&gt; layer1(x) = W1 * x .+ b1
+layer1 (generic function with 1 method)
 
-# Overload call, so the object can be used as a function
-(m::Affine)(x) = m.W * x .+ m.b
+julia&gt; W2 = param(rand(2, 3))
+Tracked 2×3 Array{Float64,2}:
+ 0.789744  0.389376  0.172613
+ 0.472963  0.21518   0.220236
 
-a = Affine(10, 5)
+julia&gt; b2 = param(rand(2))
+Tracked 2-element Array{Float64,1}:
+ 0.121207
+ 0.502486
 
-a(rand(10)) # =&gt; 5-element vector</code></pre><p>Congratulations! You just built the <code>Dense</code> layer that comes with Flux. Flux has many interesting layers available, but they&#39;re all things you could have built yourself very easily.</p><p>(There is one small difference with <code>Dense</code> – for convenience it also takes an activation function, like <code>Dense(10, 5, σ)</code>.)</p><h2><a class="nav-anchor" id="Stacking-It-Up-1" href="#Stacking-It-Up-1">Stacking It Up</a></h2><p>It&#39;s pretty common to write models that look something like:</p><pre><code class="language-julia">layer1 = Dense(10, 5, σ)
-# ...
-model(x) = layer3(layer2(layer1(x)))</code></pre><p>For long chains, it might be a bit more intuitive to have a list of layers, like this:</p><pre><code class="language-julia">using Flux
+julia&gt; layer2(x) = W2 * x .+ b2
+layer2 (generic function with 1 method)
 
-layers = [Dense(10, 5, σ), Dense(5, 2), softmax]
+julia&gt; model(x) = layer2(σ.(layer1(x)))
+model (generic function with 1 method)
 
-model(x) = foldl((x, m) -&gt; m(x), x, layers)
+julia&gt; model(rand(5)) # =&gt; 2-엘러먼트 벡터
+Tracked 2-element Array{Float64,1}:
+ 1.06727
+ 1.13835</code></pre><p>작동은 하는데 중복 작업이 많아 보기에 좋지 않다 - 특히 레이어를 더 추가한다면. linear 레이어를 돌려주는 함수를 하나 만들어 이것들을 정리하자.</p><pre><code class="language-julia-repl">julia&gt; function linear(in, out)
+         W = param(randn(out, in))
+         b = param(randn(out))
+         x -&gt; W * x .+ b
+       end
+linear (generic function with 1 method)
 
-model(rand(10)) # =&gt; 2-element vector</code></pre><p>Handily, this is also provided for in Flux:</p><pre><code class="language-julia">model2 = Chain(
-  Dense(10, 5, σ),
-  Dense(5, 2),
-  softmax)
+julia&gt; linear1 = linear(5, 3) # linear1.W 할 수 있닥 (익명함수 리턴)
+(::#3) (generic function with 1 method)
 
-model2(rand(10)) # =&gt; 2-element vector</code></pre><p>This quickly starts to look like a high-level deep learning library; yet you can see how it falls out of simple abstractions, and we lose none of the power of Julia code.</p><p>A nice property of this approach is that because &quot;models&quot; are just functions (possibly with trainable parameters), you can also see this as simple function composition.</p><pre><code class="language-julia">m = Dense(5, 2) ∘ Dense(10, 5, σ)
+julia&gt; linear1.W
+Tracked 3×5 Array{Float64,2}:
+ -1.72011   -1.07297   0.396755  -0.117604   0.25952
+ -0.16694    0.99327  -0.589717  -1.87123    0.141679
+ -0.972281  -1.84836   2.55071   -0.136674  -0.147826
 
-m(rand(10))</code></pre><p>Likewise, <code>Chain</code> will happily work with any Julia function.</p><pre><code class="language-julia">m = Chain(x -&gt; x^2, x -&gt; x+1)
+julia&gt; linear2 = linear(3, 2)
+(::#3) (generic function with 1 method)
 
-m(5) # =&gt; 26</code></pre><h2><a class="nav-anchor" id="Layer-helpers-1" href="#Layer-helpers-1">Layer helpers</a></h2><p>Flux provides a set of helpers for custom layers, which you can enable by calling</p><pre><code class="language-julia">Flux.treelike(Affine)</code></pre><p>This enables a useful extra set of functionality for our <code>Affine</code> layer, such as <a href="../training/optimisers.html">collecting its parameters</a> or <a href="../gpu.html">moving it to the GPU</a>.</p><footer><hr/><a class="previous" href="../index.html"><span class="direction">Previous</span><span class="title">Flux 홈</span></a><a class="next" href="recurrence.html"><span class="direction">Next</span><span class="title">Recurrence</span></a></footer></article></body></html>
+julia&gt; model(x) = linear2(σ.(linear1(x)))
+model (generic function with 1 method)
+
+julia&gt; model(x) # =&gt; 2-엘러먼트 벡터
+Tracked 2-element Array{Float64,1}:
+ 2.75582
+ 0.416809</code></pre><p>다른 방법으로는 struct로 타입을 만들어서 affine(어파인) 레이어를 명시적으로 표현하는 것이 있다.</p><pre><code class="language-julia-repl">julia&gt; struct Affine
+         W
+         b
+       end
+
+julia&gt; Affine(in::Integer, out::Integer) =
+         Affine(param(randn(out, in)), param(randn(out)))
+Affine
+
+julia&gt; # 오버로드 하면 객체를 함수처럼 호출할 수 있다
+       (m::Affine)(x) = m.W * x .+ m.b
+
+julia&gt; a = Affine(10, 5)
+Affine(param([0.0252182 -1.99122 … -0.191235 0.294728; 1.13559 1.50226 … -2.43917 0.56976; … ; -0.735177 0.202646 … -0.301945 -0.183598; 1.05967 0.986786 … -1.57835 -0.0893871]), param([-0.39419, -1.26818, 0.757665, 0.941398, -0.783242]))
+
+julia&gt; a(rand(10)) # =&gt; 5-엘러먼트 벡터
+Tracked 5-element Array{Float64,1}:
+ -0.945544
+ -0.575674
+  2.93741
+  0.111253
+ -0.843172</code></pre><p>축하합니다! Flux에서 나오는 <code>Dense</code> 레이어 만들기 성공! Flux는 많은 재밌는 레이어들이 있는데, 그것들을 직접 만드는 것 또한 정말 쉽다.</p><p>(<code>Dense</code>와 다른 한가지 - 편의를 위해 activation(활성) 함수를 뒤에 추가할 수도 있다. <code>Dense(10, 5, σ)</code> 요런식으로.)</p><h2><a class="nav-anchor" id="이쁘게-쌓아보자-1" href="#이쁘게-쌓아보자-1">이쁘게 쌓아보자</a></h2><p>다음과 같은 모델을 만드는 것은 흔하다: (layer1 이름이 겹치니 REPL을 새로 띄우자)</p><pre><code class="language-julia-repl">julia&gt; using Flux
+
+julia&gt; layer1 = Dense(10, 5, σ)
+Dense(10, 5, NNlib.σ)
+
+julia&gt; # ...
+       model(x) = layer3(layer2(layer1(x)))
+model (generic function with 1 method)</code></pre><p>기다랗게 연결(chains) 할라믄, 다음과 같이 레이어의 리스트를 만드는게 좀 더 직관적이다:</p><pre><code class="language-julia-repl">julia&gt; layers = [Dense(10, 5, σ), Dense(5, 2), softmax]
+3-element Array{Any,1}:
+ Dense(10, 5, NNlib.σ)
+ Dense(5, 2)
+ NNlib.softmax
+
+julia&gt; model(x) = foldl((x, m) -&gt; m(x), x, layers)
+model (generic function with 1 method)
+
+julia&gt; model(rand(10)) # =&gt; 2-엘러먼트 벡터
+Tracked 2-element Array{Float64,1}:
+ 0.593021
+ 0.406979</code></pre><p>편리하게 쓰라고 이것 역시 Flux에서 제공한다:</p><pre><code class="language-julia-repl">julia&gt; model2 = Chain(
+         Dense(10, 5, σ),
+         Dense(5, 2),
+         softmax)
+Chain(Dense(10, 5, NNlib.σ), Dense(5, 2), NNlib.softmax)
+
+julia&gt; model2(rand(10)) # =&gt; 2-엘러먼트 벡터
+Tracked 2-element Array{Float64,1}:
+ 0.172085
+ 0.827915</code></pre><p>고오급 딥러닝 라이브러리 같아 보인다; 어느만큼 간단하게 추상화 하는지 보았을 것이다. 줄리아 코드의 강력함을 놓치지 않았다.</p><p>이런 접근법의 좋은 점은 &quot;모델&quot;이 함수라는 것이다 (훈련가능한 파라미터와 함께), 함수 합성(∘) 또한 가능하다.</p><pre><code class="language-julia-repl">julia&gt; m = Dense(5, 2) ∘ Dense(10, 5, σ)
+(::#55) (generic function with 1 method)
+
+julia&gt; m(rand(10))
+Tracked 2-element Array{Float64,1}:
+ -1.28749
+ -0.202492</code></pre><p>마찬가지로, <code>Chain</code>은 줄리아 함수와 이쁘게 동작한다.</p><pre><code class="language-julia-repl">julia&gt; m = Chain(x -&gt; x^2, x -&gt; x+1)
+Chain(#3, #4)
+
+julia&gt; m(5) # =&gt; 26
+26</code></pre><h2><a class="nav-anchor" id="레이어-도우미들-1" href="#레이어-도우미들-1">레이어 도우미들</a></h2><p>Flux는 사용자의 커스텀 레이어를 도와주는 함수를 제공한다. 다음과 같이 호출하면</p><pre><code class="language-julia">julia&gt; Flux.treelike(Affine)
+adapt (generic function with 1 method)</code></pre><p><code>Affine</code> 레이어에 부가적인 유용한 기능이 추가된다, <a href="../training/optimisers.html">파라미터 모으기(collecting)</a>나 <a href="../gpu.html">GPU에서 처리하기</a> 같은 작업을 할 수 있다.</p><footer><hr/><a class="previous" href="../index.html"><span class="direction">Previous</span><span class="title">Flux 홈</span></a><a class="next" href="recurrence.html"><span class="direction">Next</span><span class="title">순환(Recurrence)</span></a></footer></article></body></html>

@@ -13,7 +13,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "🦉",
     "category": "section",
-    "text": "밥 먹고 똥 싸는 곳입니다 "
+    "text": "밥 먹고 똥 싸는 곳입니다 번역에 대한 피드백은 https://github.com/wookay/Owl.jl에 남겨 주세요."
 },
 
 {
@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Flux 홈",
     "title": "Flux 홈",
     "category": "page",
-    "text": "https://github.com/FluxML/Flux.jl 자료를 번역하는 곳입니당"
+    "text": "🦉 https://github.com/FluxML/Flux.jl 자료를 번역하는 곳입니당"
 },
 
 {
@@ -37,7 +37,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Flux 홈",
     "title": "설치하기",
     "category": "section",
-    "text": "줄리아 0.6.0 이상, 아직 안깔았으면 설치하자.Pkg.add(\"Flux\")\n# 선택인데 추천\nPkg.update() # 패키지를 최신 버전으로 업뎃\nPkg.test(\"Flux\") # 설치 똑바로 된건가 확인하기기본적인 것 부터 시작하자. 동물원 모델(model zoo)은 여러가지 공통 모델을 다루는데 그걸로 시작해도 좋다."
+    "text": "줄리아 0.6.0 이상, 아직 안깔았으면 설치하자.Pkg.add(\"Flux\")\n# 선택인데 추천\nPkg.update() # 패키지를 최신 버전으로 업뎃\nPkg.test(\"Flux\") # 설치 똑바로 된건가 확인하기기본적인 것 부터 시작하자. 모델 동물원(model zoo)은 여러가지 공통 모델을 다루는데 그걸로 시작해도 좋다."
 },
 
 {
@@ -61,7 +61,7 @@ var documenterSearchIndex = {"docs": [
     "page": "기본적인 것",
     "title": "기울기(Gradients, 경사) 구하기",
     "category": "section",
-    "text": "간단한 linear regression(리니어 리그레션, 직선 모양으로 그려지는 함수)을 생각해 보자. 이것은 입력 x에 대한 출력 배열 y를 예측한다. (줄리아 REPL에서 예제를 따라해보면 좋다)julia> W = rand(2, 5)\n2×5 Array{Float64,2}:\n 0.857747   0.291713  0.179873  0.938979  0.51022\n 0.0852085  0.977716  0.246164  0.460672  0.772312\n\njulia> b = rand(2)\n2-element Array{Float64,1}:\n 0.663369\n 0.132996\n\njulia> predict(x) = W*x .+ b\npredict (generic function with 1 method)\n\njulia> loss(x, y) = sum((predict(x) .- y).^2)\nloss (generic function with 1 method)\n\njulia> x, y = rand(5), rand(2) # 더미 데이터\n([0.496864, 0.947507, 0.874288, 0.251528, 0.192234], [0.901991, 0.0802404])\n\njulia> loss(x, y) # ~ 3\n3.1660692660286722예측을 더 잘하기 위해 W와 b의 기울기를 구하자. loss function(손실, 예측 실패 함수)과 gradient descent(경사 하강, 내리막 기울기)를 해보면서. 직접 손으로 기울기를 계산할 수도 있지만 Flux에서는 W와 b를 훈련시키는 파라미터(parameters)로 둘 수 있다.julia> using Flux.Tracker\n\njulia> W = param(W)\nTracked 2×5 Array{Float64,2}:\n 0.857747   0.291713  0.179873  0.938979  0.51022\n 0.0852085  0.977716  0.246164  0.460672  0.772312\n\njulia> b = param(b)\nTracked 2-element Array{Float64,1}:\n 0.663369\n 0.132996\n\njulia> l = loss(x, y)\n3.1660692660286722 (tracked)\n\njulia> back!(l)\nloss(x, y)는 방금 전과 같은 수(3.1660692660286722)를 리턴, 그런데 이제부터는 기울어지는 모양을 관찰 기록하여 값을 추적(tracked)  한다. back!을 호출하면 W와 b의 기울기를 계산한다. 기울기가 뭔지 알아냈으니 W를 고쳐가면서 모델을 훈련하자.julia> W.grad\n2×5 Array{Float64,2}:\n 0.949491  1.81066  1.67074  0.480662  0.367352\n 1.49163   2.84449  2.62468  0.755107  0.577101\n\njulia> # 파라미터 업뎃\n       W.data .-= 0.1(W.grad)\n2×5 Array{Float64,2}:\n  0.762798   0.110647   0.0127989  0.890913  0.473484\n -0.0639541  0.693267  -0.0163046  0.385161  0.714602\n\njulia> loss(x, y) # ~ 2.5\n1.1327711929294395 (tracked)예측 실패(loss)가 조금 줄어들었다. x 예측이 목표 타겟 y에 좀 더 가까워졌다는 것을 의미한다. 데이터가 있으면 모델 훈련하기도 시도할 수 있다.복잡한 딥러닝이 Flux에서는 이와 같은 예제처럼 단순해진다. 물론 모델의 파라미터 갯수가 백만개가 넘어가고 복잡한 제어 흐름을 갖게 되면 다른 모양을 갖겠지. 그리고 이러한 복잡성을 다루는 것에는 뭐가 있는지 한번 살펴보자."
+    "text": "간단한 리니어 리그레션(linear regression, 직선 모양으로 그려지는 함수)을 생각해 보자. 이것은 입력 x에 대한 출력 배열 y를 예측한다. (줄리아 REPL에서 예제를 따라해보면 좋다)julia> W = rand(2, 5)\n2×5 Array{Float64,2}:\n 0.857747   0.291713  0.179873  0.938979  0.51022\n 0.0852085  0.977716  0.246164  0.460672  0.772312\n\njulia> b = rand(2)\n2-element Array{Float64,1}:\n 0.663369\n 0.132996\n\njulia> predict(x) = W*x .+ b\npredict (generic function with 1 method)\n\njulia> loss(x, y) = sum((predict(x) .- y).^2)\nloss (generic function with 1 method)\n\njulia> x, y = rand(5), rand(2) # 더미 데이터\n([0.496864, 0.947507, 0.874288, 0.251528, 0.192234], [0.901991, 0.0802404])\n\njulia> loss(x, y) # ~ 3\n3.1660692660286722예측을 더 잘하기 위해 W와 b의 기울기를 구하자. loss function(손실, 예측 실패 함수)과 gradient descent(경사 하강, 내리막 기울기)를 해보면서. 직접 손으로 기울기를 계산할 수도 있지만 Flux에서는 W와 b를 훈련시키는 파라미터(parameters)로 둘 수 있다.julia> using Flux.Tracker\n\njulia> W = param(W)\nTracked 2×5 Array{Float64,2}:\n 0.857747   0.291713  0.179873  0.938979  0.51022\n 0.0852085  0.977716  0.246164  0.460672  0.772312\n\njulia> b = param(b)\nTracked 2-element Array{Float64,1}:\n 0.663369\n 0.132996\n\njulia> l = loss(x, y)\n3.1660692660286722 (tracked)\n\njulia> back!(l)\nloss(x, y)는 방금 전과 같은 수(3.1660692660286722)를 리턴, 그런데 이제부터는 기울어지는 모양을 관찰 기록하여 값을 추적(tracked)  한다. back!을 호출하면 W와 b의 기울기를 계산한다. 기울기가 뭔지 알아냈으니 W를 고쳐가면서 모델을 훈련하자.julia> W.grad\n2×5 Array{Float64,2}:\n 0.949491  1.81066  1.67074  0.480662  0.367352\n 1.49163   2.84449  2.62468  0.755107  0.577101\n\njulia> # 파라미터 업뎃\n       W.data .-= 0.1(W.grad)\n2×5 Array{Float64,2}:\n  0.762798   0.110647   0.0127989  0.890913  0.473484\n -0.0639541  0.693267  -0.0163046  0.385161  0.714602\n\njulia> loss(x, y) # ~ 2.5\n1.1327711929294395 (tracked)예측 실패(loss)가 조금 줄어들었다. x 예측이 목표 대상(target) y에 좀 더 가까워졌다는 것을 의미한다. 데이터가 있으면 모델 훈련하기도 시도할 수 있다.복잡한 딥러닝이 Flux에서는 이와 같은 예제처럼 단순해진다. 물론 모델의 파라미터 갯수가 백만개가 넘어가고 복잡한 제어 흐름을 갖게 되면 다른 모양을 갖겠지. 그리고 이러한 복잡성을 다루는 것에는 뭐가 있는지 한번 살펴보자."
 },
 
 {
@@ -69,7 +69,7 @@ var documenterSearchIndex = {"docs": [
     "page": "기본적인 것",
     "title": "레이어 만들기",
     "category": "section",
-    "text": "이제부터는 linear regression 보다 복잡한 모델을 만들어 보자. 예를 들어, 두 개의 linear 레이어 사이에 시그모이드 (σ) 처럼 nonlinearity(비선형, 커브처럼 직선이 아닌 거)를 갖는 넘이 있을때, 위의 스타일은 아래와 같이 쓸 수 있다:julia> using Flux\n\njulia> W1 = param(rand(3, 5))\nTracked 3×5 Array{Float64,2}:\n 0.540422  0.680087  0.743124  0.0216563  0.377793\n 0.416939  0.51823   0.464998  0.419852   0.446143\n 0.260294  0.392582  0.46784   0.549495   0.373124\n\njulia> b1 = param(rand(3))\nTracked 3-element Array{Float64,1}:\n 0.213799\n 0.373862\n 0.243417\n\njulia> layer1(x) = W1 * x .+ b1\nlayer1 (generic function with 1 method)\n\njulia> W2 = param(rand(2, 3))\nTracked 2×3 Array{Float64,2}:\n 0.789744  0.389376  0.172613\n 0.472963  0.21518   0.220236\n\njulia> b2 = param(rand(2))\nTracked 2-element Array{Float64,1}:\n 0.121207\n 0.502486\n\njulia> layer2(x) = W2 * x .+ b2\nlayer2 (generic function with 1 method)\n\njulia> model(x) = layer2(σ.(layer1(x)))\nmodel (generic function with 1 method)\n\njulia> model(rand(5)) # => 2-엘러먼트 벡터\nTracked 2-element Array{Float64,1}:\n 1.06727\n 1.13835작동은 하는데 중복 작업이 많아 보기에 좋지 않다 - 특히 레이어를 더 추가한다면. linear 레이어를 돌려주는 함수를 하나 만들어 이것들을 정리하자.julia> function linear(in, out)\n         W = param(randn(out, in))\n         b = param(randn(out))\n         x -> W * x .+ b\n       end\nlinear (generic function with 1 method)\n\njulia> linear1 = linear(5, 3) # linear1.W 할 수 있닥 (익명함수 리턴)\n(::#3) (generic function with 1 method)\n\njulia> linear1.W\nTracked 3×5 Array{Float64,2}:\n -1.72011   -1.07297   0.396755  -0.117604   0.25952\n -0.16694    0.99327  -0.589717  -1.87123    0.141679\n -0.972281  -1.84836   2.55071   -0.136674  -0.147826\n\njulia> linear2 = linear(3, 2)\n(::#3) (generic function with 1 method)\n\njulia> model(x) = linear2(σ.(linear1(x)))\nmodel (generic function with 1 method)\n\njulia> model(x) # => 2-엘러먼트 벡터\nTracked 2-element Array{Float64,1}:\n 2.75582\n 0.416809다른 방법으로는 struct로 타입을 만들어서 affine(어파인) 레이어를 명시적으로 표현하는 것이 있다.julia> struct Affine\n         W\n         b\n       end\n\njulia> Affine(in::Integer, out::Integer) =\n         Affine(param(randn(out, in)), param(randn(out)))\nAffine\n\njulia> # 오버로드 하면 객체를 함수처럼 호출할 수 있다\n       (m::Affine)(x) = m.W * x .+ m.b\n\njulia> a = Affine(10, 5)\nAffine(param([0.0252182 -1.99122 … -0.191235 0.294728; 1.13559 1.50226 … -2.43917 0.56976; … ; -0.735177 0.202646 … -0.301945 -0.183598; 1.05967 0.986786 … -1.57835 -0.0893871]), param([-0.39419, -1.26818, 0.757665, 0.941398, -0.783242]))\n\njulia> a(rand(10)) # => 5-엘러먼트 벡터\nTracked 5-element Array{Float64,1}:\n -0.945544\n -0.575674\n  2.93741\n  0.111253\n -0.843172축하합니다! Flux에서 나오는 Dense 레이어 만들기 성공! Flux는 많은 재밌는 레이어들이 있는데, 그것들을 직접 만드는 것 또한 정말 쉽다.(Dense와 다른 한가지 - 편의를 위해 activation(활성) 함수를 뒤에 추가할 수도 있다. Dense(10, 5, σ) 요런식으로.)"
+    "text": "이제부터는 리니어 리그레션 보다 복잡한 모델을 만들어 보자. 예를 들어, 두 개의 리니어 레이어 사이에 시그모이드 (σ) 처럼 비선형(nonlinearity, 커브처럼 직선이 아닌 거)를 갖는 넘이 있을때, 위의 스타일은 아래와 같이 쓸 수 있다:julia> using Flux\n\njulia> W1 = param(rand(3, 5))\nTracked 3×5 Array{Float64,2}:\n 0.540422  0.680087  0.743124  0.0216563  0.377793\n 0.416939  0.51823   0.464998  0.419852   0.446143\n 0.260294  0.392582  0.46784   0.549495   0.373124\n\njulia> b1 = param(rand(3))\nTracked 3-element Array{Float64,1}:\n 0.213799\n 0.373862\n 0.243417\n\njulia> layer1(x) = W1 * x .+ b1\nlayer1 (generic function with 1 method)\n\njulia> W2 = param(rand(2, 3))\nTracked 2×3 Array{Float64,2}:\n 0.789744  0.389376  0.172613\n 0.472963  0.21518   0.220236\n\njulia> b2 = param(rand(2))\nTracked 2-element Array{Float64,1}:\n 0.121207\n 0.502486\n\njulia> layer2(x) = W2 * x .+ b2\nlayer2 (generic function with 1 method)\n\njulia> model(x) = layer2(σ.(layer1(x)))\nmodel (generic function with 1 method)\n\njulia> model(rand(5)) # => 2-엘러먼트 벡터\nTracked 2-element Array{Float64,1}:\n 1.06727\n 1.13835작동은 하는데 중복 작업이 많아 보기에 좋지 않다 - 특히 레이어를 더 추가한다면. 리니어 레이어를 돌려주는 함수를 하나 만들어 이것들을 정리하자.julia> function linear(in, out)\n         W = param(randn(out, in))\n         b = param(randn(out))\n         x -> W * x .+ b\n       end\nlinear (generic function with 1 method)\n\njulia> linear1 = linear(5, 3) # linear1.W 할 수 있닥 (익명함수 리턴)\n(::#3) (generic function with 1 method)\n\njulia> linear1.W\nTracked 3×5 Array{Float64,2}:\n -1.72011   -1.07297   0.396755  -0.117604   0.25952\n -0.16694    0.99327  -0.589717  -1.87123    0.141679\n -0.972281  -1.84836   2.55071   -0.136674  -0.147826\n\njulia> linear2 = linear(3, 2)\n(::#3) (generic function with 1 method)\n\njulia> model(x) = linear2(σ.(linear1(x)))\nmodel (generic function with 1 method)\n\njulia> model(x) # => 2-엘러먼트 벡터\nTracked 2-element Array{Float64,1}:\n 2.75582\n 0.416809다른 방법으로는 struct로 타입을 만들어서 어파인(affine) 레이어를 명시적으로 표현하는 것이 있다.julia> struct Affine\n         W\n         b\n       end\n\njulia> Affine(in::Integer, out::Integer) =\n         Affine(param(randn(out, in)), param(randn(out)))\nAffine\n\njulia> # 오버로드 하면 객체를 함수처럼 호출할 수 있다\n       (m::Affine)(x) = m.W * x .+ m.b\n\njulia> a = Affine(10, 5)\nAffine(param([0.0252182 -1.99122 … -0.191235 0.294728; 1.13559 1.50226 … -2.43917 0.56976; … ; -0.735177 0.202646 … -0.301945 -0.183598; 1.05967 0.986786 … -1.57835 -0.0893871]), param([-0.39419, -1.26818, 0.757665, 0.941398, -0.783242]))\n\njulia> a(rand(10)) # => 5-엘러먼트 벡터\nTracked 5-element Array{Float64,1}:\n -0.945544\n -0.575674\n  2.93741\n  0.111253\n -0.843172축하합니다! Flux에서 나오는 Dense 레이어 만들기 성공! Flux는 많은 재밌는 레이어들이 있는데, 그것들을 직접 만드는 것 또한 정말 쉽다.(Dense와 다른 한가지 - 편의를 위해 활성(activation) 함수를 뒤에 추가할 수도 있다. Dense(10, 5, σ) 요런식으로.)"
 },
 
 {
@@ -149,7 +149,7 @@ var documenterSearchIndex = {"docs": [
     "page": "정규화(Regularisation)",
     "title": "정규화(Regularisation)",
     "category": "section",
-    "text": "이번에는 모델 파라미터를 정규화 해 보자. norm과 같은 정규화를 해주는 적절한 함수를 각 모델 파라미터에 적용하여 그 결과를 모든 loss에 더하도록 하자.예를 들어, 다음과 같은 간단한 regression을 보자.julia> using Flux\n\njulia> m = Dense(10, 5)\nDense(10, 5)\n\njulia> loss(x, y) = Flux.crossentropy(softmax(m(x)), y)\nloss (generic function with 1 method)m.W와 m.b 파라미터에 L2 norm을 취하여 정규화 해보자.julia> penalty() = norm(m.W) + norm(m.b)\npenalty (generic function with 1 method)\n\njulia> loss(x, y) = Flux.crossentropy(softmax(m(x)), y) + penalty()\nloss (generic function with 1 method)레이어를 이용하는 경우, Flux는 params 함수를 제공하여 모든 파라미터를 한번에 가져올 수 있다. sum(norm, params)를 사용하여 전체를 쉽게 적용할 수 있다.julia> params(m)\n2-element Array{Any,1}:\n param([-0.61839 -0.556047 … -0.460808 -0.107646; 0.346293 -0.375076 … -0.608704 -0.181025; … ; -0.2226 -0.0992159 … 0.0707984 -0.429173; -0.331058 -0.291995 … 0.383368 0.156716])\n param([0.0, 0.0, 0.0, 0.0, 0.0])\n\njulia> sum(norm, params(m))\n2.4130860599427706 (tracked)좀 더 큰 규모의 예로, 멀티-레이어 퍼셉트론(perceptron)은 다음과 같다.julia> m = Chain(\n         Dense(28^2, 128, relu),\n         Dense(128, 32, relu),\n         Dense(32, 10), softmax)\nChain(Dense(784, 128, NNlib.relu), Dense(128, 32, NNlib.relu), Dense(32, 10), NNlib.softmax)\n\njulia> loss(x, y) = Flux.crossentropy(m(x), y) + sum(norm, params(m))\nloss (generic function with 1 method)\n\njulia> loss(rand(28^2), rand(10))\n39.128892409412174 (tracked)"
+    "text": "이번에는 모델 파라미터를 정규화 해 보자. vecnorm과 같은 정규화를 해주는 적절한 함수를 각 모델 파라미터에 적용하여 그 결과를 모든 loss에 더하도록 하자.예를 들어, 다음과 같은 간단한 regression을 보자.julia> using Flux\n\njulia> m = Dense(10, 5)\nDense(10, 5)\n\njulia> loss(x, y) = Flux.crossentropy(softmax(m(x)), y)\nloss (generic function with 1 method)m.W와 m.b 파라미터에 L2 norm을 취하여 정규화 해보자.julia> penalty() = vecnorm(m.W) + vecnorm(m.b)\npenalty (generic function with 1 method)\n\njulia> loss(x, y) = Flux.crossentropy(softmax(m(x)), y) + penalty()\nloss (generic function with 1 method)레이어를 이용하는 경우, Flux는 params 함수를 제공하여 모든 파라미터를 한번에 가져올 수 있다. sum(vecnorm, params)를 사용하여 전체를 쉽게 적용할 수 있다.julia> params(m)\n2-element Array{Any,1}:\n param([-0.61839 -0.556047 … -0.460808 -0.107646; 0.346293 -0.375076 … -0.608704 -0.181025; … ; -0.2226 -0.0992159 … 0.0707984 -0.429173; -0.331058 -0.291995 … 0.383368 0.156716])\n param([0.0, 0.0, 0.0, 0.0, 0.0])\n\njulia> sum(vecnorm, params(m))\n2.4130860599427706 (tracked)좀 더 큰 규모의 예로, 멀티-레이어 퍼셉트론(perceptron)은 다음과 같다.julia> m = Chain(\n         Dense(28^2, 128, relu),\n         Dense(128, 32, relu),\n         Dense(32, 10), softmax)\nChain(Dense(784, 128, NNlib.relu), Dense(128, 32, NNlib.relu), Dense(32, 10), NNlib.softmax)\n\njulia> loss(x, y) = Flux.crossentropy(m(x), y) + sum(vecnorm, params(m))\nloss (generic function with 1 method)\n\njulia> loss(rand(28^2), rand(10))\n39.128892409412174 (tracked)"
 },
 
 {
@@ -194,122 +194,306 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "Flux/training/optimisers/#",
-    "page": "Optimisers",
-    "title": "Optimisers",
+    "page": "최적화",
+    "title": "최적화",
     "category": "page",
-    "text": "다음 똥 타임"
+    "text": ""
 },
 
 {
-    "location": "Flux/training/optimisers/#Optimisers-1",
-    "page": "Optimisers",
-    "title": "Optimisers",
+    "location": "Flux/training/optimisers/#최적화-함수(Optimisers)-1",
+    "page": "최적화",
+    "title": "최적화 함수(Optimisers)",
     "category": "section",
-    "text": "Consider a simple linear regression. We create some dummy data, calculate a loss, and backpropagate to calculate gradients for the parameters W and b.W = param(rand(2, 5))\nb = param(rand(2))\n\npredict(x) = W*x .+ b\nloss(x, y) = sum((predict(x) .- y).^2)\n\nx, y = rand(5), rand(2) # Dummy data\nl = loss(x, y) # ~ 3\nback!(l)We want to update each parameter, using the gradient, in order to improve (reduce) the loss. Here's one way to do that:function update()\n  η = 0.1 # Learning Rate\n  for p in (W, b)\n    p.data .-= η .* p.grad # Apply the update\n    p.grad .= 0            # Clear the gradient\n  end\nendIf we call update, the parameters W and b will change and our loss should go down.There are two pieces here: one is that we need a list of trainable parameters for the model ([W, b] in this case), and the other is the update step. In this case the update is simply gradient descent (x .-= η .* Δ), but we might choose to do something more advanced, like adding momentum.In this case, getting the variables is trivial, but you can imagine it'd be more of a pain with some complex stack of layers.m = Chain(\n  Dense(10, 5, σ),\n  Dense(5, 2), softmax)Instead of having to write [m[1].W, m[1].b, ...], Flux provides a params function params(m) that returns a list of all parameters in the model for you.For the update step, there's nothing whatsoever wrong with writing the loop above – it'll work just fine – but Flux provides various optimisers that make it more convenient.opt = SGD([W, b], 0.1) # Gradient descent with learning rate 0.1\n\nopt() # Carry out the update, modifying `W` and `b`.An optimiser takes a parameter list and returns a function that does the same thing as update above. We can pass either opt or update to our training loop, which will then run the optimiser after every mini-batch of data."
+    "text": "간단한 리니어 리그레션에서 우리는 더미 데이터를 만든 후, 손실(loss)을 계산하고 backpropagate(역전파) 하여 파라미터 W와 b의 기울기를 계산하였다.julia> using Flux\n\njulia> W = param(rand(2, 5))\nTracked 2×5 Array{Float64,2}:\n 0.215021  0.22422   0.352664  0.11115   0.040711\n 0.180933  0.769257  0.361652  0.783197  0.545495\n\njulia> b = param(rand(2))\nTracked 2-element Array{Float64,1}:\n 0.205216\n 0.150938\n\njulia> predict(x) = W*x .+ b\npredict (generic function with 1 method)\n\njulia> loss(x, y) = sum((predict(x) .- y).^2)\nloss (generic function with 1 method)\n\njulia> x, y = rand(5), rand(2) # 더미 데이터\n([0.153473, 0.927019, 0.40597, 0.783872, 0.392236], [0.261727, 0.00917161])\n\njulia> l = loss(x, y) # ~ 3\n3.6352060699201565 (tracked)\n\njulia> Flux.back!(l)\n기울기를 사용하여 파라미터를 업데이트 하고자 한다. 손실을 줄이려고 말이다. 여기서 한가지 방법은:function update()\n  η = 0.1 # 학습하는 속도(Learning Rate)\n  for p in (W, b)\n    p.data .-= η .* p.grad # 업데이트 적용\n    p.grad .= 0            # 기울기 0으로 clear\n  end\nendupdate를 호출하면 파라미터 W와 b는 바뀌고 손실(loss)은 내려간다.두가지는 짚고 넘어가자: 모델에서 훈련할 파라미터의 목록 (여기서는 [W, b]), 그리고 업데이트 진행 속도. 여기서의 업데이트는 간단한 gradient descent(경사 하강, x .-= η .* Δ) 였지만, 모멘텀(momentum)을 추가하는 것처럼 보다 어려운 것도 해보고 싶을 것이다.여기서 변수를 얻는 것은 아무것도 아니지만, 레이어를 복잡하게 쌓는다면 골치 좀 아플 것이다.julia> m = Chain(\n         Dense(10, 5, σ),\n         Dense(5, 2), softmax)\nChain(Dense(10, 5, NNlib.σ), Dense(5, 2), NNlib.softmax)[m[1].W, m[1].b, ...] 이렇게 작성하는 것 대신, Flux에서 제공하는 params(m) 함수를 이용해 모델의 모든 파라미터의 목록을 구할 것이다.julia> opt = SGD([W, b], 0.1) # Gradient descent(경사 하강)을 learning rate(학습 속도) 0.1 으로 한다\n(::#71) (generic function with 1 method)\n\njulia> opt() # `W`와 `b`를 변경하며 업데이트를 수행한다\n최적화 함수는 파라미터 목록을 받아 위의 update와 같은 함수를 돌려준다. opt나 update를 훈련 루프(training loop)에 넘겨줄 수 있는데, 매번 데이터의 미니-배치(mini-batch)를 한 후에 최적화를 수행할 것이다."
 },
 
 {
-    "location": "Flux/training/optimisers/#Optimiser-Reference-1",
-    "page": "Optimisers",
-    "title": "Optimiser Reference",
+    "location": "Flux/training/optimisers/#최적화-함수-참고-1",
+    "page": "최적화",
+    "title": "최적화 함수 참고",
     "category": "section",
-    "text": "All optimisers return a function that, when called, will update the parameters passed to it.SGD\nMomentum\nNesterov\nADAM"
+    "text": "모든 최적화 함수는 넘겨받은 파라미터를 업데이트 하는 함수를 돌려준다.SGD\nMomentum\nNesterov\nADAM"
 },
 
 {
     "location": "Flux/training/training/#",
-    "page": "Training",
-    "title": "Training",
+    "page": "훈련시키기",
+    "title": "훈련시키기",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "Flux/training/training/#Training-1",
-    "page": "Training",
-    "title": "Training",
+    "location": "Flux/training/training/#훈련시키키(Training)-1",
+    "page": "훈련시키기",
+    "title": "훈련시키키(Training)",
     "category": "section",
-    "text": "To actually train a model we need three things:A objective function, that evaluates how well a model is doing given some input data.\nA collection of data points that will be provided to the objective function.\nAn optimiser that will update the model parameters appropriately.With these we can call Flux.train!:Flux.train!(objective, data, opt)There are plenty of examples in the model zoo."
+    "text": "모델을 훈련시키려면 세가지가 필요하다:목표 함수(objective function), 주어진 데이터를 얼만큼 잘 평가할 것인가.\n데이터 포인트의 묶음(A collection of data points)을 목표 함수에 넘겨줄 것이다.\n최적화 함수로 모델 파라미터를 적절하게 업데이트 할 것이다.그리하여 Flux.train!는 다음과 같이 호출한다:Flux.train!(objective, data, opt)모델 동물원(model zoo)에 여러가지 예제가 있다."
 },
 
 {
-    "location": "Flux/training/training/#Loss-Functions-1",
-    "page": "Training",
-    "title": "Loss Functions",
+    "location": "Flux/training/training/#손실-함수(Loss-Functions)-1",
+    "page": "훈련시키기",
+    "title": "손실 함수(Loss Functions)",
     "category": "section",
-    "text": "The objective function must return a number representing how far the model is from its target – the loss of the model. The loss function that we defined in basics will work as an objective. We can also define an objective in terms of some model:m = Chain(\n  Dense(784, 32, σ),\n  Dense(32, 10), softmax)\n\nloss(x, y) = Flux.mse(m(x), y)\n\n# later\nFlux.train!(loss, data, opt)The objective will almost always be defined in terms of some cost function that measures the distance of the prediction m(x) from the target y. Flux has several of these built in, like mse for mean squared error or crossentropy for cross entropy loss, but you can calculate it however you want."
+    "text": "목표 함수는 반드시 모델과 대상(target)의 차이를 나타내는 숫자를 돌려주어야 한다 - 모델의 loss. 기초에서 정의한 loss 함수가 목표(an objective)로서 작동할 것이다. 모델의 관점에서 목표를 정의할 수도 있다:julia> using Flux\n\njulia> m = Chain(\n         Dense(784, 32, σ),\n         Dense(32, 10), softmax)\nChain(Dense(784, 32, NNlib.σ), Dense(32, 10), NNlib.softmax)\n\njulia> loss(x, y) = Flux.mse(m(x), y)\nloss (generic function with 1 method)\n\n# 나중에\njulia> Flux.train!(loss, data, opt)목표는 항상 m(x)의 예측과 대상 y의 거리를 측정하는 비용 함수(cost function)의 관점에서 정의된다. Flux는 mean squared error를 구하는 mse나, cross entropy loss를 구하는 crossentropy 같은 비용 함수를 내장하고 있다. 원한다면 직접 계산해 볼 수도 있다."
 },
 
 {
-    "location": "Flux/training/training/#Datasets-1",
-    "page": "Training",
-    "title": "Datasets",
+    "location": "Flux/training/training/#데이터세트(Datasets)-1",
+    "page": "훈련시키기",
+    "title": "데이터세트(Datasets)",
     "category": "section",
-    "text": "The data argument provides a collection of data to train with (usually a set of inputs x and target outputs y). For example, here's a dummy data set with only one data point:x = rand(784)\ny = rand(10)\ndata = [(x, y)]Flux.train! will call loss(x, y), calculate gradients, update the weights and then move on to the next data point if there is one. We can train the model on the same data three times:data = [(x, y), (x, y), (x, y)]\n# Or equivalently\ndata = Iterators.repeated((x, y), 3)It's common to load the xs and ys separately. In this case you can use zip:xs = [rand(784), rand(784), rand(784)]\nys = [rand( 10), rand( 10), rand( 10)]\ndata = zip(xs, ys)Note that, by default, train! only loops over the data once (a single \"epoch\"). A convenient way to run multiple epochs from the REPL is provided by @epochs.julia> using Flux: @epochs\n\njulia> @epochs 2 println(\"hello\")\nINFO: Epoch 1\nhello\nINFO: Epoch 2\nhello\n\njulia> @epochs 2 Flux.train!(...)\n# Train for two epochs"
+    "text": "data 인자는 훈련할 데이터(보통 입력 x와 target 출력 y)의 묶음을 제공한다. 예를 들어, 딱 하나 있는 더미 데이터 세트는 다음과 같다:x = rand(784)\ny = rand(10)\ndata = [(x, y)]Flux.train!은 loss(x, y)을 호출하고, 기울기를 계산하며, 가중치(weights)를 업데이트하고 다음 데이터 포인트로 이동한다. 같은 데이터를 세 번 훈련시킬 수 있다:data = [(x, y), (x, y), (x, y)]\n# 또는 아래와 같이\ndata = Iterators.repeated((x, y), 3)x와 y는 별도로 읽어들어는 것이 보통이다. 이럴 경우에 zip을 쓸 수 있다:xs = [rand(784), rand(784), rand(784)]\nys = [rand( 10), rand( 10), rand( 10)]\ndata = zip(xs, ys)기본적으로 train!은 데이터를 오직 한번만 순회한다 (한 세대, a single \"epoch\"). 여러 세대를 돌리는 @epochs 매크로를 제공하고 있으니 REPL에서 다음과 같이 해 보자.julia> using Flux: @epochs\n\njulia> @epochs 2 println(\"hello\")\nINFO: Epoch 1\nhello\nINFO: Epoch 2\nhello\n\njulia> @epochs 2 Flux.train!(...)\n# 두 세대에 걸쳐 훈련한다"
 },
 
 {
-    "location": "Flux/training/training/#Callbacks-1",
-    "page": "Training",
-    "title": "Callbacks",
+    "location": "Flux/training/training/#컬백(Callbacks)-1",
+    "page": "훈련시키기",
+    "title": "컬백(Callbacks)",
     "category": "section",
-    "text": "train! takes an additional argument, cb, that's used for callbacks so that you can observe the training process. For example:train!(objective, data, opt, cb = () -> println(\"training\"))Callbacks are called for every batch of training data. You can slow this down using Flux.throttle(f, timeout) which prevents f from being called more than once every timeout seconds.A more typical callback might look like this:test_x, test_y = # ... create single batch of test data ...\nevalcb() = @show(loss(test_x, test_y))\n\nFlux.train!(objective, data, opt,\n            cb = throttle(evalcb, 5))"
+    "text": "train!은 cb 인자를 추가적으로 받는데, 컬백 함수를 줘서 훈련 과정을 지켜볼 수 있다. 예를 들면:train!(objective, data, opt, cb = () -> println(\"training\"))컬백은 훈련 데이터의 배치(batch) 마다 호출된다. 좀더 적게 호출하려면 Flux.throttle(f, timeout)를 주어 f가 매 timeout 초 이상 호출되는 것을 막는다.컬백을 사용하는 전형적인 방식은 다음과 같다:test_x, test_y = # ... 테스트 데이터의 단일 배치(single batch) 만들기 ...\nevalcb() = @show(loss(test_x, test_y))\n\nFlux.train!(objective, data, opt,\n            cb = throttle(evalcb, 5))"
 },
 
 {
     "location": "Flux/data/onehot/#",
-    "page": "One-Hot Encoding",
-    "title": "One-Hot Encoding",
+    "page": "원-핫 인코딩",
+    "title": "원-핫 인코딩",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "Flux/data/onehot/#One-Hot-Encoding-1",
-    "page": "One-Hot Encoding",
-    "title": "One-Hot Encoding",
+    "location": "Flux/data/onehot/#원-핫-인코딩(One-Hot-Encoding)-1",
+    "page": "원-핫 인코딩",
+    "title": "원-핫 인코딩(One-Hot Encoding)",
     "category": "section",
-    "text": "It's common to encode categorical variables (like true, false or cat, dog) in \"one-of-k\" or \"one-hot\" form. Flux provides the onehot function to make this easy.julia> using Flux: onehot\n\njulia> onehot(:b, [:a, :b, :c])\n3-element Flux.OneHotVector:\n false\n  true\n false\n\njulia> onehot(:c, [:a, :b, :c])\n3-element Flux.OneHotVector:\n false\n false\n  trueThe inverse is argmax (which can take a general probability distribution, as well as just booleans).julia> argmax(ans, [:a, :b, :c])\n:c\n\njulia> argmax([true, false, false], [:a, :b, :c])\n:a\n\njulia> argmax([0.3, 0.2, 0.5], [:a, :b, :c])\n:c"
+    "text": "참true, 거짓false 혹은 고양이cat, 강아지dog 와 같은 범주형 변수(categorical variables)로 인코딩 해 보자. \"one-of-k\" 또는 \"one-hot\" 형식이 되고 Flux는 onehot 함수로 쉽게 할 수 있다.julia> using Flux: onehot\n\njulia> onehot(:b, [:a, :b, :c])\n3-element Flux.OneHotVector:\n false\n  true\n false\n\njulia> onehot(:c, [:a, :b, :c])\n3-element Flux.OneHotVector:\n false\n false\n  true역함수는 argmax (불리언 이나 일반 확률 분포(general probability distribution)를 인자로 받는다) 이다.julia> argmax(ans, [:a, :b, :c])\n:c\n\njulia> argmax([true, false, false], [:a, :b, :c])\n:a\n\njulia> argmax([0.3, 0.2, 0.5], [:a, :b, :c])\n:c"
 },
 
 {
-    "location": "Flux/data/onehot/#Batches-1",
-    "page": "One-Hot Encoding",
-    "title": "Batches",
+    "location": "Flux/data/onehot/#배치(Batches)-1",
+    "page": "원-핫 인코딩",
+    "title": "배치(Batches)",
     "category": "section",
-    "text": "onehotbatch creates a batch (matrix) of one-hot vectors, and argmax treats matrices as batches.julia> using Flux: onehotbatch\n\njulia> onehotbatch([:b, :a, :b], [:a, :b, :c])\n3×3 Flux.OneHotMatrix:\n false   true  false\n  true  false   true\n false  false  false\n\njulia> onecold(ans, [:a, :b, :c])\n3-element Array{Symbol,1}:\n  :b\n  :a\n  :bNote that these operations returned OneHotVector and OneHotMatrix rather than Arrays. OneHotVectors behave like normal vectors but avoid any unnecessary cost compared to using an integer index directly. For example, multiplying a matrix with a one-hot vector simply slices out the relevant row of the matrix under the hood."
+    "text": "onehotbatch는 원-핫 벡터의 배치(batch, 매트릭스)를 만들어 준다. argmax는 매트릭스를 배치로 취급한다.julia> using Flux: onehotbatch\n\njulia> onehotbatch([:b, :a, :b], [:a, :b, :c])\n3×3 Flux.OneHotMatrix:\n false   true  false\n  true  false   true\n false  false  false\n\njulia> onecold(ans, [:a, :b, :c])\n3-element Array{Symbol,1}:\n  :b\n  :a\n  :b위의 연산은 Array 대신 OneHotVector와 OneHotMatrix를 돌려준다. OneHotVector는 일반적인 벡터처럼 동작하는데 정수 인덱스를 바로 사용하여 불필요한 계산 비용이 들지 않도록 처리한다. 예를 들어 매트릭스와 원-핫 벡터을 곱하는 경우, 내부적으로는 매트릭스에서 관련된 행만을 잘라내는 식으로 처리한다."
 },
 
 {
     "location": "Flux/gpu/#",
-    "page": "GPU Support",
-    "title": "GPU Support",
+    "page": "GPU 지원",
+    "title": "GPU 지원",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "Flux/gpu/#GPU-Support-1",
-    "page": "GPU Support",
-    "title": "GPU Support",
+    "location": "Flux/gpu/#GPU-지원-1",
+    "page": "GPU 지원",
+    "title": "GPU 지원",
     "category": "section",
-    "text": "Support for array operations on other hardware backends, like GPUs, is provided by external packages like CuArrays and CLArrays. Flux doesn't care what array type you use, so we can just plug these in without any other changes.For example, we can use CuArrays (with the cu converter) to run our basic example on an NVIDIA GPU.using CuArrays\n\nW = cu(rand(2, 5)) # a 2×5 CuArray\nb = cu(rand(2))\n\npredict(x) = W*x .+ b\nloss(x, y) = sum((predict(x) .- y).^2)\n\nx, y = cu(rand(5)), cu(rand(2)) # Dummy data\nloss(x, y) # ~ 3Note that we convert both the parameters (W, b) and the data set (x, y) to cuda arrays. Taking derivatives and training works exactly as before.If you define a structured model, like a Dense layer or Chain, you just need to convert the internal parameters. Flux provides mapleaves, which allows you to alter all parameters of a model at once.d = Dense(10, 5, σ)\nd = mapleaves(cu, d)\nd.W # Tracked CuArray\nd(cu(rand(10))) # CuArray output\n\nm = Chain(Dense(10, 5, σ), Dense(5, 2), softmax)\nm = mapleaves(cu, m)\nd(cu(rand(10)))The mnist example contains the code needed to run the model on the GPU; just uncomment the lines after using CuArrays."
+    "text": "GPU 같이 하드웨어 백엔드로 하는 배열 연산의 지원은 CuArrays와 같은 외부 패키지를 제공한다. Flux는 배열의 타입을 정하지 않았기에(agnostic) 모델 가중치(weights)와 데이터를 GPU에 옮겨주면 Flux가 이를 다룰 수 있다.예를 들어, CuArrays (cu 컨버터로 변환)를 사용하여 기본 예제를 NVIDIA GPU에서 돌릴 수 있다.using CuArrays\n\nW = cu(rand(2, 5)) # 2×5 CuArray\nb = cu(rand(2))\n\npredict(x) = W*x .+ b\nloss(x, y) = sum((predict(x) .- y).^2)\n\nx, y = cu(rand(5)), cu(rand(2)) # 더미 데이터\nloss(x, y) # ~ 3파라미터 (W, b)와 데이터 세트 (x, y)를 cuda 배열로 변환하였다. 도함수(derivatives)와 훈련 값은 전과 동일하다.Dense 레이어나 Chain 같은 조립 모델(structured model)를 정의하였으면, 내부 파라미터를 변환시켜야 한다. Flux에서 제공하는 mapleaves 함수로 모델의 모든 파라미터를 한꺼번에 변경할 수 있다.d = Dense(10, 5, σ)\nd = mapleaves(cu, d)\nd.W # Tracked CuArray\nd(cu(rand(10))) # CuArray output\n\nm = Chain(Dense(10, 5, σ), Dense(5, 2), softmax)\nm = mapleaves(cu, m)\nd(cu(rand(10)))편의상 Flux는 gpu 함수를 제공하여 GPU가 이용 가능한 경우 모델과 데이터를 GPU로 변환하게 한다. 그냥은 암것도 안하지만 CuArrays 를 로딩(using CuArrays)한 경우는 데이터를 GPU에 옮겨준다.julia> using Flux, CuArrays\n\njulia> m = Dense(10,5) |> gpu\nDense(10, 5)\n\njulia> x = rand(10) |> gpu\n10-element CuArray{Float32,1}:\n 0.800225\n ⋮\n 0.511655\n\njulia> m(x)\nTracked 5-element CuArray{Float32,1}:\n -0.30535\n ⋮\n -0.618002비슷한 용도로 cpu는 모델과 데이터를 GPU에서 그만돌리게 한다. The analogue cpu is also available for moving models and data back off of the GPU.julia> x = rand(10) |> gpu\n10-element CuArray{Float32,1}:\n 0.235164\n ⋮\n 0.192538\n\njulia> x |> cpu\n10-element Array{Float32,1}:\n 0.235164\n ⋮\n 0.192538"
+},
+
+{
+    "location": "Flux/saving/#",
+    "page": "저장 & 불러오기",
+    "title": "저장 & 불러오기",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Flux/saving/#모델을-저장하고-불러오기-1",
+    "page": "저장 & 불러오기",
+    "title": "모델을 저장하고 불러오기",
+    "category": "section",
+    "text": "모델을 저장하고는 차후에 이를 불러들여 실행하고 싶은가. 가장 쉬운 방법은 BSON.jl 이다.모델을 저장하자:julia> using Flux\n\njulia> model = Chain(Dense(10,5,relu),Dense(5,2),softmax)\nChain(Dense(10, 5, NNlib.relu), Dense(5, 2), NNlib.softmax)\n\njulia> using BSON: @save\n\njulia> @save \"mymodel.bson\" model불러오기:julia> using Flux\n\njulia> using BSON: @load\n\njulia> @load \"mymodel.bson\" model\n\njulia> model\nChain(Dense(10, 5, NNlib.relu), Dense(5, 2), NNlib.softmax)모델은 보통의 줄리아 타입이다. 따라서 줄리아 저장 포맷이면 어느 것이라도 사용할 수 있다. BSON.jl은 특히 잘 지원하며 앞으로도 되도록 호환을 유지한다 (지금 저장한 모델이 Flux의 차후 버전에서도 불러들일 수 있게).note: Note\nGPU에 모델의 가중치를 저장하였으면, GPU 지원이 안되는 경우에는 이를 불러 들일 수 없다. 저장하기 전에 모델을 CPU로 돌려놓기 에서의 cpu(model)를 해주는게 가장 좋은 방법이다."
+},
+
+{
+    "location": "Flux/saving/#모델-가중치-저장하기-1",
+    "page": "저장 & 불러오기",
+    "title": "모델 가중치 저장하기",
+    "category": "section",
+    "text": "어떤 경우는 저장은 모델 파라미터만 하고 코드에서 모델 아키텍처를 재구성하는게 유용한 방법일 수 있다. params(model)로 모델 파라미터를 구할 수 있다. data.(params)을 하면 추적 내역 데이터를 지울 수 있다.julia> using Flux\n\njulia> model = Chain(Dense(10,5,relu),Dense(5,2),softmax)\nChain(Dense(10, 5, NNlib.relu), Dense(5, 2), NNlib.softmax)\n\njulia> weights = Tracker.data.(params(model));\n\njulia> using BSON: @save\n\njulia> @save \"mymodel.bson\" weightsFlux.loadparams!로 쉽게 모델에 파라미터를 불러들일 수 있다.julia> using Flux\n\njulia> model = Chain(Dense(10,5,relu),Dense(5,2),softmax)\nChain(Dense(10, 5, NNlib.relu), Dense(5, 2), NNlib.softmax)\n\njulia> using BSON: @load\n\njulia> @load \"mymodel.bson\" weights\n\njulia> Flux.loadparams!(model, weights)새로 뜬 model은 전에 파라미터 저장한 것과 일치한다."
+},
+
+{
+    "location": "Flux/saving/#체크포인팅-1",
+    "page": "저장 & 불러오기",
+    "title": "체크포인팅",
+    "category": "section",
+    "text": "장시간 훈련에 있어 주기적으로 모델을 저장하는 것은 참 좋은 생각이다. 그러면 훈련이 중단되어도 (파워가 나가는 등등의 이유로) 다시 재개할 수 있다. 그러기 위해서는 train!의 컬백 함수에서 모델을 저장하면 된다.using Flux: throttle\nusing BSON: @save\n\nm = Chain(Dense(10,5,relu),Dense(5,2),softmax)\n\nevalcb = throttle(30) do\n  # loss 보기\n  @save \"model-checkpoint.bson\" model\nend이러면 \"model-checkpoint.bson\" 파일을 30초마다 업데이트 한다.훈련시키는 동안에 모델을 연달아 저장하는 까리한 방법도 있는데 예를 들면@save \"model-$(now()).bson\" model이렇게 하면 \"model-2018-03-06T02:57:10.41.bson\"과 같이 연달아서 모델이 저장된다. 현 테스트 세트 loss도 저장할 수 있어서, 오버피팅 시작한다 싶으면 이전 사본의 모델로 복구를 쉽게 할 수 있다.@save \"model-$(now()).bson\" model loss = testloss()모델의 최적화 상태까지도 저장할 수 있으니, 정확하게 중단된 지점부터 이어 훈련을 재개할 수 있다.opt = ADAM(params(model))\n@save \"model-$(now()).bson\" model opt"
 },
 
 {
     "location": "Flux/community/#",
-    "page": "Community",
-    "title": "Community",
+    "page": "커뮤니티",
+    "title": "커뮤니티",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "Flux/community/#Community-1",
-    "page": "Community",
-    "title": "Community",
+    "location": "Flux/community/#커뮤니티-1",
+    "page": "커뮤니티",
+    "title": "커뮤니티",
     "category": "section",
-    "text": "All Flux users are welcome to join our community on the Julia forum, the slack (channel #machine-learning), or Flux's Gitter. If you have questions or issues we'll try to help you out.If you're interested in hacking on Flux, the source code is open and easy to understand – it's all just the same Julia code you work with normally. You might be interested in our intro issues to get started."
+    "text": "모든 Flux 사용자는 커뮤니티 참여에 적극 환영한다. Julia 포럼, 슬랙 (채널 #machine-learning), 또는 Flux의 Gitter 를 이용하자. 질문이나 이슈에 대해 도울 것이다.Flux를 해킹하는데 관심이 있으면, 소스 코드는 열려 있고 이해하기 쉽다 – 일반적인 줄리아 코드로 되어 있다. intro 이슈 부터 관심있게 살펴보고 시작해 보자.🦉 번역 완료 2018-03-12"
+},
+
+{
+    "location": "DataFlow/vertices/#",
+    "page": "DataFlow 버티스(vertices)",
+    "title": "DataFlow 버티스(vertices)",
+    "category": "page",
+    "text": "🦉 https://github.com/MikeInnes/DataFlow.jl/blob/master/docs/vertices.md 번역똥 좀 많이 누고 나서DataFlow provides two things, a graph data structure and a common syntax for describing graphs. You're not tied down to using either of these things; you could use the syntax and immediately convert graphs to an adjacency matrix for processing, for example, or you could generate the graphs through other means while taking advantage of DataFlow's library of common graph operations.DataFlow explicitly keeps the data structure very simple and doesn't try to attach any kind of meaning to it. The graphs could represent straightforward Julia programs, or Bayesian networks, or an electrical circuit. Libraries using DataFlow will probably want to extend the syntax and manipulate the graph in order to generate appropriate code for the application."
+},
+
+{
+    "location": "DataFlow/vertices/#Data-Structures-1",
+    "page": "DataFlow 버티스(vertices)",
+    "title": "Data Structures",
+    "category": "section",
+    "text": "DataFlow actually comes with two related data structures, the DVertex and the IVertex. Both represent nodes in a graph with inputs/outputs to/from other nodes in the graph. IVertex is input-linked, somewhat like a linked list – it keeps a reference to nodes which serve as input. DVertex is doubly-linked, analogous to a doubly-linked list – it refers to its input as well as all the nodes which take it as input. DVertex are technically more expressive but are also much harder to work with, so it's usually best to convert to input-linked as soon as possible (via DataFlow.il() for example).type IVertex{T} <: Vertex{T}\n  value::T\n  inputs::Vector{IVertex{T}}\n  # outputs::Set{IVertex{T}} # DVertex has this in addition\nendIVertex can be seen as very similar to an Expr object in Julia. For example, the expression x+length(xs) will be stored in a very similar way:Expr(:call, :+, x, Expr(:call, :length, :xs))\nIVertex(:+, IVertex(:x), IVertex(:length, IVertex(:xs)))The key difference is that object identity is important in DataFlow graphs. Say we build an expression tree like this:foo = Expr(:call, :length, :xs)\nExpr(:call, :+, foo, foo)This prints as length(xs)+length(xs) regardless of the fact that we reused the length(xs) expression object. In DataFlow the reuse makes a big difference:g = IVertex{Any}\n\ng(:+, g(:length, g(:xs)), g(:length, g(:xs)))\n> IVertex(length(xs) + length(xs))\n\nfoo = g(:length, g(:xs))\ng(:+, foo, foo)\n> IVertex(\n  gazelle = length(xs)\n  gazelle + gazelle)The reuse is now encoded in the program graph. Note that the data structure above has no conception of a \"variable\" since the flow of data is directly represented; instead, variables will be generated for us if and when they are needed in the syntax conversion."
+},
+
+{
+    "location": "DataFlow/vertices/#Algorithms-1",
+    "page": "DataFlow 버티스(vertices)",
+    "title": "Algorithms",
+    "category": "section",
+    "text": "The basic approach to working with DataFlow graphs is to use the same techniques as are used for trees in functional programming. That is, you can write algorithms which generate a new graph by recursively walking over the old one. This is packaged up in functions like prewalk and postwalk which allow you apply a function to each node in the graph.For example:foo = g(:+, g(:length, g(:xs)), g(:length, g(:ys)))\n> IVertex{Any}(length(xs)+length(ys))\n\npostwalk(foo) do v\n  value(v) == :length && value(v[1]) == :xs ? g(:lx) : v\nend\n> IVertex(lx + length(ys))(The difference between pre- and postwalk is the order of traversal, which you can see using @show.) In this way you can do things like find and replace on graphs, as well as more complex structural transformations. At this point we also have everything we need to implement common subexpression elimination:cse(v::IVertex, cache = Dict()) =\n  postwalk(x -> get!(cache, x, x), v)We replace each node in the graph by retrieving it from a dict where values refer to themselves. This ensures that any values that are == will also be === in the resulting graph, so that common expressions are reused.foo = @flow length(xs)+length(xs)\n> DVertex(length(xs) + length(xs))\n\ncse(foo)\n> IVertex(\n  ram = length(xs)\n  ram + ram)Generally you should be able to stick to using DataFlow's high-level operations like postwalk, but in some cases you may need to write a recursive algorithm from scratch. This looks exactly like writing the same algorithm over a tree, with the caveats that (1) identical nodes may be reached by more than one route down the tree and (2) there may be cycles in the graph which cause infinite loops for naive recursion. This sounds like a nightmare but in fact we can kill these two tricky birds with a single stone; we simply memoize the function so that visiting repeated nodes ends the recursion. Make sure to cache the result of the current call before recursing.function replace_xs(g, cache = ObjectIdDict())\n  # Early exit if we've already processed this node\n  haskey(cache, g) && return cache[g]\n  # Create the new (empty) node and cache it\n  cache[g] = g′ = typeof(g)(value(g) == :xs ? :foo : value(g))\n  # For each input of the original node, process it and push\n  # the result into the new node\n  thread!(g′, (replace_xs(v, cache) for v in inputs(g))...)\nend\n\nfoo = DataFlow.cse(@flow length(xs)+length(xs))\n> IVertex(\n  ant = length(xs)\n  ant + ant)\n\nreplace_xs(foo)\n> IVertex(\n  manatee = length(foo)\n  manatee + manatee)In this case forgetting the cache would result in a fairly un-disastrous length(foo)+length(foo), but in other cases it could result in a hang."
+},
+
+{
+    "location": "soc/guidelines/#",
+    "page": "Application Guidelines",
+    "title": "Application Guidelines",
+    "category": "page",
+    "text": "https://julialang.org/soc/guidelines/"
+},
+
+{
+    "location": "soc/guidelines/#Before-the-Application-1",
+    "page": "Application Guidelines",
+    "title": "Before the Application",
+    "category": "section",
+    "text": "Before you apply, it's a good idea to get in touch with the Julia community. Ask questions on Discourse or join the Julia Slack to get connected with potential mentors to help find interesting projects. The Slack channel #jsoc is dedicated to helping students get the help they need. Additionally, you should make use of these connections to start making some small contributions and progress on your project early on. While PRs before the applications are not required, GSoC is extremely competitive, so the more ways you have to show your commitment, the better."
+},
+
+{
+    "location": "soc/guidelines/#Application-Instructions-1",
+    "page": "Application Guidelines",
+    "title": "Application Instructions",
+    "category": "section",
+    "text": "GSoC applications must be submitted to https://summerofcode.withgoogle.com. We recommend having a mentor to help you with the application process. Please feel free to share your draft applications in the #jsoc channel of the Slack to receive feedback.Our organization does not have page or formatting requirements, but we recommend building a formal PDF document of less than 10 pages which is formatted using Word or LaTeX. If you have any questions, contact the Julia GSoC administrators at summerofcode@julialang.org."
+},
+
+{
+    "location": "soc/guidelines/#Application-Guidelines-1",
+    "page": "Application Guidelines",
+    "title": "Application Guidelines",
+    "category": "section",
+    "text": "Applications are free-form, so you can discuss your project in whatever way you feel is best. The key questions we will ask ourselves when considering it are:Is the student committed to the project?\nIs the plan a reasonable amount to do in three months?\nAre there clear milestones we can use to assess progress (it should be easy to answer the question \"Is the project done?\").In more detail, you may find it useful to consider the following questions:The Project\nWhat do you want to have completed by the end of the program?\nFor example, \"a package for doing X which any Julia user can install\" or \"an extra feature for Foo.jl that does Y\"\nWho's interested in the work, and how will it benefit them?\nFor example, \"bioinformaticians will be able to set up sequencing pipelines flexibly in pure Julia\"\nIt's important to justify the project for people who may not be experts in your subject area.\nWhat are the potential hurdles you might encounter, and how can you resolve them?\nIs there anything you need to learn about as part of the work? Does your work depend on anyone else's to make progress?\nHow will you prioritize different aspects of the project like features, API usability, documentation, and robustness?\nWhat milestones can you target throughout the period?\nFor example, getting a working prototype out to beta testers by the halfway point\nAre there any stretch goals you can make if the main project goes smoothly? Tell us how you're going to wow us with the final result!\nCode portfolio. Show us a sample or two of code that you're proud of. Itdoesn't have to be Julia (but that doesn't hurt either). You don't need to be a star programmer as long as you can demonstrate interest in and commitment to your project.Deliverables List what concrete products expect to deliver by the end ofthe projectAbout you. Why you? Give us a sense of who you are as a person and as a programmer.\nWhat academic, professional or hobby programming experience do you have, and how will it help you with your project?\nHave you contributed to open source projects before? (Link us to some issues and patches, if any)\nWhy are you interested in Julia? Have you used it much before? You need to demonstrate your ability to use Julia by the beginning of the GSoC. GSoC is not for learning the Julia language, though extensive prior experience is not required.\nDo you have the mathematical/scientific background for your project? Many of the Julialang projects have a significant portion that require technical expertise and applicants need to demonstrate their ability to handle the chosen project.\nHow should we contact you? Let us know your email address and GitHub username.\nDo you have a website or blog?\nAnything else you'd like to mention!\nLogistics.\nWhat other time commitments, such as summer courses, other jobs, planned vacations, etc., will you have over the summer?"
+},
+
+{
+    "location": "soc/projects/ml/#",
+    "page": "Data Science & Machine Learning",
+    "title": "Data Science & Machine Learning",
+    "category": "page",
+    "text": "https://julialang.org/soc/projects/ml.htmlNote that for any of these projects you should have code samples as part of your application, ideally as patches to one of the ML or GPU libraries or in the form of working ML models."
+},
+
+{
+    "location": "soc/projects/ml/#Model-Zoo-Examples-1",
+    "page": "Data Science & Machine Learning",
+    "title": "Model Zoo Examples",
+    "category": "section",
+    "text": "Flux's model zoo contains examples of a wide range of deep learning models and techniques. This project would involve adding new models, showing how to recreate state-of-the-art results (e.g. AlphaGo) or interesting and unusual model architectures (e.g. transformer networks). We'd be particularly interested in any models involving reinforcement learning, or anything with images, sound or speech.Some experience with implementing deep learning models would be ideal for this project, but is not essential for a student willing to pick up the skills and read ML papers. It's up to you whether you implement a single ambitious model, or multiple small ones.Mentors: Mike Innes"
+},
+
+{
+    "location": "soc/projects/ml/#Flux.JS-demos-1",
+    "page": "Data Science & Machine Learning",
+    "title": "Flux.JS demos",
+    "category": "section",
+    "text": "Flux.JS enables export of Flux models to the browser. However, just porting a numerical function to JavaScript is rarely exciting on its own; you need to build an interface to give input to the model (say, via a webcam) and see output (say, by displaying an annotated image) in order to see what the model is thinking.This project would involve creating new demos that show interesting models running in the browser. Examples could include:An MNIST digit classify running on hand-drawn images;\nHandwriting generation;\nLive speech recognition or production;\nAn autoencoder that allows moving sliders to generate images, and explore \"digit space\";\nA Chess or Go AI that plays against the user;\nA language analysis tool that classifies user-written text.The possibilities are pretty much endless here. This project will require a pretty solid handle on web technologies, and we'd expect much of the components created to be reusable between demos.Mentors: Mike Innes, Shashi Gowda."
+},
+
+{
+    "location": "soc/projects/ml/#Model-Import-and-Export-1",
+    "page": "Data Science & Machine Learning",
+    "title": "Model Import and Export",
+    "category": "section",
+    "text": "Sharing models with other frameworks would enables us to both export models (say to JavaScript for the browser, or TensorFlow Lite for mobile, or NNVM for optimised training) and to take advantage of the large set of trained models in the wild in Julia code.This involves several stages, some or all of which could be tackled over the course of a project.Reading and writing the raw model formats. For formats like ONNX this should be relatively easy, as one can use the ProtoBuf.jl library.\nFor model import:\nConverting the raw model format to a more general graph format, such as a DataFlow.jl graph.\nDumping the model graph as Julia code.\nFor model export:\nConverting a general graph format to the raw model constructs.\nTracing Julia code to produce a dataflow graph, as in FluxJS.jl.Mentors: Mike Innes"
+},
+
+{
+    "location": "soc/projects/ml/#Benchmarks-1",
+    "page": "Data Science & Machine Learning",
+    "title": "Benchmarks",
+    "category": "section",
+    "text": "A benchmark suite would help us to keep Julia's performance for ML models in shape, as well as revealing opportunities for improvement. Like the model-zoo project, this would involve contributing standard models that exercise common ML use case (images, text etc) and profiles them. The project could extend to include improving performance where possible, or creating a \"benchmarking CI\" like Julia's own nanosoldier.Mentors: Mike Innes"
+},
+
+{
+    "location": "soc/projects/ml/#Compiler-Optimisations-1",
+    "page": "Data Science & Machine Learning",
+    "title": "Compiler Optimisations",
+    "category": "section",
+    "text": "Julia opens up many interesting opportunities for applying new optimisations to ML models, and exploring language design for ML. As part of this project you'd help us apply novel optimisation strategies to Julia code, with immediate benefits to Flux and other Julia users.Possible projects could include:Auto-parallelisation and vectorisation in the vain of DyNet autobatch, TensorFlow Fold and Matchbox.\nUsing Cassette and techniques similar to Flux.JS to extract dataflow computation graphs from imperative Julia code.\nApplying optimisations to computation graphs, such as eliding memory allocations, reusing memory and fusing operations, or enabling model parallelism.\nApplying Halide or Futhark-like optimisations to array expressions, as in Tokamak\nImproving Julia's GPU support, including tuning memory management and supporting CUDA streams.Mentors: Mike Innes"
+},
+
+{
+    "location": "soc/projects/ml/#Sparse-GPU-and-ML-support-1",
+    "page": "Data Science & Machine Learning",
+    "title": "Sparse GPU and ML support",
+    "category": "section",
+    "text": "While Julia supports dense GPU arrays well via CuArrays, we lack up-to-date wrappers for sparse operations. This project would involve wrapping CUDA's sparse support, with CUSPARSE.jl as a starting point, adding them to CuArrays.jl, and perhaps demonstrating their use via a sparse machine learning model.Mentors: Mike Innes"
+},
+
+{
+    "location": "soc/projects/ml/#Parquet.jl-enhancements-1",
+    "page": "Data Science & Machine Learning",
+    "title": "Parquet.jl enhancements",
+    "category": "section",
+    "text": "Efficient storage of tabular data is an important component of the data analysis story in the ecosystem. Julia has many options here – JLD, JuliaDB’s built-in serialization, CSV.write. These either suffer from lack of performance or lack of standardization. Parquet is a format for efficient storage of tabular data used in the Hadoop world. It has compression techniques which reduce disk usage as well as speed up reads. A well-rounded Parquet implementation in Julia will solve the current issues with storage formats and let Julia interoperate with software from the Hadoop world.Parquet.jl currently contains a reader for Parquet files. This project involves implementing the writer for Parquet files, as well as some enhancements to the reading functionality.Deliverables:Reader enhancements:Read a file as a NamedTuple of vectors (using NamedTuples.jl on Julia 0.6). This is on similar lines, but different from the current cursor-based reader. Probably as an implementation of AbstractBuilder that returns NamedTuple of column vectors, combined with a new iterator/cursor that returns a bunch of records instead of individual records.Writer support:Write a table (in the form of a NamedTuple of vectors) to disk. Note: we will use NamedTuple of vectors as a minimal table which can be converted back into DataFrames or IndexedTables\nImplement the compression features provided in the Parquet spec-Optionally auto detect compression scheme based on the data.Mentors: Tanmay Mohapatra"
+},
+
+{
+    "location": "soc/projects/ml/#GPU-support-in-JuliaDB-1",
+    "page": "Data Science & Machine Learning",
+    "title": "GPU support in JuliaDB",
+    "category": "section",
+    "text": "JuliaDB is a distributed analytical database. It uses Julia’s multi-processing for parallelism at the moment. GPU implementations of some operations may allow relational algebra with low latency. In this project, you will be required to add basic GPU support in JuliaDB.Copy a table to GPU – this may be as simple as converting every column into a CuArray or GPUArray\nmap, reduce and filter operation – apply simple functions on a large table that is on the GPU\nEnsure that columnar storage format is made use of in the lower level code generated.\nThe groupby and join operations may involve first implementing an efficient sortperm that utilize the GPU, or an efficient hash table on the GPU\ngroupby kernel on GPU\njoin kernel on GPU (stretch goal)Mentors: Shashi Gowda, Mike Innes"
+},
+
+{
+    "location": "soc/projects/ml/#Making-Aquiring-Open-Data-Easy-1",
+    "page": "Data Science & Machine Learning",
+    "title": "Making Aquiring Open-Data Easy",
+    "category": "section",
+    "text": "Goverments and Universities are releasing huge amounts of data under Open Data policies. Web portals such as:http://data.gov\nhttp://data.gov.au\nhttps://dataverse.harvard.edu/\nhttp://datadryad.org/\nhttps://figshare.com/Expose great quanities of data just wating to be used.DataDeps.jl is a package that helps data scientists ensures that anyone running their code has all the data it needs, no matter when or where it is run. To do this it needs a registration block, which is a chunk of julia code which says where the data can be download, who created it, what terms and conditions are on its use etc. For a simple dataset that is all in one file writing this is pretty easy – copy and paste the info from the website hosting the data. When you want to dozens of datasets, some of which have dozens of files (and no easy way to download a .zip of all of them), writing this registration block is a bit more work.DataDepsGenerators.jl exists to solve that. Give it a URL (or other identifier) for a page describing a dataset, and outputs all the code for a registration block, that you can copy and paste straight into your julia project. Right now DataDepsGenerators only supports a couple of sites: GitHub (for https://github.com/BuzzFeedNews/ and https://github.com/fivethirtyeight/data/ and others) and the UCI ML Repository. This project aims to change that by adding support for the CKAN and the OA-PMH APIs.The CKAN and the OA-PMH APIs allow the automated extraction of metadata for a dataset. They are primarily used by goverment \"data.gov.*\" sites and research repositories respectively. Together they host millions of datasets, furfilling those institutions open data policies.This project is to leverage those APIs, to allow others to leaverage those data repositories to produce easily repeatable, data driven research.Expected Results: a series of patches to DataDepsGenerators.jl, giving it the capacity to generate a DataDeps registration block for any dataset hosted on site exposing a CRAN, or OAI-PMH API.Recommended Skills: Familarity with web APIs and related technolgies (e.g. REST, JSON, XML (Probably not OAUTH, but if you've done OAUTH then your more than familar enough)). Some practice with webscraping is likely to be useful. A love of data and of doing cool things with it, is a big plus.Mentors: Lyndon White (oxinabox)"
+},
+
+{
+    "location": "soc/projects/ml/#Parameter-estimation-for-nonlinear-dynamical-models-1",
+    "page": "Data Science & Machine Learning",
+    "title": "Parameter estimation for nonlinear dynamical models",
+    "category": "section",
+    "text": "Machine learning has become a popular tool for understanding data, but scientists typically understand the world through the lens of physical laws and their resulting dynamical models. These models are generally differential equations given by physical first principles, where the constants in the equations such as chemical reaction rates and planetary masses determine the overall dynamics. The inverse problem to simulation, known as parameter estimation, is the process of utilizing data to determine these model parameters.The purpose of this project is to utilize the growing array of statistical, optimization, and machine learning tools in the Julia ecosystem to build library functions that make it easy for scientists to perform this parameter estimation with the most high-powered and robust methodologies. Possible projects include investigating methods for Bayesian estimation of parameters via Stan.jl and Julia-based libraries like Turing.jl, or global optimization-based approaches. Novel techniques like classifying model outcomes via support vector machines and deep neural networks is can also be considered. Research and benchmarking to attempt to find the most robust methods will take place in this project.Some work in this area can be found in DiffEqParamEstim.jl and DiffEqBayes.jl. Examples can be found in the DifferentialEquations.jl documentation.Recommended Skills: Background knowledge of standard machine learning, statistical, or optimization techniques. It's recommended but not required that one has basic knowledge of differential equations and DifferentialEquations.jl. Using the differential equation solver to get outputs from parameters can be learned on the job, but you should already be familiar (but not necessarily an expert) with the estimation techniques you are looking to employ.Expected Results: Library functions for performing parameter estimation and inferring properties of differential equation solutions from parameters. Notebooks containing benchmarks determining the effectiveness of various methods and classifying when specific approaches are appropriate will be developed simultaneously.Mentors: Chris Rackauckas"
+},
+
+{
+    "location": "soc/projects/ml/#Artificial-Intelligence-Library-Package-based-on-Artificial-Intelligence-A-Modern-Approach-(AIMA)-1",
+    "page": "Data Science & Machine Learning",
+    "title": "Artificial Intelligence Library Package based on Artificial Intelligence - A Modern Approach (AIMA)",
+    "category": "section",
+    "text": "AIMA is a seminal text on representation of agents to solve AI problems. Most packages  available today as AI libraries tend to focus on ML only and not the architectural aspect of AI. The scope of the project is to create a library with a clean API  (following AIMA) to easily allow the application of core algorithms to AI problems.  The student will implement a package that brings together implementations of algorithms  like depth-first search and simulated annealing, both from other Julia packages and  from sample code in the AIMA book, and build sample programs to demonstrate AI  applications. Starter code can be found at AIMACore along with AIMASamples.Recommended Skills: Previous experience with AI or the ability to quickly pick up on  the AI algorithms in AIMAExpected Results: A well-documented library of functions derived from the AIMA book.Mentors Sambit Kumar Dash. "
 },
 
 ]}

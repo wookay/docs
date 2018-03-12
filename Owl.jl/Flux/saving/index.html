@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>저장 &amp; 불러오기 · 🦉</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><h1>🦉</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../">Home</a></li><li><span class="toctext">Flux</span><ul><li><a class="toctext" href="../">Flux 홈</a></li><li><span class="toctext">모델 만들기</span><ul><li><a class="toctext" href="../models/basics/">기본적인 것</a></li><li><a class="toctext" href="../models/recurrence/">순환(Recurrence)</a></li><li><a class="toctext" href="../models/regularisation/">정규화(Regularisation)</a></li><li><a class="toctext" href="../models/layers/">모델 참조(Model Reference)</a></li></ul></li><li><span class="toctext">모델 훈련시키기</span><ul><li><a class="toctext" href="../training/optimisers/">최적화</a></li><li><a class="toctext" href="../training/training/">훈련시키기</a></li></ul></li><li><a class="toctext" href="../data/onehot/">원-핫 인코딩</a></li><li><a class="toctext" href="../gpu/">GPU 지원</a></li><li class="current"><a class="toctext" href>저장 &amp; 불러오기</a><ul class="internal"><li><a class="toctext" href="#모델-가중치-저장하기-1">모델 가중치 저장하기</a></li><li><a class="toctext" href="#체크포인팅-1">체크포인팅</a></li></ul></li><li><a class="toctext" href="../community/">커뮤니티</a></li></ul></li><li><span class="toctext">DataFlow</span><ul><li><a class="toctext" href="../../DataFlow/vertices/">DataFlow 버티스(vertices)</a></li></ul></li><li><span class="toctext">GSoC</span><ul><li><a class="toctext" href="../../soc/guidelines/">Application Guidelines</a></li><li><a class="toctext" href="../../soc/projects/ml/">Data Science &amp; Machine Learning</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Flux</li><li><a href>저장 &amp; 불러오기</a></li></ul><a class="edit-page" href="https://github.com/wookay/Owl.jl/blob/master/docs/src/Flux/saving.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>저장 &amp; 불러오기</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="모델을-저장하고-불러오기-1" href="#모델을-저장하고-불러오기-1">모델을 저장하고 불러오기</a></h1><p>모델을 저장하고는 차후에 이를 불러들여 실행하고 싶은가. 가장 쉬운 방법은 <a href="https://github.com/MikeInnes/BSON.jl">BSON.jl</a> 이다.</p><p>모델을 저장하자:</p><pre><code class="language-julia-repl">julia&gt; using Flux
+
+julia&gt; model = Chain(Dense(10,5,relu),Dense(5,2),softmax)
+Chain(Dense(10, 5, NNlib.relu), Dense(5, 2), NNlib.softmax)
+
+julia&gt; using BSON: @save
+
+julia&gt; @save &quot;mymodel.bson&quot; model</code></pre><p>불러오기:</p><pre><code class="language-julia-repl">julia&gt; using Flux
+
+julia&gt; using BSON: @load
+
+julia&gt; @load &quot;mymodel.bson&quot; model
+
+julia&gt; model
+Chain(Dense(10, 5, NNlib.relu), Dense(5, 2), NNlib.softmax)</code></pre><p>모델은 보통의 줄리아 타입이다. 따라서 줄리아 저장 포맷이면 어느 것이라도 사용할 수 있다. BSON.jl은 특히 잘 지원하며 앞으로도 되도록 호환을 유지한다 (지금 저장한 모델이 Flux의 차후 버전에서도 불러들일 수 있게).</p><div class="admonition note"><div class="admonition-title">Note</div><div class="admonition-text"><p>GPU에 모델의 가중치를 저장하였으면, GPU 지원이 안되는 경우에는 이를 불러 들일 수 없다. 저장하기 전에 <a href="../gpu/">모델을 CPU로 돌려놓기</a> 에서의 <code>cpu(model)</code>를 해주는게 가장 좋은 방법이다.</p></div></div><h2><a class="nav-anchor" id="모델-가중치-저장하기-1" href="#모델-가중치-저장하기-1">모델 가중치 저장하기</a></h2><p>어떤 경우는 저장은 모델 파라미터만 하고 코드에서 모델 아키텍처를 재구성하는게 유용한 방법일 수 있다. <code>params(model)</code>로 모델 파라미터를 구할 수 있다. <code>data.(params)</code>을 하면 추적 내역 데이터를 지울 수 있다.</p><pre><code class="language-julia-repl">julia&gt; using Flux
+
+julia&gt; model = Chain(Dense(10,5,relu),Dense(5,2),softmax)
+Chain(Dense(10, 5, NNlib.relu), Dense(5, 2), NNlib.softmax)
+
+julia&gt; weights = Tracker.data.(params(model));
+
+julia&gt; using BSON: @save
+
+julia&gt; @save &quot;mymodel.bson&quot; weights</code></pre><p><code>Flux.loadparams!</code>로 쉽게 모델에 파라미터를 불러들일 수 있다.</p><pre><code class="language-julia-repl">julia&gt; using Flux
+
+julia&gt; model = Chain(Dense(10,5,relu),Dense(5,2),softmax)
+Chain(Dense(10, 5, NNlib.relu), Dense(5, 2), NNlib.softmax)
+
+julia&gt; using BSON: @load
+
+julia&gt; @load &quot;mymodel.bson&quot; weights
+
+julia&gt; Flux.loadparams!(model, weights)</code></pre><p>새로 뜬 <code>model</code>은 전에 파라미터 저장한 것과 일치한다.</p><h2><a class="nav-anchor" id="체크포인팅-1" href="#체크포인팅-1">체크포인팅</a></h2><p>장시간 훈련에 있어 주기적으로 모델을 저장하는 것은 참 좋은 생각이다. 그러면 훈련이 중단되어도 (파워가 나가는 등등의 이유로) 다시 재개할 수 있다. 그러기 위해서는 <a href="../training/training/"><code>train!</code>의 컬백 함수</a>에서 모델을 저장하면 된다.</p><pre><code class="language-julia">using Flux: throttle
+using BSON: @save
+
+m = Chain(Dense(10,5,relu),Dense(5,2),softmax)
+
+evalcb = throttle(30) do
+  # loss 보기
+  @save &quot;model-checkpoint.bson&quot; model
+end</code></pre><p>이러면 <code>&quot;model-checkpoint.bson&quot;</code> 파일을 30초마다 업데이트 한다.</p><p>훈련시키는 동안에 모델을 연달아 저장하는 까리한 방법도 있는데 예를 들면</p><pre><code class="language-julia">@save &quot;model-$(now()).bson&quot; model</code></pre><p>이렇게 하면 <code>&quot;model-2018-03-06T02:57:10.41.bson&quot;</code>과 같이 연달아서 모델이 저장된다. 현 테스트 세트 loss도 저장할 수 있어서, 오버피팅 시작한다 싶으면 이전 사본의 모델로 복구를 쉽게 할 수 있다.</p><pre><code class="language-julia">@save &quot;model-$(now()).bson&quot; model loss = testloss()</code></pre><p>모델의 최적화 상태까지도 저장할 수 있으니, 정확하게 중단된 지점부터 이어 훈련을 재개할 수 있다.</p><pre><code class="language-julia">opt = ADAM(params(model))
+@save &quot;model-$(now()).bson&quot; model opt</code></pre><footer><hr/><a class="previous" href="../gpu/"><span class="direction">Previous</span><span class="title">GPU 지원</span></a><a class="next" href="../community/"><span class="direction">Next</span><span class="title">커뮤니티</span></a></footer></article></body></html>
