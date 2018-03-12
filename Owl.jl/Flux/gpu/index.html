@@ -30,7 +30,7 @@ julia&gt; m(x)
 Tracked 5-element CuArray{Float32,1}:
  -0.30535
  ⋮
- -0.618002</code></pre><p>비슷한 용도로 <code>cpu</code>는 모델과 데이터를 GPU에서 그만돌리게 한다. The analogue <code>cpu</code> is also available for moving models and data back off of the GPU.</p><pre><code class="language-julia-repl">julia&gt; x = rand(10) |&gt; gpu
+ -0.618002</code></pre><p>비슷한 용도로 <code>cpu</code>는 모델과 데이터를 GPU에서 그만돌리게 한다.</p><pre><code class="language-julia-repl">julia&gt; x = rand(10) |&gt; gpu
 10-element CuArray{Float32,1}:
  0.235164
  ⋮
