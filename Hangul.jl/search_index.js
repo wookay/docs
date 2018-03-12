@@ -17,19 +17,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "#Jamo-1",
+    "location": "#Hangul-Compatibility-Jamo-1",
     "page": "Home",
-    "title": "Jamo",
+    "title": "Hangul Compatibility Jamo",
     "category": "section",
-    "text": "compose -> Union{Char, Intermediate}\ndecompose -> Tuple{Jamo, Jamo, Jamo}"
+    "text": "Jamo, Syllable\nto_char\nto_syllable"
 },
 
 {
-    "location": "#YetJamo{T}-첫가끝-1",
+    "location": "#Hangul-Jamo-1",
     "page": "Home",
-    "title": "YetJamo{T} 첫가끝",
+    "title": "Hangul Jamo",
     "category": "section",
-    "text": "compose -> String"
+    "text": "첫가끝 YetJamo{T}, YetSyllable\nto_string"
 },
 
 {
@@ -41,11 +41,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Jamo/#Jamo-1",
+    "location": "Jamo/#Hangul-Compatibility-Jamo-1",
     "page": "Jamo",
-    "title": "Jamo",
+    "title": "Hangul Compatibility Jamo",
     "category": "section",
-    "text": "compose -> Union{Char, Intermediate}\ndecompose -> Tuple{Jamo, Jamo, Jamo}"
+    "text": "Jamo, Syllable\nto_char\nto_syllable"
 },
 
 {
@@ -57,11 +57,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "YetJamo/#YetJamo{T}-첫가끝-1",
+    "location": "YetJamo/#Hangul-Jamo-1",
     "page": "YetJamo",
-    "title": "YetJamo{T} 첫가끝",
+    "title": "Hangul Jamo",
     "category": "section",
-    "text": "compose -> String"
+    "text": "첫가끝 YetJamo{T}, YetSyllable\nto_string"
 },
 
 ]}
