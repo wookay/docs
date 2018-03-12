@@ -17,11 +17,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "#Hangul-Compatibility-Jamo-1",
+    "location": "#Jamo-1",
     "page": "Home",
-    "title": "Hangul Compatibility Jamo",
+    "title": "Jamo",
     "category": "section",
-    "text": "Jamo, Syllable\nto_char\nto_syllable"
+    "text": "Jamo -> Union{Letter,YetJamo}"
+},
+
+{
+    "location": "#Hangul-Compatibility-Letter-1",
+    "page": "Home",
+    "title": "Hangul Compatibility Letter",
+    "category": "section",
+    "text": "자음모음 Letter{T}\nSyllable\nto_char\nto_syllable"
 },
 
 {
@@ -29,23 +37,23 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Hangul Jamo",
     "category": "section",
-    "text": "첫가끝 YetJamo{T}, YetSyllable\nto_string"
+    "text": "첫가끝 YetJamo{T}\nYetSyllable\nto_string"
 },
 
 {
-    "location": "Jamo/#",
-    "page": "Jamo",
-    "title": "Jamo",
+    "location": "Letter/#",
+    "page": "Letter",
+    "title": "Letter",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "Jamo/#Hangul-Compatibility-Jamo-1",
-    "page": "Jamo",
-    "title": "Hangul Compatibility Jamo",
+    "location": "Letter/#Hangul-Compatibility-Letter-1",
+    "page": "Letter",
+    "title": "Hangul Compatibility Letter",
     "category": "section",
-    "text": "Jamo, Syllable\nto_char\nto_syllable"
+    "text": "자음모음 Letter{T}\nSyllable\nto_char\nto_syllable"
 },
 
 {
@@ -61,7 +69,7 @@ var documenterSearchIndex = {"docs": [
     "page": "YetJamo",
     "title": "Hangul Jamo",
     "category": "section",
-    "text": "첫가끝 YetJamo{T}, YetSyllable\nto_string"
+    "text": "첫가끝 YetJamo{T}\nYetSyllable\nto_string"
 },
 
 ]}
