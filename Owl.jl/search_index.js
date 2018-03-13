@@ -13,7 +13,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "🦉",
     "category": "section",
-    "text": "밥 먹고 똥 싸는 곳입니다 번역에 대한 피드백은 https://github.com/wookay/Owl.jl에 남겨 주세요."
+    "text": "초보똥의 머싄러닁번역에 대한 피드백은 https://github.com/wookay/Owl.jl 이슈에 남겨 달라"
 },
 
 {
@@ -25,11 +25,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Flux/#Flux:-줄리아-머신-러닝-라이브러리-1",
+    "location": "Flux/#Flux:-줄리아-머싄러닁-라이브러리-1",
     "page": "Flux 홈",
-    "title": "Flux: 줄리아 머신 러닝 라이브러리",
+    "title": "Flux: 줄리아 머싄러닁 라이브러리",
     "category": "section",
-    "text": "Flux는 머신러닝을 위한 라이브러리. \"배터리-포함(batteries-included, 제품의 완전한 유용성을 위해 필요한 모든 부품을 함께 제공한다는 소프트웨어쪽 용어)\" 많은 유용한 도구를 제공한다. 줄리아 언어를 풀파워(full power)로 사용할 수 있다. 전체 스택을 줄리아 코드로 구현한다. GPU 커널도 가능하고, 개별 파트를 개인 취향에 맞게 조작할 수 있다."
+    "text": "Flux는 머싄러닁을 위한 라이브러리이다. \"배터리-포함(batteries-included, 제품의 완전한 유용성을 위해 필요한 모든 부품을 함께 제공한다는 소프트웨어쪽 용어)\" 많은 유용한 도구를 제공한다. 줄리아 언어를 풀파워(full power)로 사용할 수 있다. 전체 스택을 줄리아 코드로 구현한다. GPU 커널도 가능하고, 개별 파트를 개인 취향에 맞게 조작할 수 있다."
 },
 
 {
@@ -422,6 +422,38 @@ var documenterSearchIndex = {"docs": [
     "title": "Function definitions",
     "category": "section",
     "text": "splitdef(def) matches a function definition of the formfunction name{params}(args; kwargs)::rtype where {whereparams}\n   body\nendand returns Dict(:name=>..., :args=>..., etc.). The definition can be rebuilt by calling MacroTools.combinedef(dict), or explicitly withjulia> dict = splitdef(:(f() = 0))\nDict{Symbol,Any} with 5 entries:\n  :name        => :f\n  :args        => Any[]\n  :kwargs      => Any[]\n  :body        => quote …\n  :whereparams => ()\n\njulia> rtype = get(dict, :rtype, :Any)\n:Any\n\njulia> all_params = [get(dict, :params, [])..., get(dict, :whereparams, [])...]\n0-element Array{Any,1}\n\njulia> :(function $(dict[:name]){$(all_params...)}($(dict[:args]...);\n                                                   $(dict[:kwargs]...))::$rtype\n             $(dict[:body])\n         end)\n:(function f{}(; )::Any # REPL[83], line 3:\n        begin\n            0\n        end\n    end)splitarg(arg) matches function arguments (whether from a definition or a function call) such as x::Int=2 and returns (arg_name, arg_type, default). default is nothing when there is none. For example:julia> map(splitarg, (:(f(a=2, x::Int=nothing, y))).args[2:end])\n3-element Array{Tuple{Symbol,Symbol,Bool,Any},1}:\n (:a, :Any, false, 2)\n (:x, :Int, false, :nothing)\n (:y, :Any, false, nothing)"
+},
+
+{
+    "location": "FluxJS/README/#",
+    "page": "FluxJS README",
+    "title": "FluxJS README",
+    "category": "page",
+    "text": "🦉 https://github.com/FluxML/FluxJS.jl README.md 번역"
+},
+
+{
+    "location": "FluxJS/README/#Flux.JS-1",
+    "page": "FluxJS README",
+    "title": "Flux.JS",
+    "category": "section",
+    "text": "Run Flux models in the browser, via deeplearn.js."
+},
+
+{
+    "location": "FluxJS/README/#JS-Output-1",
+    "page": "FluxJS README",
+    "title": "JS Output",
+    "category": "section",
+    "text": "You can see what Flux.JS sees with @code_js, which works like @code_typed or @code_native. Flux.JS simply accepts a function of arrays along with example inputs, and generates JavaScript code for you. Here's the simplest possible example:julia> using FluxJS\n\njulia> x = rand(10)\n10-element Array{Float64,1}:\n 0.882192\n 0.362089\n 0.784539\n 0.308894\n 0.869722\n 0.381076\n 0.00467682\n 0.0734247\n 0.55711\n 0.6387\n\njulia> @code_js identity(x)\nlet model = (function () {\n  let math = dl.ENV.math;\n  function model(jay) {\n    return jay;\n  };\n  model.weights = [];\n  return model;\n})();\nflux.fetchWeights(\"model.bson\").then((function (ws) {\n  return model.weights = ws;\n}));You can see that there's some setup code as Flux.JS expects to load some weights for a model. But the core of it is this function, which is exactly like the identity function in Julia.function model(kinkajou) {\n  return kinkajou;\n};Let's try something more interesting; f takes two arguments and multiplies them.julia> f(W,x) = W*x\nf (generic function with 1 method)\n\njulia> @code_js f(rand(5,10),rand(10))\nlet model = (function () {\n  let math = dl.ENV.math;\n  function model(jay, buffalo) {\n    return math.matrixTimesVector(jay, buffalo);\n  };\n  model.weights = [];\n  return model;\n})();\nflux.fetchWeights(\"model.bson\").then((function (ws) {\n  return model.weights = ws;\n}));Because Flux models are just Julia functions, we can use the same macro with them too. You'll now notice that the weights are being used.julia> using Flux\n\njulia> m = Chain(Dense(10,5,relu),Dense(5,2),softmax)\nChain(Dense(10, 5, NNlib.relu), Dense(5, 2), NNlib.softmax)\n\njulia> @code_js m(x)\nlet model = (function () {\n  let math = dl.ENV.math;\n  function jay(buffalo) {\n    return math.add(math.matrixTimesVector(model.weights[0], buffalo), model.weights[1]);\n  };\n  function gnat(donkey) {\n    return math.relu(math.add(math.matrixTimesVector(model.weights[2], donkey), model.weights[3]));\n  };\n  function model(moose) {\n    return math.softmax(jay(gnat(moose)));\n  };\n  model.weights = [];\n  return model;\n})();\nflux.fetchWeights(\"model.bson\").then((function (ws) {\n  return model.weights = ws;\n}));There is also early support for RNNs (we compile stateful models directly, no unrolling).julia> m = Chain(RNN(10,5))\n\njulia> @code_js m(x)\nlet model = (function () {\n  let math = dl.ENV.math;\n  let init = [0.017732, 0.00991122, -0.00712077, -0.00161244, -0.00232475];\n  let states = init.slice();\n  function nightingale(seal, mongoose) {\n    return [seal, mongoose];\n  };\n  function cat(horse) {\n    let weasel = math.tanh(math.add(math.add(math.matrixTimesVector(model.weights[0], horse), math.matrixTimesVector(model.weights[1], states[0])), model.weights[2]));\n    let coati = nightingale(weasel, weasel);\n    states[0] = coati[1];\n    return coati[2];\n  };\n  function model(fish) {\n    return cat(fish);\n  };\n  model.reset = (function () {\n    states = init.slice();\n    return;\n  });\n  model.weights = [];\n  return model;\n})();\nflux.fetchWeights(\"model.bson\").then((function (ws) {\n  return model.weights = ws;\n}));In general, the more useful entry point to the package is FluxJS.compile.julia> FluxJS.compile(\"mnist\", m, rand(10))This will produce two files in the current directory: (1) mnist.js, which contains the same JavaScript code as above; (2) mnist.bson, which contains the model weights in a JS-loadable format."
+},
+
+{
+    "location": "FluxJS/README/#Browser-Setup-1",
+    "page": "FluxJS README",
+    "title": "Browser Setup",
+    "category": "section",
+    "text": "Firstly, you'll need the following scripts in your <head>. The flux.js script can be found here.<head>\n  <script src=\"https://unpkg.com/deeplearn\"></script>\n  <script src=\"https://unpkg.com/bson/browser_build/bson.js\"></script>\n  <script src=\"flux.js\"></script> <!-- Or embed the script directly -->\n</head>From here, you can either link the generated code as another script, or embed it directly. In real applications you'll most likely want to wait on the fetchWeights promise, to avoid trying to use the model before it's ready.<script>\nlet model = (function () {\n  let math = dl.ENV.math;\n  function model(kinkajou) {\n    return kinkajou;\n  };\n  model.weights = [];\n  return model;\n})();\nflux.fetchWeights(\"model.bson\").then((function (ws) {\n  return model.weights = ws;\n}));\n</script>In the page, you can run the model from the dev tools.> x = dl.tensor([1,2,3,4,5,6,7,8,9,10])\n  Tensor {isDisposed: false, size: 10, shape: Array(1), dtype: \"float32\", strides: Array(0), …}\n> await model(x).data()\n  Float32Array(25) [0.0262143611907959, -0.04852187633514404, …]See the deeplearn.js docs for more information on how to work with its tensor objects."
 },
 
 {

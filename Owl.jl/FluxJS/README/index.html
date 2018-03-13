@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>FluxJS README · 🦉</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><h1>🦉</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../">Home</a></li><li><span class="toctext">Flux</span><ul><li><a class="toctext" href="../../Flux/">Flux 홈</a></li><li><span class="toctext">모델 만들기</span><ul><li><a class="toctext" href="../../Flux/models/basics/">기본적인 것</a></li><li><a class="toctext" href="../../Flux/models/recurrence/">순환(Recurrence)</a></li><li><a class="toctext" href="../../Flux/models/regularisation/">정규화(Regularisation)</a></li><li><a class="toctext" href="../../Flux/models/layers/">모델 참조(Model Reference)</a></li></ul></li><li><span class="toctext">모델 훈련시키기</span><ul><li><a class="toctext" href="../../Flux/training/optimisers/">최적화</a></li><li><a class="toctext" href="../../Flux/training/training/">훈련시키기</a></li></ul></li><li><a class="toctext" href="../../Flux/data/onehot/">원-핫 인코딩</a></li><li><a class="toctext" href="../../Flux/gpu/">GPU 지원</a></li><li><a class="toctext" href="../../Flux/saving/">저장 &amp; 불러오기</a></li><li><a class="toctext" href="../../Flux/community/">커뮤니티</a></li></ul></li><li><span class="toctext">DataFlow</span><ul><li><a class="toctext" href="../../DataFlow/vertices/">DataFlow 버티스(vertices)</a></li></ul></li><li><span class="toctext">MacroTools</span><ul><li><a class="toctext" href="../../MacroTools/README/">MacroTools README</a></li></ul></li><li><span class="toctext">FluxJS</span><ul><li class="current"><a class="toctext" href>FluxJS README</a><ul class="internal"><li><a class="toctext" href="#JS-Output-1">JS Output</a></li><li><a class="toctext" href="#Browser-Setup-1">Browser Setup</a></li></ul></li></ul></li><li><span class="toctext">GSoC</span><ul><li><a class="toctext" href="../../soc/guidelines/">Application Guidelines</a></li><li><a class="toctext" href="../../soc/projects/ml/">Data Science &amp; Machine Learning</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>FluxJS</li><li><a href>FluxJS README</a></li></ul><a class="edit-page" href="https://github.com/wookay/Owl.jl/blob/master/docs/src/FluxJS/README.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>FluxJS README</span><a class="fa fa-bars" href="#"></a></div></header><p>🦉 <a href="https://github.com/FluxML/FluxJS.jl">https://github.com/FluxML/FluxJS.jl</a> README.md 번역</p><h1><a class="nav-anchor" id="Flux.JS-1" href="#Flux.JS-1">Flux.JS</a></h1><p>Run <a href="https://fluxml.github.io/">Flux</a> models in the browser, via <a href="https://deeplearnjs.org/">deeplearn.js</a>.</p><h2><a class="nav-anchor" id="JS-Output-1" href="#JS-Output-1">JS Output</a></h2><p>You can see what Flux.JS sees with <code>@code_js</code>, which works like <code>@code_typed</code> or <code>@code_native</code>. Flux.JS simply accepts a function of arrays along with example inputs, and generates JavaScript code for you. Here&#39;s the simplest possible example:</p><pre><code class="language-julia-repl">julia&gt; using FluxJS
+
+julia&gt; x = rand(10)
+10-element Array{Float64,1}:
+ 0.882192
+ 0.362089
+ 0.784539
+ 0.308894
+ 0.869722
+ 0.381076
+ 0.00467682
+ 0.0734247
+ 0.55711
+ 0.6387
+
+julia&gt; @code_js identity(x)
+let model = (function () {
+  let math = dl.ENV.math;
+  function model(jay) {
+    return jay;
+  };
+  model.weights = [];
+  return model;
+})();
+flux.fetchWeights(&quot;model.bson&quot;).then((function (ws) {
+  return model.weights = ws;
+}));</code></pre><p>You can see that there&#39;s some setup code as Flux.JS expects to load some weights for a model. But the core of it is this function, which is exactly like the <code>identity</code> function in Julia.</p><pre><code class="language-js">function model(kinkajou) {
+  return kinkajou;
+};</code></pre><p>Let&#39;s try something more interesting; <code>f</code> takes two arguments and multiplies them.</p><pre><code class="language-julia-repl">julia&gt; f(W,x) = W*x
+f (generic function with 1 method)
+
+julia&gt; @code_js f(rand(5,10),rand(10))
+let model = (function () {
+  let math = dl.ENV.math;
+  function model(jay, buffalo) {
+    return math.matrixTimesVector(jay, buffalo);
+  };
+  model.weights = [];
+  return model;
+})();
+flux.fetchWeights(&quot;model.bson&quot;).then((function (ws) {
+  return model.weights = ws;
+}));</code></pre><p>Because Flux models are just Julia functions, we can use the same macro with them too. You&#39;ll now notice that the weights are being used.</p><pre><code class="language-julia-repl">julia&gt; using Flux
+
+julia&gt; m = Chain(Dense(10,5,relu),Dense(5,2),softmax)
+Chain(Dense(10, 5, NNlib.relu), Dense(5, 2), NNlib.softmax)
+
+julia&gt; @code_js m(x)
+let model = (function () {
+  let math = dl.ENV.math;
+  function jay(buffalo) {
+    return math.add(math.matrixTimesVector(model.weights[0], buffalo), model.weights[1]);
+  };
+  function gnat(donkey) {
+    return math.relu(math.add(math.matrixTimesVector(model.weights[2], donkey), model.weights[3]));
+  };
+  function model(moose) {
+    return math.softmax(jay(gnat(moose)));
+  };
+  model.weights = [];
+  return model;
+})();
+flux.fetchWeights(&quot;model.bson&quot;).then((function (ws) {
+  return model.weights = ws;
+}));</code></pre><p>There is also early support for RNNs (we compile stateful models directly, no unrolling).</p><pre><code class="language-julia-repl">julia&gt; m = Chain(RNN(10,5))
+
+julia&gt; @code_js m(x)
+let model = (function () {
+  let math = dl.ENV.math;
+  let init = [0.017732, 0.00991122, -0.00712077, -0.00161244, -0.00232475];
+  let states = init.slice();
+  function nightingale(seal, mongoose) {
+    return [seal, mongoose];
+  };
+  function cat(horse) {
+    let weasel = math.tanh(math.add(math.add(math.matrixTimesVector(model.weights[0], horse), math.matrixTimesVector(model.weights[1], states[0])), model.weights[2]));
+    let coati = nightingale(weasel, weasel);
+    states[0] = coati[1];
+    return coati[2];
+  };
+  function model(fish) {
+    return cat(fish);
+  };
+  model.reset = (function () {
+    states = init.slice();
+    return;
+  });
+  model.weights = [];
+  return model;
+})();
+flux.fetchWeights(&quot;model.bson&quot;).then((function (ws) {
+  return model.weights = ws;
+}));</code></pre><p>In general, the more useful entry point to the package is <code>FluxJS.compile</code>.</p><pre><code class="language-julia-repl">julia&gt; FluxJS.compile(&quot;mnist&quot;, m, rand(10))</code></pre><p>This will produce two files in the current directory: (1) <code>mnist.js</code>, which contains the same JavaScript code as above; (2) <code>mnist.bson</code>, which contains the model weights in a JS-loadable format.</p><h2><a class="nav-anchor" id="Browser-Setup-1" href="#Browser-Setup-1">Browser Setup</a></h2><p>Firstly, you&#39;ll need the following scripts in your <code>&lt;head&gt;</code>. The <code>flux.js</code> script can be found <a href="https://github.com/FluxML/FluxJS.jl/blob/master/lib/flux.js">here</a>.</p><pre><code class="language-html">&lt;head&gt;
+  &lt;script src=&quot;https://unpkg.com/deeplearn&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;https://unpkg.com/bson/browser_build/bson.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;flux.js&quot;&gt;&lt;/script&gt; &lt;!-- Or embed the script directly --&gt;
+&lt;/head&gt;</code></pre><p>From here, you can either link the generated code as another script, or embed it directly. In real applications you&#39;ll most likely want to wait on the <code>fetchWeights</code> promise, to avoid trying to use the model before it&#39;s ready.</p><pre><code class="language-html">&lt;script&gt;
+let model = (function () {
+  let math = dl.ENV.math;
+  function model(kinkajou) {
+    return kinkajou;
+  };
+  model.weights = [];
+  return model;
+})();
+flux.fetchWeights(&quot;model.bson&quot;).then((function (ws) {
+  return model.weights = ws;
+}));
+&lt;/script&gt;</code></pre><p>In the page, you can run the model from the dev tools.</p><pre><code class="language-js">&gt; x = dl.tensor([1,2,3,4,5,6,7,8,9,10])
+  Tensor {isDisposed: false, size: 10, shape: Array(1), dtype: &quot;float32&quot;, strides: Array(0), …}
+&gt; await model(x).data()
+  Float32Array(25) [0.0262143611907959, -0.04852187633514404, …]</code></pre><p>See the <a href="https://deeplearnjs.org/docs/api/index.html">deeplearn.js docs</a> for more information on how to work with its tensor objects.</p><footer><hr/><a class="previous" href="../../MacroTools/README/"><span class="direction">Previous</span><span class="title">MacroTools README</span></a><a class="next" href="../../soc/guidelines/"><span class="direction">Next</span><span class="title">Application Guidelines</span></a></footer></article></body></html>
