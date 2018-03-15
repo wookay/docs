@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Vinyl README · 🦉</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><h1>🦉</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../">Home</a></li><li><span class="toctext">Flux ✅</span><ul><li><a class="toctext" href="../../Flux/">Flux 홈</a></li><li><span class="toctext">모델 만들기</span><ul><li><a class="toctext" href="../../Flux/models/basics/">기본적인 것</a></li><li><a class="toctext" href="../../Flux/models/recurrence/">순환(Recurrence)</a></li><li><a class="toctext" href="../../Flux/models/regularisation/">정규화(Regularisation)</a></li><li><a class="toctext" href="../../Flux/models/layers/">모델 참조(Model Reference)</a></li></ul></li><li><span class="toctext">모델 훈련시키기</span><ul><li><a class="toctext" href="../../Flux/training/optimisers/">최적화</a></li><li><a class="toctext" href="../../Flux/training/training/">훈련시키기</a></li></ul></li><li><a class="toctext" href="../../Flux/data/onehot/">원-핫 인코딩</a></li><li><a class="toctext" href="../../Flux/gpu/">GPU 지원</a></li><li><a class="toctext" href="../../Flux/saving/">저장 &amp; 불러오기</a></li><li><a class="toctext" href="../../Flux/community/">커뮤니티</a></li></ul></li><li><span class="toctext">DataFlow ✅</span><ul><li><a class="toctext" href="../../DataFlow/vertices/">DataFlow 버티스(vertices)</a></li></ul></li><li><span class="toctext">MacroTools</span><ul><li><a class="toctext" href="../../MacroTools/README/">MacroTools README</a></li></ul></li><li><span class="toctext">FluxJS</span><ul><li><a class="toctext" href="../../FluxJS/README/">FluxJS README</a></li></ul></li><li><span class="toctext">Vinyl</span><ul><li class="current"><a class="toctext" href>Vinyl README</a><ul class="internal"></ul></li></ul></li><li><span class="toctext">GSoC</span><ul><li><a class="toctext" href="../../soc/guidelines/">Application Guidelines</a></li><li><a class="toctext" href="../../soc/projects/ml/">Data Science &amp; Machine Learning</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Vinyl</li><li><a href>Vinyl README</a></li></ul><a class="edit-page" href="https://github.com/wookay/Owl.jl/blob/master/docs/src/Vinyl/README.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>Vinyl README</span><a class="fa fa-bars" href="#"></a></div></header><p>🦉  <a href="https://github.com/MikeInnes/Vinyl.jl">https://github.com/MikeInnes/Vinyl.jl</a> README.md 번역</p><h1><a class="nav-anchor" id="Vinyl-1" href="#Vinyl-1">Vinyl</a></h1><p>Before <a href="https://github.com/jrevels/Cassette.jl/">Cassette</a> was invented, we had to go without fancy tapes and put up with scratches and skips. Some would say it makes for a warmer sound.</p><p>This package (approximately) implements Cassette&#39;s API using interpretation rather than compilation. While very slow, it works on current Julia and has low compiler overhead, so is suitable for code-tracing and debugging use cases.</p><p>Hook functions before they run:</p><pre><code class="language-julia">julia&gt; using Vinyl: @overdub, @hook
+
+julia&gt; struct TraceCtx end
+
+julia&gt; @hook TraceCtx (f::Any)(xs...) = println(&quot;Called $(:($f($(xs...))))&quot;)
+
+julia&gt; @overdub TraceCtx() 1+1.0
+Called (+)(1, 1.0)
+Called (promote)(1, 1.0)
+Called (promote_type)(Int64, Float64)
+Called (promote_rule)(Int64, Float64)
+Called (promote_rule)(Float64, Int64)
+Called (Base.promote_result)(Int64, Float64, Union{}, Float64)
+Called (promote_type)(Union{}, Float64)
+Called (convert)(Float64, 1)
+Called (sitofp)(Float64, 1)
+Called (promote_type)(Int64, Float64)
+Called (promote_rule)(Int64, Float64)
+Called (promote_rule)(Float64, Int64)
+Called (Base.promote_result)(Int64, Float64, Union{}, Float64)
+Called (promote_type)(Union{}, Float64)
+Called (convert)(Float64, 1.0)
+Called (tuple)(1.0, 1.0)
+Called (Core._apply)(+, (1.0, 1.0))
+Called (add_float)(1.0, 1.0)
+2.0</code></pre><p>Alter the behaviour of a function:</p><pre><code class="language-julia">julia&gt; using Vinyl: @overdub, @primitive
+
+julia&gt; prod([1,2,3,4,5])
+120
+
+julia&gt; sum([1,2,3,4,5])
+15
+
+julia&gt; struct MulCtx end
+
+julia&gt; @primitive MulCtx a * b = a + b
+
+julia&gt; @overdub MulCtx() prod([1,2,3,4,5])
+15</code></pre><p>This package also includes an implementation of <a href="https://en.wikipedia.org/wiki/Delimited_continuation">delimited continuations</a>, because why not.</p><pre><code class="language-julia">julia&gt; using Vinyl: @reset, shift
+
+julia&gt; @reset 2*shift(k -&gt; k(k(4)))
+16
+
+julia&gt; @reset begin
+         for i = 1:5
+           _ = shift(k -&gt; (i,k(nothing)))
+         end
+         ()
+       end
+(1, (2, (3, (4, (5, ())))))
+
+# Hijack control flow and explore multiple branches
+julia&gt; quantum_predicate(x) = shift(k -&gt; (k(true), k(false)))
+
+julia&gt; function foo(x)
+         quantum_predicate(x) &amp;&amp; (x = x .+ 2)
+         2.*x
+       end
+
+julia&gt; k = @reset foo([1,2,3])
+([6, 8, 10], [2, 4, 6])</code></pre><footer><hr/><a class="previous" href="../../FluxJS/README/"><span class="direction">Previous</span><span class="title">FluxJS README</span></a><a class="next" href="../../soc/guidelines/"><span class="direction">Next</span><span class="title">Application Guidelines</span></a></footer></article></body></html>
