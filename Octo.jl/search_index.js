@@ -13,7 +13,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Octo.jl Documentation",
     "category": "section",
-    "text": "Octo.jl 🐙  is an SQL Query DSL in Julia.It's influenced by Ecto.julia> using Octo.Adapters.SQL\n\njulia> struct User\n       end\n\njulia> Schema.model(User, table_name=\"users\")\n\"users\"\n\njulia> u = from(User)\nOcto.FromClause(User, nothing)\n\njulia> [SELECT * FROM u]\nSELECT * FROM users\n\njulia> [SELECT * FROM u WHERE u.id == 2]\nSELECT * FROM users WHERE id = 2\n\njulia> to_sql([SELECT * FROM u WHERE u.id == 2])\n\"SELECT * FROM users WHERE id = 2\""
+    "text": "Octo.jl 🐙  is an SQL Query DSL in Julia.It\'s influenced by Ecto.julia> using Octo.Adapters.SQL\n\njulia> struct User\n       end\n\njulia> Schema.model(User, table_name=\"users\")\n\"users\"\n\njulia> u = from(User)\nOcto.FromClause(User, nothing)\n\njulia> [SELECT * FROM u]\nSELECT * FROM users\n\njulia> [SELECT * FROM u WHERE u.id == 2]\nSELECT * FROM users WHERE id = 2\n\njulia> to_sql([SELECT * FROM u WHERE u.id == 2])\n\"SELECT * FROM users WHERE id = 2\""
 },
 
 {
@@ -61,7 +61,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Queryable",
     "title": "Queryable",
     "category": "section",
-    "text": "from"
+    "text": "from\nas"
 },
 
 {
@@ -77,7 +77,23 @@ var documenterSearchIndex = {"docs": [
     "page": "AdapterBase",
     "title": "AdapterBase",
     "category": "section",
-    "text": "@keywords\n@aggregates"
+    "text": ""
+},
+
+{
+    "location": "AdapterBase/#@keywords-1",
+    "page": "AdapterBase",
+    "title": "@keywords",
+    "category": "section",
+    "text": "AND AS ASC BY CREATE DATABASE DELETE DESC DISTINCT DROP EXISTS FROM FULL GROUP HAVING IF INNER INSERT INTO IS JOIN LEFT LIKE LIMIT NOT NULL OFFSET ON OR ORDER OUTER RIGHT SELECT SET TABLE UPDATE USING VALUES WHERE"
+},
+
+{
+    "location": "AdapterBase/#@aggregates-1",
+    "page": "AdapterBase",
+    "title": "@aggregates",
+    "category": "section",
+    "text": "AVG COUNT SUM"
 },
 
 {
