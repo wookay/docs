@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "SQL Query DSL",
     "category": "section",
-    "text": "julia> using Octo.Adapters.SQL\n\njulia> struct User\n       end\n\njulia> Schema.model(User, table_name=\"users\")\n\"users\"\n\njulia> u = from(User)\nOcto.FromClause(User, nothing)\n\njulia> [SELECT * FROM u]\nSELECT * FROM users\n\njulia> [SELECT * FROM u WHERE u.id == 2]\nSELECT * FROM users WHERE id = 2\n\njulia> to_sql([SELECT * FROM u WHERE u.id == 2])\n\"SELECT * FROM users WHERE id = 2\""
+    "text": "julia> using Octo.Adapters.SQL\n\njulia> struct User\n       end\n\njulia> Schema.model(User, table_name=\"users\")\nUser => Dict(:primary_key=>\"id\",:table_name=>\"users\")\n\njulia> u = from(User)\nOcto.FromClause(User, nothing)\n\njulia> [SELECT * FROM u]\nSELECT * FROM users\n\njulia> [SELECT * FROM u WHERE u.id == 2]\nSELECT * FROM users WHERE id = 2\n\njulia> to_sql([SELECT * FROM u WHERE u.id == 2])\n\"SELECT * FROM users WHERE id = 2\""
 },
 
 {
@@ -29,7 +29,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Repo",
     "category": "section",
-    "text": "Current supported databases: PostgreSQL(via LibPQ.jl), MySQL(via MySQL.jl), SQLite(via SQLite.jl)using Octo.Adapters.PostgreSQL\nimport DataFrames\n\nstruct Employee\nend\nSchema.model(Employee, table_name = \"Employee\", primary_key = \"ID\")\n\nRepo.set_log_level(Repo.LogLevelDebugSQL)\n\nRepo.connect(\n    adapter = Octo.Adapters.PostgreSQL,\n    sink = DataFrames.DataFrame,\n    dbname = \"postgresqltest\",\n    user = \"postgres\",\n)\n\nRepo.all(Employee)\nRepo.get(Employee, 2)\nRepo.get(Employee, (Name=\"Tim\",))\nRepo.insert!(Employee, (Name=\"Tim\", Salary=15000.50))\nRepo.update!(Employee, (ID=2, Name=\"Chloe\", OfficeNo=56))\nRepo.delete!(Employee, (ID=2,))\n\nem = from(Employee)\nRepo.query([SELECT * FROM em WHERE em.Name == \"Tim\"])"
+    "text": "Current supported databases: PostgreSQL(via LibPQ.jl), MySQL(via MySQL.jl), SQLite(via SQLite.jl)using Octo.Adapters.PostgreSQL\n\nstruct Employee\nend\nSchema.model(Employee, table_name = \"Employee\", primary_key = \"ID\")\n\nRepo.set_log_level(Repo.LogLevelDebugSQL)\n\nRepo.connect(\n    adapter = Octo.Adapters.PostgreSQL,\n    sink = Vector{<:NamedTuple}, # DataFrames.DataFrame\n    dbname = \"postgresqltest\",\n    user = \"postgres\",\n)\n\nRepo.all(Employee)\nRepo.get(Employee, 2)\nRepo.get(Employee, (Name=\"Tim\",))\nRepo.insert!(Employee, (Name=\"Tim\", Salary=15000.50))\nRepo.update!(Employee, (ID=2, Name=\"Chloe\", OfficeNo=56))\nRepo.delete!(Employee, (ID=2,))\n\nem = from(Employee)\nRepo.query([SELECT * FROM em WHERE em.Name == \"Tim\"])"
 },
 
 {
@@ -229,7 +229,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.SQL",
     "title": "Octo.Adapters.SQL.to_sql",
     "category": "function",
-    "text": "to_sql\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\n"
 },
 
 {
@@ -253,7 +253,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.PostgreSQL",
     "title": "Octo.Adapters.PostgreSQL.to_sql",
     "category": "function",
-    "text": "to_sql(query::Structured)\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\n"
 },
 
 {
@@ -277,7 +277,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.MySQL",
     "title": "Octo.Adapters.MySQL.to_sql",
     "category": "function",
-    "text": "to_sql\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\n"
 },
 
 {
@@ -301,7 +301,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.SQLite",
     "title": "Octo.Adapters.SQLite.to_sql",
     "category": "function",
-    "text": "to_sql\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\n"
 },
 
 {

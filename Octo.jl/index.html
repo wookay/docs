@@ -5,7 +5,7 @@ julia&gt; struct User
        end
 
 julia&gt; Schema.model(User, table_name=&quot;users&quot;)
-&quot;users&quot;
+User =&gt; Dict(:primary_key=&gt;&quot;id&quot;,:table_name=&gt;&quot;users&quot;)
 
 julia&gt; u = from(User)
 Octo.FromClause(User, nothing)
@@ -18,7 +18,6 @@ SELECT * FROM users WHERE id = 2
 
 julia&gt; to_sql([SELECT * FROM u WHERE u.id == 2])
 &quot;SELECT * FROM users WHERE id = 2&quot;</code></pre><h3><a class="nav-anchor" id="Repo-1" href="#Repo-1">Repo</a></h3><p>Current supported databases: PostgreSQL(via LibPQ.jl), MySQL(via MySQL.jl), SQLite(via SQLite.jl)</p><pre><code class="language-julia">using Octo.Adapters.PostgreSQL
-import DataFrames
 
 struct Employee
 end
@@ -28,7 +27,7 @@ Repo.set_log_level(Repo.LogLevelDebugSQL)
 
 Repo.connect(
     adapter = Octo.Adapters.PostgreSQL,
-    sink = DataFrames.DataFrame,
+    sink = Vector{&lt;:NamedTuple}, # DataFrames.DataFrame
     dbname = &quot;postgresqltest&quot;,
     user = &quot;postgres&quot;,
 )
