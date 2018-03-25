@@ -145,11 +145,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Schema/#Octo.Schema.changeset",
+    "page": "Schema",
+    "title": "Octo.Schema.changeset",
+    "category": "function",
+    "text": "changeset(validations, M::Type)\n\n\n\n\n\n"
+},
+
+{
     "location": "Schema/#Schema-1",
     "page": "Schema",
     "title": "Schema",
     "category": "section",
-    "text": "Schema.model"
+    "text": "Schema.model\nSchema.changeset"
 },
 
 {
