@@ -1,0 +1,6 @@
+# plugs
+
+```@docs
+Plug
+plug
+```

@@ -13,7 +13,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Bukdu.jl",
     "category": "section",
-    "text": "Bukdu 🌌  is a web development framework for Julia.It\'s influenced by Phoenix framework.using Bukdu\n\nstruct WelcomeController <: ApplicationController\n    conn::Conn\nend\n\nindex(::WelcomeController) = \"hello world\"\n\nRouter() do\n    get(\"/\", WelcomeController, index)\nend\n\nBukdu.start(8080)"
+    "text": "Bukdu 🌌  is a web development framework for Julia.It\'s influenced by Phoenix framework.using Bukdu\n\nstruct WelcomeController <: ApplicationController\n    conn::Conn\nend\n\nindex(::WelcomeController) = \"hello world\"\n\nroutes() do\n    get(\"/\", WelcomeController, index)\nend\n\nBukdu.start(8080)"
 },
 
 {
@@ -81,27 +81,75 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Router/#",
-    "page": "Router",
-    "title": "Router",
+    "location": "routes/#",
+    "page": "routes",
+    "title": "routes",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "Router/#Bukdu.Router",
-    "page": "Router",
+    "location": "routes/#Bukdu.Router",
+    "page": "routes",
     "title": "Bukdu.Router",
     "category": "type",
-    "text": "Router(routes::Function)\n\n\n\n\n\n"
+    "text": "Router\n\n\n\n\n\n"
 },
 
 {
-    "location": "Router/#Router-1",
-    "page": "Router",
-    "title": "Router",
+    "location": "routes/#Bukdu.routes",
+    "page": "routes",
+    "title": "Bukdu.routes",
+    "category": "function",
+    "text": "routes(block::Function)\n\n\n\n\n\nroutes(block::Function, router::Symbol)\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#Base.pipeline",
+    "page": "routes",
+    "title": "Base.pipeline",
+    "category": "function",
+    "text": "pipeline(block::Function, routers...)\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#routes-1",
+    "page": "routes",
+    "title": "routes",
     "category": "section",
-    "text": "Router"
+    "text": "Router\nroutes\npipeline"
+},
+
+{
+    "location": "plugs/#",
+    "page": "plugs",
+    "title": "plugs",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "plugs/#Bukdu.Plug.Static",
+    "page": "plugs",
+    "title": "Bukdu.Plug.Static",
+    "category": "type",
+    "text": "Plug.Static\n\n\n\n\n\n"
+},
+
+{
+    "location": "plugs/#Bukdu.Plug.plug",
+    "page": "plugs",
+    "title": "Bukdu.Plug.plug",
+    "category": "function",
+    "text": "plug(::Type{Static}; at::String, from::String)\n\n\n\n\n\n"
+},
+
+{
+    "location": "plugs/#plugs-1",
+    "page": "plugs",
+    "title": "plugs",
+    "category": "section",
+    "text": "Plug.Static\nplug"
 },
 
 {
