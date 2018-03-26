@@ -173,7 +173,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Queryable",
     "title": "Octo.Queryable.from",
     "category": "function",
-    "text": "from(M::Type, as=nothing)::FromClause\n\n\n\n\n\n"
+    "text": "from(M::Type, as=nothing)::FromClause\n\n\n\n\n\nfrom(query::Structured, as=nothing)::SubQuery\n\n\n\n\n\n"
 },
 
 {
@@ -237,7 +237,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.SQL",
     "title": "Octo.Adapters.SQL.to_sql",
     "category": "function",
-    "text": "to_sql(query::Structured)::String\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
 },
 
 {
@@ -261,7 +261,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.PostgreSQL",
     "title": "Octo.Adapters.PostgreSQL.to_sql",
     "category": "function",
-    "text": "to_sql(query::Structured)::String\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
 },
 
 {
@@ -285,7 +285,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.MySQL",
     "title": "Octo.Adapters.MySQL.to_sql",
     "category": "function",
-    "text": "to_sql(query::Structured)::String\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
 },
 
 {
@@ -309,7 +309,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.SQLite",
     "title": "Octo.Adapters.SQLite.to_sql",
     "category": "function",
-    "text": "to_sql(query::Structured)::String\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
 },
 
 {
