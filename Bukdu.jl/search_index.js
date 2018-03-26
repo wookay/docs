@@ -133,7 +133,7 @@ var documenterSearchIndex = {"docs": [
     "page": "HTML5.Form",
     "title": "Bukdu.HTML5.Form.change",
     "category": "function",
-    "text": "change(M::Type, params::Assoc)::Changeset\n\n\n\n\n\nchange(M::Type, nt::NamedTuple, params::Assoc; primary_key::Union{String,Nothing}=nothing)::Changeset\n\n\n\n\n\n"
+    "text": "change(M::Type, params::Assoc)::Changeset\n\n\n\n\n\nchange(changeset::Changeset, params::Assoc; primary_key::Union{String,Nothing}=nothing)::Changeset\n\n\n\n\n\n"
 },
 
 {
@@ -149,7 +149,7 @@ var documenterSearchIndex = {"docs": [
     "page": "HTML5.Form",
     "title": "Bukdu.HTML5.Form.text_input",
     "category": "function",
-    "text": "text_input(f::Changeset, field::Symbol, value=nothing, placeholder=nothing)\n\n\n\n\n\n"
+    "text": "text_input(f::Changeset, field::Symbol, value=nothing; kwargs...)\n\n\n\n\n\n"
 },
 
 {
