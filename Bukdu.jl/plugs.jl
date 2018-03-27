@@ -1,6 +1,0 @@
-# plugs
-
-```@docs
-Plug
-plug
-```

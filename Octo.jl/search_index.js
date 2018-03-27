@@ -233,15 +233,23 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "elements/#Octo.PlaceHolder",
+    "page": "SQL elements",
+    "title": "Octo.PlaceHolder",
+    "category": "type",
+    "text": "Octo.PlaceHolder\n\n\n\n\n\n"
+},
+
+{
     "location": "elements/#SQL-elements-1",
     "page": "SQL elements",
     "title": "SQL elements",
     "category": "section",
-    "text": "PlaceHolder"
+    "text": "Octo.PlaceHolder"
 },
 
 {
-    "location": "adapters/SQL/#",
+    "location": "Adapters/SQL/#",
     "page": "Octo.Adapters.SQL",
     "title": "Octo.Adapters.SQL",
     "category": "page",
@@ -249,7 +257,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "adapters/SQL/#Octo.Adapters.SQL.to_sql",
+    "location": "Adapters/SQL/#Octo.Adapters.SQL.to_sql",
     "page": "Octo.Adapters.SQL",
     "title": "Octo.Adapters.SQL.to_sql",
     "category": "function",
@@ -257,7 +265,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "adapters/SQL/#Octo.Adapters.SQL-1",
+    "location": "Adapters/SQL/#Octo.Adapters.SQL-1",
     "page": "Octo.Adapters.SQL",
     "title": "Octo.Adapters.SQL",
     "category": "section",
@@ -265,7 +273,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "adapters/PostgreSQL/#",
+    "location": "Adapters/PostgreSQL/#",
     "page": "Octo.Adapters.PostgreSQL",
     "title": "Octo.Adapters.PostgreSQL",
     "category": "page",
@@ -273,7 +281,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "adapters/PostgreSQL/#Octo.Adapters.PostgreSQL.to_sql",
+    "location": "Adapters/PostgreSQL/#Octo.Adapters.PostgreSQL.to_sql",
     "page": "Octo.Adapters.PostgreSQL",
     "title": "Octo.Adapters.PostgreSQL.to_sql",
     "category": "function",
@@ -281,7 +289,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "adapters/PostgreSQL/#Octo.Adapters.PostgreSQL-1",
+    "location": "Adapters/PostgreSQL/#Octo.Adapters.PostgreSQL-1",
     "page": "Octo.Adapters.PostgreSQL",
     "title": "Octo.Adapters.PostgreSQL",
     "category": "section",
@@ -289,7 +297,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "adapters/MySQL/#",
+    "location": "Adapters/MySQL/#",
     "page": "Octo.Adapters.MySQL",
     "title": "Octo.Adapters.MySQL",
     "category": "page",
@@ -297,7 +305,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "adapters/MySQL/#Octo.Adapters.MySQL.to_sql",
+    "location": "Adapters/MySQL/#Octo.Adapters.MySQL.to_sql",
     "page": "Octo.Adapters.MySQL",
     "title": "Octo.Adapters.MySQL.to_sql",
     "category": "function",
@@ -305,7 +313,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "adapters/MySQL/#Octo.Adapters.MySQL-1",
+    "location": "Adapters/MySQL/#Octo.Adapters.MySQL-1",
     "page": "Octo.Adapters.MySQL",
     "title": "Octo.Adapters.MySQL",
     "category": "section",
@@ -313,7 +321,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "adapters/SQLite/#",
+    "location": "Adapters/SQLite/#",
     "page": "Octo.Adapters.SQLite",
     "title": "Octo.Adapters.SQLite",
     "category": "page",
@@ -321,7 +329,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "adapters/SQLite/#Octo.Adapters.SQLite.to_sql",
+    "location": "Adapters/SQLite/#Octo.Adapters.SQLite.to_sql",
     "page": "Octo.Adapters.SQLite",
     "title": "Octo.Adapters.SQLite.to_sql",
     "category": "function",
@@ -329,7 +337,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "adapters/SQLite/#Octo.Adapters.SQLite-1",
+    "location": "Adapters/SQLite/#Octo.Adapters.SQLite-1",
     "page": "Octo.Adapters.SQLite",
     "title": "Octo.Adapters.SQLite",
     "category": "section",
