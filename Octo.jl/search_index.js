@@ -93,7 +93,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Repo",
     "title": "Octo.Repo.query",
     "category": "function",
-    "text": "Repo.query(stmt::Structured)\n\n\n\n\n\n"
+    "text": "Repo.query(stmt::Structured)\n\n\n\n\n\nRepo.query(stmt::Structured, vasl::Vector)\n\n\n\n\n\n"
 },
 
 {
@@ -193,35 +193,51 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "AdapterBase/#",
-    "page": "AdapterBase",
-    "title": "AdapterBase",
+    "location": "keywords_and_aggregates/#",
+    "page": "keywords and aggregate functions",
+    "title": "keywords and aggregate functions",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "AdapterBase/#AdapterBase-1",
-    "page": "AdapterBase",
-    "title": "AdapterBase",
+    "location": "keywords_and_aggregates/#SQL-keywords-and-aggregate-functions-1",
+    "page": "keywords and aggregate functions",
+    "title": "SQL keywords and aggregate functions",
     "category": "section",
     "text": ""
 },
 
 {
-    "location": "AdapterBase/#@keywords-1",
-    "page": "AdapterBase",
+    "location": "keywords_and_aggregates/#@keywords-1",
+    "page": "keywords and aggregate functions",
     "title": "@keywords",
     "category": "section",
     "text": "AND AS ASC BY CREATE DATABASE DELETE DESC DISTINCT DROP EXISTS FROM FULL GROUP HAVING IF INNER INSERT INTO IS JOIN LEFT LIKE LIMIT NOT NULL OFFSET ON OR ORDER OUTER RIGHT SELECT SET TABLE UPDATE USING VALUES WHERE"
 },
 
 {
-    "location": "AdapterBase/#@aggregates-1",
-    "page": "AdapterBase",
+    "location": "keywords_and_aggregates/#@aggregates-1",
+    "page": "keywords and aggregate functions",
     "title": "@aggregates",
     "category": "section",
     "text": "AVG COUNT SUM"
+},
+
+{
+    "location": "elements/#",
+    "page": "SQL elements",
+    "title": "SQL elements",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "elements/#SQL-elements-1",
+    "page": "SQL elements",
+    "title": "SQL elements",
+    "category": "section",
+    "text": "PlaceHolder"
 },
 
 {
