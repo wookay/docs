@@ -41,11 +41,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "controllers/#Bukdu.Assoc",
+    "page": "controllers",
+    "title": "Bukdu.Assoc",
+    "category": "type",
+    "text": "Assoc\n\n\n\n\n\n"
+},
+
+{
     "location": "controllers/#controllers-1",
     "page": "controllers",
     "title": "controllers",
     "category": "section",
-    "text": "ApplicationController\nConn"
+    "text": "ApplicationController\nConnAssoc"
 },
 
 {
@@ -77,7 +85,7 @@ var documenterSearchIndex = {"docs": [
     "page": "renders",
     "title": "renders",
     "category": "section",
-    "text": "Render\nrender"
+    "text": "Renderrender"
 },
 
 {
@@ -89,19 +97,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "routes/#Bukdu.Router",
-    "page": "routes",
-    "title": "Bukdu.Router",
-    "category": "type",
-    "text": "Router\n\n\n\n\n\n"
-},
-
-{
     "location": "routes/#Bukdu.routes",
     "page": "routes",
     "title": "Bukdu.routes",
     "category": "function",
-    "text": "routes(block::Function)\n\n\n\n\n\nroutes(block::Function, router::Symbol)\n\n\n\n\n\n"
+    "text": "routes(block::Function)\n\n\n\n\n\nroutes(block::Function, pipe::Symbol)\n\n\n\n\n\n"
 },
 
 {
@@ -113,11 +113,75 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "routes/#Base.get",
+    "page": "routes",
+    "title": "Base.get",
+    "category": "function",
+    "text": "get(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#Bukdu.post",
+    "page": "routes",
+    "title": "Bukdu.post",
+    "category": "function",
+    "text": "post(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#Bukdu.delete",
+    "page": "routes",
+    "title": "Bukdu.delete",
+    "category": "function",
+    "text": "delete(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#Bukdu.patch",
+    "page": "routes",
+    "title": "Bukdu.patch",
+    "category": "function",
+    "text": "patch(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#Bukdu.put",
+    "page": "routes",
+    "title": "Bukdu.put",
+    "category": "function",
+    "text": "put(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#Bukdu.resources",
+    "page": "routes",
+    "title": "Bukdu.resources",
+    "category": "function",
+    "text": "resources(path::String, ::Type{C}; only=[], except=[]) where {C <: ApplicationController}\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#Bukdu.Router.request",
+    "page": "routes",
+    "title": "Bukdu.Router.request",
+    "category": "function",
+    "text": "Router.request(verb, path::String)\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#Bukdu.Routing.empty!",
+    "page": "routes",
+    "title": "Bukdu.Routing.empty!",
+    "category": "function",
+    "text": "Routing.empty!()\n\n\n\n\n\n"
+},
+
+{
     "location": "routes/#routes-1",
     "page": "routes",
     "title": "routes",
     "category": "section",
-    "text": "Router\nroutes\npipeline"
+    "text": "routes\npipelineget\npost\ndelete\npatch\nput\nresourcesRouter.requestRouting.empty!"
 },
 
 {
@@ -149,7 +213,7 @@ var documenterSearchIndex = {"docs": [
     "page": "plugs",
     "title": "plugs",
     "category": "section",
-    "text": "Plug.Static\nplug"
+    "text": "Plug.Staticplug"
 },
 
 {
@@ -213,7 +277,79 @@ var documenterSearchIndex = {"docs": [
     "page": "HTML5.Form",
     "title": "Bukdu.HTML5.Form",
     "category": "section",
-    "text": "change\nform_for\ntext_input\nsubmit"
+    "text": "changeform_for\ntext_input\nsubmit"
+},
+
+{
+    "location": "changeset/#",
+    "page": "Changeset",
+    "title": "Changeset",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "changeset/#Bukdu.Changeset",
+    "page": "Changeset",
+    "title": "Bukdu.Changeset",
+    "category": "type",
+    "text": "Changeset\n\n\n\n\n\n"
+},
+
+{
+    "location": "changeset/#Changeset-1",
+    "page": "Changeset",
+    "title": "Changeset",
+    "category": "section",
+    "text": "Changeset"
+},
+
+{
+    "location": "CLI/#",
+    "page": "CLI",
+    "title": "CLI",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "CLI/#Bukdu.CLI.routes-Tuple{}",
+    "page": "CLI",
+    "title": "Bukdu.CLI.routes",
+    "category": "method",
+    "text": "CLI.routes()\n\n\n\n\n\n"
+},
+
+{
+    "location": "CLI/#CLI-1",
+    "page": "CLI",
+    "title": "CLI",
+    "category": "section",
+    "text": "CLI.routes()"
+},
+
+{
+    "location": "Utils/#",
+    "page": "Utils",
+    "title": "Utils",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Utils/#Bukdu.Utils.read_stdout",
+    "page": "Utils",
+    "title": "Bukdu.Utils.read_stdout",
+    "category": "function",
+    "text": "Utils.read_stdout(f)\n\n\n\n\n\n"
+},
+
+{
+    "location": "Utils/#Utils-1",
+    "page": "Utils",
+    "title": "Utils",
+    "category": "section",
+    "text": "Utils.read_stdout"
 },
 
 ]}
