@@ -29,7 +29,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Repo",
     "category": "section",
-    "text": "Current supported databases: PostgreSQL(via LibPQ.jl), MySQL(via MySQL.jl), SQLite(via SQLite.jl)using Octo.Adapters.PostgreSQL\n\nstruct Employee\nend\nSchema.model(Employee, table_name = \"Employee\", primary_key = \"ID\")\n\nRepo.set_log_level(Repo.LogLevelDebugSQL)\n\nRepo.connect(\n    adapter = Octo.Adapters.PostgreSQL,\n    sink = Vector{<:NamedTuple}, # DataFrames.DataFrame\n    dbname = \"postgresqltest\",\n    user = \"postgres\",\n)\n\nRepo.all(Employee)\nRepo.get(Employee, 2)\nRepo.get(Employee, (Name=\"Tim\",))\nRepo.insert!(Employee, (Name=\"Tim\", Salary=15000.50))\nRepo.update!(Employee, (ID=2, Name=\"Chloe\",))\nRepo.delete!(Employee, (ID=2,))\n\nem = from(Employee)\nRepo.query([SELECT * FROM em WHERE em.Name == \"Tim\"])\n\n❓ = Octo.PlaceHolder\nRepo.query([SELECT * FROM em WHERE em.Name == ❓], [\"Tim\"])"
+    "text": "Current supported databases: PostgreSQL(via LibPQ.jl), MySQL(via MySQL.jl), SQLite(via SQLite.jl)using Octo.Adapters.PostgreSQL\n\nstruct Employee\nend\nSchema.model(Employee, table_name=\"Employee\", primary_key=\"ID\")\n\nRepo.debug_sql()\n\nRepo.connect(\n    adapter = Octo.Adapters.PostgreSQL,\n    sink = Vector{<:NamedTuple}, # DataFrames.DataFrame\n    dbname = \"postgresqltest\",\n    user = \"postgres\",\n)\n\nRepo.all(Employee)\nRepo.get(Employee, 2)\nRepo.get(Employee, (Name=\"Tim\",))\nRepo.insert!(Employee, (Name=\"Tim\", Salary=15000.50))\nRepo.update!(Employee, (ID=2, Name=\"Chloe\",))\nRepo.delete!(Employee, (ID=2,))\n\nem = from(Employee)\nRepo.query([SELECT * FROM em WHERE em.Name == \"Tim\"])\n\n❓ = Octo.PlaceHolder\nRepo.query([SELECT * FROM em WHERE em.Name == ❓], [\"Tim\"])"
 },
 
 {
@@ -113,11 +113,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Repo/#Octo.Repo.set_log_level",
+    "location": "Repo/#Octo.Repo.debug_sql",
     "page": "Repo",
-    "title": "Octo.Repo.set_log_level",
+    "title": "Octo.Repo.debug_sql",
     "category": "function",
-    "text": "Repo.set_log_level(level::RepoLogLevel)\n\n\n\n\n\n"
+    "text": "Repo.debug_sql(debug::Bool = true)\n\n\n\n\n\n"
 },
 
 {
@@ -125,7 +125,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Repo",
     "title": "Repo",
     "category": "section",
-    "text": "Repo.connect\nRepo.all\nRepo.get\nRepo.insert!\nRepo.update!\nRepo.delete!\nRepo.query\nRepo.execute\nRepo.disconnect\nRepo.set_log_level"
+    "text": "Repo.connect\nRepo.all\nRepo.get\nRepo.insert!\nRepo.update!\nRepo.delete!\nRepo.query\nRepo.execute\nRepo.disconnect\nRepo.debug_sql"
 },
 
 {
@@ -185,43 +185,59 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Queryable/#Octo.Queryable.window",
+    "page": "Queryable",
+    "title": "Octo.Queryable.window",
+    "category": "function",
+    "text": "window(query::Structured, as=nothing):OverClause\n\n\n\n\n\n"
+},
+
+{
     "location": "Queryable/#Queryable-1",
     "page": "Queryable",
     "title": "Queryable",
     "category": "section",
-    "text": "Octo.Queryable.from\nOcto.Queryable.as"
+    "text": "Octo.Queryable.from\nOcto.Queryable.as\nOcto.Queryable.window"
 },
 
 {
-    "location": "keywords_and_aggregates/#",
-    "page": "keywords and aggregate functions",
-    "title": "keywords and aggregate functions",
+    "location": "keywords_aggregates_rankings/#",
+    "page": "SQL keywords, aggregate & ranking functions",
+    "title": "SQL keywords, aggregate & ranking functions",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "keywords_and_aggregates/#SQL-keywords-and-aggregate-functions-1",
-    "page": "keywords and aggregate functions",
-    "title": "SQL keywords and aggregate functions",
+    "location": "keywords_aggregates_rankings/#SQL-keywords,-aggregate-and-ranking-functions-1",
+    "page": "SQL keywords, aggregate & ranking functions",
+    "title": "SQL keywords, aggregate & ranking functions",
     "category": "section",
     "text": ""
 },
 
 {
-    "location": "keywords_and_aggregates/#@keywords-1",
-    "page": "keywords and aggregate functions",
+    "location": "keywords_aggregates_rankings/#keywords-1",
+    "page": "SQL keywords, aggregate & ranking functions",
     "title": "@keywords",
     "category": "section",
-    "text": "AND AS ASC BY CREATE DATABASE DELETE DESC DISTINCT DROP EXISTS FROM FULL GROUP HAVING IF INNER INSERT INTO IS JOIN LEFT LIKE LIMIT NOT NULL OFFSET ON OR ORDER OUTER RIGHT SELECT SET TABLE UPDATE USING VALUES WHERE"
+    "text": "AND AS ASC BY CREATE DATABASE DELETE DESC DISTINCT DROP EXISTS FROM FULL GROUP HAVING IF INNER INSERT INTO IS JOIN LEFT LIKE LIMIT NOT NULL OFFSET ON OR ORDER OUTER OVER PARTITION RIGHT SELECT SET TABLE UPDATE USING VALUES WHERE"
 },
 
 {
-    "location": "keywords_and_aggregates/#@aggregates-1",
-    "page": "keywords and aggregate functions",
+    "location": "keywords_aggregates_rankings/#aggregates-1",
+    "page": "SQL keywords, aggregate & ranking functions",
     "title": "@aggregates",
     "category": "section",
     "text": "AVG COUNT SUM"
+},
+
+{
+    "location": "keywords_aggregates_rankings/#rankings-1",
+    "page": "SQL keywords, aggregate & ranking functions",
+    "title": "@rankings",
+    "category": "section",
+    "text": "DENSERANK RANK ROWNUMBER"
 },
 
 {
@@ -297,6 +313,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Adapters/PostgreSQL/#additional-[@keywords](@ref-keywords)-1",
+    "page": "Octo.Adapters.PostgreSQL",
+    "title": "additional @keywords",
+    "category": "section",
+    "text": "FALSE LATERAL TRUE"
+},
+
+{
     "location": "Adapters/MySQL/#",
     "page": "Octo.Adapters.MySQL",
     "title": "Octo.Adapters.MySQL",
@@ -318,6 +342,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Octo.Adapters.MySQL",
     "category": "section",
     "text": "Octo.Adapters.MySQL.to_sql"
+},
+
+{
+    "location": "Adapters/MySQL/#additional-[@keywords](@ref-keywords)-1",
+    "page": "Octo.Adapters.MySQL",
+    "title": "additional @keywords",
+    "category": "section",
+    "text": "USE"
 },
 
 {
