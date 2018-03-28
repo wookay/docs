@@ -376,4 +376,28 @@ var documenterSearchIndex = {"docs": [
     "text": "Octo.Adapters.SQLite.to_sql"
 },
 
+{
+    "location": "Pretty/#",
+    "page": "Pretty",
+    "title": "Pretty",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Pretty/#Octo.Pretty.set",
+    "page": "Pretty",
+    "title": "Octo.Pretty.set",
+    "category": "function",
+    "text": "Pretty.set(pretty::Bool=true; kwargs...)\n\nSet the display options for the fetch rows.\n\njulia> Pretty.set(nrows = 10)     # limit number of rows\n\njulia> Pretty.set(colsize = 10)   # limit column size\n\njulia> Pretty.set(false)          # do or don\'t use pretty\n\n\n\n\n\n\n"
+},
+
+{
+    "location": "Pretty/#Pretty-1",
+    "page": "Pretty",
+    "title": "Pretty",
+    "category": "section",
+    "text": "Octo.Pretty.set"
+},
+
 ]}
