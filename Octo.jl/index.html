@@ -34,6 +34,7 @@ Repo.connect(
 
 Repo.all(Employee)
 Repo.get(Employee, 2)
+Repo.get(Employee, 2:5)
 Repo.get(Employee, (Name=&quot;Tim&quot;,))
 Repo.insert!(Employee, (Name=&quot;Tim&quot;, Salary=15000.50))
 Repo.update!(Employee, (ID=2, Name=&quot;Chloe&quot;,))
