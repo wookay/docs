@@ -229,7 +229,7 @@ var documenterSearchIndex = {"docs": [
     "page": "SQL keywords, aggregate & ranking functions",
     "title": "@aggregates",
     "category": "section",
-    "text": "AVG COUNT SUM"
+    "text": "AVG COUNT MAX MIN SUM"
 },
 
 {
@@ -237,7 +237,7 @@ var documenterSearchIndex = {"docs": [
     "page": "SQL keywords, aggregate & ranking functions",
     "title": "@rankings",
     "category": "section",
-    "text": "DENSERANK RANK ROWNUMBER"
+    "text": "DENSE_RANK  RANK  ROW_NUMBER"
 },
 
 {
@@ -277,7 +277,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.SQL",
     "title": "Octo.Adapters.SQL.to_sql",
     "category": "function",
-    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\nto_sql(clause::OverClause)::String\n\n\n\n\n\n"
 },
 
 {
@@ -301,7 +301,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.PostgreSQL",
     "title": "Octo.Adapters.PostgreSQL.to_sql",
     "category": "function",
-    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\nto_sql(clause::OverClause)::String\n\n\n\n\n\n"
 },
 
 {
@@ -317,7 +317,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.PostgreSQL",
     "title": "additional @keywords",
     "category": "section",
-    "text": "FALSE LATERAL TRUE"
+    "text": "FALSE LATERAL TRUE WITH"
 },
 
 {
@@ -333,7 +333,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.MySQL",
     "title": "Octo.Adapters.MySQL.to_sql",
     "category": "function",
-    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\nto_sql(clause::OverClause)::String\n\n\n\n\n\n"
 },
 
 {
