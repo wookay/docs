@@ -253,7 +253,15 @@ var documenterSearchIndex = {"docs": [
     "page": "HTML5.Form",
     "title": "Bukdu.HTML5.Form.form_for",
     "category": "function",
-    "text": "form_for(f, changeset::Changeset, controller_action::Tuple; method=post, kwargs...)\n\n\n\n\n\nform_for(f, changeset::Changeset, form_action::String; method=post, multipart::Bool=false)\n\n\n\n\n\n"
+    "text": "form_for(block::Function, changeset::Changeset, controller_action::Tuple; method=post, kwargs...)::Node\n\n\n\n\n\nform_for(block::Function, changeset::Changeset, form_action::String; method=post, multipart::Bool=false)::Node\n\n\n\n\n\n"
+},
+
+{
+    "location": "HTML5/Form/#Bukdu.HTML5.Form.label_for",
+    "page": "HTML5.Form",
+    "title": "Bukdu.HTML5.Form.label_for",
+    "category": "function",
+    "text": "label_for(node::Node, text::Union{String,Nothing}=nothing; kwargs...)::Vector{Node}\n\n\n\n\n\nlabel_for(nodes::Vector{Node}, text::Union{String,Nothing}=nothing; kwargs...)::Vector{Node}\n\n\n\n\n\n"
 },
 
 {
@@ -261,7 +269,31 @@ var documenterSearchIndex = {"docs": [
     "page": "HTML5.Form",
     "title": "Bukdu.HTML5.Form.text_input",
     "category": "function",
-    "text": "text_input(f::Changeset, field::Symbol, value=nothing; kwargs...)\n\n\n\n\n\n"
+    "text": "text_input(f::Changeset, field::Symbol, value=nothing; kwargs...)::Node\n\n\n\n\n\n"
+},
+
+{
+    "location": "HTML5/Form/#Bukdu.HTML5.Form.textarea",
+    "page": "HTML5.Form",
+    "title": "Bukdu.HTML5.Form.textarea",
+    "category": "function",
+    "text": "textarea(f::Changeset, field::Symbol, value=nothing; kwargs...)::Node\n\n\n\n\n\n"
+},
+
+{
+    "location": "HTML5/Form/#Bukdu.HTML5.Form.radio_button",
+    "page": "HTML5.Form",
+    "title": "Bukdu.HTML5.Form.radio_button",
+    "category": "function",
+    "text": "radio_button(f::Changeset, field::Symbol, value::String; kwargs...)::Node\n\n\n\n\n\n"
+},
+
+{
+    "location": "HTML5/Form/#Bukdu.HTML5.Form.checkbox",
+    "page": "HTML5.Form",
+    "title": "Bukdu.HTML5.Form.checkbox",
+    "category": "function",
+    "text": "checkbox(f::Changeset, field::Symbol, value::Union{Bool,Nothing}=nothing; kwargs...)::Vector{Node}\n\n\n\n\n\n"
 },
 
 {
@@ -269,7 +301,7 @@ var documenterSearchIndex = {"docs": [
     "page": "HTML5.Form",
     "title": "Bukdu.HTML5.Form.submit",
     "category": "function",
-    "text": "submit(block_option)\n\n\n\n\n\n"
+    "text": "submit(block_option)::Node\n\n\n\n\n\n"
 },
 
 {
@@ -277,7 +309,7 @@ var documenterSearchIndex = {"docs": [
     "page": "HTML5.Form",
     "title": "Bukdu.HTML5.Form",
     "category": "section",
-    "text": "changeform_for\ntext_input\nsubmit"
+    "text": "changeform_for\nlabel_for\ntext_input\ntextarea\nradio_button\ncheckbox\nsubmit"
 },
 
 {
