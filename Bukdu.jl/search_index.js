@@ -161,11 +161,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "routes/#Bukdu.Router.request",
+    "location": "routes/#Bukdu.Router.call",
     "page": "routes",
-    "title": "Bukdu.Router.request",
+    "title": "Bukdu.Router.call",
     "category": "function",
-    "text": "Router.request(verb, path::String)\n\n\n\n\n\n"
+    "text": "Router.call(verb, path::String)\n\n\n\n\n\n"
 },
 
 {
@@ -181,7 +181,7 @@ var documenterSearchIndex = {"docs": [
     "page": "routes",
     "title": "routes",
     "category": "section",
-    "text": "routes\npipelineget\npost\ndelete\npatch\nput\nresourcesRouter.requestRouting.empty!"
+    "text": "routes\npipelineget\npost\ndelete\npatch\nput\nresourcesRouter.callRouting.empty!"
 },
 
 {
