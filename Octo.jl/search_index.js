@@ -29,7 +29,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Repo",
     "category": "section",
-    "text": "Current supported databases: PostgreSQL(via LibPQ.jl), MySQL(via MySQL.jl), SQLite(via SQLite.jl)using Octo.Adapters.PostgreSQL\n\nstruct Employee\nend\nSchema.model(Employee, table_name=\"Employee\", primary_key=\"ID\")\n\nRepo.debug_sql()\n\nRepo.connect(\n    adapter = Octo.Adapters.PostgreSQL,\n    sink = Vector{<:NamedTuple}, # DataFrames.DataFrame\n    dbname = \"postgresqltest\",\n    user = \"postgres\",\n)\n\nRepo.all(Employee)\nRepo.get(Employee, 2)\nRepo.get(Employee, 2:5)\nRepo.get(Employee, (Name=\"Tim\",))\nRepo.insert!(Employee, (Name=\"Tim\", Salary=15000.50))\nRepo.update!(Employee, (ID=2, Name=\"Chloe\",))\nRepo.delete!(Employee, (ID=2,))\n\nem = from(Employee)\nRepo.query([SELECT * FROM em WHERE em.Name == \"Tim\"])\n\n❓ = Octo.PlaceHolder\nRepo.query([SELECT * FROM em WHERE em.Name == ❓], [\"Tim\"])"
+    "text": "Current supported databases: PostgreSQL(via LibPQ.jl), MySQL(via MySQL.jl), SQLite(via SQLite.jl)using Octo.Adapters.PostgreSQL\n\nstruct Employee\nend\nSchema.model(Employee, table_name=\"Employee\", primary_key=\"ID\")\n\nRepo.debug_sql()\n\nRepo.connect(\n    adapter = Octo.Adapters.PostgreSQL,\n    sink = Vector{<:NamedTuple}, # DataFrames.DataFrame\n    dbname = \"postgresqltest\",\n    user = \"postgres\",\n)\n\nRepo.all(Employee)\nRepo.get(Employee, 2)\nRepo.get(Employee, 2:5)\nRepo.get(Employee, (Name=\"Tim\",))\nRepo.insert!(Employee, (Name=\"Tim\", Salary=15000.50))\nRepo.update!(Employee, (ID=2, Name=\"Chloe\",))\nRepo.delete!(Employee, (ID=2,))\nRepo.delete!(Employee, 2:5)\n\nem = from(Employee)\nRepo.query([SELECT * FROM em WHERE em.Name == \"Tim\"])\n\n❓ = Octo.PlaceHolder\nRepo.query([SELECT * FROM em WHERE em.Name == ❓], [\"Tim\"])"
 },
 
 {
@@ -85,7 +85,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Repo",
     "title": "Octo.Repo.delete!",
     "category": "function",
-    "text": "Repo.delete!(M::Type, nt::NamedTuple)\n\n\n\n\n\n"
+    "text": "Repo.delete!(M::Type, nt::NamedTuple)\n\n\n\n\n\nRepo.delete!(M::Type, pk_range::UnitRange{Int64})\n\n\n\n\n\n"
 },
 
 {
