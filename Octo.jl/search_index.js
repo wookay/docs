@@ -29,7 +29,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Repo",
     "category": "section",
-    "text": "Current supported databases: PostgreSQL(via LibPQ.jl), MySQL(via MySQL.jl), SQLite(via SQLite.jl)using Octo.Adapters.PostgreSQL\n\nstruct Employee\nend\nSchema.model(Employee, table_name=\"Employee\", primary_key=\"ID\")\n\nRepo.debug_sql()\n\nRepo.connect(\n    adapter = Octo.Adapters.PostgreSQL,\n    sink = Vector{<:NamedTuple}, # DataFrames.DataFrame\n    dbname = \"postgresqltest\",\n    user = \"postgres\",\n)\n\nRepo.all(Employee)\nRepo.get(Employee, 2)\nRepo.get(Employee, 2:5)\nRepo.get(Employee, (Name=\"Tim\",))\nRepo.insert!(Employee, (Name=\"Tim\", Salary=15000.50))\nRepo.update!(Employee, (ID=2, Name=\"Chloe\",))\nRepo.delete!(Employee, (ID=2,))\nRepo.delete!(Employee, 2:5)\n\nem = from(Employee)\nRepo.query([SELECT * FROM em WHERE em.Name == \"Tim\"])\n\n❓ = Octo.PlaceHolder\nRepo.query([SELECT * FROM em WHERE em.Name == ❓], [\"Tim\"])"
+    "text": "Current supported databases: PostgreSQL(via LibPQ.jl), MySQL(via MySQL.jl), SQLite(via SQLite.jl)julia> using Octo.Adapters.PostgreSQL\n\njulia> Repo.debug_sql()\nLogLevelDebugSQL::Octo.Repo.RepoLogLevel = -1\n\njulia> Repo.connect(\n           adapter = Octo.Adapters.PostgreSQL,\n           dbname = \"postgresqltest\",\n           user = \"postgres\",\n       )\nPostgreSQL connection (CONNECTION_OK) with parameters:\n  user = postgres\n  passfile = /Users/wookyoung/.pgpass\n  dbname = postgresqltest\n  port = 5432\n  client_encoding = UTF8\n  application_name = LibPQ.jl\n  sslmode = prefer\n  sslcompression = 1\n  krbsrvname = postgres\n  target_session_attrs = any\n\njulia> Repo.execute([DROP TABLE IF EXISTS :Employee])\n[ Info: DROP TABLE IF EXISTS Employee\n\njulia> Repo.execute(Raw(\"\"\"\n           CREATE TABLE Employee (\n               ID SERIAL,\n               Name VARCHAR(255),\n               Salary FLOAT(8),\n               PRIMARY KEY (ID)\n           )\"\"\"))\n┌ Info: CREATE TABLE Employee (\n│     ID SERIAL,\n│     Name VARCHAR(255),\n│     Salary FLOAT(8),\n│     PRIMARY KEY (ID)\n└ )\n\njulia> struct Employee\n       end\n\njulia> Schema.model(Employee, table_name=\"Employee\", primary_key=\"ID\")\nEmployee => Dict(:primary_key=>\"ID\",:table_name=>\"Employee\")\n\njulia> Repo.insert!(Employee, [\n           (Name=\"Jeremy\",  Salary=10000.50),\n           (Name=\"Cloris\",  Salary=20000.50),\n           (Name=\"John\",    Salary=30000.50),\n           (Name=\"Hyunden\", Salary=40000.50),\n           (Name=\"Justin\",  Salary=50000.50),\n           (Name=\"Tom\",     Salary=60000.50),\n       ])\n[ Info: INSERT INTO Employee (Name, Salary) VALUES ($1, $2)   (Name = \"Jeremy\", Salary = 10000.5), (Name = \"Cloris\", Salary = 20000.5), (Name = \"John\", Salary = 30000.5), (Name = \"Hyunden\", Salary = 40000.5), (Name = \"Justin\", Salary = 50000.5), (Name = \"Tom\", Salary = 60000.5)\n\njulia> Repo.all(Employee)\n[ Info: SELECT * FROM Employee\n|   id | name      |    salary |\n| ---- | --------- | --------- |\n|    1 | Jeremy    |   10000.5 |\n|    2 | Cloris    |   20000.5 |\n|    3 | John      |   30000.5 |\n|    4 | Hyunden   |   40000.5 |\n|    5 | Justin    |   50000.5 |\n|    6 | Tom       |   60000.5 |\n6 rows.\n\njulia> Repo.get(Employee, 2)\n[ Info: SELECT * FROM Employee WHERE ID = 2\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   20000.5 |\n1 row.\n\njulia> Repo.get(Employee, 2:5)\n[ Info: SELECT * FROM Employee WHERE ID BETWEEN 2 AND 5\n|   id | name      |    salary |\n| ---- | --------- | --------- |\n|    2 | Cloris    |   20000.5 |\n|    3 | John      |   30000.5 |\n|    4 | Hyunden   |   40000.5 |\n|    5 | Justin    |   50000.5 |\n4 rows.\n\njulia> Repo.get(Employee, (Name=\"Jeremy\",))\n[ Info: SELECT * FROM Employee WHERE Name = \'Jeremy\'\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    1 | Jeremy   |   10000.5 |\n1 row.\n\njulia> Repo.insert!(Employee, (Name=\"Jessica\", Salary=70000.50))\n[ Info: INSERT INTO Employee (Name, Salary) VALUES ($1, $2)   (Name = \"Jessica\", Salary = 70000.5)\n\njulia> Repo.update!(Employee, (ID=2, Salary=85000))\n[ Info: UPDATE Employee SET Salary = $1 WHERE ID = 2   85000\n\njulia> Repo.delete!(Employee, (ID=3,))\n[ Info: DELETE FROM Employee WHERE ID = 3\n\njulia> Repo.delete!(Employee, 3:5)\n[ Info: DELETE FROM Employee WHERE ID BETWEEN 3 AND 5\n\njulia> em = from(Employee)\nOcto.FromClause(Employee, nothing)\n\njulia> Repo.query([SELECT * FROM em WHERE em.Name == \"Cloris\"])\n[ Info: SELECT * FROM Employee WHERE Name = \'Cloris\'\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   85000.0 |\n1 row.\n\njulia> ❓ = Octo.PlaceHolder\nPlaceHolder\n\njulia> Repo.query([SELECT * FROM em WHERE em.Name == ❓], [\"Cloris\"])\n[ Info: SELECT * FROM Employee WHERE Name = ?   \"Cloris\"\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   85000.0 |\n1 row."
 },
 
 {
@@ -69,7 +69,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Repo",
     "title": "Octo.Repo.insert!",
     "category": "function",
-    "text": "Repo.insert!(M::Type, nts::Vector{<:NamedTuple})\n\n\n\n\n\nRepo.insert!(M, nt::NamedTuple)\n\n\n\n\n\n"
+    "text": "Repo.insert!(M::Type, nts::Vector{<:NamedTuple})::ExecuteResult\n\n\n\n\n\nRepo.insert!(M, nt::NamedTuple)::ExecuteResult\n\n\n\n\n\n"
 },
 
 {
@@ -77,7 +77,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Repo",
     "title": "Octo.Repo.update!",
     "category": "function",
-    "text": "Repo.update!(M::Type, nt::NamedTuple)\n\n\n\n\n\n"
+    "text": "Repo.update!(M::Type, nt::NamedTuple)::ExecuteResult\n\n\n\n\n\n"
 },
 
 {
@@ -85,7 +85,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Repo",
     "title": "Octo.Repo.delete!",
     "category": "function",
-    "text": "Repo.delete!(M::Type, nt::NamedTuple)\n\n\n\n\n\nRepo.delete!(M::Type, pk_range::UnitRange{Int64})\n\n\n\n\n\n"
+    "text": "Repo.delete!(M::Type, nt::NamedTuple)::ExecuteResult\n\n\n\n\n\nRepo.delete!(M::Type, pk_range::UnitRange{Int64})::ExecuteResult\n\n\n\n\n\n"
 },
 
 {
@@ -101,7 +101,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Repo",
     "title": "Octo.Repo.execute",
     "category": "function",
-    "text": "Repo.execute(stmt::Structured)\n\n\n\n\n\nRepo.execute(stmt::Structured, vals::Vector)\n\n\n\n\n\nRepo.execute(stmt::Structured, nts::Vector{<:NamedTuple})\n\n\n\n\n\n"
+    "text": "Repo.execute(stmt::Structured)::ExecuteResult\n\n\n\n\n\nRepo.execute(stmt::Structured, vals::Vector)::ExecuteResult\n\n\n\n\n\nRepo.execute(stmt::Structured, nts::Vector{<:NamedTuple})::ExecuteResult\n\n\n\n\n\n"
 },
 
 {
