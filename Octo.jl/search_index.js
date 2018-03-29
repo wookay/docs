@@ -389,7 +389,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Pretty",
     "title": "Octo.Pretty.set",
     "category": "function",
-    "text": "Pretty.set(pretty::Bool=true; kwargs...)\n\nSet the display options for the fetch rows.\n\njulia> Pretty.set(nrows = 10)     # limit number of rows\n\njulia> Pretty.set(colsize = 10)   # limit column size\n\njulia> Pretty.set(false)          # do or don\'t use pretty\n\n\n\n\n\n\n"
+    "text": "Pretty.set(pretty::Bool=true; kwargs...)\n\nSet the display options for Vector{<:NamedTuple} rows.\n\njulia> Pretty.set(nrows = 10)     # limit number of the rows\n\njulia> Pretty.set(colsize = 10)   # limit column size\n\njulia> Pretty.set(false)          # do or don\'t use pretty\n\n\n\n\n\n\n"
 },
 
 {
