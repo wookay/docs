@@ -13,7 +13,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Bukdu.jl",
     "category": "section",
-    "text": "Bukdu 🌌  is a web development framework for Julia.It\'s influenced by Phoenix framework.using Bukdu\n\nstruct WelcomeController <: ApplicationController\n    conn::Conn\nend\n\nindex(::WelcomeController) = \"hello world\"\n\nroutes() do\n    get(\"/\", WelcomeController, index)\nend\n\nBukdu.start(8080)"
+    "text": "Bukdu 🌌  is a web development framework for Julia.It\'s influenced by Phoenix framework.using Bukdu\n\nstruct WelcomeController <: ApplicationController\n    conn::Conn\nend\n\nfunction index(c::WelcomeController)\n    render(JSON, \"Hello World\")\nend\n\nroutes() do\n    get(\"/\", WelcomeController, index)\nend\n\nBukdu.start(8080)"
 },
 
 {
@@ -358,6 +358,38 @@ var documenterSearchIndex = {"docs": [
     "title": "CLI",
     "category": "section",
     "text": "CLI.routes()"
+},
+
+{
+    "location": "Runtime/#",
+    "page": "Runtime",
+    "title": "Runtime",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Runtime/#Bukdu.Runtime.catch_request",
+    "page": "Runtime",
+    "title": "Bukdu.Runtime.catch_request",
+    "category": "function",
+    "text": "Bukdu.Runtime.catch_request(route::Route, req)\n\n\n\n\n\n"
+},
+
+{
+    "location": "Runtime/#Bukdu.Runtime.catch_response",
+    "page": "Runtime",
+    "title": "Bukdu.Runtime.catch_response",
+    "category": "function",
+    "text": "Bukdu.Runtime.catch_response(route::Route, resp)\n\n\n\n\n\n"
+},
+
+{
+    "location": "Runtime/#Bukdu.Runtime-1",
+    "page": "Runtime",
+    "title": "Bukdu.Runtime",
+    "category": "section",
+    "text": "Debugging the requests and responses on the fly.julia> Bukdu.Runtime.catch_request(route::Bukdu.Route, req) = @debug \"REQ \" req.headers\njulia> Bukdu.Runtime.catch_response(route::Bukdu.Route, resp) = @debug \"RESP\" resp.headers String(resp.body)Bukdu.Runtime.catch_request\nBukdu.Runtime.catch_response"
 },
 
 {
