@@ -33,6 +33,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "#Colored-SQL-statements-1",
+    "page": "Home",
+    "title": "Colored SQL statements",
+    "category": "section",
+    "text": "See the CI logs  https://travis-ci.org/wookay/Octo.jl/builds/359976228#L602."
+},
+
+{
     "location": "Repo/#",
     "page": "Repo",
     "title": "Repo",
@@ -181,7 +189,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Queryable",
     "title": "Octo.Queryable.as",
     "category": "function",
-    "text": "as(field::Union{Field, AggregateFunction}, alias::Symbol)::SQLAlias\n\n\n\n\n\n"
+    "text": "as(field::Union{Field, SQLFunction}, alias::Symbol)::SQLAlias\n\n\n\n\n\n"
 },
 
 {
@@ -201,41 +209,49 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "keywords_aggregates_rankings/#",
-    "page": "SQL keywords, aggregate & ranking functions",
-    "title": "SQL keywords, aggregate & ranking functions",
+    "location": "keywords_and_functions/#",
+    "page": "SQL keywords & functions",
+    "title": "SQL keywords & functions",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "keywords_aggregates_rankings/#SQL-keywords,-aggregate-and-ranking-functions-1",
-    "page": "SQL keywords, aggregate & ranking functions",
-    "title": "SQL keywords, aggregate & ranking functions",
+    "location": "keywords_and_functions/#SQL-keywords-and-functions-1",
+    "page": "SQL keywords & functions",
+    "title": "SQL keywords and functions",
     "category": "section",
     "text": ""
 },
 
 {
-    "location": "keywords_aggregates_rankings/#keywords-1",
-    "page": "SQL keywords, aggregate & ranking functions",
-    "title": "@keywords",
+    "location": "keywords_and_functions/#sql_keywords-1",
+    "page": "SQL keywords & functions",
+    "title": "@sql_keywords",
     "category": "section",
     "text": "AND AS ASC BETWEEN BY CREATE DATABASE DELETE DESC DISTINCT DROP EXISTS FROM FULL GROUP HAVING IF IN INNER INSERT INTO IS JOIN LEFT LIKE LIMIT NOT NULL OFFSET ON OR ORDER OUTER OVER PARTITION RIGHT SELECT SET TABLE UPDATE USING VALUES WHERE"
 },
 
 {
-    "location": "keywords_aggregates_rankings/#aggregates-1",
-    "page": "SQL keywords, aggregate & ranking functions",
-    "title": "@aggregates",
+    "location": "keywords_and_functions/#sql_functions-1",
+    "page": "SQL keywords & functions",
+    "title": "@sql_functions",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "keywords_and_functions/#aggregate-functions-1",
+    "page": "SQL keywords & functions",
+    "title": "aggregate functions",
     "category": "section",
     "text": "AVG COUNT MAX MIN SUM"
 },
 
 {
-    "location": "keywords_aggregates_rankings/#rankings-1",
-    "page": "SQL keywords, aggregate & ranking functions",
-    "title": "@rankings",
+    "location": "keywords_and_functions/#ranking-functions-1",
+    "page": "SQL keywords & functions",
+    "title": "ranking functions",
     "category": "section",
     "text": "DENSE_RANK  RANK  ROW_NUMBER"
 },
@@ -313,11 +329,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Adapters/PostgreSQL/#additional-[@keywords](@ref-keywords)-1",
+    "location": "Adapters/PostgreSQL/#additional-[@sql_keywords](@ref-sql_keywords)-1",
     "page": "Octo.Adapters.PostgreSQL",
-    "title": "additional @keywords",
+    "title": "additional @sql_keywords",
     "category": "section",
-    "text": "FALSE LATERAL TRUE WITH"
+    "text": "FALSE  INTERVAL  LATERAL  TRUE  WITH"
+},
+
+{
+    "location": "Adapters/PostgreSQL/#additional-[@sql_functions](@ref-sql_functions)-1",
+    "page": "Octo.Adapters.PostgreSQL",
+    "title": "additional @sql_functions",
+    "category": "section",
+    "text": "NOW"
 },
 
 {
@@ -345,9 +369,9 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Adapters/MySQL/#additional-[@keywords](@ref-keywords)-1",
+    "location": "Adapters/MySQL/#additional-[@sql_keywords](@ref-sql_keywords)-1",
     "page": "Octo.Adapters.MySQL",
-    "title": "additional @keywords",
+    "title": "additional @sql_keywords",
     "category": "section",
     "text": "USE"
 },
@@ -393,11 +417,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Pretty/#Octo.Pretty.table",
+    "page": "Pretty",
+    "title": "Octo.Pretty.table",
+    "category": "function",
+    "text": "Pretty.table(nts::Vector{<:NamedTuple})::String\n\n\n\n\n\n"
+},
+
+{
     "location": "Pretty/#Pretty-1",
     "page": "Pretty",
     "title": "Pretty",
     "category": "section",
-    "text": "Octo.Pretty.set"
+    "text": "Octo.Pretty.set\nOcto.Pretty.table"
 },
 
 ]}
