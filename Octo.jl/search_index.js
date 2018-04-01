@@ -33,6 +33,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "#Subqueries-1",
+    "page": "Home",
+    "title": "Subqueries",
+    "category": "section",
+    "text": "julia> sub = from([SELECT * FROM em WHERE em.Salary > 30000], :sub)\n(SELECT * FROM Employee WHERE Salary > 30000) AS sub\n\njulia> Repo.query([SELECT sub.Name FROM sub])\n[ Info: SELECT sub.Name FROM (SELECT * FROM Employee WHERE Salary > 30000) AS sub\n| name      |\n| --------- |\n| Tom       |\n| Jessica   |\n| Cloris    |\n3 rows."
+},
+
+{
     "location": "#Colored-SQL-statements-1",
     "page": "Home",
     "title": "Colored SQL statements",
@@ -197,7 +205,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Queryable",
     "title": "Octo.Queryable.window",
     "category": "function",
-    "text": "window(query::Structured, as=nothing):OverClause\n\n\n\n\n\n"
+    "text": "window(query::Structured, as=nothing):WindowFrame\n\n\n\n\n\n"
 },
 
 {
@@ -293,7 +301,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.SQL",
     "title": "Octo.Adapters.SQL.to_sql",
     "category": "function",
-    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\nto_sql(clause::OverClause)::String\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\nto_sql(frame::WindowFrame)::String\n\n\n\n\n\n"
 },
 
 {
@@ -317,7 +325,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.PostgreSQL",
     "title": "Octo.Adapters.PostgreSQL.to_sql",
     "category": "function",
-    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\nto_sql(clause::OverClause)::String\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\nto_sql(frame::WindowFrame)::String\n\n\n\n\n\n"
 },
 
 {
@@ -333,7 +341,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.PostgreSQL",
     "title": "additional @sql_keywords",
     "category": "section",
-    "text": "FALSE  INTERVAL  LATERAL  TRUE  WITH"
+    "text": "FALSE INTERVAL LATERAL TRUE WINDOW WITH"
 },
 
 {
@@ -357,7 +365,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.MySQL",
     "title": "Octo.Adapters.MySQL.to_sql",
     "category": "function",
-    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\nto_sql(clause::OverClause)::String\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\nto_sql(frame::WindowFrame)::String\n\n\n\n\n\n"
 },
 
 {
