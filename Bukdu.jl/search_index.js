@@ -189,7 +189,7 @@ var documenterSearchIndex = {"docs": [
     "page": "routes",
     "title": "Bukdu.Router.call",
     "category": "function",
-    "text": "Router.call(verb, path::String)\n\n\n\n\n\n"
+    "text": "Router.call(verb, path::String)\n\n\n\n\n\nRouter.call(req::Deps.Request)\n\n\n\n\n\n"
 },
 
 {
