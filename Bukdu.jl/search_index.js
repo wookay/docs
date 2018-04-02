@@ -29,7 +29,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Modifying actions at runtime",
     "category": "section",
-    "text": "Bukdu/examples $ julia -i welcome.jl\n               _\n   _       _ _(_)_     |  A fresh approach to technical computing\n  (_)     | (_) (_)    |  Documentation: https://docs.julialang.org\n   _ _   _| |_  __ _   |  Type \"?help\" for help.\n  | | | | | | |/ _` |  |\n  | | |_| | | | (_| |  |  Version 0.7.0-DEV.4722 (2018-03-29 19:53 UTC)\n _/ |\\__\'_|_|_|\\__\'_|  |  Commit 8a5f74724c (0 days old master)\n|__/                   |  x86_64-apple-darwin17.4.0\n\nINFO: Listening on: 127.0.0.1:8080\njulia> function index(c::WelcomeController)\n           render(JSON, \"Love\")\n       end\nindex (generic function with 1 method)\n\njulia> INFO:  GET    WelcomeController   index           200 /"
+    "text": "Bukdu/examples $ julia -i welcome.jl\n               _\n   _       _ _(_)_     |  A fresh approach to technical computing\n  (_)     | (_) (_)    |  Documentation: https://docs.julialang.org\n   _ _   _| |_  __ _   |  Type \"?help\" for help.\n  | | | | | | |/ _` |  |\n  | | |_| | | | (_| |  |  Version 0.7.0-DEV.4722 (2018-03-29 19:53 UTC)\n _/ |\\__\'_|_|_|\\__\'_|  |  Commit 8a5f74724c (0 days old master)\n|__/                   |  x86_64-apple-darwin17.4.0\n\nINFO: Listening on: 127.0.0.1:8080\njulia> function index(c::WelcomeController)\n           render(JSON, \"Love\")\n       end\nindex (generic function with 1 method)That\'s it! Refresh your page of the web browser."
 },
 
 {
@@ -185,14 +185,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "routes/#Bukdu.Router.call",
-    "page": "routes",
-    "title": "Bukdu.Router.call",
-    "category": "function",
-    "text": "Router.call(verb, path::String)\n\n\n\n\n\nRouter.call(req::Deps.Request)\n\n\n\n\n\n"
-},
-
-{
     "location": "routes/#Bukdu.Routing.empty!",
     "page": "routes",
     "title": "Bukdu.Routing.empty!",
@@ -205,7 +197,7 @@ var documenterSearchIndex = {"docs": [
     "page": "routes",
     "title": "routes",
     "category": "section",
-    "text": "routes\npipelineget\npost\ndelete\npatch\nput\nresourcesRouter.callRouting.empty!"
+    "text": "routes\npipelineget\npost\ndelete\npatch\nput\nresourcesRouting.empty!"
 },
 
 {
@@ -349,7 +341,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Changeset",
     "title": "Bukdu.Changeset",
     "category": "type",
-    "text": "Changeset\n\n\n\n\n\n"
+    "text": "Changeset\n\nUsed with HTML5.Form.change.\n\n\n\n\n\n"
 },
 
 {
@@ -373,7 +365,7 @@ var documenterSearchIndex = {"docs": [
     "page": "CLI",
     "title": "Bukdu.CLI.routes",
     "category": "method",
-    "text": "CLI.routes()\n\n\n\n\n\n"
+    "text": "CLI.routes()\n\nShowing the routing table.\n\n\n\n\n\n"
 },
 
 {
@@ -385,35 +377,99 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Runtime/#",
-    "page": "Runtime",
-    "title": "Runtime",
+    "location": "System/#",
+    "page": "System",
+    "title": "System",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "Runtime/#Bukdu.Runtime.catch_request",
-    "page": "Runtime",
-    "title": "Bukdu.Runtime.catch_request",
+    "location": "System/#Bukdu.System.halted_error",
+    "page": "System",
+    "title": "Bukdu.System.halted_error",
     "category": "function",
-    "text": "Bukdu.Runtime.catch_request(route::Bukdu.Route, req)\n\n\n\n\n\n"
+    "text": "halted_error(c::SystemController)\n\n\n\n\n\n"
 },
 
 {
-    "location": "Runtime/#Bukdu.Runtime.catch_response",
-    "page": "Runtime",
-    "title": "Bukdu.Runtime.catch_response",
+    "location": "System/#Bukdu.System.not_applicable",
+    "page": "System",
+    "title": "Bukdu.System.not_applicable",
     "category": "function",
-    "text": "Bukdu.Runtime.catch_response(route::Bukdu.Route, resp)\n\n\n\n\n\n"
+    "text": "not_applicable(c::SystemController)\n\n\n\n\n\n"
 },
 
 {
-    "location": "Runtime/#Bukdu.Runtime-1",
-    "page": "Runtime",
-    "title": "Bukdu.Runtime",
+    "location": "System/#Bukdu.System.internal_error",
+    "page": "System",
+    "title": "Bukdu.System.internal_error",
+    "category": "function",
+    "text": "internal_error(c::SystemController)\n\n\n\n\n\n"
+},
+
+{
+    "location": "System/#Bukdu.System.not_found",
+    "page": "System",
+    "title": "Bukdu.System.not_found",
+    "category": "function",
+    "text": "not_found(c::MissingController)\n\n\n\n\n\n"
+},
+
+{
+    "location": "System/#Bukdu.System-1",
+    "page": "System",
+    "title": "Bukdu.System",
     "category": "section",
-    "text": "Debugging the requests and responses on the fly.julia> Bukdu.Runtime.catch_request(route::Bukdu.Route, req) = @debug \"REQ \" req.headers\njulia> Bukdu.Runtime.catch_response(route::Bukdu.Route, resp) = @debug \"RESP\" resp.headers String(resp.body)Bukdu.Runtime.catch_request\nBukdu.Runtime.catch_response"
+    "text": "Bukdu.System.halted_error\nBukdu.System.not_applicable\nBukdu.System.internal_error\nBukdu.System.not_found"
+},
+
+{
+    "location": "System/#Bukdu.System.catch_request",
+    "page": "System",
+    "title": "Bukdu.System.catch_request",
+    "category": "function",
+    "text": "Bukdu.System.catch_request(route::Bukdu.Route, req)\n\n\n\n\n\n"
+},
+
+{
+    "location": "System/#Bukdu.System.catch_response",
+    "page": "System",
+    "title": "Bukdu.System.catch_response",
+    "category": "function",
+    "text": "Bukdu.System.catch_response(route::Bukdu.Route, resp)\n\n\n\n\n\n"
+},
+
+{
+    "location": "System/#Debugging-the-requests-and-responses-on-the-fly-1",
+    "page": "System",
+    "title": "Debugging the requests and responses on the fly",
+    "category": "section",
+    "text": "Bukdu provides a way to catch the requests and responses.julia> Bukdu.System.catch_request(route::Bukdu.Route, req) = @debug \"REQ \" req.headers\njulia> Bukdu.System.catch_response(route::Bukdu.Route, resp) = @debug \"RESP\" resp.headers resp.statusBukdu.System.catch_request\nBukdu.System.catch_response"
+},
+
+{
+    "location": "Router/#",
+    "page": "Router",
+    "title": "Router",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Router/#Bukdu.Router.call",
+    "page": "Router",
+    "title": "Bukdu.Router.call",
+    "category": "function",
+    "text": "Router.call\n\nTo get the object of the action without going through HTTP server. Results are named tuple (got= , resp= , route= ).\n\n\n\n\n\n"
+},
+
+{
+    "location": "Router/#Router-1",
+    "page": "Router",
+    "title": "Router",
+    "category": "section",
+    "text": "Router.call"
 },
 
 {
