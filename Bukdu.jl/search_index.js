@@ -17,6 +17,30 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "#RESTful-API-Demo-1",
+    "page": "Home",
+    "title": "RESTful API Demo",
+    "category": "section",
+    "text": "Visit Bukdu sevenstars on Heroku and check its source code. (A sleeping heroku page, it will become active again after a short delay.)"
+},
+
+{
+    "location": "#Modifying-actions-at-runtime-1",
+    "page": "Home",
+    "title": "Modifying actions at runtime",
+    "category": "section",
+    "text": "Bukdu/examples $ julia -i welcome.jl\n               _\n   _       _ _(_)_     |  A fresh approach to technical computing\n  (_)     | (_) (_)    |  Documentation: https://docs.julialang.org\n   _ _   _| |_  __ _   |  Type \"?help\" for help.\n  | | | | | | |/ _` |  |\n  | | |_| | | | (_| |  |  Version 0.7.0-DEV.4722 (2018-03-29 19:53 UTC)\n _/ |\\__\'_|_|_|\\__\'_|  |  Commit 8a5f74724c (0 days old master)\n|__/                   |  x86_64-apple-darwin17.4.0\n\nINFO: Listening on: 127.0.0.1:8080\njulia> function index(c::WelcomeController)\n           render(JSON, \"Love\")\n       end\nindex (generic function with 1 method)\n\njulia> INFO:  GET    WelcomeController   index           200 /"
+},
+
+{
+    "location": "#Requirements-1",
+    "page": "Home",
+    "title": "Requirements",
+    "category": "section",
+    "text": "The project has reworked based on HTTP.jl in Julia 0.7 DEV.using Pkg\nPkg.clone(\"https://github.com/wookay/Bukdu.jl.git\")\nPkg.checkout(\"Bukdu\", \"sevenstars\")"
+},
+
+{
     "location": "controllers/#",
     "page": "controllers",
     "title": "controllers",
@@ -205,7 +229,7 @@ var documenterSearchIndex = {"docs": [
     "page": "plugs",
     "title": "Bukdu.Plug.plug",
     "category": "function",
-    "text": "plug(::Type{Static}; at::String, from::String)\n\n\n\n\n\n"
+    "text": "plug(::Type{Static}; at::String, from::String, only::Union{Vector{String},Nothing}=nothing)\n\n\n\n\n\n"
 },
 
 {
@@ -373,7 +397,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Runtime",
     "title": "Bukdu.Runtime.catch_request",
     "category": "function",
-    "text": "Bukdu.Runtime.catch_request(route::Route, req)\n\n\n\n\n\n"
+    "text": "Bukdu.Runtime.catch_request(route::Bukdu.Route, req)\n\n\n\n\n\n"
 },
 
 {
@@ -381,7 +405,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Runtime",
     "title": "Bukdu.Runtime.catch_response",
     "category": "function",
-    "text": "Bukdu.Runtime.catch_response(route::Route, resp)\n\n\n\n\n\n"
+    "text": "Bukdu.Runtime.catch_response(route::Bukdu.Route, resp)\n\n\n\n\n\n"
 },
 
 {

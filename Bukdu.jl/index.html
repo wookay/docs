@@ -20,4 +20,22 @@ routes() do
     get(&quot;/&quot;, WelcomeController, index)
 end
 
-Bukdu.start(8080)</code></pre><footer><hr/><a class="next" href="controllers/"><span class="direction">Next</span><span class="title">controllers</span></a></footer></article></body></html>
+Bukdu.start(8080)</code></pre><h3><a class="nav-anchor" id="RESTful-API-Demo-1" href="#RESTful-API-Demo-1">RESTful API Demo</a></h3><p>Visit <a href="https://sevenstars.herokuapp.com">Bukdu sevenstars on Heroku</a> and check its <a href="https://github.com/wookay/heroku-sevenstars">source code</a>. (A sleeping heroku page, it will become active again after a short delay.)</p><h3><a class="nav-anchor" id="Modifying-actions-at-runtime-1" href="#Modifying-actions-at-runtime-1">Modifying actions at runtime</a></h3><pre><code class="language-julia">Bukdu/examples $ julia -i welcome.jl
+               _
+   _       _ _(_)_     |  A fresh approach to technical computing
+  (_)     | (_) (_)    |  Documentation: https://docs.julialang.org
+   _ _   _| |_  __ _   |  Type &quot;?help&quot; for help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 0.7.0-DEV.4722 (2018-03-29 19:53 UTC)
+ _/ |\__&#39;_|_|_|\__&#39;_|  |  Commit 8a5f74724c (0 days old master)
+|__/                   |  x86_64-apple-darwin17.4.0
+
+INFO: Listening on: 127.0.0.1:8080
+julia&gt; function index(c::WelcomeController)
+           render(JSON, &quot;Love&quot;)
+       end
+index (generic function with 1 method)
+
+julia&gt; INFO:  GET    WelcomeController   index           200 /</code></pre><h3><a class="nav-anchor" id="Requirements-1" href="#Requirements-1">Requirements</a></h3><p>The project has reworked based on <a href="https://github.com/JuliaWeb/HTTP.jl">HTTP.jl</a> in <a href="https://julialang.org/downloads/nightlies.html">Julia 0.7 DEV</a>.</p><pre><code class="language-julia">using Pkg
+Pkg.clone(&quot;https://github.com/wookay/Bukdu.jl.git&quot;)
+Pkg.checkout(&quot;Bukdu&quot;, &quot;sevenstars&quot;)</code></pre><footer><hr/><a class="next" href="controllers/"><span class="direction">Next</span><span class="title">controllers</span></a></footer></article></body></html>
