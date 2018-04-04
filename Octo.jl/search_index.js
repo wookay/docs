@@ -197,7 +197,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Queryable",
     "title": "Octo.Queryable.as",
     "category": "function",
-    "text": "as(field::Union{Field, SQLFunction}, alias::Symbol)::SQLAlias\n\n\n\n\n\n"
+    "text": "as(field::Union{Field, SQLFunction, Predicate}, alias::Symbol)::SQLAlias\n\n\n\n\n\n"
 },
 
 {
@@ -209,11 +209,27 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Queryable/#Octo.Queryable.over",
+    "page": "Queryable",
+    "title": "Octo.Queryable.over",
+    "category": "function",
+    "text": "over(field::SQLFunction, query::Union{WindowFrame,Structured})::SQLOver\n\n\n\n\n\n"
+},
+
+{
+    "location": "Queryable/#Octo.Queryable.extract",
+    "page": "Queryable",
+    "title": "Octo.Queryable.extract",
+    "category": "function",
+    "text": "extract(field::Union{Keyword, Type{DP}, Type{TP}}, from::Union{Deps.DateTime, DP, TP, Deps.CompoundPeriod})::SQLExtract where DP <: Deps.DatePeriod where TP <: Deps.TimePeriod\n\n\n\n\n\n"
+},
+
+{
     "location": "Queryable/#Queryable-1",
     "page": "Queryable",
     "title": "Queryable",
     "category": "section",
-    "text": "Octo.Queryable.from\nOcto.Queryable.as\nOcto.Queryable.window"
+    "text": "Octo.Queryable.from\nOcto.Queryable.as\nOcto.Queryable.window\nOcto.Queryable.over\nOcto.Queryable.extract"
 },
 
 {
@@ -341,7 +357,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.PostgreSQL",
     "title": "additional @sql_keywords",
     "category": "section",
-    "text": "FALSE INTERVAL LATERAL TRUE WINDOW WITH"
+    "text": "CURRENT_DATE FALSE LATERAL TRUE WINDOW WITH"
 },
 
 {
