@@ -49,17 +49,17 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "controllers/#Bukdu.ApplicationController",
+    "location": "controllers/#Bukdu.Plug.ApplicationController",
     "page": "controllers",
-    "title": "Bukdu.ApplicationController",
+    "title": "Bukdu.Plug.ApplicationController",
     "category": "type",
     "text": "ApplicationController\n\n\n\n\n\n"
 },
 
 {
-    "location": "controllers/#Bukdu.Conn",
+    "location": "controllers/#Bukdu.Plug.Conn",
     "page": "controllers",
-    "title": "Bukdu.Conn",
+    "title": "Bukdu.Plug.Conn",
     "category": "type",
     "text": "Conn\n\n\n\n\n\n"
 },
@@ -89,11 +89,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "renders/#Bukdu.Render",
+    "location": "renders/#Bukdu.Plug.Render",
     "page": "renders",
-    "title": "Bukdu.Render",
+    "title": "Bukdu.Plug.Render",
     "category": "type",
-    "text": "Render\n\n\n\n\n\n"
+    "text": "Render <: AbstractRender\n\n\n\n\n\n"
 },
 
 {
@@ -101,7 +101,7 @@ var documenterSearchIndex = {"docs": [
     "page": "renders",
     "title": "Bukdu.render",
     "category": "function",
-    "text": "render(::Type{Text}, data)::Render\n\n\n\n\n\nrender(::Type{HTML}, data)::Render\n\n\n\n\n\nrender(::Type{JSON}, data)::Render\n\n\n\n\n\nrender(::Type{JavaScript}, data)::Render\n\n\n\n\n\n"
+    "text": "render(::Type{Text}, data)::Render\n\n\n\n\n\nrender(::Type{HTML}, data)::Render\n\n\n\n\n\nrender(::Type{JSON}, data)::Render\n\n\n\n\n\nrender(::Type{JavaScript}, data)::Render\n\n\n\n\n\nrender(::Type{EventStream})::EventStream\n\n\n\n\n\n"
 },
 
 {
@@ -209,11 +209,35 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "plugs/#Bukdu.Plug.Static",
+    "location": "plugs/#Bukdu.Plug.Logger",
     "page": "plugs",
-    "title": "Bukdu.Plug.Static",
+    "title": "Bukdu.Plug.Logger",
     "category": "type",
-    "text": "Plug.Static\n\n\n\n\n\n"
+    "text": "Plug.Logger\n\n\n\n\n\n"
+},
+
+{
+    "location": "plugs/#Bukdu.Plug.LoggerFormatter",
+    "page": "plugs",
+    "title": "Bukdu.Plug.LoggerFormatter",
+    "category": "module",
+    "text": "Plug.LoggerFormatter\n\n\n\n\n\n"
+},
+
+{
+    "location": "plugs/#Bukdu.Plug.LoggerFormatter.basic_message",
+    "page": "plugs",
+    "title": "Bukdu.Plug.LoggerFormatter.basic_message",
+    "category": "function",
+    "text": "Plug.LoggerFormatter.basic_message(io)\n\n\n\n\n\n"
+},
+
+{
+    "location": "plugs/#Bukdu.Plug.LoggerFormatter.datetime_message",
+    "page": "plugs",
+    "title": "Bukdu.Plug.LoggerFormatter.datetime_message",
+    "category": "function",
+    "text": "Plug.LoggerFormatter.datetime_message(io)\n\n\n\n\n\n"
 },
 
 {
@@ -221,7 +245,7 @@ var documenterSearchIndex = {"docs": [
     "page": "plugs",
     "title": "Bukdu.Plug.plug",
     "category": "function",
-    "text": "plug(::Type{Static}; at::String, from::String, only::Union{Vector{String},Nothing}=nothing)\n\n\n\n\n\n"
+    "text": "plug(::Type{Logger}; access_log::Union{Nothing,<:NamedTuple}=nothing, formatter=nothing)\n\n\n\n\n\nplug(::Type{Static}; at::String, from::String, only::Union{Vector{String},Nothing}=nothing)\n\n\n\n\n\nplug(::Type{WebSocket})\n\n\n\n\n\nplug(::Type{ServerSentEvents})\n\n\n\n\n\n"
 },
 
 {
@@ -229,7 +253,7 @@ var documenterSearchIndex = {"docs": [
     "page": "plugs",
     "title": "plugs",
     "category": "section",
-    "text": "Plug.Staticplug"
+    "text": "Plug.Logger\nPlug.LoggerFormatter\nPlug.LoggerFormatter.basic_message\nPlug.LoggerFormatter.datetime_messageplug"
 },
 
 {
@@ -289,11 +313,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "HTML5/Form/#Bukdu.HTML5.Form.textarea",
+    "location": "HTML5/Form/#Bukdu.HTML5.Form.text_area",
     "page": "HTML5.Form",
-    "title": "Bukdu.HTML5.Form.textarea",
+    "title": "Bukdu.HTML5.Form.text_area",
     "category": "function",
-    "text": "textarea(f::Changeset, field::Symbol, value=nothing; kwargs...)::Node\n\n\n\n\n\n"
+    "text": "text_area(f::Changeset, field::Symbol, value=nothing; kwargs...)::Node\n\n\n\n\n\n"
 },
 
 {
@@ -325,7 +349,7 @@ var documenterSearchIndex = {"docs": [
     "page": "HTML5.Form",
     "title": "Bukdu.HTML5.Form",
     "category": "section",
-    "text": "changeform_for\nlabel_for\ntext_input\ntextarea\nradio_button\ncheckbox\nsubmit"
+    "text": "changeform_for\nlabel_for\ntext_input\ntext_area\nradio_button\ncheckbox\nsubmit"
 },
 
 {
