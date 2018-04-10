@@ -15,7 +15,7 @@ julia&gt; Schema.model(User, table_name=&quot;users&quot;)
 User =&gt; Dict(:primary_key=&gt;&quot;id&quot;,:table_name=&gt;&quot;users&quot;)
 
 julia&gt; u = from(User)
-Octo.FromClause(User, nothing)
+FromClause users
 
 julia&gt; [SELECT * FROM u]
 SELECT * FROM users
@@ -79,7 +79,7 @@ julia&gt; Repo.insert!(Employee, [
        ])
 [ Info: INSERT INTO Employee (Name, Salary) VALUES ($1, $2)   (Name = &quot;Jeremy&quot;, Salary = 10000.5), (Name = &quot;Cloris&quot;, Salary = 20000.5), (Name = &quot;John&quot;, Salary = 30000.5), (Name = &quot;Hyunden&quot;, Salary = 40000.5), (Name = &quot;Justin&quot;, Salary = 50000.5), (Name = &quot;Tom&quot;, Salary = 60000.5)
 
-julia&gt; Repo.all(Employee)
+julia&gt; Repo.query(Employee)
 [ Info: SELECT * FROM Employee
 |   id | name      |    salary |
 | ---- | --------- | --------- |
@@ -128,7 +128,7 @@ julia&gt; Repo.delete!(Employee, 3:5)
 [ Info: DELETE FROM Employee WHERE ID BETWEEN 3 AND 5
 
 julia&gt; em = from(Employee)
-Octo.FromClause(Employee, nothing)
+FromClause Employee
 
 julia&gt; Repo.query([SELECT * FROM em WHERE em.Name == &quot;Cloris&quot;])
 [ Info: SELECT * FROM Employee WHERE Name = &#39;Cloris&#39;
@@ -155,4 +155,13 @@ julia&gt; Repo.query([SELECT sub.Name FROM sub])
 | Tom       |
 | Jessica   |
 | Cloris    |
+3 rows.
+
+julia&gt; Repo.query(sub)
+[ Info: SELECT * FROM Employee WHERE Salary &gt; 30000
+|   id | name      |    salary |
+| ---- | --------- | --------- |
+|    6 | Tom       |   60000.5 |
+|    7 | Jessica   |   70000.5 |
+|    2 | Cloris    |   85000.0 |
 3 rows.</code></pre><h3><a class="nav-anchor" id="Colored-SQL-statements-1" href="#Colored-SQL-statements-1">Colored SQL statements</a></h3><ul><li>See the CI logs  <a href="https://travis-ci.org/wookay/Octo.jl/builds/359976228#L602">https://travis-ci.org/wookay/Octo.jl/builds/359976228#L602</a>.</li></ul><footer><hr/><a class="next" href="Repo/"><span class="direction">Next</span><span class="title">Repo</span></a></footer></article></body></html>
