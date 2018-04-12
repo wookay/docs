@@ -79,18 +79,6 @@ julia&gt; Repo.insert!(Employee, [
        ])
 [ Info: INSERT INTO Employee (Name, Salary) VALUES ($1, $2)   (Name = &quot;Jeremy&quot;, Salary = 10000.5), (Name = &quot;Cloris&quot;, Salary = 20000.5), (Name = &quot;John&quot;, Salary = 30000.5), (Name = &quot;Hyunden&quot;, Salary = 40000.5), (Name = &quot;Justin&quot;, Salary = 50000.5), (Name = &quot;Tom&quot;, Salary = 60000.5)
 
-julia&gt; Repo.query(Employee)
-[ Info: SELECT * FROM Employee
-|   id | name      |    salary |
-| ---- | --------- | --------- |
-|    1 | Jeremy    |   10000.5 |
-|    2 | Cloris    |   20000.5 |
-|    3 | John      |   30000.5 |
-|    4 | Hyunden   |   40000.5 |
-|    5 | Justin    |   50000.5 |
-|    6 | Tom       |   60000.5 |
-6 rows.
-
 julia&gt; Repo.get(Employee, 2)
 [ Info: SELECT * FROM Employee WHERE ID = 2
 |   id | name     |    salary |
@@ -115,6 +103,18 @@ julia&gt; Repo.get(Employee, (Name=&quot;Jeremy&quot;,))
 |    1 | Jeremy   |   10000.5 |
 1 row.
 
+julia&gt; Repo.query(Employee)
+[ Info: SELECT * FROM Employee
+|   id | name      |    salary |
+| ---- | --------- | --------- |
+|    1 | Jeremy    |   10000.5 |
+|    2 | Cloris    |   20000.5 |
+|    3 | John      |   30000.5 |
+|    4 | Hyunden   |   40000.5 |
+|    5 | Justin    |   50000.5 |
+|    6 | Tom       |   60000.5 |
+6 rows.
+
 julia&gt; Repo.insert!(Employee, (Name=&quot;Jessica&quot;, Salary=70000.50))
 [ Info: INSERT INTO Employee (Name, Salary) VALUES ($1, $2)   (Name = &quot;Jessica&quot;, Salary = 70000.5)
 
@@ -130,7 +130,24 @@ julia&gt; Repo.delete!(Employee, 3:5)
 julia&gt; em = from(Employee)
 FromClause Employee
 
+julia&gt; Repo.query(em)
+[ Info: SELECT * FROM Employee
+|   id | name      |    salary |
+| ---- | --------- | --------- |
+|    1 | Jeremy    |   10000.5 |
+|    6 | Tom       |   60000.5 |
+|    7 | Jessica   |   70000.5 |
+|    2 | Cloris    |   85000.0 |
+4 rows.
+
 julia&gt; Repo.query([SELECT * FROM em WHERE em.Name == &quot;Cloris&quot;])
+[ Info: SELECT * FROM Employee WHERE Name = &#39;Cloris&#39;
+|   id | name     |    salary |
+| ---- | -------- | --------- |
+|    2 | Cloris   |   85000.0 |
+1 row.
+
+julia&gt; Repo.query(em, (Name=&quot;Cloris&quot;,))
 [ Info: SELECT * FROM Employee WHERE Name = &#39;Cloris&#39;
 |   id | name     |    salary |
 | ---- | -------- | --------- |
@@ -141,21 +158,12 @@ julia&gt; ❓ = Octo.PlaceHolder
 PlaceHolder
 
 julia&gt; Repo.query([SELECT * FROM em WHERE em.Name == ❓], [&quot;Cloris&quot;])
-[ Info: SELECT * FROM Employee WHERE Name = ?   &quot;Cloris&quot;
+[ Info: SELECT * FROM Employee WHERE Name = $1   &quot;Cloris&quot;
 |   id | name     |    salary |
 | ---- | -------- | --------- |
 |    2 | Cloris   |   85000.0 |
 1 row.</code></pre><h3><a class="nav-anchor" id="Subqueries-1" href="#Subqueries-1">Subqueries</a></h3><pre><code class="language-julia-repl">julia&gt; sub = from([SELECT * FROM em WHERE em.Salary &gt; 30000], :sub)
 (SELECT * FROM Employee WHERE Salary &gt; 30000) AS sub
-
-julia&gt; Repo.query([SELECT sub.Name FROM sub])
-[ Info: SELECT sub.Name FROM (SELECT * FROM Employee WHERE Salary &gt; 30000) AS sub
-| name      |
-| --------- |
-| Tom       |
-| Jessica   |
-| Cloris    |
-3 rows.
 
 julia&gt; Repo.query(sub)
 [ Info: SELECT * FROM Employee WHERE Salary &gt; 30000
@@ -164,4 +172,13 @@ julia&gt; Repo.query(sub)
 |    6 | Tom       |   60000.5 |
 |    7 | Jessica   |   70000.5 |
 |    2 | Cloris    |   85000.0 |
+3 rows.
+
+julia&gt; Repo.query([SELECT sub.Name FROM sub])
+[ Info: SELECT sub.Name FROM (SELECT * FROM Employee WHERE Salary &gt; 30000) AS sub
+| name      |
+| --------- |
+| Tom       |
+| Jessica   |
+| Cloris    |
 3 rows.</code></pre><h3><a class="nav-anchor" id="Colored-SQL-statements-1" href="#Colored-SQL-statements-1">Colored SQL statements</a></h3><ul><li>See the CI logs  <a href="https://travis-ci.org/wookay/Octo.jl/builds/359976228#L602">https://travis-ci.org/wookay/Octo.jl/builds/359976228#L602</a>.</li></ul><footer><hr/><a class="next" href="Repo/"><span class="direction">Next</span><span class="title">Repo</span></a></footer></article></body></html>
