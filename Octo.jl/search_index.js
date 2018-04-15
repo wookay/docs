@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "SQL Query DSL",
     "category": "section",
-    "text": "julia> using Octo.Adapters.SQL\n\njulia> struct User\n       end\n\njulia> Schema.model(User, table_name=\"users\")\nUser => Dict(:primary_key=>\"id\",:table_name=>\"users\")\n\njulia> u = from(User)\nFromClause users\n\njulia> [SELECT * FROM u]\nSELECT * FROM users\n\njulia> [SELECT * FROM u WHERE u.id == 2]\nSELECT * FROM users WHERE id = 2\n\njulia> to_sql([SELECT * FROM u WHERE u.id == 2])\n\"SELECT * FROM users WHERE id = 2\""
+    "text": "julia> using Octo.Adapters.SQL\n\njulia> struct User\n       end\n\njulia> Schema.model(User, table_name=\"users\")\nUser => Dict(:primary_key=>\"id\",:table_name=>\"users\")\n\njulia> u = from(User)\nFromItem users\n\njulia> [SELECT * FROM u]\nSELECT * FROM users\n\njulia> [SELECT * FROM u WHERE u.id == 2]\nSELECT * FROM users WHERE id = 2\n\njulia> to_sql([SELECT * FROM u WHERE u.id == 2])\n\"SELECT * FROM users WHERE id = 2\""
 },
 
 {
@@ -29,7 +29,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Repo",
     "category": "section",
-    "text": "Current supported databases: PostgreSQL(via LibPQ.jl), MySQL(via MySQL.jl), SQLite(via SQLite.jl)julia> using Octo.Adapters.PostgreSQL\n\njulia> Repo.debug_sql()\nLogLevelDebugSQL::Octo.Repo.RepoLogLevel = -1\n\njulia> Repo.connect(\n           adapter = Octo.Adapters.PostgreSQL,\n           dbname = \"postgresqltest\",\n           user = \"postgres\",\n       )\nPostgreSQL connection (CONNECTION_OK) with parameters:\n  user = postgres\n  passfile = /Users/wookyoung/.pgpass\n  dbname = postgresqltest\n  port = 5432\n  client_encoding = UTF8\n  application_name = LibPQ.jl\n  sslmode = prefer\n  sslcompression = 1\n  krbsrvname = postgres\n  target_session_attrs = any\n\njulia> Repo.execute([DROP TABLE IF EXISTS :Employee])\n[ Info: DROP TABLE IF EXISTS Employee\n\njulia> Repo.execute(Raw(\"\"\"\n           CREATE TABLE Employee (\n               ID SERIAL,\n               Name VARCHAR(255),\n               Salary FLOAT(8),\n               PRIMARY KEY (ID)\n           )\"\"\"))\n┌ Info: CREATE TABLE Employee (\n│     ID SERIAL,\n│     Name VARCHAR(255),\n│     Salary FLOAT(8),\n│     PRIMARY KEY (ID)\n└ )\n\njulia> struct Employee\n       end\n\njulia> Schema.model(Employee, table_name=\"Employee\", primary_key=\"ID\")\nEmployee => Dict(:primary_key=>\"ID\",:table_name=>\"Employee\")\n\njulia> Repo.insert!(Employee, [\n           (Name=\"Jeremy\",  Salary=10000.50),\n           (Name=\"Cloris\",  Salary=20000.50),\n           (Name=\"John\",    Salary=30000.50),\n           (Name=\"Hyunden\", Salary=40000.50),\n           (Name=\"Justin\",  Salary=50000.50),\n           (Name=\"Tom\",     Salary=60000.50),\n       ])\n[ Info: INSERT INTO Employee (Name, Salary) VALUES ($1, $2)   (Name = \"Jeremy\", Salary = 10000.5), (Name = \"Cloris\", Salary = 20000.5), (Name = \"John\", Salary = 30000.5), (Name = \"Hyunden\", Salary = 40000.5), (Name = \"Justin\", Salary = 50000.5), (Name = \"Tom\", Salary = 60000.5)\n\njulia> Repo.get(Employee, 2)\n[ Info: SELECT * FROM Employee WHERE ID = 2\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   20000.5 |\n1 row.\n\njulia> Repo.get(Employee, 2:5)\n[ Info: SELECT * FROM Employee WHERE ID BETWEEN 2 AND 5\n|   id | name      |    salary |\n| ---- | --------- | --------- |\n|    2 | Cloris    |   20000.5 |\n|    3 | John      |   30000.5 |\n|    4 | Hyunden   |   40000.5 |\n|    5 | Justin    |   50000.5 |\n4 rows.\n\njulia> Repo.get(Employee, (Name=\"Jeremy\",))\n[ Info: SELECT * FROM Employee WHERE Name = \'Jeremy\'\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    1 | Jeremy   |   10000.5 |\n1 row.\n\njulia> Repo.query(Employee)\n[ Info: SELECT * FROM Employee\n|   id | name      |    salary |\n| ---- | --------- | --------- |\n|    1 | Jeremy    |   10000.5 |\n|    2 | Cloris    |   20000.5 |\n|    3 | John      |   30000.5 |\n|    4 | Hyunden   |   40000.5 |\n|    5 | Justin    |   50000.5 |\n|    6 | Tom       |   60000.5 |\n6 rows.\n\njulia> Repo.insert!(Employee, (Name=\"Jessica\", Salary=70000.50))\n[ Info: INSERT INTO Employee (Name, Salary) VALUES ($1, $2)   (Name = \"Jessica\", Salary = 70000.5)\n\njulia> Repo.update!(Employee, (ID=2, Salary=85000))\n[ Info: UPDATE Employee SET Salary = $1 WHERE ID = 2   85000\n\njulia> Repo.delete!(Employee, (ID=3,))\n[ Info: DELETE FROM Employee WHERE ID = 3\n\njulia> Repo.delete!(Employee, 3:5)\n[ Info: DELETE FROM Employee WHERE ID BETWEEN 3 AND 5\n\njulia> em = from(Employee)\nFromClause Employee\n\njulia> Repo.query(em)\n[ Info: SELECT * FROM Employee\n|   id | name      |    salary |\n| ---- | --------- | --------- |\n|    1 | Jeremy    |   10000.5 |\n|    6 | Tom       |   60000.5 |\n|    7 | Jessica   |   70000.5 |\n|    2 | Cloris    |   85000.0 |\n4 rows.\n\njulia> Repo.query([SELECT * FROM em WHERE em.Name == \"Cloris\"])\n[ Info: SELECT * FROM Employee WHERE Name = \'Cloris\'\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   85000.0 |\n1 row.\n\njulia> Repo.query(em, (Name=\"Cloris\",))\n[ Info: SELECT * FROM Employee WHERE Name = \'Cloris\'\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   85000.0 |\n1 row.\n\njulia> ❓ = Octo.PlaceHolder\nPlaceHolder\n\njulia> Repo.query([SELECT * FROM em WHERE em.Name == ❓], [\"Cloris\"])\n[ Info: SELECT * FROM Employee WHERE Name = $1   \"Cloris\"\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   85000.0 |\n1 row."
+    "text": "Current supported databases: PostgreSQL(via LibPQ.jl), MySQL(via MySQL.jl), SQLite(via SQLite.jl)julia> using Octo.Adapters.PostgreSQL\n\njulia> Repo.debug_sql()\nLogLevelDebugSQL::Octo.Repo.RepoLogLevel = -1\n\njulia> Repo.connect(\n           adapter = Octo.Adapters.PostgreSQL,\n           dbname = \"postgresqltest\",\n           user = \"postgres\",\n       )\nPostgreSQL connection (CONNECTION_OK) with parameters:\n  user = postgres\n  passfile = /Users/wookyoung/.pgpass\n  dbname = postgresqltest\n  port = 5432\n  client_encoding = UTF8\n  application_name = LibPQ.jl\n  sslmode = prefer\n  sslcompression = 1\n  krbsrvname = postgres\n  target_session_attrs = any\n\njulia> Repo.execute([DROP TABLE IF EXISTS :Employee])\n[ Info: DROP TABLE IF EXISTS Employee\n\njulia> Repo.execute(Raw(\"\"\"\n           CREATE TABLE Employee (\n               ID SERIAL,\n               Name VARCHAR(255),\n               Salary FLOAT(8),\n               PRIMARY KEY (ID)\n           )\"\"\"))\n┌ Info: CREATE TABLE Employee (\n│     ID SERIAL,\n│     Name VARCHAR(255),\n│     Salary FLOAT(8),\n│     PRIMARY KEY (ID)\n└ )\n\njulia> struct Employee\n       end\n\njulia> Schema.model(Employee, table_name=\"Employee\", primary_key=\"ID\")\nEmployee => Dict(:primary_key=>\"ID\",:table_name=>\"Employee\")\n\njulia> Repo.insert!(Employee, [\n           (Name=\"Jeremy\",  Salary=10000.50),\n           (Name=\"Cloris\",  Salary=20000.50),\n           (Name=\"John\",    Salary=30000.50),\n           (Name=\"Hyunden\", Salary=40000.50),\n           (Name=\"Justin\",  Salary=50000.50),\n           (Name=\"Tom\",     Salary=60000.50),\n       ])\n[ Info: INSERT INTO Employee (Name, Salary) VALUES ($1, $2)   (Name = \"Jeremy\", Salary = 10000.5), (Name = \"Cloris\", Salary = 20000.5), (Name = \"John\", Salary = 30000.5), (Name = \"Hyunden\", Salary = 40000.5), (Name = \"Justin\", Salary = 50000.5), (Name = \"Tom\", Salary = 60000.5)\n\njulia> Repo.get(Employee, 2)\n[ Info: SELECT * FROM Employee WHERE ID = 2\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   20000.5 |\n1 row.\n\njulia> Repo.get(Employee, 2:5)\n[ Info: SELECT * FROM Employee WHERE ID BETWEEN 2 AND 5\n|   id | name      |    salary |\n| ---- | --------- | --------- |\n|    2 | Cloris    |   20000.5 |\n|    3 | John      |   30000.5 |\n|    4 | Hyunden   |   40000.5 |\n|    5 | Justin    |   50000.5 |\n4 rows.\n\njulia> Repo.get(Employee, (Name=\"Jeremy\",))\n[ Info: SELECT * FROM Employee WHERE Name = \'Jeremy\'\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    1 | Jeremy   |   10000.5 |\n1 row.\n\njulia> Repo.query(Employee)\n[ Info: SELECT * FROM Employee\n|   id | name      |    salary |\n| ---- | --------- | --------- |\n|    1 | Jeremy    |   10000.5 |\n|    2 | Cloris    |   20000.5 |\n|    3 | John      |   30000.5 |\n|    4 | Hyunden   |   40000.5 |\n|    5 | Justin    |   50000.5 |\n|    6 | Tom       |   60000.5 |\n6 rows.\n\njulia> Repo.insert!(Employee, (Name=\"Jessica\", Salary=70000.50))\n[ Info: INSERT INTO Employee (Name, Salary) VALUES ($1, $2)   (Name = \"Jessica\", Salary = 70000.5)\n\njulia> Repo.update!(Employee, (ID=2, Salary=85000))\n[ Info: UPDATE Employee SET Salary = $1 WHERE ID = 2   85000\n\njulia> Repo.delete!(Employee, (ID=3,))\n[ Info: DELETE FROM Employee WHERE ID = 3\n\njulia> Repo.delete!(Employee, 3:5)\n[ Info: DELETE FROM Employee WHERE ID BETWEEN 3 AND 5\n\njulia> em = from(Employee)\nFromItem Employee\n\njulia> Repo.query(em)\n[ Info: SELECT * FROM Employee\n|   id | name      |    salary |\n| ---- | --------- | --------- |\n|    1 | Jeremy    |   10000.5 |\n|    6 | Tom       |   60000.5 |\n|    7 | Jessica   |   70000.5 |\n|    2 | Cloris    |   85000.0 |\n4 rows.\n\njulia> Repo.query([SELECT * FROM em WHERE em.Name == \"Cloris\"])\n[ Info: SELECT * FROM Employee WHERE Name = \'Cloris\'\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   85000.0 |\n1 row.\n\njulia> Repo.query(em, (Name=\"Cloris\",))\n[ Info: SELECT * FROM Employee WHERE Name = \'Cloris\'\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   85000.0 |\n1 row.\n\njulia> ❓ = Octo.PlaceHolder\nPlaceHolder\n\njulia> Repo.query([SELECT * FROM em WHERE em.Name == ❓], [\"Cloris\"])\n[ Info: SELECT * FROM Employee WHERE Name = $1   \"Cloris\"\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   85000.0 |\n1 row."
 },
 
 {
@@ -101,7 +101,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Repo",
     "title": "Octo.Repo.query",
     "category": "function",
-    "text": "Repo.query(stmt::Structured)\n\n\n\n\n\nRepo.query(M::Type)\n\n\n\n\n\nRepo.query(from::FromClause)\n\n\n\n\n\nRepo.query(subquery::SubQuery)\n\n\n\n\n\nRepo.query(rawquery::Octo.Raw)\n\n\n\n\n\nRepo.query(stmt::Structured, vals::Vector)\n\n\n\n\n\nRepo.query(M::Type, pk::Union{Int, String})\n\n\n\n\n\nRepo.query(from::FromClause, pk::Union{Int, String})\n\n\n\n\n\nRepo.query(M::Type, pk_range::UnitRange{Int64})\n\n\n\n\n\nRepo.query(from::FromClause, pk_range::UnitRange{Int64}\n\n\n\n\n\nRepo.query(stmt::Structured, nt::NamedTuple)\n\n\n\n\n\nRepo.query(M::Type, nt::NamedTuple)\n\n\n\n\n\nRepo.query(from::FromClause, nt::NamedTuple)\n\n\n\n\n\nRepo.query(subquery::SubQuery, nt::NamedTuple)\n\n\n\n\n\nRepo.query(rawquery::Octo.Raw, nt::NamedTuple)\n\n\n\n\n\n"
+    "text": "Repo.query(stmt::Structured)\n\n\n\n\n\nRepo.query(M::Type)\n\n\n\n\n\nRepo.query(from::FromItem)\n\n\n\n\n\nRepo.query(subquery::SubQuery)\n\n\n\n\n\nRepo.query(rawquery::Octo.Raw)\n\n\n\n\n\nRepo.query(stmt::Structured, vals::Vector)\n\n\n\n\n\nRepo.query(M::Type, pk::Union{Int, String})\n\n\n\n\n\nRepo.query(from::FromItem, pk::Union{Int, String})\n\n\n\n\n\nRepo.query(M::Type, pk_range::UnitRange{Int64})\n\n\n\n\n\nRepo.query(from::FromItem, pk_range::UnitRange{Int64}\n\n\n\n\n\nRepo.query(stmt::Structured, nt::NamedTuple)\n\n\n\n\n\nRepo.query(M::Type, nt::NamedTuple)\n\n\n\n\n\nRepo.query(from::FromItem, nt::NamedTuple)\n\n\n\n\n\nRepo.query(subquery::SubQuery, nt::NamedTuple)\n\n\n\n\n\nRepo.query(rawquery::Octo.Raw, nt::NamedTuple)\n\n\n\n\n\n"
 },
 
 {
@@ -177,46 +177,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Queryable/#Octo.Queryable.from",
-    "page": "Queryable",
-    "title": "Octo.Queryable.from",
-    "category": "function",
-    "text": "from(M::Type, as=nothing)::FromClause\n\n\n\n\n\nfrom(query::Structured, as=nothing)::SubQuery\n\n\n\n\n\n"
-},
-
-{
-    "location": "Queryable/#Octo.Queryable.as",
-    "page": "Queryable",
-    "title": "Octo.Queryable.as",
-    "category": "function",
-    "text": "as(field::Union{Field, SQLFunction, Predicate}, alias::Symbol)::SQLAlias\n\n\n\n\n\n"
-},
-
-{
-    "location": "Queryable/#Octo.Queryable.window",
-    "page": "Queryable",
-    "title": "Octo.Queryable.window",
-    "category": "function",
-    "text": "window(query::Structured, as=nothing):WindowFrame\n\n\n\n\n\n"
-},
-
-{
-    "location": "Queryable/#Octo.Queryable.over",
-    "page": "Queryable",
-    "title": "Octo.Queryable.over",
-    "category": "function",
-    "text": "over(field::SQLFunction, query::Union{WindowFrame,Structured})::SQLOver\n\n\n\n\n\n"
-},
-
-{
-    "location": "Queryable/#Octo.Queryable.extract",
-    "page": "Queryable",
-    "title": "Octo.Queryable.extract",
-    "category": "function",
-    "text": "extract(field::Union{Keyword, Type{DP}, Type{TP}}, from::Union{Dates.DateTime, DP, TP, Dates.CompoundPeriod})::SQLExtract where DP <: Dates.DatePeriod where TP <: Dates.TimePeriod\n\n\n\n\n\n"
-},
-
-{
     "location": "Queryable/#Queryable-1",
     "page": "Queryable",
     "title": "Queryable",
@@ -253,7 +213,7 @@ var documenterSearchIndex = {"docs": [
     "page": "SQL keywords & functions",
     "title": "@sql_keywords",
     "category": "section",
-    "text": "Octo.@sql_keywordsALTER AND AS ASC BETWEEN BY CREATE DATABASE DELETE DESC DISTINCT DROP EXISTS FROM FULL GROUP HAVING IF IN INNER INSERT INTO IS JOIN LEFT LIKE LIMIT NOT NULL OFFSET ON OR ORDER OUTER OVER PARTITION RIGHT SELECT SET TABLE UPDATE USING VALUES WHERE"
+    "text": "Octo.@sql_keywordsALL ALTER AND AS ASC BETWEEN BY CREATE DATABASE DELETE DESC DISTINCT DROP EXCEPT EXECUTE EXISTS FOREIGN FROM FULL GROUP HAVING IF IN INDEX INNER INSERT INTERSECT INTO IS JOIN KEY LEFT LIKE LIMIT NULL OFFSET ON OR ORDER OUTER OVER PARTITION PREPARE PRIMARY RECURSIVE REFERENCES RIGHT SELECT SET TABLE UNION UPDATE USING VALUES WHERE WITH"
 },
 
 {
@@ -277,7 +237,7 @@ var documenterSearchIndex = {"docs": [
     "page": "SQL keywords & functions",
     "title": "aggregate functions",
     "category": "section",
-    "text": "AVG COUNT MAX MIN SUM"
+    "text": "AVG COUNT EVERY MAX MIN NOT SOME SUM"
 },
 
 {
@@ -325,7 +285,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.SQL",
     "title": "Octo.Adapters.SQL.to_sql",
     "category": "function",
-    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\nto_sql(frame::WindowFrame)::String\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
 },
 
 {
@@ -349,7 +309,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.PostgreSQL",
     "title": "Octo.Adapters.PostgreSQL.to_sql",
     "category": "function",
-    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\nto_sql(frame::WindowFrame)::String\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
 },
 
 {
@@ -365,7 +325,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.PostgreSQL",
     "title": "additional @sql_keywords",
     "category": "section",
-    "text": "CURRENT_DATE FALSE LATERAL TRUE WINDOW WITH"
+    "text": "CURRENT_DATE EXPLAIN FALSE LATERAL TRUE WINDOW"
 },
 
 {
@@ -389,7 +349,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.MySQL",
     "title": "Octo.Adapters.MySQL.to_sql",
     "category": "function",
-    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\nto_sql(frame::WindowFrame)::String\n\n\n\n\n\n"
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
 },
 
 {
