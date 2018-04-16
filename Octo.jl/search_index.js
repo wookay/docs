@@ -177,11 +177,35 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Queryable/#Octo.Queryable.from",
+    "page": "Queryable",
+    "title": "Octo.Queryable.from",
+    "category": "function",
+    "text": "from(M::Type, alias=nothing)::FromItem\n\n\n\n\n\nfrom(query::Structured, alias=nothing)::SubQuery\n\n\n\n\n\n"
+},
+
+{
+    "location": "Queryable/#Octo.Queryable.as",
+    "page": "Queryable",
+    "title": "Octo.Queryable.as",
+    "category": "function",
+    "text": "as(field::Union{Field, SQLFunction, Predicate}, alias::Symbol)::SQLAlias\n\n\n\n\n\n"
+},
+
+{
+    "location": "Queryable/#Octo.Queryable.extract",
+    "page": "Queryable",
+    "title": "Octo.Queryable.extract",
+    "category": "function",
+    "text": "extract(field::Union{SQLKeyword, Type{DP}, Type{TP}}, from::Union{Dates.DateTime, DP, TP, Dates.CompoundPeriod})::SQLExtract where DP <: Dates.DatePeriod where TP <: Dates.TimePeriod\n\n\n\n\n\n"
+},
+
+{
     "location": "Queryable/#Queryable-1",
     "page": "Queryable",
     "title": "Queryable",
     "category": "section",
-    "text": "Octo.Queryable.from\nOcto.Queryable.as\nOcto.Queryable.window\nOcto.Queryable.over\nOcto.Queryable.extract"
+    "text": "Octo.Queryable.from\nOcto.Queryable.as\nOcto.Queryable.extract"
 },
 
 {
@@ -213,7 +237,7 @@ var documenterSearchIndex = {"docs": [
     "page": "SQL keywords & functions",
     "title": "@sql_keywords",
     "category": "section",
-    "text": "Octo.@sql_keywordsALL ALTER AND AS ASC BETWEEN BY CREATE DATABASE DELETE DESC DISTINCT DROP EXCEPT EXECUTE EXISTS FOREIGN FROM FULL GROUP HAVING IF IN INDEX INNER INSERT INTERSECT INTO IS JOIN KEY LEFT LIKE LIMIT NULL OFFSET ON OR ORDER OUTER OVER PARTITION PREPARE PRIMARY RECURSIVE REFERENCES RIGHT SELECT SET TABLE UNION UPDATE USING VALUES WHERE WITH"
+    "text": "Octo.@sql_keywordsALL ALTER AND AS ASC BETWEEN BY CREATE DATABASE DEFAULT DELETE DESC DISTINCT DROP EXCEPT EXECUTE EXISTS FOREIGN FROM FULL GROUP HAVING IF IN INDEX INNER INSERT INTERSECT INTO IS JOIN KEY LEFT LIKE LIMIT NULL OFFSET ON OR ORDER OUTER OVER PARTITION PREPARE PRIMARY RECURSIVE REFERENCES RIGHT SELECT SET TABLE UNION UPDATE USING VALUES WHERE WITH"
 },
 
 {
@@ -265,11 +289,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "elements/#Octo.Raw",
+    "page": "SQL elements",
+    "title": "Octo.Raw",
+    "category": "type",
+    "text": "Octo.Raw\n\n\n\n\n\n"
+},
+
+{
     "location": "elements/#SQL-elements-1",
     "page": "SQL elements",
     "title": "SQL elements",
     "category": "section",
-    "text": "Octo.PlaceHolder"
+    "text": "Octo.PlaceHolder\nOcto.Raw"
 },
 
 {
