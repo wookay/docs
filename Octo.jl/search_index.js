@@ -149,7 +149,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Schema",
     "title": "Octo.Schema.model",
     "category": "function",
-    "text": "model(M::Type; table_name::String, primary_key::String=\"id\")\n\n\n\n\n\n"
+    "text": "model(M::Type; table_name::String, kwargs...)\n\n\n\n\n\n"
 },
 
 {
@@ -237,7 +237,7 @@ var documenterSearchIndex = {"docs": [
     "page": "SQL keywords & functions",
     "title": "@sql_keywords",
     "category": "section",
-    "text": "Octo.@sql_keywordsALL ALTER AND AS ASC BETWEEN BY CREATE DATABASE DEFAULT DELETE DESC DISTINCT DROP EXCEPT EXECUTE EXISTS FOREIGN FROM FULL GROUP HAVING IF IN INDEX INNER INSERT INTERSECT INTO IS JOIN KEY LEFT LIKE LIMIT NULL OFFSET ON OR ORDER OUTER OVER PARTITION PREPARE PRIMARY RECURSIVE REFERENCES RIGHT SELECT SET TABLE UNION UPDATE USING VALUES WHERE WITH"
+    "text": "Octo.@sql_keywordsADD ALL ALTER AND AS ASC BEGIN BETWEEN BY COMMIT COLUMN CONSTRAINT CREATE DATABASE DEFAULT DELETE DESC DISTINCT DROP EXCEPT EXECUTE EXISTS FOREIGN FROM FULL GROUP HAVING IF IN INDEX INNER INSERT INTERSECT INTO IS JOIN KEY LEFT LIKE LIMIT NULL OFF OFFSET ON OR ORDER OUTER OVER PARTITION PREPARE PRIMARY RECURSIVE REFERENCES RELEASE RIGHT ROLLBACK SAVEPOINT SELECT SET TABLE TO TRANSACTION TRIGGER UNION UPDATE USING VALUES WHERE WITH"
 },
 
 {
@@ -357,7 +357,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.PostgreSQL",
     "title": "additional @sql_keywords",
     "category": "section",
-    "text": "CURRENT_DATE EXPLAIN FALSE LATERAL TRUE WINDOW"
+    "text": "AUTOCOMMIT  COPY  CURRENT_DATE  EXPLAIN  FALSE  LATERAL  TRUE  WINDOW"
 },
 
 {
