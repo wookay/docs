@@ -13,6 +13,9 @@ FromItem users
 julia&gt; [SELECT * FROM u]
 SELECT * FROM users
 
+julia&gt; [SELECT (u.name, u.salary) FROM u]
+SELECT name, salary FROM users
+
 julia&gt; [SELECT * FROM u WHERE u.id == 2]
 SELECT * FROM users WHERE id = 2
 
