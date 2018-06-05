@@ -357,7 +357,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.PostgreSQL",
     "title": "additional @sql_keywords",
     "category": "section",
-    "text": "AUTOCOMMIT  COPY  CURRENT_DATE  EXPLAIN  FALSE  LATERAL  TRUE  WINDOW"
+    "text": "AUTOCOMMIT  COPY  CURRENT_DATE  EXPLAIN  FALSE  LATERAL  SEQUENCE  SERIAL  TRUE  WINDOW"
 },
 
 {
@@ -397,7 +397,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.MySQL",
     "title": "additional @sql_keywords",
     "category": "section",
-    "text": "USE"
+    "text": "AUTO_INCREMENT  USE"
 },
 
 {
@@ -422,6 +422,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Octo.Adapters.SQLite",
     "category": "section",
     "text": "Octo.Adapters.SQLite.to_sql"
+},
+
+{
+    "location": "Adapters/SQLite/#additional-[@sql_keywords](@ref-sql_keywords)-1",
+    "page": "Octo.Adapters.SQLite",
+    "title": "additional @sql_keywords",
+    "category": "section",
+    "text": "AUTOINCREMENT"
 },
 
 {
