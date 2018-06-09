@@ -341,7 +341,7 @@ var documenterSearchIndex = {"docs": [
     "page": "HTML5.Form",
     "title": "Bukdu.HTML5.Form.submit",
     "category": "function",
-    "text": "submit(block_option)::Node\n\n\n\n\n\n"
+    "text": "submit(block_option; kwargs...)::Node\n\n\n\n\n\n"
 },
 
 {
