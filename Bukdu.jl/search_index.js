@@ -9,11 +9,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "#Bukdu.jl-1",
+    "location": "#Bukdu-1",
     "page": "Home",
-    "title": "Bukdu.jl",
+    "title": "Bukdu 🌌",
     "category": "section",
-    "text": "Bukdu 🌌  is a web development framework for Julia.It\'s influenced by Phoenix framework.using Bukdu\n\nstruct WelcomeController <: ApplicationController\n    conn::Conn\nend\n\nfunction index(c::WelcomeController)\n    render(JSON, \"Hello World\")\nend\n\nroutes() do\n    get(\"/\", WelcomeController, index)\nend\n\nBukdu.start(8080)"
+    "text": "Bukdu 🌌 is a web development framework for Julia (https://julialang.org).It\'s influenced by Phoenix framework (http://phoenixframework.org).using Bukdu\n\nstruct WelcomeController <: ApplicationController\n    conn::Conn\nend\n\nfunction index(c::WelcomeController)\n    render(JSON, \"Hello World\")\nend\n\nroutes() do\n    get(\"/\", WelcomeController, index)\nend\n\nBukdu.start(8080)"
+},
+
+{
+    "location": "#Bukdu-versions-1",
+    "page": "Home",
+    "title": "Bukdu versions",
+    "category": "section",
+    "text": "Bukdu v0.2.0 for Julia 0.6 (https://github.com/wookay/Bukdu.jl/tree/v0.2.0)\nBukdu v0.3.0 for Julia 0.7 (https://github.com/wookay/Bukdu.jl/tree/master)"
 },
 
 {
@@ -21,7 +29,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "RESTful API Demo",
     "category": "section",
-    "text": "Visit Bukdu sevenstars on Heroku and check its source code. (A sleeping heroku page, it will become active again after a short delay.)"
+    "text": "Visit Bukdu on Heroku and check its source code. (A sleeping heroku page, it will become active again after a short delay.)"
 },
 
 {
@@ -29,7 +37,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Modifying actions at runtime",
     "category": "section",
-    "text": "Bukdu/examples $ julia -i welcome.jl\n               _\n   _       _ _(_)_     |  A fresh approach to technical computing\n  (_)     | (_) (_)    |  Documentation: https://docs.julialang.org\n   _ _   _| |_  __ _   |  Type \"?help\" for help.\n  | | | | | | |/ _` |  |\n  | | |_| | | | (_| |  |  Version 0.7.0-DEV.4722 (2018-03-29 19:53 UTC)\n _/ |\\__\'_|_|_|\\__\'_|  |  Commit 8a5f74724c (0 days old master)\n|__/                   |  x86_64-apple-darwin17.4.0\n\nINFO: Bukdu Listening on: 127.0.0.1:8080\njulia> function index(c::WelcomeController)\n           render(JSON, \"Love\")\n       end\nindex (generic function with 1 method)That\'s it! Refresh your page of the web browser."
+    "text": "Bukdu/examples $ julia -i welcome.jl\n               _\n   _       _ _(_)_     |  A fresh approach to technical computing\n  (_)     | (_) (_)    |  Documentation: https://docs.julialang.org\n   _ _   _| |_  __ _   |  Type \"?\" for help, \"]?\" for Pkg help.\n  | | | | | | |/ _` |  |\n  | | |_| | | | (_| |  |  Version 0.7.0-beta.3 (2018-06-24 10:12 UTC)\n _/ |\\__\'_|_|_|\\__\'_|  |  Commit c4d24e60f1* (0 days old master)\n|__/                   |  x86_64-apple-darwin17.4.0\n\nINFO: Bukdu Listening on: 127.0.0.1:8080\njulia> function index(c::WelcomeController)\n           render(JSON, \"Love\")\n       end\nindex (generic function with 1 method)That\'s it! Refresh your page of the web browser."
 },
 
 {
@@ -37,7 +45,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Requirements",
     "category": "section",
-    "text": "The project has reworked based on HTTP.jl in Julia 0.7 DEV.using Pkg\nPkg.clone(\"https://github.com/wookay/Bukdu.jl.git\")\nPkg.checkout(\"Bukdu\", \"sevenstars\")"
+    "text": "The project has reworked based on HTTP.jl in Julia 0.7 beta.julia> type ] key(v0.7) pkg> add HTTP\n(v0.7) pkg> add https://github.com/wookay/Bukdu.jl.git#master"
 },
 
 {
