@@ -13,7 +13,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Bukdu 🌌",
     "category": "section",
-    "text": "Bukdu 🌌 is a web development framework for Julia (https://julialang.org).It\'s influenced by Phoenix framework (http://phoenixframework.org).using Bukdu\n\nstruct WelcomeController <: ApplicationController\n    conn::Conn\nend\n\nfunction index(c::WelcomeController)\n    render(JSON, \"Hello World\")\nend\n\nroutes() do\n    get(\"/\", WelcomeController, index)\nend\n\nBukdu.start(8080)"
+    "text": "Bukdu 🌌 is a web development framework for Julia (https://julialang.org).It\'s influenced by Phoenix framework (http://phoenixframework.org).using Bukdu\n\nstruct WelcomeController <: ApplicationController\n    conn::Conn\nend\n\nfunction index(c::WelcomeController)\n    render(JSON, \"Hello World\")\nend\n\nroutes() do\n    get(\"/\", WelcomeController, index)\nend\n\nBukdu.start(8080)(Image: hello.svg)"
 },
 
 {
@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Bukdu versions",
     "category": "section",
-    "text": "Bukdu v0.2.0 for Julia 0.6 (https://github.com/wookay/Bukdu.jl/tree/v0.2.0)\nBukdu v0.3.0 for Julia 0.7 (https://github.com/wookay/Bukdu.jl/tree/master)"
+    "text": "Bukdu v0.2.0 for Julia 0.6 (https://github.com/wookay/Bukdu.jl/tree/v0.2.0)\nBukdu v0.3.0 for Julia 0.7 (https://github.com/wookay/Bukdu.jl/tree/v0.3.0)"
 },
 
 {
@@ -45,7 +45,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Requirements",
     "category": "section",
-    "text": "The project has reworked based on HTTP.jl in Julia 0.7 beta.julia> type ] key(v0.7) pkg> add HTTP\n(v0.7) pkg> add https://github.com/wookay/Bukdu.jl.git#master"
+    "text": "The project has reworked based on HTTP.jl in Julia 0.7 beta.julia> type ] key(v0.7) pkg> add Bukdu"
 },
 
 {
