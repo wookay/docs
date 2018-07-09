@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "SQL Query DSL",
     "category": "section",
-    "text": "julia> using Octo.Adapters.SQL\n\njulia> struct User\n       end\n\njulia> Schema.model(User, table_name=\"users\")\nUser => Dict(:primary_key=>\"id\",:table_name=>\"users\")\n\njulia> u = from(User)\nFromItem users\n\njulia> [SELECT * FROM u]\nSELECT * FROM users\n\njulia> [SELECT (u.name, u.salary) FROM u]\nSELECT name, salary FROM users\n\njulia> [SELECT * FROM u WHERE u.id == 2]\nSELECT * FROM users WHERE id = 2\n\njulia> to_sql([SELECT * FROM u WHERE u.id == 2])\n\"SELECT * FROM users WHERE id = 2\""
+    "text": "julia> using Octo.Adapters.SQL\n\njulia> struct User\n       end\n\njulia> Schema.model(User, table_name=\"users\")\nUser => Dict(:primary_key=>\"id\",:table_name=>\"users\")\n\njulia> u = from(User)\nFromItem users\n\njulia> [SELECT * FROM u]\nSELECT * FROM users\n\njulia> [SELECT (u.name, u.salary) FROM u]\nSELECT name, salary FROM users\n\njulia> [SELECT * FROM u WHERE u.id == 2]\nSELECT * FROM users WHERE id = 2\n\njulia> to_sql([SELECT * FROM u WHERE u.id == 2])\n\"SELECT * FROM users WHERE id = 2\"(Image: structured.svg)"
 },
 
 {
@@ -38,14 +38,6 @@ var documenterSearchIndex = {"docs": [
     "title": "Subqueries",
     "category": "section",
     "text": "julia> sub = from([SELECT * FROM em WHERE em.Salary > 30000], :sub)\n(SELECT * FROM Employee WHERE Salary > 30000) AS sub\n\njulia> Repo.query(sub)\n[ Info: SELECT * FROM Employee WHERE Salary > 30000\n|   id | name      |    salary |\n| ---- | --------- | --------- |\n|    6 | Tom       |   60000.5 |\n|    7 | Jessica   |   70000.5 |\n|    2 | Cloris    |   85000.0 |\n3 rows.\n\njulia> Repo.query([SELECT sub.Name FROM sub])\n[ Info: SELECT sub.Name FROM (SELECT * FROM Employee WHERE Salary > 30000) AS sub\n| name      |\n| --------- |\n| Tom       |\n| Jessica   |\n| Cloris    |\n3 rows."
-},
-
-{
-    "location": "#Colored-SQL-statements-1",
-    "page": "Home",
-    "title": "Colored SQL statements",
-    "category": "section",
-    "text": "See the CI logs  https://travis-ci.org/wookay/Octo.jl/builds/359976228#L602."
 },
 
 {

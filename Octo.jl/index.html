@@ -20,7 +20,7 @@ julia&gt; [SELECT * FROM u WHERE u.id == 2]
 SELECT * FROM users WHERE id = 2
 
 julia&gt; to_sql([SELECT * FROM u WHERE u.id == 2])
-&quot;SELECT * FROM users WHERE id = 2&quot;</code></pre><h2><a class="nav-anchor" id="Repo-1" href="#Repo-1">Repo</a></h2><p>Current supported databases: PostgreSQL(via <a href="https://github.com/invenia/LibPQ.jl">LibPQ.jl</a>), MySQL(via <a href="https://github.com/JuliaDatabases/MySQL.jl">MySQL.jl</a>), SQLite(via <a href="https://github.com/JuliaDatabases/SQLite.jl">SQLite.jl</a>)</p><pre><code class="language-julia-repl">julia&gt; using Octo.Adapters.PostgreSQL
+&quot;SELECT * FROM users WHERE id = 2&quot;</code></pre><p><img src="assets/octo/structured.svg" alt="structured.svg"/></p><h2><a class="nav-anchor" id="Repo-1" href="#Repo-1">Repo</a></h2><p>Current supported databases: PostgreSQL(via <a href="https://github.com/invenia/LibPQ.jl">LibPQ.jl</a>), MySQL(via <a href="https://github.com/JuliaDatabases/MySQL.jl">MySQL.jl</a>), SQLite(via <a href="https://github.com/JuliaDatabases/SQLite.jl">SQLite.jl</a>)</p><pre><code class="language-julia-repl">julia&gt; using Octo.Adapters.PostgreSQL
 
 julia&gt; Repo.debug_sql()
 LogLevelDebugSQL::Octo.Repo.RepoLogLevel = -1
@@ -177,4 +177,4 @@ julia&gt; Repo.query([SELECT sub.Name FROM sub])
 | Tom       |
 | Jessica   |
 | Cloris    |
-3 rows.</code></pre><h3><a class="nav-anchor" id="Colored-SQL-statements-1" href="#Colored-SQL-statements-1">Colored SQL statements</a></h3><ul><li>See the CI logs  <a href="https://travis-ci.org/wookay/Octo.jl/builds/359976228#L602">https://travis-ci.org/wookay/Octo.jl/builds/359976228#L602</a>.</li></ul><footer><hr/><a class="next" href="Repo/"><span class="direction">Next</span><span class="title">Repo</span></a></footer></article></body></html>
+3 rows.</code></pre><footer><hr/><a class="next" href="Repo/"><span class="direction">Next</span><span class="title">Repo</span></a></footer></article></body></html>
