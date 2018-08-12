@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Bukdu versions",
     "category": "section",
-    "text": "Bukdu v0.2.0 for Julia 0.6 (https://github.com/wookay/Bukdu.jl/tree/v0.2.0)\nBukdu v0.3.0 for Julia 0.7 (https://github.com/wookay/Bukdu.jl/tree/v0.3.0)"
+    "text": "Bukdu v0.2.0 for Julia 0.6 (https://github.com/wookay/Bukdu.jl/tree/v0.2.0)\nBukdu v0.3.1 for Julia 1.0 (https://github.com/wookay/Bukdu.jl/tree/v0.3.1)"
 },
 
 {
@@ -37,7 +37,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Modifying actions at runtime",
     "category": "section",
-    "text": "Bukdu/examples $ julia -i welcome.jl\n               _\n   _       _ _(_)_     |  A fresh approach to technical computing\n  (_)     | (_) (_)    |  Documentation: https://docs.julialang.org\n   _ _   _| |_  __ _   |  Type \"?\" for help, \"]?\" for Pkg help.\n  | | | | | | |/ _` |  |\n  | | |_| | | | (_| |  |  Version 0.7.0-beta.3 (2018-06-24 10:12 UTC)\n _/ |\\__\'_|_|_|\\__\'_|  |  Commit c4d24e60f1* (0 days old master)\n|__/                   |  x86_64-apple-darwin17.4.0\n\nINFO: Bukdu Listening on: 127.0.0.1:8080\njulia> function index(c::WelcomeController)\n           render(JSON, \"Love\")\n       end\nindex (generic function with 1 method)That\'s it! Refresh your page of the web browser."
+    "text": "Bukdu/examples $ julia -i welcome.jl\n   _       _ _(_)_     |  Documentation: https://docs.julialang.org\n  (_)     | (_) (_)    |\n   _ _   _| |_  __ _   |  Type \"?\" for help, \"]?\" for Pkg help.\n  | | | | | | |/ _` |  |\n  | | |_| | | | (_| |  |  Version 1.0.0 (2018-08-08)\n _/ |\\__\'_|_|_|\\__\'_|  |  Official https://julialang.org/ release\n|__/\n\nINFO: Bukdu Listening on: 127.0.0.1:8080\njulia> function index(c::WelcomeController)\n           render(JSON, \"Love\")\n       end\nindex (generic function with 1 method)That\'s it! Refresh your page of the web browser."
 },
 
 {
@@ -45,7 +45,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Requirements",
     "category": "section",
-    "text": "The project has reworked based on HTTP.jl in Julia 0.7 beta.julia> type ] key(v0.7) pkg> add Bukdu"
+    "text": "The project has reworked based on HTTP.jl in Julia 1.0.julia> type ] key(v1.0) pkg> add Bukdu"
 },
 
 {
