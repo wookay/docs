@@ -9,11 +9,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "#Octo.jl-Documentation-1",
+    "location": "#Octo.jl-1",
     "page": "Home",
-    "title": "Octo.jl Documentation",
+    "title": "Octo.jl",
     "category": "section",
-    "text": "Octo.jl 🐙  is an SQL Query DSL in Julia.It\'s influenced by Ecto."
+    "text": "Octo.jl 🐙 is an SQL Query DSL in Julia (https://julialang.org).It\'s influenced by Ecto (https://github.com/elixir-ecto/ecto)."
 },
 
 {
@@ -38,6 +38,22 @@ var documenterSearchIndex = {"docs": [
     "title": "Subqueries",
     "category": "section",
     "text": "julia> sub = from([SELECT * FROM em WHERE em.Salary > 30000], :sub)\n(SELECT * FROM Employee WHERE Salary > 30000) AS sub\n\njulia> Repo.query(sub)\n[ Info: SELECT * FROM Employee WHERE Salary > 30000\n|   id | name      |    salary |\n| ---- | --------- | --------- |\n|    6 | Tom       |   60000.5 |\n|    7 | Jessica   |   70000.5 |\n|    2 | Cloris    |   85000.0 |\n3 rows.\n\njulia> Repo.query([SELECT sub.Name FROM sub])\n[ Info: SELECT sub.Name FROM (SELECT * FROM Employee WHERE Salary > 30000) AS sub\n| name      |\n| --------- |\n| Tom       |\n| Jessica   |\n| Cloris    |\n3 rows."
+},
+
+{
+    "location": "#Colored-SQL-statements-1",
+    "page": "Home",
+    "title": "Colored SQL statements",
+    "category": "section",
+    "text": "(Image: colored_sql_statements.png)See the CI logs  https://travis-ci.org/wookay/Octo.jl/jobs/388090148#L691."
+},
+
+{
+    "location": "#Requirements-1",
+    "page": "Home",
+    "title": "Requirements",
+    "category": "section",
+    "text": "You need Julia 1.0.julia> type ] key(v1.0) pkg> add Octofor PostgreSQL(v1.0) pkg> add LibPQfor MySQL(v1.0) pkg> add MySQLfor SQLite(v1.0) pkg> add SQLite"
 },
 
 {
