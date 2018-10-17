@@ -49,14 +49,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "#Requirements-1",
-    "page": "Home",
-    "title": "Requirements",
-    "category": "section",
-    "text": "You need Julia 1.0.julia> type ] key(v1.0) pkg> add Octofor PostgreSQL(v1.0) pkg> add LibPQfor MySQL(v1.0) pkg> add MySQLfor SQLite(v1.0) pkg> add SQLite"
-},
-
-{
     "location": "Repo/#",
     "page": "Repo",
     "title": "Repo",
@@ -365,7 +357,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.PostgreSQL",
     "title": "additional @sql_keywords",
     "category": "section",
-    "text": "AUTOCOMMIT  COPY  CURRENT_DATE  EXPLAIN  FALSE  LATERAL  SEQUENCE  SERIAL  TRUE  WINDOW"
+    "text": "AUTOCOMMIT  COPY  CURRENT_DATE  DESCRIBE  EXPLAIN  FALSE  LATERAL  SEQUENCE  SERIAL  TRUE  WINDOW"
 },
 
 {
@@ -405,7 +397,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Octo.Adapters.MySQL",
     "title": "additional @sql_keywords",
     "category": "section",
-    "text": "AUTO_INCREMENT  USE"
+    "text": "AUTO_INCREMENT  DESCRIBE  USE"
 },
 
 {
