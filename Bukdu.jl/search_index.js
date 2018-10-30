@@ -73,6 +73,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "controllers/#Bukdu.redirect_to",
+    "page": "controllers",
+    "title": "Bukdu.redirect_to",
+    "category": "function",
+    "text": "redirect_to(conn::Conn, path::String)\n\n\n\n\n\n"
+},
+
+{
     "location": "controllers/#Bukdu.Assoc",
     "page": "controllers",
     "title": "Bukdu.Assoc",
@@ -85,7 +93,7 @@ var documenterSearchIndex = {"docs": [
     "page": "controllers",
     "title": "controllers",
     "category": "section",
-    "text": "ApplicationController\nConnAssoc"
+    "text": "ApplicationController\nConn\nredirect_toAssoc"
 },
 
 {
