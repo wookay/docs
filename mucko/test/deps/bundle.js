@@ -1,22 +1,151 @@
-require=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"/../index.js":[function(require,module,exports){
-// mucko index.js
-
-var { Meta, Undefined, Null, DataType, Bool } = require("./src/Meta.js")
-var { UnitTest, Test } = require("./src/UnitTest.js")
-var { Base } = require("./src/Base.js")
-var { Sys } = require("./src/Sys.js")
-var { util } = require("./src/util.js")
-
+require=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+// jscat index.js
 
 module.exports = {
-    Meta, Undefined, Null, DataType, Bool,
-    UnitTest, Test,
-    Base,
-    Sys,
-    util,
 }
 
-},{"./src/Base.js":1,"./src/Meta.js":2,"./src/Sys.js":3,"./src/UnitTest.js":4,"./src/util.js":6}],1:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
+/* globals document, ImageData */
+
+const parseFont = require('./lib/parse-font')
+
+exports.parseFont = parseFont
+
+exports.createCanvas = function (width, height) {
+  return Object.assign(document.createElement('canvas'), { width, height })
+}
+
+exports.createImageData = function (array, width, height) {
+  // Browser implementation of ImageData looks at the number of arguments passed
+  switch (arguments.length) {
+    case 0: return new ImageData()
+    case 1: return new ImageData(array)
+    case 2: return new ImageData(array, width)
+    default: return new ImageData(array, width, height)
+  }
+}
+
+exports.loadImage = function (src) {
+  return new Promise((resolve, reject) => {
+    const image = document.createElement('img')
+
+    function cleanup () {
+      image.onload = null
+      image.onerror = null
+    }
+
+    image.onload = () => { cleanup(); resolve(image) }
+    image.onerror = () => { cleanup(); reject(new Error(`Failed to load the image "${src}"`)) }
+
+    image.src = src
+  })
+}
+
+},{"./lib/parse-font":3}],3:[function(require,module,exports){
+'use strict'
+
+/**
+ * Font RegExp helpers.
+ */
+
+const weights = 'bold|bolder|lighter|[1-9]00'
+  , styles = 'italic|oblique'
+  , variants = 'small-caps'
+  , stretches = 'ultra-condensed|extra-condensed|condensed|semi-condensed|semi-expanded|expanded|extra-expanded|ultra-expanded'
+  , units = 'px|pt|pc|in|cm|mm|%|em|ex|ch|rem|q'
+  , string = '\'([^\']+)\'|"([^"]+)"|[\\w\\s-]+'
+
+// [ [ <‘font-style’> || <font-variant-css21> || <‘font-weight’> || <‘font-stretch’> ]?
+//    <‘font-size’> [ / <‘line-height’> ]? <‘font-family’> ]
+// https://drafts.csswg.org/css-fonts-3/#font-prop
+const weightRe = new RegExp(`(${weights}) +`, 'i')
+const styleRe = new RegExp(`(${styles}) +`, 'i')
+const variantRe = new RegExp(`(${variants}) +`, 'i')
+const stretchRe = new RegExp(`(${stretches}) +`, 'i')
+const sizeFamilyRe = new RegExp(
+  '([\\d\\.]+)(' + units + ') *'
+  + '((?:' + string + ')( *, *(?:' + string + '))*)')
+
+/**
+ * Cache font parsing.
+ */
+
+const cache = {}
+
+const defaultHeight = 16 // pt, common browser default
+
+/**
+ * Parse font `str`.
+ *
+ * @param {String} str
+ * @return {Object} Parsed font. `size` is in device units. `unit` is the unit
+ *   appearing in the input string.
+ * @api private
+ */
+
+module.exports = function (str) {
+  // Cached
+  if (cache[str]) return cache[str]
+
+  // Try for required properties first.
+  const sizeFamily = sizeFamilyRe.exec(str)
+  if (!sizeFamily) return // invalid
+
+  // Default values and required properties
+  const font = {
+    weight: 'normal',
+    style: 'normal',
+    stretch: 'normal',
+    variant: 'normal',
+    size: parseFloat(sizeFamily[1]),
+    unit: sizeFamily[2],
+    family: sizeFamily[3].replace(/["']/g, '').replace(/ *, */g, ',')
+  }
+
+  // Optional, unordered properties.
+  let weight, style, variant, stretch
+  // Stop search at `sizeFamily.index`
+  let substr = str.substring(0, sizeFamily.index)
+  if ((weight = weightRe.exec(substr))) font.weight = weight[1]
+  if ((style = styleRe.exec(substr))) font.style = style[1]
+  if ((variant = variantRe.exec(substr))) font.variant = variant[1]
+  if ((stretch = stretchRe.exec(substr))) font.stretch = stretch[1]
+
+  // Convert to device units. (`font.unit` is the original unit)
+  // TODO: ch, ex
+  switch (font.unit) {
+    case 'pt':
+      font.size /= 0.75
+      break
+    case 'pc':
+      font.size *= 16
+      break
+    case 'in':
+      font.size *= 96
+      break
+    case 'cm':
+      font.size *= 96.0 / 2.54
+      break
+    case 'mm':
+      font.size *= 96.0 / 25.4
+      break
+    case '%':
+      // TODO disabled because existing unit tests assume 100
+      // font.size *= defaultHeight / 100 / 0.75
+      break
+    case 'em':
+    case 'rem':
+      font.size *= defaultHeight / 0.75
+      break
+    case 'q':
+      font.size *= 96 / 25.4 / 4
+      break
+  }
+
+  return (cache[str] = font)
+}
+
+},{}],4:[function(require,module,exports){
 // mucko Base.js
 
 var meta = require("./Meta.js")
@@ -80,7 +209,7 @@ Base = {
     stdout: stdout,
 
     // Base.String
-    String: strings._String,
+    String: strings.String,
 
     // Base.string
     string: strings.string,
@@ -94,7 +223,7 @@ module.exports = {
     Base,
 }
 
-},{"./Meta.js":2,"./strings.js":5}],2:[function(require,module,exports){
+},{"./Meta.js":5,"./strings.js":8}],5:[function(require,module,exports){
 // mucko Meta.js
 
 class Undefined {
@@ -166,7 +295,7 @@ module.exports = {
     Bool,
 }
 
-},{}],3:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 // mucko Sys.js
 
 Sys = {
@@ -181,7 +310,7 @@ module.exports = {
     Sys,
 }
 
-},{}],4:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 (function (process){
 // mucko UnitTest.js
 
@@ -309,7 +438,7 @@ module.exports = {
 }
 
 }).call(this,require('_process'))
-},{"_process":10}],5:[function(require,module,exports){
+},{"_process":14}],8:[function(require,module,exports){
 (function (Buffer){
 // mucko strings.js
 
@@ -350,13 +479,13 @@ function repr(x) {
 
 
 module.exports = {
-    _String,
+    String: _String,
     string,
     repr,
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./Meta.js":2,"buffer":8}],6:[function(require,module,exports){
+},{"./Meta.js":5,"buffer":12}],9:[function(require,module,exports){
 // mucko util.js
 
 util = {
@@ -371,7 +500,40 @@ module.exports = {
     util,
 }
 
-},{}],7:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
+// jscat test_canvas.js
+
+var mucko = require("mucko")
+var Meta = mucko.Meta
+var Test = mucko.Test
+var UnitTest = mucko.UnitTest
+var Base = mucko.Base
+var Sys = mucko.Sys
+var println = Base.println
+var stdout = Base.stdout
+
+
+if (Sys.isbrowser()) {
+    var createCanvas = function (w, h) {
+        var canvas = document.createElement('canvas')
+        canvas.width = w
+        canvas.height = h
+        var body = document.getElementsByTagName("body")[0]
+        body.appendChild(canvas)
+        return canvas
+    }
+} else {
+    var { createCanvas, loadImage, Canvas } = require('canvas')
+}
+
+Test.test_canvas = function () {
+    const canvas = createCanvas(200, 200)
+    const ctx = canvas.getContext('2d')
+    typ = Sys.isbrowser() ? HTMLCanvasElement : Canvas
+    assert_true(Meta.isa(canvas, typ))
+}
+
+},{"canvas":2,"mucko":"mucko"}],11:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -524,7 +686,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],8:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -2303,7 +2465,7 @@ function numberIsNaN (obj) {
   return obj !== obj // eslint-disable-line no-self-compare
 }
 
-},{"base64-js":7,"ieee754":9}],9:[function(require,module,exports){
+},{"base64-js":11,"ieee754":13}],13:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = (nBytes * 8) - mLen - 1
@@ -2389,7 +2551,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],10:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -2575,4 +2737,22 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[]);
+},{}],"mucko":[function(require,module,exports){
+// mucko index.js
+
+var { Meta, Undefined, Null, DataType, Bool } = require("./src/Meta.js")
+var { UnitTest, Test } = require("./src/UnitTest.js")
+var { Base } = require("./src/Base.js")
+var { Sys } = require("./src/Sys.js")
+var { util } = require("./src/util.js")
+
+
+module.exports = {
+    Meta, Undefined, Null, DataType, Bool,
+    UnitTest, Test,
+    Base,
+    Sys,
+    util,
+}
+
+},{"./src/Base.js":4,"./src/Meta.js":5,"./src/Sys.js":6,"./src/UnitTest.js":7,"./src/util.js":9}]},{},[1,10]);
