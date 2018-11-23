@@ -18330,6 +18330,8 @@ function get_base() {
         // -- strings
         String: strings.String,      // Base.String
         string: strings.string,      // Base.string
+        split: strings.split,        // Base.split
+        join: strings.join,          // Base.join
         repr: strings.repr,          // Base.repr
 
         // -- range
@@ -18815,6 +18817,18 @@ function string() {
     return out;
 }
 
+function split(str, dlm) {
+    return str.split(dlm)
+}
+
+function join(strings, delim) {
+    if (Meta.isundef(delim)) {
+        return strings.join("")
+    } else {
+        return strings.join(delim)
+    }
+}
+
 function repr(x) {
     let typ = typeof(x);
     let quot = '"';
@@ -18828,6 +18842,8 @@ function repr(x) {
 module.exports = {
     String: _String,
     string,
+    split,
+    join,
     repr,
 }
 
