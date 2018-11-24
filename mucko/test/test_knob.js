@@ -3,18 +3,18 @@
 var mucko = require("mucko")
 var Test = mucko.Test
 var Base = mucko.Base
+var Meta = mucko.Meta
 var Sys = mucko.Sys
 
 
 function inbrowser_knob() {
     let println = Base.println
-    var add_knob = require("svg-knob").default
     knob_el = document.getElementById('knob')
     function knob_changed(value) {
         el = document.getElementById('knob-value')
         el.innerHTML = value
     }
-    knob = add_knob(knob_el, {
+    knob = Knob(knob_el, {
         value_min: 0,
         value_max: 100,
         value_resolution: 1,
@@ -41,11 +41,15 @@ function inbrowser_knob() {
     val = 75
     knob.value = val
     knob_changed(val)
+    assert_equal(knob.value, val)
 }
 
 
 Test.test_knob = function () {
     if (Sys.isbrowser()) {
         inbrowser_knob()
+    } else {
+        var { Knob } = require("./deps/svg-knob.js")
+        assert_true(Meta.isa(Knob, Function))
     }
 }
