@@ -9,7 +9,7 @@ function inbrowser_knob(UI) {
     knobel1 = document.getElementById('knob1')
     knobel2 = document.getElementById('knob2')
     function changed(value) {
-        Base.println("changed ", this.label, value)
+    //    Base.println("changed ", this.label, value)
     }
     UI.KnobControl.Knob(knobel1, 0,   { label: 'knob1', onchange: changed })
     UI.KnobControl.Knob(knobel2, 100, { label: 'knob2', onchange: changed })
