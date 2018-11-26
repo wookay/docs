@@ -1,4 +1,4 @@
-// mucko.ui test_knob_control.js
+// mucko-ui test_knob_control.js
 
 var mucko = require("mucko")
 var Test = mucko.Test
@@ -15,7 +15,7 @@ function inbrowser_knob(UI) {
 
 Test.test_knob = function () {
     if (Base.Sys.isbrowser()) {
-        UI = require("mucko.ui")
+        UI = require("mucko-ui")
         inbrowser_knob(UI)
     } else {
         UI = require("../index.js")

@@ -1,5 +1,5 @@
 bundle:
-	browserify -r mucko -r ../deps/svg-knob.js:svg-knob -r ../index.js:mucko.ui > deps/bundle.js
+	browserify -r mucko -r ../deps/svg-knob.js:svg-knob -r ../index.js:mucko-ui > deps/bundle.js
 	date '+%Y-%m-%d %H:%M:%S' > deps/browserified_at
 
 test:

@@ -1,4 +1,4 @@
-// mucko.ui test_ui.js
+// mucko-ui test_ui.js
 
 var mucko = require("mucko")
 var Test = mucko.Test
@@ -11,7 +11,7 @@ function inbrowser_ui(UI) {
 
 Test.test_ui = function () {
     if (Base.Sys.isbrowser()) {
-        mucko.UI = require("mucko.ui")
+        mucko.UI = require("mucko-ui")
         inbrowser_ui(mucko.UI)
     } else {
         mucko.UI = require("../index.js")

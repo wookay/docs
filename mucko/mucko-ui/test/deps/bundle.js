@@ -672,7 +672,7 @@ function get_util() {
 module.exports = get_util()
 
 },{}],17:[function(require,module,exports){
-// mucko.ui UI.js
+// mucko-ui UI.js
 
 function get_ui() {
     var KnobControl = require("./knob_control.js")
@@ -686,7 +686,7 @@ function get_ui() {
 module.exports = get_ui()
 
 },{"./knob_control.js":18}],18:[function(require,module,exports){
-// mucko.ui knob_control.js
+// mucko-ui knob_control.js
 
 var mucko = require("mucko")
 var Base = mucko.Base
@@ -2948,8 +2948,8 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],"mucko.ui":[function(require,module,exports){
-// mucko.ui index.js
+},{}],"mucko-ui":[function(require,module,exports){
+// mucko-ui index.js
 
 var UI = require("./src/UI.js")
 
