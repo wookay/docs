@@ -1,0 +1,43 @@
+<!--
+open index.html
+-->
+<html>
+  <head>
+    <title>mucko.ui runtests</title>
+    <script src="../test/deps/bundle.js" type="text/javascript"></script>
+<style>
+/* canvas */
+div.paper {
+    width: 600px;
+    background-color: #eff1f1;
+}
+/* knobs */
+svg.knobs {
+    width: 60px;
+    height: 60px;
+    padding: 7px 3px 3px 7px; /* top right bottom left */
+}
+svg#knob1 {
+}
+svg#knob2 {
+}
+</style>
+  </head>
+<body>
+<pre id="stdout">
+</pre> <!-- pre#stdout -->
+
+<div class="paper">
+    <svg id="knob1" class="knobs"></svg>
+    <svg id="knob2" class="knobs"></svg>
+    <span id="knob-value"></span>
+</div>
+<p />
+
+<script src="../test/test_ui.js" type="text/javascript"></script>
+<script src="../test/test_knob_control.js" type="text/javascript"></script>
+<script>
+UnitTest.run(Test)
+</script>
+</body>
+</html>
