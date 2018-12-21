@@ -13,15 +13,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Bukdu 🌌",
     "category": "section",
-    "text": "Bukdu 🌌 is a web development framework for Julia (https://julialang.org).It\'s influenced by Phoenix framework (http://phoenixframework.org).using Bukdu\n\nstruct WelcomeController <: ApplicationController\n    conn::Conn\nend\n\nfunction index(c::WelcomeController)\n    render(JSON, \"Hello World\")\nend\n\nroutes() do\n    get(\"/\", WelcomeController, index)\nend\n\nBukdu.start(8080)(Image: hello.svg)"
-},
-
-{
-    "location": "#Bukdu-versions-1",
-    "page": "Home",
-    "title": "Bukdu versions",
-    "category": "section",
-    "text": "Bukdu v0.3.3 for Julia 1.0 (https://github.com/wookay/Bukdu.jl/tree/v0.3.3)"
+    "text": "Bukdu 🌌 is a web development framework for Julia.It\'s influenced by Phoenix framework.using Bukdu\n\nstruct WelcomeController <: ApplicationController\n    conn::Conn\nend\n\nfunction index(c::WelcomeController)\n    render(JSON, \"Hello World\")\nend\n\nroutes() do\n    get(\"/\", WelcomeController, index)\nend\n\nBukdu.start(8080)(Image: hello.svg)"
 },
 
 {
@@ -29,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "RESTful API Demo",
     "category": "section",
-    "text": "Visit Bukdu on Heroku and check its source code. (A sleeping heroku page, it will become active again after a short delay.)"
+    "text": "There\'s examples/rest for RESTful API examples.Visit Bukdu on Heroku and check its source code. (A sleeping heroku page, it will become active again after a short delay.)"
 },
 
 {
@@ -37,7 +29,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Modifying actions at runtime",
     "category": "section",
-    "text": "Bukdu/examples $ julia -i welcome.jl\n   _       _ _(_)_     |  Documentation: https://docs.julialang.org\n  (_)     | (_) (_)    |\n   _ _   _| |_  __ _   |  Type \"?\" for help, \"]?\" for Pkg help.\n  | | | | | | |/ _` |  |\n  | | |_| | | | (_| |  |  Version 1.0.0 (2018-08-08)\n _/ |\\__\'_|_|_|\\__\'_|  |  Official https://julialang.org/ release\n|__/\n\nINFO: Bukdu Listening on: 127.0.0.1:8080\njulia> function index(c::WelcomeController)\n           render(JSON, \"Love\")\n       end\nindex (generic function with 1 method)That\'s it! Refresh your page of the web browser."
+    "text": "Bukdu/examples $ julia -i welcome.jl\n   _       _ _(_)_     |  Documentation: https://docs.julialang.org\n  (_)     | (_) (_)    |\n   _ _   _| |_  __ _   |  Type \"?\" for help, \"]?\" for Pkg help.\n  | | | | | | |/ _` |  |\n  | | |_| | | | (_| |  |  Version 1.0.0 (2018-08-08)\n _/ |\\__\'_|_|_|\\__\'_|  |  Official https://julialang.org/ release\n|__/\n\nINFO: Bukdu Listening on: 127.0.0.1:8080\njulia> Visit http://127.0.0.1:8080 on your web browser.julia> function index(c::WelcomeController)\n           render(JSON, \"Love\")\n       end\nindex (generic function with 1 method)That\'s it! Refresh your page of the web browser."
 },
 
 {
@@ -153,54 +145,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "routes/#Base.get",
-    "page": "routes",
-    "title": "Base.get",
-    "category": "function",
-    "text": "get(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
-},
-
-{
-    "location": "routes/#Bukdu.post",
-    "page": "routes",
-    "title": "Bukdu.post",
-    "category": "function",
-    "text": "post(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
-},
-
-{
-    "location": "routes/#Bukdu.delete",
-    "page": "routes",
-    "title": "Bukdu.delete",
-    "category": "function",
-    "text": "delete(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
-},
-
-{
-    "location": "routes/#Bukdu.patch",
-    "page": "routes",
-    "title": "Bukdu.patch",
-    "category": "function",
-    "text": "patch(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
-},
-
-{
-    "location": "routes/#Bukdu.put",
-    "page": "routes",
-    "title": "Bukdu.put",
-    "category": "function",
-    "text": "put(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
-},
-
-{
-    "location": "routes/#Bukdu.resources",
-    "page": "routes",
-    "title": "Bukdu.resources",
-    "category": "function",
-    "text": "resources(path::String, ::Type{C}; only=[], except=[]) where {C <: ApplicationController}\n\n\n\n\n\n"
-},
-
-{
     "location": "routes/#Bukdu.Routing.empty!",
     "page": "routes",
     "title": "Bukdu.Routing.empty!",
@@ -213,7 +157,7 @@ var documenterSearchIndex = {"docs": [
     "page": "routes",
     "title": "routes",
     "category": "section",
-    "text": "routes\npipelineget\npost\ndelete\npatch\nput\nresourcesRouting.empty!"
+    "text": "routes\npipelineget\npost\ndelete\npatch\nput\noptions\nresourcesRouting.empty!"
 },
 
 {
@@ -261,7 +205,7 @@ var documenterSearchIndex = {"docs": [
     "page": "plugs",
     "title": "Bukdu.Plug.plug",
     "category": "function",
-    "text": "plug(::Type{Logger}; access_log::Union{Nothing,<:NamedTuple}=nothing, formatter=nothing)\n\n\n\n\n\nplug(::Type{Static}; at::String, from::String, only::Union{Vector{String},Nothing}=nothing, indexfile=\"index.html\")\n\n\n\n\n\nplug(::Type{WebSocket})\n\n\n\n\n\nplug(::Type{ServerSentEvents})\n\n\n\n\n\n"
+    "text": "plug(::Type{Logger}; access_log::Union{Nothing,<:NamedTuple}=nothing, formatter=LoggerFormatter.basic_message)\n\n\n\n\n\nplug(::Type{Static}; at::String, from::String, only::Union{Vector{String},Nothing}=nothing, indexfile=\"index.html\")\n\n\n\n\n\nplug(::Type{WebSocket})\n\n\n\n\n\nplug(::Type{ServerSentEvents})\n\n\n\n\n\n"
 },
 
 {
