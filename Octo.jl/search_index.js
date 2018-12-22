@@ -9,27 +9,43 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "#Bukdu-1",
+    "location": "#Octo.jl-1",
     "page": "Home",
-    "title": "Bukdu 🌌",
+    "title": "Octo.jl",
     "category": "section",
-    "text": "Bukdu 🌌 is a web development framework for Julia.It\'s influenced by Phoenix framework.using Bukdu\n\nstruct WelcomeController <: ApplicationController\n    conn::Conn\nend\n\nfunction index(c::WelcomeController)\n    render(JSON, \"Hello World\")\nend\n\nroutes() do\n    get(\"/\", WelcomeController, index)\nend\n\nBukdu.start(8080)(Image: hello.svg)"
+    "text": "Octo.jl 🐙 is an SQL Query DSL in Julia. It also comes with a very useful tool called Repo. You could Repo.get, Repo.insert! Repo.update! Repo.delete! for many database drivers without hand-written SQL.It\'s influenced by Ecto."
 },
 
 {
-    "location": "#RESTful-API-Demo-1",
+    "location": "#SQL-Query-DSL-1",
     "page": "Home",
-    "title": "RESTful API Demo",
+    "title": "SQL Query DSL",
     "category": "section",
-    "text": "There\'s examples/rest for RESTful API examples.Visit Bukdu on Heroku and check its source code. (A sleeping heroku page, it will become active again after a short delay.)"
+    "text": "julia> using Octo.Adapters.SQL\n\njulia> struct User\n       end\n\njulia> Schema.model(User, table_name=\"users\")\nUser => Dict(:primary_key=>\"id\",:table_name=>\"users\")\n\njulia> u = from(User)\nFromItem users\n\njulia> [SELECT * FROM u]\nSELECT * FROM users\n\njulia> [SELECT (u.name, u.salary) FROM u]\nSELECT name, salary FROM users\n\njulia> [SELECT * FROM u WHERE u.id == 2]\nSELECT * FROM users WHERE id = 2\n\njulia> to_sql([SELECT * FROM u WHERE u.id == 2])\n\"SELECT * FROM users WHERE id = 2\"(Image: structured.svg)"
 },
 
 {
-    "location": "#Modifying-actions-at-runtime-1",
+    "location": "#Repo-1",
     "page": "Home",
-    "title": "Modifying actions at runtime",
+    "title": "Repo",
     "category": "section",
-    "text": "Bukdu/examples $ julia -i welcome.jl\n   _       _ _(_)_     |  Documentation: https://docs.julialang.org\n  (_)     | (_) (_)    |\n   _ _   _| |_  __ _   |  Type \"?\" for help, \"]?\" for Pkg help.\n  | | | | | | |/ _` |  |\n  | | |_| | | | (_| |  |  Version 1.0.0 (2018-08-08)\n _/ |\\__\'_|_|_|\\__\'_|  |  Official https://julialang.org/ release\n|__/\n\nINFO: Bukdu Listening on: 127.0.0.1:8080\njulia> Visit http://127.0.0.1:8080 on your web browser.julia> function index(c::WelcomeController)\n           render(JSON, \"Love\")\n       end\nindex (generic function with 1 method)That\'s it! Refresh your page of the web browser."
+    "text": "Current supported database drivers:PostgreSQL(via LibPQ.jl)\nMySQL(via MySQL.jl)\nSQLite(via SQLite.jl\nODBC(via ODBC.jl)\nJDBC(via JDBC.jl)julia> using Octo.Adapters.PostgreSQL\n\njulia> Repo.debug_sql()\nLogLevelDebugSQL::Octo.Repo.RepoLogLevel = -1\n\njulia> Repo.connect(\n           adapter = Octo.Adapters.PostgreSQL,\n           dbname = \"postgresqltest\",\n           user = \"postgres\",\n       )\nPostgreSQL connection (CONNECTION_OK) with parameters:\n  user = postgres\n  passfile = /Users/wookyoung/.pgpass\n  dbname = postgresqltest\n  port = 5432\n  client_encoding = UTF8\n  application_name = LibPQ.jl\n  sslmode = prefer\n  sslcompression = 1\n  krbsrvname = postgres\n  target_session_attrs = any\n\njulia> Repo.execute([DROP TABLE IF EXISTS :Employee])\n[ Info: DROP TABLE IF EXISTS Employee\n\njulia> Repo.execute(Raw(\"\"\"\n           CREATE TABLE Employee (\n               ID SERIAL,\n               Name VARCHAR(255),\n               Salary FLOAT(8),\n               PRIMARY KEY (ID)\n           )\"\"\"))\n┌ Info: CREATE TABLE Employee (\n│     ID SERIAL,\n│     Name VARCHAR(255),\n│     Salary FLOAT(8),\n│     PRIMARY KEY (ID)\n└ )\n\njulia> struct Employee\n       end\n\njulia> Schema.model(Employee, table_name=\"Employee\", primary_key=\"ID\")\nEmployee => Dict(:primary_key=>\"ID\",:table_name=>\"Employee\")\n\njulia> Repo.insert!(Employee, [\n           (Name=\"Jeremy\",  Salary=10000.50),\n           (Name=\"Cloris\",  Salary=20000.50),\n           (Name=\"John\",    Salary=30000.50),\n           (Name=\"Hyunden\", Salary=40000.50),\n           (Name=\"Justin\",  Salary=50000.50),\n           (Name=\"Tom\",     Salary=60000.50),\n       ])\n[ Info: INSERT INTO Employee (Name, Salary) VALUES ($1, $2)   (Name = \"Jeremy\", Salary = 10000.5), (Name = \"Cloris\", Salary = 20000.5), (Name = \"John\", Salary = 30000.5), (Name = \"Hyunden\", Salary = 40000.5), (Name = \"Justin\", Salary = 50000.5), (Name = \"Tom\", Salary = 60000.5)\n\njulia> Repo.get(Employee, 2)\n[ Info: SELECT * FROM Employee WHERE ID = 2\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   20000.5 |\n1 row.\n\njulia> Repo.get(Employee, 2:5)\n[ Info: SELECT * FROM Employee WHERE ID BETWEEN 2 AND 5\n|   id | name      |    salary |\n| ---- | --------- | --------- |\n|    2 | Cloris    |   20000.5 |\n|    3 | John      |   30000.5 |\n|    4 | Hyunden   |   40000.5 |\n|    5 | Justin    |   50000.5 |\n4 rows.\n\njulia> Repo.get(Employee, (Name=\"Jeremy\",))\n[ Info: SELECT * FROM Employee WHERE Name = \'Jeremy\'\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    1 | Jeremy   |   10000.5 |\n1 row.\n\njulia> Repo.query(Employee)\n[ Info: SELECT * FROM Employee\n|   id | name      |    salary |\n| ---- | --------- | --------- |\n|    1 | Jeremy    |   10000.5 |\n|    2 | Cloris    |   20000.5 |\n|    3 | John      |   30000.5 |\n|    4 | Hyunden   |   40000.5 |\n|    5 | Justin    |   50000.5 |\n|    6 | Tom       |   60000.5 |\n6 rows.\n\njulia> Repo.insert!(Employee, (Name=\"Jessica\", Salary=70000.50))\n[ Info: INSERT INTO Employee (Name, Salary) VALUES ($1, $2)   (Name = \"Jessica\", Salary = 70000.5)\n\njulia> Repo.update!(Employee, (ID=2, Salary=85000))\n[ Info: UPDATE Employee SET Salary = $1 WHERE ID = 2   85000\n\njulia> Repo.delete!(Employee, (ID=3,))\n[ Info: DELETE FROM Employee WHERE ID = 3\n\njulia> Repo.delete!(Employee, 3:5)\n[ Info: DELETE FROM Employee WHERE ID BETWEEN 3 AND 5\n\njulia> em = from(Employee)\nFromItem Employee\n\njulia> Repo.query(em)\n[ Info: SELECT * FROM Employee\n|   id | name      |    salary |\n| ---- | --------- | --------- |\n|    1 | Jeremy    |   10000.5 |\n|    6 | Tom       |   60000.5 |\n|    7 | Jessica   |   70000.5 |\n|    2 | Cloris    |   85000.0 |\n4 rows.\n\njulia> Repo.query([SELECT * FROM em WHERE em.Name == \"Cloris\"])\n[ Info: SELECT * FROM Employee WHERE Name = \'Cloris\'\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   85000.0 |\n1 row.\n\njulia> Repo.query(em, (Name=\"Cloris\",))\n[ Info: SELECT * FROM Employee WHERE Name = \'Cloris\'\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   85000.0 |\n1 row.\n\njulia> ❓ = Octo.PlaceHolder\nPlaceHolder\n\njulia> Repo.query([SELECT * FROM em WHERE em.Name == ❓], [\"Cloris\"])\n[ Info: SELECT * FROM Employee WHERE Name = $1   \"Cloris\"\n|   id | name     |    salary |\n| ---- | -------- | --------- |\n|    2 | Cloris   |   85000.0 |\n1 row."
+},
+
+{
+    "location": "#Subqueries-1",
+    "page": "Home",
+    "title": "Subqueries",
+    "category": "section",
+    "text": "julia> sub = from([SELECT * FROM em WHERE em.Salary > 30000], :sub)\n(SELECT * FROM Employee WHERE Salary > 30000) AS sub\n\njulia> Repo.query(sub)\n[ Info: SELECT * FROM Employee WHERE Salary > 30000\n|   id | name      |    salary |\n| ---- | --------- | --------- |\n|    6 | Tom       |   60000.5 |\n|    7 | Jessica   |   70000.5 |\n|    2 | Cloris    |   85000.0 |\n3 rows.\n\njulia> Repo.query([SELECT sub.Name FROM sub])\n[ Info: SELECT sub.Name FROM (SELECT * FROM Employee WHERE Salary > 30000) AS sub\n| name      |\n| --------- |\n| Tom       |\n| Jessica   |\n| Cloris    |\n3 rows."
+},
+
+{
+    "location": "#Colored-SQL-statements-1",
+    "page": "Home",
+    "title": "Colored SQL statements",
+    "category": "section",
+    "text": "(Image: colored_sql_statements.png)See the CI logs  https://travis-ci.org/wookay/Octo.jl/jobs/388090148#L691."
 },
 
 {
@@ -37,503 +53,431 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Requirements",
     "category": "section",
-    "text": "The project has reworked based on HTTP.jl in Julia 1.0.julia> type ] key(v1.0) pkg> add Bukdu"
+    "text": "You need Julia 1.0.julia> type ] key(v1.0) pkg> add Octo(v1.0) pkg> add LibPQ   # for PostgreSQL (depends on LibPQ.jl v0.5.0)\n(v1.0) pkg> add MySQL   # for MySQL (depends on MySQL.jl v0.7.0)\n(v1.0) pkg> add SQLite  # for SQLite (depends on SQLite.jl v0.7.0)\n(v1.0) pkg> add ODBC    # for ODBC (depends on ODBC.jl v0.8.1)\n(v1.0) pkg> add JDBC    # for JDBC (depends on JDBC.jl v0.4.0)"
 },
 
 {
-    "location": "controllers/#",
-    "page": "controllers",
-    "title": "controllers",
+    "location": "Repo/#",
+    "page": "Repo",
+    "title": "Repo",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "controllers/#Bukdu.Plug.ApplicationController",
-    "page": "controllers",
-    "title": "Bukdu.Plug.ApplicationController",
-    "category": "type",
-    "text": "ApplicationController\n\n\n\n\n\n"
-},
-
-{
-    "location": "controllers/#Bukdu.Plug.Conn",
-    "page": "controllers",
-    "title": "Bukdu.Plug.Conn",
-    "category": "type",
-    "text": "Conn\n\n\n\n\n\n"
-},
-
-{
-    "location": "controllers/#Bukdu.redirect_to",
-    "page": "controllers",
-    "title": "Bukdu.redirect_to",
+    "location": "Repo/#Octo.Repo.connect",
+    "page": "Repo",
+    "title": "Octo.Repo.connect",
     "category": "function",
-    "text": "redirect_to(conn::Conn, path::String)\n\n\n\n\n\n"
+    "text": "Repo.connect(; adapter::Module, kwargs...)\n\n\n\n\n\n"
 },
 
 {
-    "location": "controllers/#Bukdu.Assoc",
-    "page": "controllers",
-    "title": "Bukdu.Assoc",
-    "category": "type",
-    "text": "Assoc\n\n\n\n\n\n"
+    "location": "Repo/#Octo.Repo.get",
+    "page": "Repo",
+    "title": "Octo.Repo.get",
+    "category": "function",
+    "text": "Repo.get(M::Type, pk::Union{Int, String})\n\n\n\n\n\nRepo.get(M::Type, pk_range::UnitRange{Int64})\n\n\n\n\n\nRepo.get(M::Type, nt::NamedTuple)\n\n\n\n\n\n"
 },
 
 {
-    "location": "controllers/#controllers-1",
-    "page": "controllers",
-    "title": "controllers",
+    "location": "Repo/#Octo.Repo.insert!",
+    "page": "Repo",
+    "title": "Octo.Repo.insert!",
+    "category": "function",
+    "text": "Repo.insert!(M::Type, nts::Vector{<:NamedTuple})::ExecuteResult\n\n\n\n\n\nRepo.insert!(M, nt::NamedTuple)::ExecuteResult\n\n\n\n\n\nRepo.insert!(M::Type, vals::Vector{<:Tuple})::ExecuteResult\n\n\n\n\n\n"
+},
+
+{
+    "location": "Repo/#Octo.Repo.update!",
+    "page": "Repo",
+    "title": "Octo.Repo.update!",
+    "category": "function",
+    "text": "Repo.update!(M::Type, nt::NamedTuple)::ExecuteResult\n\n\n\n\n\n"
+},
+
+{
+    "location": "Repo/#Octo.Repo.delete!",
+    "page": "Repo",
+    "title": "Octo.Repo.delete!",
+    "category": "function",
+    "text": "Repo.delete!(M::Type, nt::NamedTuple)::ExecuteResult\n\n\n\n\n\nRepo.delete!(M::Type, pk_range::UnitRange{Int64})::ExecuteResult\n\n\n\n\n\n"
+},
+
+{
+    "location": "Repo/#Octo.Repo.query",
+    "page": "Repo",
+    "title": "Octo.Repo.query",
+    "category": "function",
+    "text": "Repo.query(stmt::Structured)\n\n\n\n\n\nRepo.query(M::Type)\n\n\n\n\n\nRepo.query(from::FromItem)\n\n\n\n\n\nRepo.query(subquery::SubQuery)\n\n\n\n\n\nRepo.query(rawquery::Octo.Raw)\n\n\n\n\n\nRepo.query(stmt::Structured, vals::Vector)\n\n\n\n\n\nRepo.query(M::Type, pk::Union{Int, String})\n\n\n\n\n\nRepo.query(from::FromItem, pk::Union{Int, String})\n\n\n\n\n\nRepo.query(M::Type, pk_range::UnitRange{Int64})\n\n\n\n\n\nRepo.query(from::FromItem, pk_range::UnitRange{Int64}\n\n\n\n\n\nRepo.query(stmt::Structured, nt::NamedTuple)\n\n\n\n\n\nRepo.query(M::Type, nt::NamedTuple)\n\n\n\n\n\nRepo.query(from::FromItem, nt::NamedTuple)\n\n\n\n\n\nRepo.query(subquery::SubQuery, nt::NamedTuple)\n\n\n\n\n\nRepo.query(rawquery::Octo.Raw, nt::NamedTuple)\n\n\n\n\n\n"
+},
+
+{
+    "location": "Repo/#Octo.Repo.execute",
+    "page": "Repo",
+    "title": "Octo.Repo.execute",
+    "category": "function",
+    "text": "Repo.execute(stmt::Structured)::ExecuteResult\n\n\n\n\n\nRepo.execute(stmt::Structured, vals::Vector)::ExecuteResult\n\n\n\n\n\nRepo.execute(stmt::Structured, nts::Vector{<:NamedTuple})::ExecuteResult\n\n\n\n\n\n"
+},
+
+{
+    "location": "Repo/#Octo.Repo.disconnect",
+    "page": "Repo",
+    "title": "Octo.Repo.disconnect",
+    "category": "function",
+    "text": "Repo.disconnect()\n\n\n\n\n\n"
+},
+
+{
+    "location": "Repo/#Octo.Repo.debug_sql",
+    "page": "Repo",
+    "title": "Octo.Repo.debug_sql",
+    "category": "function",
+    "text": "Repo.debug_sql(debug::Bool = true)\n\n\n\n\n\n"
+},
+
+{
+    "location": "Repo/#Repo-1",
+    "page": "Repo",
+    "title": "Repo",
     "category": "section",
-    "text": "ApplicationController\nConn\nredirect_toAssoc"
+    "text": "Repo.connect\nRepo.get\nRepo.insert!\nRepo.update!\nRepo.delete!\nRepo.query\nRepo.execute\nRepo.disconnect\nRepo.debug_sql"
 },
 
 {
-    "location": "renders/#",
-    "page": "renders",
-    "title": "renders",
+    "location": "Schema/#",
+    "page": "Schema",
+    "title": "Schema",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "renders/#Bukdu.Plug.Render",
-    "page": "renders",
-    "title": "Bukdu.Plug.Render",
-    "category": "type",
-    "text": "Render <: AbstractRender\n\n\n\n\n\n"
-},
-
-{
-    "location": "renders/#Bukdu.render",
-    "page": "renders",
-    "title": "Bukdu.render",
+    "location": "Schema/#Octo.Schema.model",
+    "page": "Schema",
+    "title": "Octo.Schema.model",
     "category": "function",
-    "text": "render(::Type{Text}, data)::Render\n\n\n\n\n\nrender(::Type{HTML}, data)::Render\n\n\n\n\n\nrender(::Type{JSON}, data)::Render\n\n\n\n\n\nrender(::Type{JavaScript}, data)::Render\n\n\n\n\n\n"
+    "text": "model(M::Type; table_name::String, kwargs...)\n\n\n\n\n\n"
 },
 
 {
-    "location": "renders/#renders-1",
-    "page": "renders",
-    "title": "renders",
+    "location": "Schema/#Octo.Schema.changeset",
+    "page": "Schema",
+    "title": "Octo.Schema.changeset",
+    "category": "function",
+    "text": "changeset(validations, M::Type)\n\n\n\n\n\n"
+},
+
+{
+    "location": "Schema/#Schema-1",
+    "page": "Schema",
+    "title": "Schema",
     "category": "section",
-    "text": "Renderrender"
+    "text": "Schema.model\nSchema.changeset"
 },
 
 {
-    "location": "routes/#",
-    "page": "routes",
-    "title": "routes",
+    "location": "Queryable/#",
+    "page": "Queryable",
+    "title": "Queryable",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "routes/#Bukdu.routes",
-    "page": "routes",
-    "title": "Bukdu.routes",
+    "location": "Queryable/#Octo.Queryable.from",
+    "page": "Queryable",
+    "title": "Octo.Queryable.from",
     "category": "function",
-    "text": "routes(block::Function)\n\n\n\n\n\nroutes(block::Function, pipe::Symbol)\n\n\n\n\n\n"
+    "text": "from(M::Type, alias=nothing)::FromItem\n\n\n\n\n\nfrom(query::Structured, alias=nothing)::SubQuery\n\n\n\n\n\n"
 },
 
 {
-    "location": "routes/#Base.pipeline",
-    "page": "routes",
-    "title": "Base.pipeline",
+    "location": "Queryable/#Octo.Queryable.as",
+    "page": "Queryable",
+    "title": "Octo.Queryable.as",
     "category": "function",
-    "text": "pipeline(block::Function, routers...)\n\n\n\n\n\n"
+    "text": "as(field::Union{Field, SQLFunction, Predicate}, alias::Symbol)::SQLAlias\n\n\n\n\n\n"
 },
 
 {
-    "location": "routes/#Base.get",
-    "page": "routes",
-    "title": "Base.get",
+    "location": "Queryable/#Octo.Queryable.extract",
+    "page": "Queryable",
+    "title": "Octo.Queryable.extract",
     "category": "function",
-    "text": "get(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+    "text": "extract(field::Union{SQLKeyword, Type{DP}, Type{TP}}, from::Union{Dates.DateTime, DP, TP, Dates.CompoundPeriod})::SQLExtract where DP <: Dates.DatePeriod where TP <: Dates.TimePeriod\n\n\n\n\n\n"
 },
 
 {
-    "location": "routes/#Bukdu.post",
-    "page": "routes",
-    "title": "Bukdu.post",
-    "category": "function",
-    "text": "post(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
-},
-
-{
-    "location": "routes/#Bukdu.delete",
-    "page": "routes",
-    "title": "Bukdu.delete",
-    "category": "function",
-    "text": "delete(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
-},
-
-{
-    "location": "routes/#Bukdu.patch",
-    "page": "routes",
-    "title": "Bukdu.patch",
-    "category": "function",
-    "text": "patch(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
-},
-
-{
-    "location": "routes/#Bukdu.put",
-    "page": "routes",
-    "title": "Bukdu.put",
-    "category": "function",
-    "text": "put(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
-},
-
-{
-    "location": "routes/#Bukdu.options",
-    "page": "routes",
-    "title": "Bukdu.options",
-    "category": "function",
-    "text": "options(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
-},
-
-{
-    "location": "routes/#Bukdu.resources",
-    "page": "routes",
-    "title": "Bukdu.resources",
-    "category": "function",
-    "text": "resources(path::String, ::Type{C}; only=[], except=[]) where {C <: ApplicationController}\n\n\n\n\n\n"
-},
-
-{
-    "location": "routes/#Bukdu.Routing.empty!",
-    "page": "routes",
-    "title": "Bukdu.Routing.empty!",
-    "category": "function",
-    "text": "Routing.empty!()\n\n\n\n\n\n"
-},
-
-{
-    "location": "routes/#routes-1",
-    "page": "routes",
-    "title": "routes",
+    "location": "Queryable/#Queryable-1",
+    "page": "Queryable",
+    "title": "Queryable",
     "category": "section",
-    "text": "routes\npipelineget\npost\ndelete\npatch\nput\nBukdu.options\nresourcesRouting.empty!"
+    "text": "Octo.Queryable.from\nOcto.Queryable.as\nOcto.Queryable.extract"
 },
 
 {
-    "location": "plugs/#",
-    "page": "plugs",
-    "title": "plugs",
+    "location": "keywords_and_functions/#",
+    "page": "SQL keywords & functions",
+    "title": "SQL keywords & functions",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "plugs/#Bukdu.Plug.Logger",
-    "page": "plugs",
-    "title": "Bukdu.Plug.Logger",
-    "category": "type",
-    "text": "Plug.Logger\n\n\n\n\n\n"
+    "location": "keywords_and_functions/#SQL-keywords-and-functions-1",
+    "page": "SQL keywords & functions",
+    "title": "SQL keywords and functions",
+    "category": "section",
+    "text": ""
 },
 
 {
-    "location": "plugs/#Bukdu.Plug.LoggerFormatter",
-    "page": "plugs",
-    "title": "Bukdu.Plug.LoggerFormatter",
+    "location": "keywords_and_functions/#Octo.@sql_keywords",
+    "page": "SQL keywords & functions",
+    "title": "Octo.@sql_keywords",
+    "category": "macro",
+    "text": "@sql_keywords(args...)\n\n\n\n\n\n"
+},
+
+{
+    "location": "keywords_and_functions/#sql_keywords-1",
+    "page": "SQL keywords & functions",
+    "title": "@sql_keywords",
+    "category": "section",
+    "text": "Octo.@sql_keywordsADD ALL ALTER AND AS ASC BEGIN BETWEEN BY COMMIT COLUMN CONSTRAINT CREATE DATABASE DEFAULT DELETE DESC DISTINCT DROP EXCEPT EXECUTE EXISTS FOREIGN FROM FULL GROUP HAVING IF IN INDEX INNER INSERT INTERSECT INTO IS JOIN KEY LEFT LIKE LIMIT NULL OFF OFFSET ON OR ORDER OUTER OVER PARTITION PREPARE PRIMARY RECURSIVE REFERENCES RELEASE RIGHT ROLLBACK SAVEPOINT SELECT SET TABLE TO TRANSACTION TRIGGER UNION UPDATE USING VALUES WHERE WITH"
+},
+
+{
+    "location": "keywords_and_functions/#Octo.@sql_functions",
+    "page": "SQL keywords & functions",
+    "title": "Octo.@sql_functions",
+    "category": "macro",
+    "text": "@sql_functions(args...)\n\n\n\n\n\n"
+},
+
+{
+    "location": "keywords_and_functions/#sql_functions-1",
+    "page": "SQL keywords & functions",
+    "title": "@sql_functions",
+    "category": "section",
+    "text": "Octo.@sql_functions"
+},
+
+{
+    "location": "keywords_and_functions/#aggregate-functions-1",
+    "page": "SQL keywords & functions",
+    "title": "aggregate functions",
+    "category": "section",
+    "text": "AVG COUNT EVERY MAX MIN NOT SOME SUM"
+},
+
+{
+    "location": "keywords_and_functions/#ranking-functions-1",
+    "page": "SQL keywords & functions",
+    "title": "ranking functions",
+    "category": "section",
+    "text": "DENSE_RANK  RANK  ROW_NUMBER"
+},
+
+{
+    "location": "elements/#",
+    "page": "SQL elements",
+    "title": "SQL elements",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "elements/#Octo.PlaceHolder",
+    "page": "SQL elements",
+    "title": "Octo.PlaceHolder",
+    "category": "type",
+    "text": "Octo.PlaceHolder\n\n\n\n\n\n"
+},
+
+{
+    "location": "elements/#Octo.Raw",
+    "page": "SQL elements",
+    "title": "Octo.Raw",
+    "category": "type",
+    "text": "Octo.Raw\n\n\n\n\n\n"
+},
+
+{
+    "location": "elements/#SQL-elements-1",
+    "page": "SQL elements",
+    "title": "SQL elements",
+    "category": "section",
+    "text": "Octo.PlaceHolder\nOcto.Raw"
+},
+
+{
+    "location": "Adapters/SQL/#",
+    "page": "Octo.Adapters.SQL",
+    "title": "Octo.Adapters.SQL",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Adapters/SQL/#Octo.Adapters.SQL.to_sql",
+    "page": "Octo.Adapters.SQL",
+    "title": "Octo.Adapters.SQL.to_sql",
+    "category": "function",
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
+},
+
+{
+    "location": "Adapters/SQL/#Octo.Adapters.SQL-1",
+    "page": "Octo.Adapters.SQL",
+    "title": "Octo.Adapters.SQL",
+    "category": "section",
+    "text": "Octo.Adapters.SQL.to_sql"
+},
+
+{
+    "location": "Adapters/PostgreSQL/#",
+    "page": "Octo.Adapters.PostgreSQL",
+    "title": "Octo.Adapters.PostgreSQL",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Adapters/PostgreSQL/#Octo.Adapters.PostgreSQL.to_sql",
+    "page": "Octo.Adapters.PostgreSQL",
+    "title": "Octo.Adapters.PostgreSQL.to_sql",
+    "category": "function",
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
+},
+
+{
+    "location": "Adapters/PostgreSQL/#Octo.Adapters.PostgreSQL-1",
+    "page": "Octo.Adapters.PostgreSQL",
+    "title": "Octo.Adapters.PostgreSQL",
+    "category": "section",
+    "text": "Octo.Adapters.PostgreSQL.to_sql"
+},
+
+{
+    "location": "Adapters/PostgreSQL/#additional-[@sql_keywords](@ref-sql_keywords)-1",
+    "page": "Octo.Adapters.PostgreSQL",
+    "title": "additional @sql_keywords",
+    "category": "section",
+    "text": "AUTOCOMMIT  COPY  CURRENT_DATE  DESCRIBE  EXPLAIN  FALSE  LATERAL  SEQUENCE  SERIAL  TRUE  WINDOW"
+},
+
+{
+    "location": "Adapters/PostgreSQL/#additional-[@sql_functions](@ref-sql_functions)-1",
+    "page": "Octo.Adapters.PostgreSQL",
+    "title": "additional @sql_functions",
+    "category": "section",
+    "text": "COALESCE NOW"
+},
+
+{
+    "location": "Adapters/MySQL/#",
+    "page": "Octo.Adapters.MySQL",
+    "title": "Octo.Adapters.MySQL",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Adapters/MySQL/#Octo.Adapters.MySQL.to_sql",
+    "page": "Octo.Adapters.MySQL",
+    "title": "Octo.Adapters.MySQL.to_sql",
+    "category": "function",
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
+},
+
+{
+    "location": "Adapters/MySQL/#Octo.Adapters.MySQL-1",
+    "page": "Octo.Adapters.MySQL",
+    "title": "Octo.Adapters.MySQL",
+    "category": "section",
+    "text": "Octo.Adapters.MySQL.to_sql"
+},
+
+{
+    "location": "Adapters/MySQL/#additional-[@sql_keywords](@ref-sql_keywords)-1",
+    "page": "Octo.Adapters.MySQL",
+    "title": "additional @sql_keywords",
+    "category": "section",
+    "text": "AUTO_INCREMENT  DESCRIBE  USE"
+},
+
+{
+    "location": "Adapters/SQLite/#",
+    "page": "Octo.Adapters.SQLite",
+    "title": "Octo.Adapters.SQLite",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Adapters/SQLite/#Octo.Adapters.SQLite.to_sql",
+    "page": "Octo.Adapters.SQLite",
+    "title": "Octo.Adapters.SQLite.to_sql",
+    "category": "function",
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
+},
+
+{
+    "location": "Adapters/SQLite/#Octo.Adapters.SQLite-1",
+    "page": "Octo.Adapters.SQLite",
+    "title": "Octo.Adapters.SQLite",
+    "category": "section",
+    "text": "Octo.Adapters.SQLite.to_sql"
+},
+
+{
+    "location": "Adapters/SQLite/#additional-[@sql_keywords](@ref-sql_keywords)-1",
+    "page": "Octo.Adapters.SQLite",
+    "title": "additional @sql_keywords",
+    "category": "section",
+    "text": "AUTOINCREMENT"
+},
+
+{
+    "location": "Pretty/#",
+    "page": "Pretty",
+    "title": "Pretty",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Pretty/#Octo.Pretty",
+    "page": "Pretty",
+    "title": "Octo.Pretty",
     "category": "module",
-    "text": "Plug.LoggerFormatter\n\n\n\n\n\n"
+    "text": "Pretty\n\nTablize Vector{<:NamedTuple}\n\n\n\n\n\n"
 },
 
 {
-    "location": "plugs/#Bukdu.Plug.LoggerFormatter.basic_message",
-    "page": "plugs",
-    "title": "Bukdu.Plug.LoggerFormatter.basic_message",
+    "location": "Pretty/#Octo.Pretty.set",
+    "page": "Pretty",
+    "title": "Octo.Pretty.set",
     "category": "function",
-    "text": "Plug.LoggerFormatter.basic_message(io)\n\n\n\n\n\n"
+    "text": "Pretty.set(pretty::Bool=true; kwargs...)\n\nSet the display options for Vector{<:NamedTuple} rows.\n\njulia> Pretty.set(nrows = 10)     # limit number of the rows\n\njulia> Pretty.set(colsize = 10)   # limit column size\n\njulia> Pretty.set(false)          # do or don\'t use pretty\n\n\n\n\n\n\n"
 },
 
 {
-    "location": "plugs/#Bukdu.Plug.LoggerFormatter.datetime_message",
-    "page": "plugs",
-    "title": "Bukdu.Plug.LoggerFormatter.datetime_message",
+    "location": "Pretty/#Octo.Pretty.table",
+    "page": "Pretty",
+    "title": "Octo.Pretty.table",
     "category": "function",
-    "text": "Plug.LoggerFormatter.datetime_message(io)\n\n\n\n\n\n"
+    "text": "Pretty.table(nts::Vector{<:NamedTuple})::String\n\n\n\n\n\n"
 },
 
 {
-    "location": "plugs/#Bukdu.Plug.plug",
-    "page": "plugs",
-    "title": "Bukdu.Plug.plug",
-    "category": "function",
-    "text": "plug(::Type{Logger}; access_log::Union{Nothing,<:NamedTuple}=nothing, formatter=LoggerFormatter.basic_message)\n\n\n\n\n\nplug(::Type{Static}; at::String, from::String, only::Union{Vector{String},Nothing}=nothing, indexfile=\"index.html\")\n\n\n\n\n\n"
-},
-
-{
-    "location": "plugs/#plugs-1",
-    "page": "plugs",
-    "title": "plugs",
+    "location": "Pretty/#Pretty-1",
+    "page": "Pretty",
+    "title": "Pretty",
     "category": "section",
-    "text": "Plug.Logger\nPlug.LoggerFormatter\nPlug.LoggerFormatter.basic_message\nPlug.LoggerFormatter.datetime_messageplug"
-},
-
-{
-    "location": "Actions/#",
-    "page": "Actions",
-    "title": "Actions",
-    "category": "page",
-    "text": ""
-},
-
-{
-    "location": "Actions/#Actions-1",
-    "page": "Actions",
-    "title": "Actions",
-    "category": "section",
-    "text": "import Bukdu.Actions: index, edit, new, show, create, update, delete"
-},
-
-{
-    "location": "HTML5/Form/#",
-    "page": "HTML5.Form",
-    "title": "HTML5.Form",
-    "category": "page",
-    "text": ""
-},
-
-{
-    "location": "HTML5/Form/#Bukdu.HTML5.Form.change",
-    "page": "HTML5.Form",
-    "title": "Bukdu.HTML5.Form.change",
-    "category": "function",
-    "text": "change(M::Type, params::Assoc)::Changeset\n\n\n\n\n\nchange(changeset::Changeset, params::Assoc; primary_key::Union{String,Nothing}=nothing)::Changeset\n\n\n\n\n\n"
-},
-
-{
-    "location": "HTML5/Form/#Bukdu.HTML5.Form.form_for",
-    "page": "HTML5.Form",
-    "title": "Bukdu.HTML5.Form.form_for",
-    "category": "function",
-    "text": "form_for(block::Function, changeset::Changeset, controller_action::Tuple; method=post, kwargs...)::Node\n\n\n\n\n\nform_for(block::Function, changeset::Changeset, form_action::String; method=post, multipart::Bool=false)::Node\n\n\n\n\n\n"
-},
-
-{
-    "location": "HTML5/Form/#Bukdu.HTML5.Form.label_for",
-    "page": "HTML5.Form",
-    "title": "Bukdu.HTML5.Form.label_for",
-    "category": "function",
-    "text": "label_for(node::Node, text::Union{String,Nothing}=nothing; kwargs...)::Vector{Node}\n\n\n\n\n\nlabel_for(nodes::Vector{Node}, text::Union{String,Nothing}=nothing; kwargs...)::Vector{Node}\n\n\n\n\n\n"
-},
-
-{
-    "location": "HTML5/Form/#Bukdu.HTML5.Form.text_input",
-    "page": "HTML5.Form",
-    "title": "Bukdu.HTML5.Form.text_input",
-    "category": "function",
-    "text": "text_input(f::Changeset, field::Symbol, value=nothing; kwargs...)::Node\n\n\n\n\n\n"
-},
-
-{
-    "location": "HTML5/Form/#Bukdu.HTML5.Form.text_area",
-    "page": "HTML5.Form",
-    "title": "Bukdu.HTML5.Form.text_area",
-    "category": "function",
-    "text": "text_area(f::Changeset, field::Symbol, value=nothing; kwargs...)::Node\n\n\n\n\n\n"
-},
-
-{
-    "location": "HTML5/Form/#Bukdu.HTML5.Form.radio_button",
-    "page": "HTML5.Form",
-    "title": "Bukdu.HTML5.Form.radio_button",
-    "category": "function",
-    "text": "radio_button(f::Changeset, field::Symbol, value::String; kwargs...)::Node\n\n\n\n\n\n"
-},
-
-{
-    "location": "HTML5/Form/#Bukdu.HTML5.Form.checkbox",
-    "page": "HTML5.Form",
-    "title": "Bukdu.HTML5.Form.checkbox",
-    "category": "function",
-    "text": "checkbox(f::Changeset, field::Symbol, value::Union{Bool,Nothing}=nothing; kwargs...)::Vector{Node}\n\n\n\n\n\n"
-},
-
-{
-    "location": "HTML5/Form/#Bukdu.HTML5.Form.submit",
-    "page": "HTML5.Form",
-    "title": "Bukdu.HTML5.Form.submit",
-    "category": "function",
-    "text": "submit(block_option; kwargs...)::Node\n\n\n\n\n\n"
-},
-
-{
-    "location": "HTML5/Form/#Bukdu.HTML5.Form-1",
-    "page": "HTML5.Form",
-    "title": "Bukdu.HTML5.Form",
-    "category": "section",
-    "text": "changeform_for\nlabel_for\ntext_input\ntext_area\nradio_button\ncheckbox\nsubmit"
-},
-
-{
-    "location": "changeset/#",
-    "page": "Changeset",
-    "title": "Changeset",
-    "category": "page",
-    "text": ""
-},
-
-{
-    "location": "changeset/#Bukdu.Changeset",
-    "page": "Changeset",
-    "title": "Bukdu.Changeset",
-    "category": "type",
-    "text": "Changeset\n\nUsed with HTML5.Form.change.\n\n\n\n\n\n"
-},
-
-{
-    "location": "changeset/#Changeset-1",
-    "page": "Changeset",
-    "title": "Changeset",
-    "category": "section",
-    "text": "Changeset"
-},
-
-{
-    "location": "CLI/#",
-    "page": "CLI",
-    "title": "CLI",
-    "category": "page",
-    "text": ""
-},
-
-{
-    "location": "CLI/#Bukdu.CLI.routes-Tuple{}",
-    "page": "CLI",
-    "title": "Bukdu.CLI.routes",
-    "category": "method",
-    "text": "CLI.routes()\n\nShowing the routing table.\n\n\n\n\n\n"
-},
-
-{
-    "location": "CLI/#CLI-1",
-    "page": "CLI",
-    "title": "CLI",
-    "category": "section",
-    "text": "CLI.routes()"
-},
-
-{
-    "location": "System/#",
-    "page": "System",
-    "title": "System",
-    "category": "page",
-    "text": ""
-},
-
-{
-    "location": "System/#Bukdu.System.halted_error",
-    "page": "System",
-    "title": "Bukdu.System.halted_error",
-    "category": "function",
-    "text": "halted_error(c::SystemController)\n\n\n\n\n\n"
-},
-
-{
-    "location": "System/#Bukdu.System.not_applicable",
-    "page": "System",
-    "title": "Bukdu.System.not_applicable",
-    "category": "function",
-    "text": "not_applicable(c::SystemController)\n\n\n\n\n\n"
-},
-
-{
-    "location": "System/#Bukdu.System.internal_error",
-    "page": "System",
-    "title": "Bukdu.System.internal_error",
-    "category": "function",
-    "text": "internal_error(c::SystemController)\n\n\n\n\n\n"
-},
-
-{
-    "location": "System/#Bukdu.System.not_found",
-    "page": "System",
-    "title": "Bukdu.System.not_found",
-    "category": "function",
-    "text": "not_found(c::MissingController)\n\n\n\n\n\n"
-},
-
-{
-    "location": "System/#Bukdu.System-1",
-    "page": "System",
-    "title": "Bukdu.System",
-    "category": "section",
-    "text": "Bukdu.System.halted_error\nBukdu.System.not_applicable\nBukdu.System.internal_error\nBukdu.System.not_found"
-},
-
-{
-    "location": "System/#Bukdu.System.catch_request",
-    "page": "System",
-    "title": "Bukdu.System.catch_request",
-    "category": "function",
-    "text": "Bukdu.System.catch_request(route::Bukdu.Route, req)\n\n\n\n\n\n"
-},
-
-{
-    "location": "System/#Bukdu.System.catch_response",
-    "page": "System",
-    "title": "Bukdu.System.catch_response",
-    "category": "function",
-    "text": "Bukdu.System.catch_response(route::Bukdu.Route, resp)\n\n\n\n\n\n"
-},
-
-{
-    "location": "System/#Debugging-the-requests-and-responses-on-the-fly-1",
-    "page": "System",
-    "title": "Debugging the requests and responses on the fly",
-    "category": "section",
-    "text": "Bukdu provides a way to catch the requests and responses.julia> Bukdu.System.catch_request(route::Bukdu.Route, req) = @debug \"REQ \" req.headers\njulia> Bukdu.System.catch_response(route::Bukdu.Route, resp) = @debug \"RESP\" resp.headers resp.statusBukdu.System.catch_request\nBukdu.System.catch_response"
-},
-
-{
-    "location": "Router/#",
-    "page": "Router",
-    "title": "Router",
-    "category": "page",
-    "text": ""
-},
-
-{
-    "location": "Router/#Bukdu.Router.call",
-    "page": "Router",
-    "title": "Bukdu.Router.call",
-    "category": "function",
-    "text": "Router.call\n\nTo get the object of the action without going through HTTP server. Results are named tuple (got= , resp= , route= ).\n\n\n\n\n\n"
-},
-
-{
-    "location": "Router/#Router-1",
-    "page": "Router",
-    "title": "Router",
-    "category": "section",
-    "text": "Router.call"
-},
-
-{
-    "location": "Utils/#",
-    "page": "Utils",
-    "title": "Utils",
-    "category": "page",
-    "text": ""
-},
-
-{
-    "location": "Utils/#Bukdu.Utils.read_stdout",
-    "page": "Utils",
-    "title": "Bukdu.Utils.read_stdout",
-    "category": "function",
-    "text": "Utils.read_stdout(f)\n\n\n\n\n\n"
-},
-
-{
-    "location": "Utils/#Utils-1",
-    "page": "Utils",
-    "title": "Utils",
-    "category": "section",
-    "text": "Utils.read_stdout"
+    "text": "Octo.Pretty\nOcto.Pretty.set\nOcto.Pretty.table"
 },
 
 ]}

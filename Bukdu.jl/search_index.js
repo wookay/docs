@@ -109,7 +109,7 @@ var documenterSearchIndex = {"docs": [
     "page": "renders",
     "title": "Bukdu.render",
     "category": "function",
-    "text": "render(::Type{Text}, data)::Render\n\n\n\n\n\nrender(::Type{HTML}, data)::Render\n\n\n\n\n\nrender(::Type{JSON}, data)::Render\n\n\n\n\n\nrender(::Type{JavaScript}, data)::Render\n\n\n\n\n\nrender(::Type{EventStream})::EventStream\n\n\n\n\n\n"
+    "text": "render(::Type{Text}, data)::Render\n\n\n\n\n\nrender(::Type{HTML}, data)::Render\n\n\n\n\n\nrender(::Type{JSON}, data)::Render\n\n\n\n\n\nrender(::Type{JavaScript}, data)::Render\n\n\n\n\n\n"
 },
 
 {
@@ -145,6 +145,62 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "routes/#Base.get",
+    "page": "routes",
+    "title": "Base.get",
+    "category": "function",
+    "text": "get(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#Bukdu.post",
+    "page": "routes",
+    "title": "Bukdu.post",
+    "category": "function",
+    "text": "post(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#Bukdu.delete",
+    "page": "routes",
+    "title": "Bukdu.delete",
+    "category": "function",
+    "text": "delete(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#Bukdu.patch",
+    "page": "routes",
+    "title": "Bukdu.patch",
+    "category": "function",
+    "text": "patch(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#Bukdu.put",
+    "page": "routes",
+    "title": "Bukdu.put",
+    "category": "function",
+    "text": "put(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#Bukdu.options",
+    "page": "routes",
+    "title": "Bukdu.options",
+    "category": "function",
+    "text": "options(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+},
+
+{
+    "location": "routes/#Bukdu.resources",
+    "page": "routes",
+    "title": "Bukdu.resources",
+    "category": "function",
+    "text": "resources(path::String, ::Type{C}; only=[], except=[]) where {C <: ApplicationController}\n\n\n\n\n\n"
+},
+
+{
     "location": "routes/#Bukdu.Routing.empty!",
     "page": "routes",
     "title": "Bukdu.Routing.empty!",
@@ -157,7 +213,7 @@ var documenterSearchIndex = {"docs": [
     "page": "routes",
     "title": "routes",
     "category": "section",
-    "text": "routes\npipelineget\npost\ndelete\npatch\nput\noptions\nresourcesRouting.empty!"
+    "text": "routes\npipelineget\npost\ndelete\npatch\nput\nBukdu.options\nresourcesRouting.empty!"
 },
 
 {
@@ -205,7 +261,7 @@ var documenterSearchIndex = {"docs": [
     "page": "plugs",
     "title": "Bukdu.Plug.plug",
     "category": "function",
-    "text": "plug(::Type{Logger}; access_log::Union{Nothing,<:NamedTuple}=nothing, formatter=LoggerFormatter.basic_message)\n\n\n\n\n\nplug(::Type{Static}; at::String, from::String, only::Union{Vector{String},Nothing}=nothing, indexfile=\"index.html\")\n\n\n\n\n\nplug(::Type{WebSocket})\n\n\n\n\n\nplug(::Type{ServerSentEvents})\n\n\n\n\n\n"
+    "text": "plug(::Type{Logger}; access_log::Union{Nothing,<:NamedTuple}=nothing, formatter=LoggerFormatter.basic_message)\n\n\n\n\n\nplug(::Type{Static}; at::String, from::String, only::Union{Vector{String},Nothing}=nothing, indexfile=\"index.html\")\n\n\n\n\n\n"
 },
 
 {
