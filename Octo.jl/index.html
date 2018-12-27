@@ -150,10 +150,10 @@ julia&gt; Repo.query(em, (Name=&quot;Cloris&quot;,))
 |    2 | Cloris   |   85000.0 |
 1 row.
 
-julia&gt; ❓  = Octo.PlaceHolder
+julia&gt; ❓ = Octo.PlaceHolder
 PlaceHolder
 
-julia&gt; Repo.query([SELECT * FROM em WHERE em.Name == ❓ ], [&quot;Cloris&quot;])
+julia&gt; Repo.query([SELECT * FROM em WHERE em.Name == ❓], [&quot;Cloris&quot;])
 [ Info: SELECT * FROM Employee WHERE Name = $1   &quot;Cloris&quot;
 |   id | name     |    salary |
 | ---- | -------- | --------- |
