@@ -23,7 +23,7 @@ julia&gt; to_sql([SELECT * FROM u WHERE u.id == 2])
 &quot;SELECT * FROM users WHERE id = 2&quot;</code></pre><p><img src="https://wookay.github.io/docs/Octo.jl/assets/octo/structured.svg" alt="structured.svg"/></p><h2><a class="nav-anchor" id="Repo-1" href="#Repo-1">Repo</a></h2><p>Current supported database drivers:</p><ul><li>PostgreSQL(via <a href="https://github.com/invenia/LibPQ.jl">LibPQ.jl</a>)</li><li>MySQL(via <a href="https://github.com/JuliaDatabases/MySQL.jl">MySQL.jl</a>)</li><li>SQLite(via <a href="https://github.com/JuliaDatabases/SQLite.jl">SQLite.jl</a></li><li>ODBC(via <a href="https://github.com/JuliaDatabases/ODBC.jl">ODBC.jl</a>)</li><li>JDBC(via <a href="https://github.com/JuliaDatabases/JDBC.jl">JDBC.jl</a>)</li></ul><pre><code class="language-julia">julia&gt; using Octo.Adapters.PostgreSQL
 
 julia&gt; Repo.debug_sql()
-LogLevelDebugSQL::Octo.Repo.RepoLogLevel = -1
+LogLevelDebugSQL::RepoLogLevel = -1
 
 julia&gt; Repo.connect(
            adapter = Octo.Adapters.PostgreSQL,
@@ -159,7 +159,7 @@ julia&gt; Repo.query([SELECT * FROM em WHERE em.Name == ❓], [&quot;Cloris&quot
 | ---- | -------- | --------- |
 |    2 | Cloris   |   85000.0 |
 1 row.</code></pre><h3><a class="nav-anchor" id="Subqueries-1" href="#Subqueries-1">Subqueries</a></h3><pre><code class="language-julia">julia&gt; sub = from([SELECT * FROM em WHERE em.Salary &gt; 30000], :sub)
-(SELECT * FROM Employee WHERE Salary &gt; 30000) AS sub
+SubQuery (SELECT * FROM Employee WHERE Salary &gt; 30000) AS sub
 
 julia&gt; Repo.query(sub)
 [ Info: SELECT * FROM Employee WHERE Salary &gt; 30000
