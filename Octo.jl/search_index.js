@@ -441,6 +441,78 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Adapters/ODBC/#",
+    "page": "Octo.Adapters.ODBC",
+    "title": "Octo.Adapters.ODBC",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Adapters/ODBC/#Octo.Adapters.ODBC.to_sql",
+    "page": "Octo.Adapters.ODBC",
+    "title": "Octo.Adapters.ODBC.to_sql",
+    "category": "function",
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
+},
+
+{
+    "location": "Adapters/ODBC/#Octo.Adapters.ODBC-1",
+    "page": "Octo.Adapters.ODBC",
+    "title": "Octo.Adapters.ODBC",
+    "category": "section",
+    "text": "Octo.Adapters.ODBC.to_sql"
+},
+
+{
+    "location": "Adapters/JDBC/#",
+    "page": "Octo.Adapters.JDBC",
+    "title": "Octo.Adapters.JDBC",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Adapters/JDBC/#Octo.Adapters.JDBC.to_sql",
+    "page": "Octo.Adapters.JDBC",
+    "title": "Octo.Adapters.JDBC.to_sql",
+    "category": "function",
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
+},
+
+{
+    "location": "Adapters/JDBC/#Octo.Adapters.JDBC-1",
+    "page": "Octo.Adapters.JDBC",
+    "title": "Octo.Adapters.JDBC",
+    "category": "section",
+    "text": "Octo.Adapters.JDBC.to_sql"
+},
+
+{
+    "location": "Adapters/Hive/#",
+    "page": "Octo.Adapters.Hive",
+    "title": "Octo.Adapters.Hive",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Adapters/Hive/#Octo.Adapters.Hive.to_sql",
+    "page": "Octo.Adapters.Hive",
+    "title": "Octo.Adapters.Hive.to_sql",
+    "category": "function",
+    "text": "to_sql(query::Structured)::String\n\n\n\n\n\nto_sql(subquery::SubQuery)::String\n\n\n\n\n\n"
+},
+
+{
+    "location": "Adapters/Hive/#Octo.Adapters.Hive-1",
+    "page": "Octo.Adapters.Hive",
+    "title": "Octo.Adapters.Hive",
+    "category": "section",
+    "text": "Octo.Adapters.Hive.to_sql"
+},
+
+{
     "location": "Pretty/#",
     "page": "Pretty",
     "title": "Pretty",
