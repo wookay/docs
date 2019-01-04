@@ -41,6 +41,38 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "server/#",
+    "page": "server",
+    "title": "server",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "server/#Bukdu.start",
+    "page": "server",
+    "title": "Bukdu.start",
+    "category": "function",
+    "text": "Bukdu.start(port::Integer; host::String=\"localhost\")\n\nstart the Bukdu server.\n\n\n\n\n\n"
+},
+
+{
+    "location": "server/#Bukdu.stop",
+    "page": "server",
+    "title": "Bukdu.stop",
+    "category": "function",
+    "text": "Bukdu.stop()\n\nstop the Bukdu server.\n\n\n\n\n\n"
+},
+
+{
+    "location": "server/#Bukdu-server-1",
+    "page": "server",
+    "title": "Bukdu server",
+    "category": "section",
+    "text": "Bukdu.start\nBukdu.stop"
+},
+
+{
     "location": "controllers/#",
     "page": "controllers",
     "title": "controllers",
