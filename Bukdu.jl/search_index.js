@@ -293,7 +293,7 @@ var documenterSearchIndex = {"docs": [
     "page": "plugs",
     "title": "Bukdu.Plug.plug",
     "category": "function",
-    "text": "plug(::Type{Logger}; access_log::Union{Nothing,<:NamedTuple}=nothing, formatter=LoggerFormatter.basic_message)\n\n\n\n\n\nplug(::Type{Static}; at::String, from::String, only::Union{Vector{String},Nothing}=nothing, indexfile=\"index.html\")\n\n\n\n\n\n"
+    "text": "plug(::Type{Logger}; access_log::Union{Nothing,<:NamedTuple}=nothing, formatter=LoggerFormatter.basic_message)\n\n\n\n\n\nplug(::Type{Parsers}; parsers::Vector{Symbol})\n\n\n\n\n\nplug(::Type{Static}; at::String, from::String, only::Union{Vector{String},Nothing}=nothing, indexfile=\"index.html\")\n\n\n\n\n\n"
 },
 
 {
