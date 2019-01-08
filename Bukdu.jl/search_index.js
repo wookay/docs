@@ -81,9 +81,9 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "controllers/#Bukdu.Plug.ApplicationController",
+    "location": "controllers/#Bukdu.ApplicationController",
     "page": "controllers",
-    "title": "Bukdu.Plug.ApplicationController",
+    "title": "Bukdu.ApplicationController",
     "category": "type",
     "text": "ApplicationController\n\n\n\n\n\n"
 },
@@ -129,9 +129,9 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "renders/#Bukdu.Plug.Render",
+    "location": "renders/#Bukdu.Render",
     "page": "renders",
-    "title": "Bukdu.Plug.Render",
+    "title": "Bukdu.Render",
     "category": "type",
     "text": "Render <: AbstractRender\n\n\n\n\n\n"
 },
