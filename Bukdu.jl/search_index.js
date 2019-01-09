@@ -513,11 +513,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "System/#Bukdu.System.config",
+    "page": "System",
+    "title": "Bukdu.System.config",
+    "category": "constant",
+    "text": "Bukdu.System.config\n\nLogging options for System info and error messages.\n\n:controller_pad\n:action_pad\n:path_pad\n:error_stackframes_range\n\n\n\n\n\n"
+},
+
+{
     "location": "System/#Debugging-the-requests-and-responses-on-the-fly-1",
     "page": "System",
     "title": "Debugging the requests and responses on the fly",
     "category": "section",
-    "text": "Bukdu provides a way to catch the requests and responses.julia> Bukdu.System.catch_request(route::Bukdu.Route, req) = @debug \"REQ \" req.headers\njulia> Bukdu.System.catch_response(route::Bukdu.Route, resp) = @debug \"RESP\" resp.headers resp.statusBukdu.System.catch_request\nBukdu.System.catch_response"
+    "text": "Bukdu provides a way to catch the requests and responses.julia> Bukdu.System.catch_request(route::Bukdu.Route, req) = @debug \"REQ \" req.headers\njulia> Bukdu.System.catch_response(route::Bukdu.Route, resp) = @debug \"RESP\" resp.headers resp.statusBukdu.System.catch_request\nBukdu.System.catch_responseBukdu.System.config"
 },
 
 {
