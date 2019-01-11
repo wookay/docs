@@ -93,7 +93,7 @@ var documenterSearchIndex = {"docs": [
     "page": "runtests",
     "title": "Examples",
     "category": "section",
-    "text": "run tests~/.julia/dev/Jive/test $ julia --color=yes runtests.jlrun tests with the target directory.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/Ifdistributed run tests with -p~/.julia/dev/Jive/test $ julia --color=yes -p1 runtests.jldistributed run tests for Pkg.test(), using JIVE_PROCS ENV.~/.julia/dev/Jive $ JIVE_PROCS=2 julia --project=. -e \'using Pkg; Pkg.test()\'"
+    "text": "run tests~/.julia/dev/Jive/test $ julia --color=yes runtests.jlrun tests with target directory.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/Ifdistributed run tests with -p~/.julia/dev/Jive/test $ julia --color=yes -p1 runtests.jldistributed run tests for Pkg.test(), using JIVE_PROCS ENV.~/.julia/dev/Jive $ JIVE_PROCS=2 julia --project=. -e \'using Pkg; Pkg.test()\'"
 },
 
 {
