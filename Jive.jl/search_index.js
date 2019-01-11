@@ -21,7 +21,15 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "runtests",
     "category": "section",
-    "text": "run the test files from the specific directory.test/runtests.jlusing Jive # runtests\nruntests(@__DIR__)(Image: runtests.svg)"
+    "text": "run test files with target directory and distributed run tests.test/runtests.jlusing Jive # runtests\nruntests(@__DIR__)(Image: runtests.svg)"
+},
+
+{
+    "location": "#Examples-1",
+    "page": "Home",
+    "title": "Examples",
+    "category": "section",
+    "text": "run tests~/.julia/dev/Jive/test $ julia --color=yes runtests.jlrun tests with target directory.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/Ifdistributed run tests with -p~/.julia/dev/Jive/test $ julia --color=yes -p1 runtests.jldistributed run tests for Pkg.test(), using JIVE_PROCS ENV.~/.julia/dev/Jive $ JIVE_PROCS=2 julia --project=. -e \'using Pkg; Pkg.test()\'"
 },
 
 {
@@ -78,6 +86,14 @@ var documenterSearchIndex = {"docs": [
     "title": "runtests",
     "category": "section",
     "text": "run the test files from the specific directory.Jive.runtestsusing Jive # runtests\nruntests(@__DIR__)(Image: runtests.svg)"
+},
+
+{
+    "location": "runtests/#Examples-1",
+    "page": "runtests",
+    "title": "Examples",
+    "category": "section",
+    "text": "run tests~/.julia/dev/Jive/test $ julia --color=yes runtests.jlrun tests with the target directory.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/Ifdistributed run tests with -p~/.julia/dev/Jive/test $ julia --color=yes -p1 runtests.jldistributed run tests for Pkg.test(), using JIVE_PROCS ENV.~/.julia/dev/Jive $ JIVE_PROCS=2 julia --project=. -e \'using Pkg; Pkg.test()\'"
 },
 
 {
