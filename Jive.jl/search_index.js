@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "runtests",
     "category": "section",
-    "text": "run test files with target directory and distributed run tests.test/runtests.jlusing Jive # runtests\nruntests(@__DIR__)(Image: runtests.svg)"
+    "text": "run the test files from the specific directory.using Jive\nruntests(@__DIR__, skip=[], node1=[])(Image: runtests.svg)for the runtests.jl, ARGS are used to filter the targets and to set the first one to test.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/s jive/m start=3\n1/5 jive/mockup/mockup.jl --\n2/5 jive/mockup/warn-replacing-mock.jl --\n3/5 jive/skip/skip-calls.jl\n    Pass 2  (0.26 seconds)\n4/5 jive/skip/skip-functions.jl\n    Pass 4  (0.01 seconds)\n5/5 jive/skip/skip.jl\n    Pass 4  (0.01 seconds)\n✅  All 10 tests have been completed.  (0.57 seconds)in the above example, test files are matched for only have jive/s jive/m and jump up to the 3rd file."
 },
 
 {
@@ -77,7 +77,7 @@ var documenterSearchIndex = {"docs": [
     "page": "runtests",
     "title": "Jive.runtests",
     "category": "function",
-    "text": "runtests(dir::String; node1::Vector{String}=Vector{String}())\n\nrun the test files from the specific directory.\n\n\n\n\n\n"
+    "text": "runtests(dir::String; skip::Union{Vector{Any},Vector{String}}=Vector{String}(), node1::Union{Vector{Any},Vector{String}}=Vector{String}())\n\nrun the test files from the specific directory.\n\ndir: the root directory to traverse.\nskip: files or directories to skip.\nnode1: run on node 1 during for the distributed tests.\n\n\n\n\n\n"
 },
 
 {
@@ -85,7 +85,7 @@ var documenterSearchIndex = {"docs": [
     "page": "runtests",
     "title": "runtests",
     "category": "section",
-    "text": "run the test files from the specific directory.Jive.runtestsusing Jive # runtests\nruntests(@__DIR__)(Image: runtests.svg)"
+    "text": "run the test files from the specific directory.Jive.runtestsusing Jive\nruntests(@__DIR__, skip=[], node1=[])(Image: runtests.svg)for the runtests.jl, ARGS are used to filter the targets and to set the first one to test.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/s jive/m start=3\n1/5 jive/mockup/mockup.jl --\n2/5 jive/mockup/warn-replacing-mock.jl --\n3/5 jive/skip/skip-calls.jl\n    Pass 2  (0.26 seconds)\n4/5 jive/skip/skip-functions.jl\n    Pass 4  (0.01 seconds)\n5/5 jive/skip/skip.jl\n    Pass 4  (0.01 seconds)\n✅  All 10 tests have been completed.  (0.57 seconds)in the above example, test files are matched for only have jive/s jive/m and jump up to the 3rd file."
 },
 
 {
