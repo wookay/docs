@@ -77,7 +77,7 @@ var documenterSearchIndex = {"docs": [
     "page": "runtests",
     "title": "Jive.runtests",
     "category": "function",
-    "text": "runtests(dir::String; skip::Union{Vector{Any},Vector{String}}=Vector{String}(), node1::Union{Vector{Any},Vector{String}}=Vector{String}())\n\nrun the test files from the specific directory.\n\ndir: the root directory to traverse.\nskip: files or directories to skip.\nnode1: run on node 1 during for the distributed tests.\n\n\n\n\n\n"
+    "text": "runtests(dir::String; skip::Union{Vector{Any},Vector{String}}=[], node1::Union{Vector{Any},Vector{String}}=[], targets=ARGS)\n\nrun the test files from the specific directory.\n\ndir: the root directory to traverse.\nskip: files or directories to skip.\nnode1: run on node 1 during for the distributed tests.\ntargets: filter targets and start. default is ARGS\n\n\n\n\n\n"
 },
 
 {
