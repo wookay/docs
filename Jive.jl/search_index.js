@@ -13,7 +13,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Jive 👣",
     "category": "section",
-    "text": "Jive.jl is a Julia package to help the writing tests.runtests\nwatch\n@skip\n@onlyonce\n@If\n@mockup"
+    "text": "Jive.jl is a Julia package to help the writing tests.runtests\nwatch\n@skip\n@onlyonce\n@If\n@useinside\n@mockup"
 },
 
 {
@@ -29,7 +29,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Examples",
     "category": "section",
-    "text": "run tests~/.julia/dev/Jive/test $ julia --color=yes runtests.jlrun tests with target directory.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/Ifdistributed run tests with -p~/.julia/dev/Jive/test $ julia --color=yes -p1 runtests.jldistributed run tests for Pkg.test(), using JIVE_PROCS ENV.~/.julia/dev/Jive $ JIVE_PROCS=2 julia --color=yes --project=. -e \'using Pkg; Pkg.test()\'\n\n~/.julia/dev/Jive $ julia --color=yes --project=. -e \'ENV[\"JIVE_PROCS\"]=\"2\"; using Pkg; Pkg.test()\'"
+    "text": "run tests~/.julia/dev/Jive/test $ julia --color=yes runtests.jlrun tests with target directory.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/Ifdistributed run tests with -p~/.julia/dev/Jive/test $ julia --color=yes -p3 runtests.jldistributed run tests for Pkg.test(), using JIVE_PROCS ENV.~/.julia/dev/Jive $ JIVE_PROCS=2 julia --color=yes --project=. -e \'using Pkg; Pkg.test()\'\n\n~/.julia/dev/Jive $ julia --color=yes --project=. -e \'ENV[\"JIVE_PROCS\"]=\"2\"; using Pkg; Pkg.test()\'"
 },
 
 {
@@ -62,6 +62,14 @@ var documenterSearchIndex = {"docs": [
     "title": "@If",
     "category": "section",
     "text": "evaluate the module by the condition.test/jive/Ifusing Jive # @If\n@If VERSION >= v\"1.1.0-DEV.764\" module load_some_module\nend"
+},
+
+{
+    "location": "#@useinside-1",
+    "page": "Home",
+    "title": "@useinside",
+    "category": "section",
+    "text": "use inside of the module.using Jive # @useinside\n@useinside module test_pkgs_flux_optimise\n# ...\nend"
 },
 
 {
@@ -237,7 +245,7 @@ var documenterSearchIndex = {"docs": [
     "page": "@useinside",
     "title": "@useinside",
     "category": "section",
-    "text": "use inside of the module.Jive.@useinside"
+    "text": "use inside of the module.Jive.@useinsideusing Jive # @useinside\n@useinside module test_pkgs_flux_optimise\n# ...\nend"
 },
 
 {
