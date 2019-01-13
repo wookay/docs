@@ -97,6 +97,38 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "watch/#",
+    "page": "watch",
+    "title": "watch",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "watch/#Jive.watch",
+    "page": "watch",
+    "title": "Jive.watch",
+    "category": "function",
+    "text": "watch(callback::Function, dir::String; targets=ARGS, sources::Union{Vector{Any},Vector{String}}=[])\n\nwatch the folders.\n\n\n\n\n\n"
+},
+
+{
+    "location": "watch/#Jive.stop",
+    "page": "watch",
+    "title": "Jive.stop",
+    "category": "function",
+    "text": "Jive.stop(::typeof(watch))\n\nstop watching folders.\n\n\n\n\n\n"
+},
+
+{
+    "location": "watch/#watch-1",
+    "page": "watch",
+    "title": "watch",
+    "category": "section",
+    "text": "watch the folders.Jive.watch\nJive.stopjulia> watch(@__DIR__, sources=[normpath(@__DIR__,\"..\",\"src\")]) do path\n           @info :changed path\n           runtests(@__DIR__)\n       end\nwatching folders ...\n  - ../src\n  - julia\n  - julia/broadcast"
+},
+
+{
     "location": "skip/#",
     "page": "@skip",
     "title": "@skip",
@@ -174,6 +206,30 @@ var documenterSearchIndex = {"docs": [
     "title": "@If",
     "category": "section",
     "text": "evaluate the module by the condition.Jive.@Ifusing Jive # @If\n@If VERSION >= v\"1.1.0-DEV.764\" module load_some_module\nend"
+},
+
+{
+    "location": "useinside/#",
+    "page": "@useinside",
+    "title": "@useinside",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "useinside/#Jive.@useinside",
+    "page": "@useinside",
+    "title": "Jive.@useinside",
+    "category": "macro",
+    "text": "@useinside(expr::Expr)\n\nuse inside of the module.\n\n\n\n\n\n"
+},
+
+{
+    "location": "useinside/#@useinside-1",
+    "page": "@useinside",
+    "title": "@useinside",
+    "category": "section",
+    "text": "use inside of the module.Jive.@useinside"
 },
 
 {
