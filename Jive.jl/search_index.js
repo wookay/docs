@@ -125,7 +125,7 @@ var documenterSearchIndex = {"docs": [
     "page": "watch",
     "title": "watch",
     "category": "section",
-    "text": "watch the folders.Jive.watch\nJive.stopjulia> watch(@__DIR__, sources=[normpath(@__DIR__,\"..\",\"src\")]) do path\n           @info :changed path\n           runtests(@__DIR__)\n       end\nwatching folders ...\n  - ../src\n  - julia\n  - julia/broadcast"
+    "text": "watch the folders.Jive.watch\nJive.stopjulia> watch(@__DIR__, sources=[normpath(@__DIR__,\"..\",\"src\")]) do path\n           @info :changed path\n           runtests(@__DIR__)\n       end\nwatching folders ...\n  - pkgs/flux\n  - ../srcjulia> Jive.stop(watch)\nstopped watching folders."
 },
 
 {
