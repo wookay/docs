@@ -69,7 +69,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Repo",
     "title": "Octo.Repo.connect",
     "category": "function",
-    "text": "Repo.connect(; adapter::Module, kwargs...)\n\n\n\n\n\n"
+    "text": "Repo.connect(; adapter::Module, database::Union{Nothing,Type{D} where {D <: DBMS.AbstractDatabase}}=nothing, kwargs...)\n\n\n\n\n\n"
 },
 
 {
