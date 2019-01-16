@@ -37,7 +37,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "watch",
     "category": "section",
-    "text": "watch the folders.~/.julia/dev/Jive/test $ julia --color=yes -q -i runtests.jl jive/s\n1/3 jive/skip/skip-calls.jl\n    Pass 2  (0.29 seconds)\n2/3 jive/skip/skip-functions.jl\n    Pass 4  (0.02 seconds)\n3/3 jive/skip/skip.jl\n    Pass 4  (0.01 seconds)\n✅   All 10 tests have been completed.  (0.61 seconds)\njulia> watch(@__DIR__, sources=[normpath(@__DIR__,\"..\",\"src\")]) do path\n           @info :changed path\n           runtests(@__DIR__)\n       end\nwatching folders ...\n  - jive/skip\n  - ../srcwhen saving any files in the watching folders, it automatically run tests."
+    "text": "watch the folders.~/.julia/dev/Jive/test/Example/test $ cat runtests.jl\nusing Jive\nruntests(@__DIR__, skip=[\"revise.jl\"])\n\n~/.julia/dev/Jive/test/Example/test $ cat revise.jl\nusing Revise, Jive\nusing Example\nwatch(@__DIR__, sources=[pathof(Example)]) do path\n    @info :changed path\n    revise()\n    runtests(@__DIR__, skip=[\"revise.jl\"])\nend\n# Jive.stop(watch)\n\n~/.julia/dev/Jive/test/Example/test $ julia --project=.. -q -i revise.jl example\nwatching folders ...\n  - example\n  - ../srcwhen saving any files in the watching folders, it automatically run tests."
 },
 
 {
@@ -141,7 +141,7 @@ var documenterSearchIndex = {"docs": [
     "page": "watch",
     "title": "watch",
     "category": "section",
-    "text": "watch the folders.Jive.watch\nJive.stop~/.julia/dev/Jive/test $ julia --color=yes -q -i runtests.jl jive/s\n1/3 jive/skip/skip-calls.jl\n    Pass 2  (0.29 seconds)\n2/3 jive/skip/skip-functions.jl\n    Pass 4  (0.02 seconds)\n3/3 jive/skip/skip.jl\n    Pass 4  (0.01 seconds)\n✅  All 10 tests have been completed.  (0.61 seconds)\njulia> watch(@__DIR__, sources=[normpath(@__DIR__,\"..\",\"src\")]) do path\n           @info :changed path\n           runtests(@__DIR__)\n       end\nwatching folders ...\n  - jive/skip\n  - ../srcwhen saving any files in the watching folders, it automatically run tests.julia> ┌ Info: changed\n└   path = \"jive/skip/skip.jl\"\n1/3 jive/skip/skip-calls.jl\n    Pass 2  (0.00 seconds)\n2/3 jive/skip/skip-functions.jl\n    Pass 4  (0.01 seconds)\n3/3 jive/skip/skip.jl\n    Pass 4  (0.01 seconds)\n✅  All 10 tests have been completed.  (0.15 seconds)to stop watchingjulia> Jive.stop(watch)\nstopped watching folders."
+    "text": "watch the folders.Jive.watch\nJive.stop~/.julia/dev/Jive/test/Example/test $ cat runtests.jl\nusing Jive\nruntests(@__DIR__, skip=[\"revise.jl\"])\n\n~/.julia/dev/Jive/test/Example/test $ cat revise.jl\nusing Revise, Jive\nusing Example\nwatch(@__DIR__, sources=[pathof(Example)]) do path\n    @info :changed path\n    revise()\n    runtests(@__DIR__, skip=[\"revise.jl\"])\nend\n# Jive.stop(watch)\n\n~/.julia/dev/Jive/test/Example/test $ julia --project=.. -q -i revise.jl example\nwatching folders ...\n  - example\n  - ../srcwhen saving any files in the watching folders, it automatically run tests.julia> ┌ Info: changed\n└   path = \"../src/Example.jl\"\n1/1 example/test1.jl\n    Pass 1  (0.26 seconds)\n✅  All 1 test has been completed.  (0.55 seconds)\n┌ Info: changed\n└   path = \"example/test1.jl\"\n1/1 example/test1.jl\n    Pass 1  (0.00 seconds)\n✅  All 1 test has been completed.  (0.00 seconds)to stop watchingjulia> Jive.stop(watch)\nstopped watching folders."
 },
 
 {

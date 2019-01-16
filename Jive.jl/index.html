@@ -11,20 +11,23 @@ runtests(@__DIR__, skip=[], node1=[])</code></pre><p><img src="https://wookay.gi
     Pass 4  (0.01 seconds)
 ✅  All 10 tests have been completed.  (0.57 seconds)</code></pre><p>in the above example, test files are matched for only have <code>jive/s</code> <code>jive/m</code> and jump up to the 3rd file.</p><h3><a class="nav-anchor" id="Examples-1" href="#Examples-1">Examples</a></h3><ul><li>run tests</li></ul><pre><code class="language-sh">~/.julia/dev/Jive/test $ julia --color=yes runtests.jl</code></pre><ul><li>run tests with target directory.</li></ul><pre><code class="language-sh">~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/If</code></pre><ul><li>distributed run tests with <code>-p</code></li></ul><pre><code class="language-sh">~/.julia/dev/Jive/test $ julia --color=yes -p3 runtests.jl</code></pre><ul><li>distributed run tests for <code>Pkg.test()</code>, using <code>JIVE_PROCS</code> ENV.</li></ul><pre><code class="language-sh">~/.julia/dev/Jive $ JIVE_PROCS=2 julia --color=yes --project=. -e &#39;using Pkg; Pkg.test()&#39;
 
-~/.julia/dev/Jive $ julia --color=yes --project=. -e &#39;ENV[&quot;JIVE_PROCS&quot;]=&quot;2&quot;; using Pkg; Pkg.test()&#39;</code></pre><h1><a class="nav-anchor" id="watch-1" href="#watch-1">watch</a></h1><p>watch the folders.</p><pre><code class="language-sh">~/.julia/dev/Jive/test $ julia --color=yes -q -i runtests.jl jive/s
-1/3 jive/skip/skip-calls.jl
-    Pass 2  (0.29 seconds)
-2/3 jive/skip/skip-functions.jl
-    Pass 4  (0.02 seconds)
-3/3 jive/skip/skip.jl
-    Pass 4  (0.01 seconds)
-✅   All 10 tests have been completed.  (0.61 seconds)
-julia&gt; watch(@__DIR__, sources=[normpath(@__DIR__,&quot;..&quot;,&quot;src&quot;)]) do path
-           @info :changed path
-           runtests(@__DIR__)
-       end
+~/.julia/dev/Jive $ julia --color=yes --project=. -e &#39;ENV[&quot;JIVE_PROCS&quot;]=&quot;2&quot;; using Pkg; Pkg.test()&#39;</code></pre><h1><a class="nav-anchor" id="watch-1" href="#watch-1">watch</a></h1><p>watch the folders.</p><pre><code class="language-sh">~/.julia/dev/Jive/test/Example/test $ cat runtests.jl
+using Jive
+runtests(@__DIR__, skip=[&quot;revise.jl&quot;])
+
+~/.julia/dev/Jive/test/Example/test $ cat revise.jl
+using Revise, Jive
+using Example
+watch(@__DIR__, sources=[pathof(Example)]) do path
+    @info :changed path
+    revise()
+    runtests(@__DIR__, skip=[&quot;revise.jl&quot;])
+end
+# Jive.stop(watch)
+
+~/.julia/dev/Jive/test/Example/test $ julia --project=.. -q -i revise.jl example
 watching folders ...
-  - jive/skip
+  - example
   - ../src</code></pre><p>when saving any files in the watching folders, it automatically run tests.</p><h1><a class="nav-anchor" id="@skip-1" href="#@skip-1">@skip</a></h1><p>skip a module, function, or call.</p><ul><li><a href="https://github.com/wookay/Jive.jl/blob/master/test/jive/skip">test/jive/skip</a></li></ul><pre><code class="language-julia">using Jive # @skip
 
 @skip module want_to_skip_this_module
