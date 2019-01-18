@@ -53,7 +53,7 @@ var documenterSearchIndex = {"docs": [
     "page": "server",
     "title": "Bukdu.start",
     "category": "function",
-    "text": "Bukdu.start(port::Integer; host::String=\"localhost\")\n\nstart the Bukdu server.\n\n\n\n\n\n"
+    "text": "Bukdu.start(port::Integer; host::String=\"localhost\", kwargs...)\n\nstart the Bukdu server.\n\n\n\n\n\n"
 },
 
 {
