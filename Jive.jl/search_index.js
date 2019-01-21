@@ -45,7 +45,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "@skip",
     "category": "section",
-    "text": "skip a module, function, or call.test/jive/skipusing Jive # @skip\n\n@skip module want_to_skip_this_module\nsleep(2)\nend\n\n@skip function want_to_skip_this_function()\nsleep(2)\nend\n\n@skip println(1+2)\n\nJive.Skipped.modules\nJive.Skipped.functions\nJive.Skipped.callsChange to don\'t skip the code: set ENV[\"JIVE_SKIP\"] = \"0\""
+    "text": "skip the expression.test/jive/skipusing Jive # @skip\n\n@skip module want_to_skip_this_module\nsleep(2)\nend\n\n@skip function want_to_skip_this_function()\nsleep(2)\nend\n\n@skip println(1+2)Change to do not skip the code: set ENV[\"JIVE_SKIP\"] = \"0\""
 },
 
 {
@@ -157,7 +157,7 @@ var documenterSearchIndex = {"docs": [
     "page": "@skip",
     "title": "Jive.@skip",
     "category": "macro",
-    "text": "@skip\n\nskip a module, function, or call.\n\n\n\n\n\n"
+    "text": "@skip\n\nskip the expression.\n\n\n\n\n\n"
 },
 
 {
@@ -165,7 +165,7 @@ var documenterSearchIndex = {"docs": [
     "page": "@skip",
     "title": "Jive.Skipped",
     "category": "module",
-    "text": "Skipped\n\nSkipped symbols are in Skipped.modules, Skipped.functions, Skipped.calls\n\n\n\n\n\n"
+    "text": "Skipped\n\nSkipped expressions are in Skipped.expressions\n\n\n\n\n\n"
 },
 
 {
@@ -173,7 +173,7 @@ var documenterSearchIndex = {"docs": [
     "page": "@skip",
     "title": "@skip",
     "category": "section",
-    "text": "skip a module, function, or call.Jive.@skip\nJive.Skippedtest/jive/skipusing Jive # @skip\n\n@skip module want_to_skip_this_module\nsleep(2)\nend\n\n@skip function want_to_skip_this_function()\nsleep(2)\nend\n\n@skip println(1+2)\n\nJive.Skipped.modules\nJive.Skipped.functions\nJive.Skipped.callsChange to don\'t skip the code: ENV[\"JIVE_SKIP\"] = \"0\""
+    "text": "skip the expression.Jive.@skip\nJive.Skippedtest/jive/skipusing Jive # @skip\n\n@skip module want_to_skip_this_module\nsleep(2)\nend\n\n@skip function want_to_skip_this_function()\nsleep(2)\nend\n\n@skip println(1+2)Change to do not skip the code: ENV[\"JIVE_SKIP\"] = \"0\""
 },
 
 {
