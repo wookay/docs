@@ -53,7 +53,7 @@ var documenterSearchIndex = {"docs": [
     "page": "server",
     "title": "Bukdu.start",
     "category": "function",
-    "text": "Bukdu.start(port::Integer; host::String=\"localhost\", kwargs...)\n\nstart the Bukdu server.\n\n\n\n\n\n"
+    "text": "Bukdu.start(port::Integer; host::Union{String,Sockets.IPAddr}=\"localhost\", kwargs...)\n\nstart the Bukdu server.\n\n\n\n\n\n"
 },
 
 {
@@ -181,7 +181,7 @@ var documenterSearchIndex = {"docs": [
     "page": "routes",
     "title": "Base.get",
     "category": "function",
-    "text": "get(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+    "text": "get(url::String, C::Type{<:ApplicationController}, action, param_types::Pair{Symbol,DataType}...)\n\n\n\n\n\n"
 },
 
 {
@@ -189,7 +189,7 @@ var documenterSearchIndex = {"docs": [
     "page": "routes",
     "title": "Bukdu.post",
     "category": "function",
-    "text": "post(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+    "text": "post(url::String, C::Type{<:ApplicationController}, action, param_types::Pair{Symbol,DataType}...)\n\n\n\n\n\n"
 },
 
 {
@@ -197,7 +197,7 @@ var documenterSearchIndex = {"docs": [
     "page": "routes",
     "title": "Bukdu.delete",
     "category": "function",
-    "text": "delete(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+    "text": "delete(url::String, C::Type{<:ApplicationController}, action, param_types::Pair{Symbol,DataType}...)\n\n\n\n\n\n"
 },
 
 {
@@ -205,7 +205,7 @@ var documenterSearchIndex = {"docs": [
     "page": "routes",
     "title": "Bukdu.patch",
     "category": "function",
-    "text": "patch(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+    "text": "patch(url::String, C::Type{<:ApplicationController}, action, param_types::Pair{Symbol,DataType}...)\n\n\n\n\n\n"
 },
 
 {
@@ -213,7 +213,7 @@ var documenterSearchIndex = {"docs": [
     "page": "routes",
     "title": "Bukdu.put",
     "category": "function",
-    "text": "put(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+    "text": "put(url::String, C::Type{<:ApplicationController}, action, param_types::Pair{Symbol,DataType}...)\n\n\n\n\n\n"
 },
 
 {
@@ -221,7 +221,7 @@ var documenterSearchIndex = {"docs": [
     "page": "routes",
     "title": "Bukdu.options",
     "category": "function",
-    "text": "options(url::String, C::Type{<:ApplicationController}, action)\n\n\n\n\n\n"
+    "text": "options(url::String, C::Type{<:ApplicationController}, action, param_types::Pair{Symbol,DataType}...)\n\n\n\n\n\n"
 },
 
 {
@@ -229,7 +229,7 @@ var documenterSearchIndex = {"docs": [
     "page": "routes",
     "title": "Bukdu.resources",
     "category": "function",
-    "text": "resources(path::String, ::Type{C}; only=[], except=[]) where {C <: ApplicationController}\n\n\n\n\n\n"
+    "text": "resources(path::String, ::Type{C}, param_types::Pair{Symbol,DataType}...; only=[], except=[]) where {C <: ApplicationController}\n\n\n\n\n\n"
 },
 
 {
