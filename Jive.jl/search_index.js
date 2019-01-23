@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "runtests",
     "category": "section",
-    "text": "run the test files from the specific directory.using Jive\nruntests(@__DIR__, skip=[], node1=[])(Image: runtests.svg)for the runtests.jl, ARGS are used to filter the targets and to set the first one to test.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/s jive/m start=3\n1/5 jive/mockup/mockup.jl --\n2/5 jive/mockup/warn-replacing-mock.jl --\n3/5 jive/skip/skip-calls.jl\n    Pass 2  (0.26 seconds)\n4/5 jive/skip/skip-functions.jl\n    Pass 4  (0.01 seconds)\n5/5 jive/skip/skip.jl\n    Pass 4  (0.01 seconds)\n✅  All 10 tests have been completed.  (0.57 seconds)in the above example, test files are matched for only have jive/s jive/m and jump up to the 3rd file."
+    "text": "run the test files from the specific directory.using Jive\nruntests(@__DIR__, skip=[], node1=[], targets=ARGS)(Image: runtests.svg)for the runtests.jl, ARGS are used to filter the targets and to set the start offset of the tests.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/s jive/m start=3\n1/5 jive/mockup/mockup.jl --\n2/5 jive/skip/skip-calls.jl --\n3/5 jive/skip/skip-exprs.jl\n    Pass 4  (0.38 seconds)\n4/5 jive/skip/skip-functions.jl\n    Pass 4  (0.05 seconds)\n5/5 jive/skip/skip-modules.jl\n    Pass 4  (0.01 seconds)\n✅  All 12 tests have been completed.  (0.73 seconds)in the above example, test files are matched for only have jive/s jive/m and jumping up to the 3rd file."
 },
 
 {
@@ -29,7 +29,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Examples",
     "category": "section",
-    "text": "run tests~/.julia/dev/Jive/test $ julia --color=yes runtests.jlrun tests with target directory.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/Ifdistributed run tests with -p~/.julia/dev/Jive/test $ julia --color=yes -p3 runtests.jldistributed run tests for Pkg.test(), using JIVE_PROCS ENV.~/.julia/dev/Jive $ JIVE_PROCS=2 julia --color=yes --project=. -e \'using Pkg; Pkg.test()\'\n\n~/.julia/dev/Jive $ julia --color=yes --project=. -e \'ENV[\"JIVE_PROCS\"]=\"2\"; using Pkg; Pkg.test()\'"
+    "text": "run tests~/.julia/dev/Jive/test $ julia --color=yes runtests.jlrun tests with target directory.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/Ifdistributed run tests with -p~/.julia/dev/Jive/test $ julia --color=yes -p3 runtests.jldistributed run tests for Pkg.test(), using JIVE_PROCS ENV.~/.julia/dev/Jive $ JIVE_PROCS=2 julia --color=yes --project=. -e \'using Pkg; Pkg.test()\'\n\n~/.julia/dev/Jive $ julia --color=yes --project=. -e \'ENV[\"JIVE_PROCS\"]=\"2\"; using Pkg; Pkg.test()\'see also travis job logs."
 },
 
 {
@@ -37,7 +37,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "watch",
     "category": "section",
-    "text": "watch the folders.~/.julia/dev/Jive/test/Example/test $ cat runtests.jl\nusing Jive\nruntests(@__DIR__, skip=[\"revise.jl\"])\n\n~/.julia/dev/Jive/test/Example/test $ cat revise.jl\nusing Revise, Jive\nusing Example\nwatch(@__DIR__, sources=[pathof(Example)]) do path\n    @info :changed path\n    revise()\n    runtests(@__DIR__, skip=[\"revise.jl\"])\nend\n# Jive.stop(watch)\n\n~/.julia/dev/Jive/test/Example/test $ julia --project=.. -q -i revise.jl example\nwatching folders ...\n  - example\n  - ../srcwhen saving any files in the watching folders, it automatically run tests."
+    "text": "watch the folders. You may need to install Revise.jl.~/.julia/dev/Jive/test/Example/test $ cat runtests.jl\nusing Jive\nruntests(@__DIR__, skip=[\"revise.jl\"])\n\n~/.julia/dev/Jive/test/Example/test $ cat revise.jl\nusing Revise, Jive\nusing Example\nwatch(@__DIR__, sources=[pathof(Example)]) do path\n    @info :changed path\n    revise()\n    runtests(@__DIR__, skip=[\"revise.jl\"])\nend\n# Jive.stop(watch)\n\n~/.julia/dev/Jive/test/Example/test $ julia --project=.. -q -i revise.jl example\nwatching folders ...\n  - ../src\n  - examplewhen saving any files in the watching folders, it automatically run tests."
 },
 
 {
@@ -101,7 +101,7 @@ var documenterSearchIndex = {"docs": [
     "page": "runtests",
     "title": "runtests",
     "category": "section",
-    "text": "run the test files from the specific directory.Jive.runtestsusing Jive\nruntests(@__DIR__, skip=[], node1=[])(Image: runtests.svg)for the runtests.jl, ARGS are used to filter the targets and to set the first one to test.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/s jive/m start=3\n1/5 jive/mockup/mockup.jl --\n2/5 jive/mockup/warn-replacing-mock.jl --\n3/5 jive/skip/skip-calls.jl\n    Pass 2  (0.26 seconds)\n4/5 jive/skip/skip-functions.jl\n    Pass 4  (0.01 seconds)\n5/5 jive/skip/skip.jl\n    Pass 4  (0.01 seconds)\n✅  All 10 tests have been completed.  (0.57 seconds)in the above example, test files are matched for only have jive/s jive/m and jump up to the 3rd file."
+    "text": "run the test files from the specific directory.Jive.runtestsusing Jive\nruntests(@__DIR__, skip=[], node1=[], targets=ARGS)(Image: runtests.svg)for the runtests.jl, ARGS are used to filter the targets and to set the start offset of the tests.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/s jive/m start=3\n1/5 jive/mockup/mockup.jl --\n2/5 jive/skip/skip-calls.jl --\n3/5 jive/skip/skip-exprs.jl\n    Pass 4  (0.38 seconds)\n4/5 jive/skip/skip-functions.jl\n    Pass 4  (0.05 seconds)\n5/5 jive/skip/skip-modules.jl\n    Pass 4  (0.01 seconds)\n✅  All 12 tests have been completed.  (0.73 seconds)in the above example, test files are matched for only have jive/s jive/m and jumping up to the 3rd file."
 },
 
 {
@@ -109,7 +109,7 @@ var documenterSearchIndex = {"docs": [
     "page": "runtests",
     "title": "Examples",
     "category": "section",
-    "text": "run tests~/.julia/dev/Jive/test $ julia --color=yes runtests.jlrun tests with target directory.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/Ifdistributed run tests with -p~/.julia/dev/Jive/test $ julia --color=yes -p1 runtests.jldistributed run tests for Pkg.test(), using JIVE_PROCS ENV.~/.julia/dev/Jive $ JIVE_PROCS=2 julia --color=yes --project=. -e \'using Pkg; Pkg.test()\'\n\n~/.julia/dev/Jive $ julia --color=yes --project=. -e \'ENV[\"JIVE_PROCS\"]=\"2\"; using Pkg; Pkg.test()\'"
+    "text": "run tests~/.julia/dev/Jive/test $ julia --color=yes runtests.jlrun tests with target directory.~/.julia/dev/Jive/test $ julia --color=yes runtests.jl jive/Ifdistributed run tests with -p~/.julia/dev/Jive/test $ julia --color=yes -p3 runtests.jldistributed run tests for Pkg.test(), using JIVE_PROCS ENV.~/.julia/dev/Jive $ JIVE_PROCS=2 julia --color=yes --project=. -e \'using Pkg; Pkg.test()\'\n\n~/.julia/dev/Jive $ julia --color=yes --project=. -e \'ENV[\"JIVE_PROCS\"]=\"2\"; using Pkg; Pkg.test()\'see also travis job logs."
 },
 
 {
