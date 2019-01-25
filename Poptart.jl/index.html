@@ -17,4 +17,8 @@ put!(window2, label, slider1, slider2)
 
 didClick(button) do event
     @info :didClick event
-end</code></pre><p>&lt;img src=&quot;https://wookay.github.io/docs/Poptart.jl/assets/poptart/app.png&quot; width=&quot;400&quot; alt=&quot;app.png&quot; /&gt;</p><h3><a class="nav-anchor" id="Requirements-1" href="#Requirements-1">Requirements</a></h3><p><code>julia&gt;</code> type <code>]</code> key</p><pre><code class="language-julia">(v1.0) pkg&gt; add https://github.com/wookay/Poptart.jl</code></pre><footer><hr/></footer></article></body></html>
+end
+
+didClick(slider1) do event
+    @info :didClick (event, slider1.value)
+end</code></pre><p>&lt;img src=&quot;https://wookay.github.io/docs/Poptart.jl/assets/poptart/app.png&quot; width=&quot;500&quot; alt=&quot;app.png&quot; /&gt;</p><h3><a class="nav-anchor" id="Requirements-1" href="#Requirements-1">Requirements</a></h3><p><code>julia&gt;</code> type <code>]</code> key</p><pre><code class="language-julia">(v1.0) pkg&gt; add https://github.com/wookay/Poptart.jl</code></pre><footer><hr/></footer></article></body></html>
