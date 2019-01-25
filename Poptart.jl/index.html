@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Home · Poptart.jl 🏂</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="assets/documenter.js"></script><script src="siteinfo.js"></script><script src="../versions.js"></script><link href="assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><h1>Poptart.jl 🏂</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li class="current"><a class="toctext" href>Home</a><ul class="internal"></ul></li></ul></nav><article id="docs"><header><nav><ul><li><a href>Home</a></li></ul><a class="edit-page" href="https://github.com/wookay/Poptart.jl/blob/master/docs/src/index.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>Home</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="Poptart.jl-1" href="#Poptart.jl-1">Poptart.jl 🏂</a></h1><p>GUI programming in Julia based on <a href="https://github.com/Gnimuc/Nuklear.jl">Nuklear.jl</a></p><pre><code class="language-julia">using Poptart.Desktop # Application Windows put!
+using Poptart.Controls # Mouse Button Label Slider didClick
+
+window1 = Windows.Window(title=&quot;A&quot;, frame=(x=10,y=20,width=200,height=200))
+window2 = Windows.Window(title=&quot;B&quot;, frame=(x=220,y=20,width=200,height=200))
+windows = [window1, window2]
+app = Application(windows=windows, title=&quot;App&quot;, frame=(width=430, height=300))
+
+button = Button(title=&quot;Hello&quot;, frame=(width=80, height=30))
+put!(window1, button)
+
+label = Label(text=&quot;Range:&quot;)
+slider1 = Slider(range=1:10, value=Ref{Cint}(5))
+slider2 = Slider(range=1.0:10.0, value=Ref{Cfloat}(2.0))
+put!(window2, label, slider1, slider2)
+
+didClick(button) do event
+    @info :didClick event
+end</code></pre><p>&lt;img src=&quot;https://wookay.github.io/docs/Poptart.jl/assets/poptart/app.png&quot; width=&quot;400&quot; alt=&quot;app.png&quot; /&gt;</p><h3><a class="nav-anchor" id="Requirements-1" href="#Requirements-1">Requirements</a></h3><p><code>julia&gt;</code> type <code>]</code> key</p><pre><code class="language-julia">(v1.0) pkg&gt; add https://github.com/wookay/Poptart.jl</code></pre><footer><hr/></footer></article></body></html>
