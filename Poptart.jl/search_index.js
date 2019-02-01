@@ -121,11 +121,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Controls/#Poptart.Controls.Checkbox",
+    "location": "Controls/#Poptart.Controls.CheckBox",
     "page": "Controls",
-    "title": "Poptart.Controls.Checkbox",
+    "title": "Poptart.Controls.CheckBox",
     "category": "type",
-    "text": "Checkbox(; text::String, active::Ref)\n\n\n\n\n\n"
+    "text": "CheckBox(; text::String, active::Ref)\n\n\n\n\n\n"
 },
 
 {
@@ -181,7 +181,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls",
     "category": "section",
-    "text": "Button\nSlider\nLabel\nSelectableLabel\nCheckbox\nRadio\nProgressBar\nImageView\nCanvas\ndidClick(block, control::C) where {C <: UIControl}\nput!(canvas::Canvas, elements::Drawings.Drawing...)"
+    "text": "Button\nSlider\nLabel\nSelectableLabel\nCheckBox\nRadio\nProgressBar\nImageView\nCanvas\ndidClick(block, control::C) where {C <: UIControl}\nput!(canvas::Canvas, elements::Drawings.Drawing...)"
 },
 
 {
