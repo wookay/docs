@@ -53,7 +53,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Desktop",
     "title": "Poptart.Desktop.Application",
     "category": "type",
-    "text": "Application(; windows=[Windows.Window()], title::String=\"App\", frame=(width=400, height=300), async=true)\n\n\n\n\n\n"
+    "text": "Application(; title::String=\"App\", frame::NamedTuple{(:width,:height)}=(width=400, height=300), windows=[Windows.Window(title=\"\", frame=(x=0,y=0,frame...))], async=true)\n\n\n\n\n\n"
 },
 
 {
@@ -61,7 +61,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Desktop",
     "title": "Poptart.Desktop.Windows.Window",
     "category": "type",
-    "text": "Window(items = []; props...)\n\n\n\n\n\n"
+    "text": "Window(items = []; title::String, frame::NamedTuple{(:x,:y,:width,:height)}, name::Union{Nothing,String}=nothing, flags=NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_SCALABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_TITLE)\n\n\n\n\n\n"
 },
 
 {
