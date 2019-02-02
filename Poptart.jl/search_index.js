@@ -61,7 +61,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Desktop",
     "title": "Poptart.Desktop.Windows.Window",
     "category": "type",
-    "text": "Window(items = []; title::String, frame::NamedTuple{(:x,:y,:width,:height)}, name::Union{Nothing,String}=nothing, flags=NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_SCALABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_TITLE)\n\n\n\n\n\n"
+    "text": "Window(items::Vector{<:UIControl} = UIControl[]; title::String, frame::NamedTuple{(:x,:y,:width,:height)}, name::Union{Nothing,String}=nothing, flags=NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_SCALABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_TITLE)\n\n\n\n\n\n"
 },
 
 {
@@ -93,7 +93,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.Button",
     "category": "type",
-    "text": "Button(; title::String, [frame::NamedTuple{(:width, :height)}])\n\n\n\n\n\n"
+    "text": "Button(; title::String, [frame])\n\n\n\n\n\n"
 },
 
 {
@@ -101,7 +101,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.Slider",
     "category": "type",
-    "text": "Slider(; range, value::Ref)\n\n\n\n\n\n"
+    "text": "Slider(; range, value::Ref, [frame])\n\n\n\n\n\n"
 },
 
 {
@@ -109,7 +109,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.Property",
     "category": "type",
-    "text": "Property(; name::String, range, value::Ref)\n\n\n\n\n\n"
+    "text": "Property(; name::String, range, value::Ref, [frame])\n\n\n\n\n\n"
 },
 
 {
@@ -125,7 +125,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.SelectableLabel",
     "category": "type",
-    "text": "SelectableLabel(; text::String, selected::Ref)\n\n\n\n\n\n"
+    "text": "SelectableLabel(; text::String, selected::Ref, [frame])\n\n\n\n\n\n"
 },
 
 {
@@ -133,7 +133,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.CheckBox",
     "category": "type",
-    "text": "CheckBox(; text::String, active::Ref)\n\n\n\n\n\n"
+    "text": "CheckBox(; text::String, active::Ref, [frame])\n\n\n\n\n\n"
 },
 
 {
@@ -157,7 +157,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.ProgressBar",
     "category": "type",
-    "text": "ProgressBar(; value::Ref, max::nk_size, modifyable::Bool)\n\n\n\n\n\n"
+    "text": "ProgressBar(; value::Ref, max::nk_size, modifyable::Bool, [frame])\n\n\n\n\n\n"
 },
 
 {
@@ -165,7 +165,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.ImageView",
     "category": "type",
-    "text": "ImageView(; path::String)\n\n\n\n\n\n"
+    "text": "ImageView(; path::String, [frame])\n\n\n\n\n\n"
 },
 
 {
@@ -173,7 +173,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.Canvas",
     "category": "type",
-    "text": "Canvas(elements = []; props...)\n\n\n\n\n\n"
+    "text": "Canvas(elements::Vector{<:Drawing} = Drawing[]; [frame])\n\n\n\n\n\n"
 },
 
 {
