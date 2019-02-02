@@ -201,6 +201,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#Poptart.Controls.Chart",
+    "page": "Controls",
+    "title": "Poptart.Controls.Chart",
+    "category": "type",
+    "text": "Chart(chart_items::Vector; chart_type, min, max, [color::Union{Nothing,RGBA}=nothing, highlight::Union{Nothing,RGBA}=nothing], kwargs...)\n\n\n\n\n\n"
+},
+
+{
     "location": "Controls/#Poptart.Controls.didClick-Union{Tuple{C}, Tuple{Any,C}} where C<:UIControl",
     "page": "Controls",
     "title": "Poptart.Controls.didClick",
@@ -229,7 +237,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls",
     "category": "section",
-    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nCanvas\nStaticRow\nDynamicRow\nToolTip\ndidClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}\nput!(canvas::Canvas, elements::Drawings.Drawing...)"
+    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nCanvas\nStaticRow\nDynamicRow\nToolTip\nChartdidClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}\nput!(canvas::Canvas, elements::Drawings.Drawing...)"
 },
 
 {
