@@ -117,7 +117,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.Label",
     "category": "type",
-    "text": "Label(; text::String)\n\n\n\n\n\n"
+    "text": "Label(; text::String, alignment=NK_TEXT_LEFT, color::Union{Nothing,RGBA}=nothing, [frame])\n\n\n\n\n\n"
 },
 
 {
@@ -141,7 +141,15 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.Radio",
     "category": "type",
-    "text": "Radio(; options, value)\n\n\n\n\n\n"
+    "text": "Radio(; options, value, [frame])\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.ComboBox",
+    "page": "Controls",
+    "title": "Poptart.Controls.ComboBox",
+    "category": "type",
+    "text": "ComboBox(; options, value, [frame])\n\n\n\n\n\n"
 },
 
 {
@@ -205,7 +213,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls",
     "category": "section",
-    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nProgressBar\nImageView\nCanvas\nStaticRow\nDynamicRow\ndidClick(block, control::C) where {C <: UIControl}\nput!(canvas::Canvas, elements::Drawings.Drawing...)"
+    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nCanvas\nStaticRow\nDynamicRow\ndidClick(block, control::C) where {C <: UIControl}\nput!(canvas::Canvas, elements::Drawings.Drawing...)"
 },
 
 {
