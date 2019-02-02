@@ -193,11 +193,27 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#Poptart.Controls.ToolTip",
+    "page": "Controls",
+    "title": "Poptart.Controls.ToolTip",
+    "category": "type",
+    "text": "ToolTip(; text::String, [frame])\n\n\n\n\n\n"
+},
+
+{
     "location": "Controls/#Poptart.Controls.didClick-Union{Tuple{C}, Tuple{Any,C}} where C<:UIControl",
     "page": "Controls",
     "title": "Poptart.Controls.didClick",
     "category": "method",
     "text": "didClick(block, control::C) where {C <: UIControl}\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.onHover-Union{Tuple{C}, Tuple{Any,C}} where C<:UIControl",
+    "page": "Controls",
+    "title": "Poptart.Controls.onHover",
+    "category": "method",
+    "text": "onHover(block, control::C) where {C <: UIControl}\n\n\n\n\n\n"
 },
 
 {
@@ -213,7 +229,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls",
     "category": "section",
-    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nCanvas\nStaticRow\nDynamicRow\ndidClick(block, control::C) where {C <: UIControl}\nput!(canvas::Canvas, elements::Drawings.Drawing...)"
+    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nCanvas\nStaticRow\nDynamicRow\nToolTip\ndidClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}\nput!(canvas::Canvas, elements::Drawings.Drawing...)"
 },
 
 {
