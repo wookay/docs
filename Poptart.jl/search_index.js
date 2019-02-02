@@ -93,7 +93,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.Button",
     "category": "type",
-    "text": "Button(; title::String, frame::NamedTuple{(:width, :height)})\n\n\n\n\n\n"
+    "text": "Button(; title::String, [frame::NamedTuple{(:width, :height)}])\n\n\n\n\n\n"
 },
 
 {
@@ -102,6 +102,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Poptart.Controls.Slider",
     "category": "type",
     "text": "Slider(; range, value::Ref)\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.Property",
+    "page": "Controls",
+    "title": "Poptart.Controls.Property",
+    "category": "type",
+    "text": "Property(; name::String, range, value::Ref)\n\n\n\n\n\n"
 },
 
 {
@@ -161,6 +169,22 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#Poptart.Controls.StaticRow",
+    "page": "Controls",
+    "title": "Poptart.Controls.StaticRow",
+    "category": "type",
+    "text": "StaticRow(widgets::Vector{<:UIControl}; height, width, [cols])\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.DynamicRow",
+    "page": "Controls",
+    "title": "Poptart.Controls.DynamicRow",
+    "category": "type",
+    "text": "DynamicRow(widgets::Vector{<:UIControl}; height, [cols])\n\n\n\n\n\n"
+},
+
+{
     "location": "Controls/#Poptart.Controls.didClick-Union{Tuple{C}, Tuple{Any,C}} where C<:UIControl",
     "page": "Controls",
     "title": "Poptart.Controls.didClick",
@@ -181,7 +205,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls",
     "category": "section",
-    "text": "Button\nSlider\nLabel\nSelectableLabel\nCheckBox\nRadio\nProgressBar\nImageView\nCanvas\ndidClick(block, control::C) where {C <: UIControl}\nput!(canvas::Canvas, elements::Drawings.Drawing...)"
+    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nProgressBar\nImageView\nCanvas\nStaticRow\nDynamicRow\ndidClick(block, control::C) where {C <: UIControl}\nput!(canvas::Canvas, elements::Drawings.Drawing...)"
 },
 
 {
