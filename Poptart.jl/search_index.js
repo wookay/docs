@@ -73,11 +73,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Desktop/#Poptart.Interfaces.remove!-Union{Tuple{W}, Tuple{W,Vararg{UIControl,N} where N}} where W<:UIWindow",
+    "page": "Desktop",
+    "title": "Poptart.Interfaces.remove!",
+    "category": "method",
+    "text": "remove!(window::W, controls::UIControl...) where {W <: UIWindow}\n\n\n\n\n\n"
+},
+
+{
     "location": "Desktop/#Poptart.Desktop-1",
     "page": "Desktop",
     "title": "Poptart.Desktop",
     "category": "section",
-    "text": "Application\nWindows.Window\nput!(window::W, controls::UIControl...) where {W <: UIWindow}"
+    "text": "ApplicationWindows.Window\nput!(window::W, controls::UIControl...) where {W <: UIWindow}\nremove!(window::W, controls::UIControl...) where {W <: UIWindow}"
 },
 
 {
@@ -169,14 +177,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Controls/#Poptart.Controls.Canvas",
-    "page": "Controls",
-    "title": "Poptart.Controls.Canvas",
-    "category": "type",
-    "text": "Canvas(elements::Vector{<:Drawing} = Drawing[]; [frame])\n\n\n\n\n\n"
-},
-
-{
     "location": "Controls/#Poptart.Controls.StaticRow",
     "page": "Controls",
     "title": "Poptart.Controls.StaticRow",
@@ -225,6 +225,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#Poptart.Controls.Canvas",
+    "page": "Controls",
+    "title": "Poptart.Controls.Canvas",
+    "category": "type",
+    "text": "Canvas(elements::Vector{<:Drawing} = Drawing[]; [frame])\n\n\n\n\n\n"
+},
+
+{
     "location": "Controls/#Base.put!-Tuple{Canvas,Vararg{Poptart.Drawings.Drawing,N} where N}",
     "page": "Controls",
     "title": "Base.put!",
@@ -233,11 +241,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#Poptart.Interfaces.remove!-Tuple{Canvas,Vararg{Poptart.Drawings.Drawing,N} where N}",
+    "page": "Controls",
+    "title": "Poptart.Interfaces.remove!",
+    "category": "method",
+    "text": "remove!(canvas::Canvas, elements::Drawings.Drawing...)\n\n\n\n\n\n"
+},
+
+{
     "location": "Controls/#Poptart.Controls-1",
     "page": "Controls",
     "title": "Poptart.Controls",
     "category": "section",
-    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nCanvas\nStaticRow\nDynamicRow\nToolTip\nChartdidClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}\nput!(canvas::Canvas, elements::Drawings.Drawing...)"
+    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nStaticRow\nDynamicRow\nToolTip\nChartdidClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}Canvas\nput!(canvas::Canvas, elements::Drawings.Drawing...)\nremove!(canvas::Canvas, elements::Drawings.Drawing...)"
 },
 
 {
