@@ -69,7 +69,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Desktop",
     "title": "Base.put!",
     "category": "method",
-    "text": "put!(window::W, controls::UIControl...) where {W <: UIWindow}\n\n\n\n\n\n"
+    "text": "Windows.put!(window::W, controls::UIControl...) where {W <: UIWindow}\n\n\n\n\n\n"
 },
 
 {
@@ -77,7 +77,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Desktop",
     "title": "Poptart.Interfaces.remove!",
     "category": "method",
-    "text": "remove!(window::W, controls::UIControl...) where {W <: UIWindow}\n\n\n\n\n\n"
+    "text": "Windows.remove!(window::W, controls::UIControl...) where {W <: UIWindow}\n\n\n\n\n\n"
 },
 
 {
@@ -85,7 +85,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Desktop",
     "title": "Poptart.Desktop",
     "category": "section",
-    "text": "ApplicationWindows.Window\nput!(window::W, controls::UIControl...) where {W <: UIWindow}\nremove!(window::W, controls::UIControl...) where {W <: UIWindow}"
+    "text": "ApplicationWindows.Window\nWindows.put!(window::W, controls::UIControl...) where {W <: UIWindow}\nWindows.remove!(window::W, controls::UIControl...) where {W <: UIWindow}"
 },
 
 {
@@ -237,7 +237,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Base.put!",
     "category": "method",
-    "text": "put!(canvas::Canvas, elements::Drawings.Drawing...)\n\n\n\n\n\n"
+    "text": "Controls.put!(canvas::Canvas, elements::Drawings.Drawing...)\n\n\n\n\n\n"
 },
 
 {
@@ -245,7 +245,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Interfaces.remove!",
     "category": "method",
-    "text": "remove!(canvas::Canvas, elements::Drawings.Drawing...)\n\n\n\n\n\n"
+    "text": "Controls.remove!(canvas::Canvas, elements::Drawings.Drawing...)\n\n\n\n\n\n"
 },
 
 {
@@ -253,7 +253,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls",
     "category": "section",
-    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nStaticRow\nDynamicRow\nToolTip\nChartdidClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}Canvas\nput!(canvas::Canvas, elements::Drawings.Drawing...)\nremove!(canvas::Canvas, elements::Drawings.Drawing...)"
+    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nStaticRow\nDynamicRow\nToolTip\nChartdidClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}Canvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)"
 },
 
 {
