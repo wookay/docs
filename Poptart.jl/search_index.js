@@ -237,7 +237,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.Popup",
     "category": "type",
-    "text": "Popup(widgets::Vector{<:UIControl}; show::Bool, popup_type, title::String, flags, frame)\n\n\n\n\n\n"
+    "text": "Popup(widgets::Vector{<:UIControl}; show::Bool, popup_type, title::String, flags, frame::NamedTuple{(:x,:y,:width,:height)})\n\n\n\n\n\n"
 },
 
 {
@@ -246,6 +246,30 @@ var documenterSearchIndex = {"docs": [
     "title": "Poptart.Controls.Chart",
     "category": "type",
     "text": "Chart(chart_items::Vector; chart_type, min, max, [color::Union{Nothing,RGBA}=nothing, highlight::Union{Nothing,RGBA}=nothing], kwargs...)\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.MenuBar",
+    "page": "Controls",
+    "title": "Poptart.Controls.MenuBar",
+    "category": "type",
+    "text": "MenuBar(menu::Vector{<:UIControl}; show::Bool, height)\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.Menu",
+    "page": "Controls",
+    "title": "Poptart.Controls.Menu",
+    "category": "type",
+    "text": "Menu(; text::String, align, row_width, frame::NamedTuple{(:width,:height)})\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.MenuItem",
+    "page": "Controls",
+    "title": "Poptart.Controls.MenuItem",
+    "category": "type",
+    "text": "MenuItem(; callback::Function, label::String, align)\n\n\n\n\n\n"
 },
 
 {
@@ -317,7 +341,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls",
     "category": "section",
-    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nToolTip\nPopup\nChartStaticRow\nDynamicRow\nSpacingdidClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}Canvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)"
+    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nToolTip\nPopup\nChartMenuBar\nMenu\nMenuItemStaticRow\nDynamicRow\nSpacingdidClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}Canvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)"
 },
 
 {
