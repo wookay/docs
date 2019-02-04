@@ -233,6 +233,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#Poptart.Controls.Popup",
+    "page": "Controls",
+    "title": "Poptart.Controls.Popup",
+    "category": "type",
+    "text": "Popup(widgets::Vector{<:UIControl}; show::Bool, popup_type, title::String, flags, frame)\n\n\n\n\n\n"
+},
+
+{
     "location": "Controls/#Poptart.Controls.Chart",
     "page": "Controls",
     "title": "Poptart.Controls.Chart",
@@ -309,7 +317,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls",
     "category": "section",
-    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nToolTip\nChartStaticRow\nDynamicRow\nSpacingdidClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}Canvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)"
+    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nToolTip\nPopup\nChartStaticRow\nDynamicRow\nSpacingdidClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}Canvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)"
 },
 
 {
