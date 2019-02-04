@@ -325,7 +325,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Drawings",
     "title": "Poptart.Drawings.Line",
     "category": "type",
-    "text": "Line(; points::Vector{<:Tuple}, thickness, color)\n\n\n\n\n\n"
+    "text": "Line(; points::Vector{<:Tuple}, thickness, color::RGBA)\n\n\n\n\n\n"
 },
 
 {
@@ -333,7 +333,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Drawings",
     "title": "Poptart.Drawings.Rect",
     "category": "type",
-    "text": "Rect(; rect, rounding, [thickness], color)\n\n\n\n\n\n"
+    "text": "Rect(; rect, rounding, [thickness], color::RGBA)\n\n\n\n\n\n"
 },
 
 {
@@ -341,7 +341,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Drawings",
     "title": "Poptart.Drawings.RectMultiColor",
     "category": "type",
-    "text": "RectMultiColor(; rect, left, top, right, bottom)\n\n\n\n\n\n"
+    "text": "RectMultiColor(; rect, left::RGBA, top::RGBA, right::RGBA, bottom::RGBA)\n\n\n\n\n\n"
 },
 
 {
@@ -349,7 +349,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Drawings",
     "title": "Poptart.Drawings.Circle",
     "category": "type",
-    "text": "Circle(; rect, [thickness], color)\n\n\n\n\n\n"
+    "text": "Circle(; rect, [thickness], color::RGBA)\n\n\n\n\n\n"
 },
 
 {
@@ -357,7 +357,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Drawings",
     "title": "Poptart.Drawings.Triangle",
     "category": "type",
-    "text": "Triangle(; points::Vector{<:Tuple}, [thickness], color)\n\n\n\n\n\n"
+    "text": "Triangle(; points::Vector{<:Tuple}, [thickness], color::RGBA)\n\n\n\n\n\n"
 },
 
 {
@@ -365,7 +365,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Drawings",
     "title": "Poptart.Drawings.Arc",
     "category": "type",
-    "text": "Arc(; center, radius, angle, [thickness], color)\n\n\n\n\n\n"
+    "text": "Arc(; center, radius, angle, [thickness], color::RGBA)\n\n\n\n\n\n"
 },
 
 {
@@ -373,7 +373,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Drawings",
     "title": "Poptart.Drawings.Curve",
     "category": "type",
-    "text": "Curve(; startPoint, control1, control2, endPoint, thickness, color)\n\n\n\n\n\n"
+    "text": "Curve(; startPoint, control1, control2, endPoint, thickness, color::RGBA)\n\n\n\n\n\n"
 },
 
 {
@@ -381,7 +381,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Drawings",
     "title": "Poptart.Drawings.Polyline",
     "category": "type",
-    "text": "Polyline(; points::Vector{<:Tuple}, thickness, color)\n\n\n\n\n\n"
+    "text": "Polyline(; points::Vector{<:Tuple}, thickness, color::RGBA)\n\n\n\n\n\n"
 },
 
 {
@@ -389,7 +389,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Drawings",
     "title": "Poptart.Drawings.Polygon",
     "category": "type",
-    "text": "Polygon(; points::Vector{<:Tuple}, [thickness], color)\n\n\n\n\n\n"
+    "text": "Polygon(; points::Vector{<:Tuple}, [thickness], color::RGBA)\n\n\n\n\n\n"
 },
 
 {
