@@ -57,6 +57,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Desktop/#Poptart.Desktop-1",
+    "page": "Desktop",
+    "title": "Poptart.Desktop",
+    "category": "section",
+    "text": "Application"
+},
+
+{
     "location": "Desktop/#Poptart.Desktop.Windows.Window",
     "page": "Desktop",
     "title": "Poptart.Desktop.Windows.Window",
@@ -81,11 +89,51 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Desktop/#Poptart.Desktop-1",
+    "location": "Desktop/#Poptart.Desktop.Windows-1",
     "page": "Desktop",
-    "title": "Poptart.Desktop",
+    "title": "Poptart.Desktop.Windows",
     "category": "section",
-    "text": "ApplicationWindows.Window\nWindows.put!(window::W, controls::UIControl...) where {W <: UIWindow}\nWindows.remove!(window::W, controls::UIControl...) where {W <: UIWindow}"
+    "text": "Windows.Window\nWindows.put!(window::W, controls::UIControl...) where {W <: UIWindow}\nWindows.remove!(window::W, controls::UIControl...) where {W <: UIWindow}"
+},
+
+{
+    "location": "Desktop/#Poptart.Desktop.Themes.WhiteTheme",
+    "page": "Desktop",
+    "title": "Poptart.Desktop.Themes.WhiteTheme",
+    "category": "type",
+    "text": "abstract type WhiteTheme <: CustomTheme end\n\n\n\n\n\n"
+},
+
+{
+    "location": "Desktop/#Poptart.Desktop.Themes.DarkTheme",
+    "page": "Desktop",
+    "title": "Poptart.Desktop.Themes.DarkTheme",
+    "category": "type",
+    "text": "abstract type DarkTheme <: CustomTheme end\n\n\n\n\n\n"
+},
+
+{
+    "location": "Desktop/#Poptart.Desktop.Themes.color_table",
+    "page": "Desktop",
+    "title": "Poptart.Desktop.Themes.color_table",
+    "category": "function",
+    "text": "color_table\n\n\n\n\n\n"
+},
+
+{
+    "location": "Desktop/#Poptart.Desktop.Themes.set_style!",
+    "page": "Desktop",
+    "title": "Poptart.Desktop.Themes.set_style!",
+    "category": "function",
+    "text": "set_style!(app::A, ::Type{T}) where {T <: CustomTheme, A <: UIApplication}\n\n\n\n\n\n"
+},
+
+{
+    "location": "Desktop/#Poptart.Desktop.Themes-1",
+    "page": "Desktop",
+    "title": "Poptart.Desktop.Themes",
+    "category": "section",
+    "text": "Desktop.Themes.WhiteTheme\nDesktop.Themes.DarkTheme\nDesktop.Themes.color_table\nDesktop.Themes.set_style!"
 },
 
 {
@@ -177,6 +225,22 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#Poptart.Controls.ToolTip",
+    "page": "Controls",
+    "title": "Poptart.Controls.ToolTip",
+    "category": "type",
+    "text": "ToolTip(; text::String, [frame])\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.Chart",
+    "page": "Controls",
+    "title": "Poptart.Controls.Chart",
+    "category": "type",
+    "text": "Chart(chart_items::Vector; chart_type, min, max, [color::Union{Nothing,RGBA}=nothing, highlight::Union{Nothing,RGBA}=nothing], kwargs...)\n\n\n\n\n\n"
+},
+
+{
     "location": "Controls/#Poptart.Controls.StaticRow",
     "page": "Controls",
     "title": "Poptart.Controls.StaticRow",
@@ -193,19 +257,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Controls/#Poptart.Controls.ToolTip",
+    "location": "Controls/#Poptart.Controls.Spacing",
     "page": "Controls",
-    "title": "Poptart.Controls.ToolTip",
+    "title": "Poptart.Controls.Spacing",
     "category": "type",
-    "text": "ToolTip(; text::String, [frame])\n\n\n\n\n\n"
-},
-
-{
-    "location": "Controls/#Poptart.Controls.Chart",
-    "page": "Controls",
-    "title": "Poptart.Controls.Chart",
-    "category": "type",
-    "text": "Chart(chart_items::Vector; chart_type, min, max, [color::Union{Nothing,RGBA}=nothing, highlight::Union{Nothing,RGBA}=nothing], kwargs...)\n\n\n\n\n\n"
+    "text": "Spacing(widgets::Vector{<:UIControl}; [cols])\n\n\n\n\n\n"
 },
 
 {
@@ -253,7 +309,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls",
     "category": "section",
-    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nStaticRow\nDynamicRow\nToolTip\nChartdidClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}Canvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)"
+    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nToolTip\nChartStaticRow\nDynamicRow\nSpacingdidClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}Canvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)"
 },
 
 {
@@ -278,6 +334,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Poptart.Drawings.Rect",
     "category": "type",
     "text": "Rect(; rect, rounding, [thickness], color)\n\n\n\n\n\n"
+},
+
+{
+    "location": "Drawings/#Poptart.Drawings.RectMultiColor",
+    "page": "Drawings",
+    "title": "Poptart.Drawings.RectMultiColor",
+    "category": "type",
+    "text": "RectMultiColor(; rect, left, top, right, bottom)\n\n\n\n\n\n"
 },
 
 {
@@ -349,7 +413,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Drawings",
     "title": "Poptart.Drawings",
     "category": "section",
-    "text": "Line\nRect\nCircle\nTriangle\nArc\nCurve\nPolyline\nPolygonDrawings.stroke(element::E) where {E <: DrawingElement}\nDrawings.fill(element::E) where {E <: DrawingElement}"
+    "text": "Line\nRect\nRectMultiColor\nCircle\nTriangle\nArc\nCurve\nPolyline\nPolygonDrawings.stroke(element::E) where {E <: DrawingElement}\nDrawings.fill(element::E) where {E <: DrawingElement}"
 },
 
 ]}
