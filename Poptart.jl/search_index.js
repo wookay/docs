@@ -149,7 +149,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.Button",
     "category": "type",
-    "text": "Button(; title::String, [frame])\n\n\n\n\n\n"
+    "text": "Button(; title::String, [frame::NamedTuple{(:width,:height)}])\n\n\n\n\n\n"
 },
 
 {
@@ -217,11 +217,43 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#Poptart.Controls.Chart",
+    "page": "Controls",
+    "title": "Poptart.Controls.Chart",
+    "category": "type",
+    "text": "Chart(chart_items::Vector; chart_type, min, max, [color::Union{Nothing,RGBA}=nothing, highlight::Union{Nothing,RGBA}=nothing], kwargs...)\n\n\n\n\n\n"
+},
+
+{
     "location": "Controls/#Poptart.Controls.ImageView",
     "page": "Controls",
     "title": "Poptart.Controls.ImageView",
     "category": "type",
     "text": "ImageView(; path::String, [frame])\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.StaticRow",
+    "page": "Controls",
+    "title": "Poptart.Controls.StaticRow",
+    "category": "type",
+    "text": "StaticRow(widgets::Vector{<:UIControl}; row_height, row_width, [cols])\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.DynamicRow",
+    "page": "Controls",
+    "title": "Poptart.Controls.DynamicRow",
+    "category": "type",
+    "text": "DynamicRow(widgets::Vector{<:UIControl}; row_height, [cols])\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.Spacing",
+    "page": "Controls",
+    "title": "Poptart.Controls.Spacing",
+    "category": "type",
+    "text": "Spacing(widgets::Vector{<:UIControl}; [cols])\n\n\n\n\n\n"
 },
 
 {
@@ -237,15 +269,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.Popup",
     "category": "type",
-    "text": "Popup(widgets::Vector{<:UIControl}; show::Bool, popup_type, title::String, flags, frame::NamedTuple{(:x,:y,:width,:height)})\n\n\n\n\n\n"
-},
-
-{
-    "location": "Controls/#Poptart.Controls.Chart",
-    "page": "Controls",
-    "title": "Poptart.Controls.Chart",
-    "category": "type",
-    "text": "Chart(chart_items::Vector; chart_type, min, max, [color::Union{Nothing,RGBA}=nothing, highlight::Union{Nothing,RGBA}=nothing], kwargs...)\n\n\n\n\n\n"
+    "text": "Popup(widgets::Vector{<:UIControl}; show::Bool, popup_type=NK_POPUP_STATIC, title::String, flags=NK_WINDOW_CLOSABLE, frame::NamedTuple{(:x,:y,:width,:height)})\n\n\n\n\n\n"
 },
 
 {
@@ -253,7 +277,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.MenuBar",
     "category": "type",
-    "text": "MenuBar(menu::Vector{<:UIControl}; show::Bool, height)\n\n\n\n\n\n"
+    "text": "MenuBar(menu::Vector{<:UIControl}; show::Bool, row_height)\n\n\n\n\n\n"
 },
 
 {
@@ -261,7 +285,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.Menu",
     "category": "type",
-    "text": "Menu(; text::String, align, row_width, frame::NamedTuple{(:width,:height)})\n\n\n\n\n\n"
+    "text": "Menu(; text::String, align, row_width, size::NamedTuple{(:width,:height)})\n\n\n\n\n\n"
 },
 
 {
@@ -269,47 +293,23 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.MenuItem",
     "category": "type",
-    "text": "MenuItem(; callback::Function, label::String, align)\n\n\n\n\n\n"
+    "text": "MenuItem(; callback::Function, label::String, align=NK_TEXT_LEFT)\n\n\n\n\n\n"
 },
 
 {
-    "location": "Controls/#Poptart.Controls.StaticRow",
+    "location": "Controls/#Poptart.Controls.Contextual",
     "page": "Controls",
-    "title": "Poptart.Controls.StaticRow",
+    "title": "Poptart.Controls.Contextual",
     "category": "type",
-    "text": "StaticRow(widgets::Vector{<:UIControl}; height, width, [cols])\n\n\n\n\n\n"
+    "text": "Contextual(items::Vector{ContextualItem}; flags=0, size::NamedTuple{(:width,:height)}, [trigger_bounds::NamedTuple{(:x,:y,:width,:height)}])\n\n\n\n\n\n"
 },
 
 {
-    "location": "Controls/#Poptart.Controls.DynamicRow",
+    "location": "Controls/#Poptart.Controls.ContextualItem",
     "page": "Controls",
-    "title": "Poptart.Controls.DynamicRow",
+    "title": "Poptart.Controls.ContextualItem",
     "category": "type",
-    "text": "DynamicRow(widgets::Vector{<:UIControl}; height, [cols])\n\n\n\n\n\n"
-},
-
-{
-    "location": "Controls/#Poptart.Controls.Spacing",
-    "page": "Controls",
-    "title": "Poptart.Controls.Spacing",
-    "category": "type",
-    "text": "Spacing(widgets::Vector{<:UIControl}; [cols])\n\n\n\n\n\n"
-},
-
-{
-    "location": "Controls/#Poptart.Controls.didClick-Union{Tuple{C}, Tuple{Any,C}} where C<:UIControl",
-    "page": "Controls",
-    "title": "Poptart.Controls.didClick",
-    "category": "method",
-    "text": "didClick(block, control::C) where {C <: UIControl}\n\n\n\n\n\n"
-},
-
-{
-    "location": "Controls/#Poptart.Controls.onHover-Union{Tuple{C}, Tuple{Any,C}} where C<:UIControl",
-    "page": "Controls",
-    "title": "Poptart.Controls.onHover",
-    "category": "method",
-    "text": "onHover(block, control::C) where {C <: UIControl}\n\n\n\n\n\n"
+    "text": "ContextualItem(; callback::Function, label::String, align=NK_TEXT_LEFT)\n\n\n\n\n\n"
 },
 
 {
@@ -337,11 +337,27 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#Poptart.Controls.didClick-Union{Tuple{C}, Tuple{Any,C}} where C<:UIControl",
+    "page": "Controls",
+    "title": "Poptart.Controls.didClick",
+    "category": "method",
+    "text": "didClick(block, control::C) where {C <: UIControl}\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.onHover-Union{Tuple{C}, Tuple{Any,C}} where C<:UIControl",
+    "page": "Controls",
+    "title": "Poptart.Controls.onHover",
+    "category": "method",
+    "text": "onHover(block, control::C) where {C <: UIControl}\n\n\n\n\n\n"
+},
+
+{
     "location": "Controls/#Poptart.Controls-1",
     "page": "Controls",
     "title": "Poptart.Controls",
     "category": "section",
-    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nImageView\nToolTip\nPopup\nChartMenuBar\nMenu\nMenuItemStaticRow\nDynamicRow\nSpacingdidClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}Canvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)"
+    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nChart\nImageViewStaticRow\nDynamicRow\nSpacingToolTip\nPopup\nMenuBar\nMenu\nMenuItem\nContextual\nContextualItemCanvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)didClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}"
 },
 
 {
