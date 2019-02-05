@@ -273,6 +273,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#Poptart.Controls.MixedChart",
+    "page": "Controls",
+    "title": "Poptart.Controls.MixedChart",
+    "category": "type",
+    "text": "MixedChart(charts::Vector{Chart}; [frame])\n\n\n\n\n\n"
+},
+
+{
     "location": "Controls/#Poptart.Controls.ImageView",
     "page": "Controls",
     "title": "Poptart.Controls.ImageView",
@@ -285,7 +293,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "widgets",
     "category": "section",
-    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nChart\nImageView"
+    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nChart\nMixedChart\nImageView"
 },
 
 {
@@ -377,11 +385,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#Poptart.Controls.Group",
+    "page": "Controls",
+    "title": "Poptart.Controls.Group",
+    "category": "type",
+    "text": "Group(widgets::Vector{<:UIControl}=UIControl[]; name::String, title::String=\"\", flags=NK_WINDOW_BORDER, row_height, row_width, [cols])\n\n\n\n\n\n"
+},
+
+{
     "location": "Controls/#layouts-1",
     "page": "Controls",
     "title": "layouts",
     "category": "section",
-    "text": "StaticRow\nDynamicRow\nSpacing"
+    "text": "StaticRow\nDynamicRow\nSpacing\nGroup"
 },
 
 {
