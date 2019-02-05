@@ -145,6 +145,38 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#Poptart.Controls-1",
+    "page": "Controls",
+    "title": "Poptart.Controls",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "Controls/#Poptart.Controls.didClick-Union{Tuple{C}, Tuple{Any,C}} where C<:UIControl",
+    "page": "Controls",
+    "title": "Poptart.Controls.didClick",
+    "category": "method",
+    "text": "didClick(block, control::C) where {C <: UIControl}\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.onHover-Union{Tuple{C}, Tuple{Any,C}} where C<:UIControl",
+    "page": "Controls",
+    "title": "Poptart.Controls.onHover",
+    "category": "method",
+    "text": "onHover(block, control::C) where {C <: UIControl}\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#events-1",
+    "page": "Controls",
+    "title": "events",
+    "category": "section",
+    "text": "didClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}"
+},
+
+{
     "location": "Controls/#Poptart.Controls.Button",
     "page": "Controls",
     "title": "Poptart.Controls.Button",
@@ -221,7 +253,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.Chart",
     "category": "type",
-    "text": "Chart(chart_items::Vector; chart_type, min, max, [color::Union{Nothing,RGBA}=nothing, highlight::Union{Nothing,RGBA}=nothing], kwargs...)\n\n\n\n\n\n"
+    "text": "Chart(chart_items::Vector; chart_type, min, max, [color::Union{Nothing,RGBA}=nothing, highlight::Union{Nothing,RGBA}=nothing], [frame])\n\n\n\n\n\n"
 },
 
 {
@@ -233,27 +265,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Controls/#Poptart.Controls.StaticRow",
+    "location": "Controls/#widgets-1",
     "page": "Controls",
-    "title": "Poptart.Controls.StaticRow",
-    "category": "type",
-    "text": "StaticRow(widgets::Vector{<:UIControl}; row_height, row_width, [cols])\n\n\n\n\n\n"
-},
-
-{
-    "location": "Controls/#Poptart.Controls.DynamicRow",
-    "page": "Controls",
-    "title": "Poptart.Controls.DynamicRow",
-    "category": "type",
-    "text": "DynamicRow(widgets::Vector{<:UIControl}; row_height, [cols])\n\n\n\n\n\n"
-},
-
-{
-    "location": "Controls/#Poptart.Controls.Spacing",
-    "page": "Controls",
-    "title": "Poptart.Controls.Spacing",
-    "category": "type",
-    "text": "Spacing(widgets::Vector{<:UIControl}; [cols])\n\n\n\n\n\n"
+    "title": "widgets",
+    "category": "section",
+    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nChart\nImageView"
 },
 
 {
@@ -277,7 +293,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.MenuBar",
     "category": "type",
-    "text": "MenuBar(menu::Vector{<:UIControl}; show::Bool, row_height)\n\n\n\n\n\n"
+    "text": "MenuBar(menu::Vector{Menu}; show::Bool, row_height)\n\n\n\n\n\n"
 },
 
 {
@@ -285,7 +301,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls.Menu",
     "category": "type",
-    "text": "Menu(; text::String, align, row_width, size::NamedTuple{(:width,:height)})\n\n\n\n\n\n"
+    "text": "Menu(menu_items::Vector{MenuItem}; text::String, align, row_width, size::NamedTuple{(:width,:height)})\n\n\n\n\n\n"
 },
 
 {
@@ -313,6 +329,46 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#popups-1",
+    "page": "Controls",
+    "title": "popups",
+    "category": "section",
+    "text": "ToolTip\nPopup\nMenuBar\nMenu\nMenuItem\nContextual\nContextualItem"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.StaticRow",
+    "page": "Controls",
+    "title": "Poptart.Controls.StaticRow",
+    "category": "type",
+    "text": "StaticRow(widgets::Vector{<:UIControl}; row_height, row_width, [cols])\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.DynamicRow",
+    "page": "Controls",
+    "title": "Poptart.Controls.DynamicRow",
+    "category": "type",
+    "text": "DynamicRow(widgets::Vector{<:UIControl}; row_height, [cols])\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.Spacing",
+    "page": "Controls",
+    "title": "Poptart.Controls.Spacing",
+    "category": "type",
+    "text": "Spacing(widgets::Vector{<:UIControl}; [cols])\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#layouts-1",
+    "page": "Controls",
+    "title": "layouts",
+    "category": "section",
+    "text": "StaticRow\nDynamicRow\nSpacing"
+},
+
+{
     "location": "Controls/#Poptart.Controls.Canvas",
     "page": "Controls",
     "title": "Poptart.Controls.Canvas",
@@ -337,27 +393,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Controls/#Poptart.Controls.didClick-Union{Tuple{C}, Tuple{Any,C}} where C<:UIControl",
+    "location": "Controls/#canvas-1",
     "page": "Controls",
-    "title": "Poptart.Controls.didClick",
-    "category": "method",
-    "text": "didClick(block, control::C) where {C <: UIControl}\n\n\n\n\n\n"
-},
-
-{
-    "location": "Controls/#Poptart.Controls.onHover-Union{Tuple{C}, Tuple{Any,C}} where C<:UIControl",
-    "page": "Controls",
-    "title": "Poptart.Controls.onHover",
-    "category": "method",
-    "text": "onHover(block, control::C) where {C <: UIControl}\n\n\n\n\n\n"
-},
-
-{
-    "location": "Controls/#Poptart.Controls-1",
-    "page": "Controls",
-    "title": "Poptart.Controls",
+    "title": "canvas",
     "category": "section",
-    "text": "Button\nSlider\nProperty\nLabel\nSelectableLabel\nCheckBox\nRadio\nComboBox\nProgressBar\nChart\nImageViewStaticRow\nDynamicRow\nSpacingToolTip\nPopup\nMenuBar\nMenu\nMenuItem\nContextual\nContextualItemCanvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)didClick(block, control::C) where {C <: UIControl}\nonHover(block, control::C) where {C <: UIControl}"
+    "text": "Canvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)"
 },
 
 {
@@ -365,6 +405,14 @@ var documenterSearchIndex = {"docs": [
     "page": "Drawings",
     "title": "Drawings",
     "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Drawings/#Poptart.Drawings-1",
+    "page": "Drawings",
+    "title": "Poptart.Drawings",
+    "category": "section",
     "text": ""
 },
 
@@ -441,6 +489,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Drawings/#shapes-1",
+    "page": "Drawings",
+    "title": "shapes",
+    "category": "section",
+    "text": "Line\nRect\nRectMultiColor\nCircle\nTriangle\nArc\nCurve\nPolyline\nPolygon"
+},
+
+{
     "location": "Drawings/#Poptart.Drawings.stroke-Union{Tuple{E}, Tuple{E}} where E<:DrawingElement",
     "page": "Drawings",
     "title": "Poptart.Drawings.stroke",
@@ -457,11 +513,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Drawings/#Poptart.Drawings-1",
+    "location": "Drawings/#paints-1",
     "page": "Drawings",
-    "title": "Poptart.Drawings",
+    "title": "paints",
     "category": "section",
-    "text": "Line\nRect\nRectMultiColor\nCircle\nTriangle\nArc\nCurve\nPolyline\nPolygonDrawings.stroke(element::E) where {E <: DrawingElement}\nDrawings.fill(element::E) where {E <: DrawingElement}"
+    "text": "Drawings.stroke(element::E) where {E <: DrawingElement}\nDrawings.fill(element::E) where {E <: DrawingElement}"
 },
 
 ]}
