@@ -57,11 +57,27 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Desktop/#Base.put!-Union{Tuple{A}, Tuple{A,Vararg{UIWindow,N} where N}} where A<:UIApplication",
+    "page": "Desktop",
+    "title": "Base.put!",
+    "category": "method",
+    "text": "Desktop.put!(app::A, windows::UIWindow...) where {A <: UIApplication}\n\n\n\n\n\n"
+},
+
+{
+    "location": "Desktop/#Poptart.Interfaces.remove!-Union{Tuple{A}, Tuple{A,Vararg{UIWindow,N} where N}} where A<:UIApplication",
+    "page": "Desktop",
+    "title": "Poptart.Interfaces.remove!",
+    "category": "method",
+    "text": "Desktop.remove!(app::A, windows::UIWindow...) where {A <: UIApplication}\n\n\n\n\n\n"
+},
+
+{
     "location": "Desktop/#Poptart.Desktop-1",
     "page": "Desktop",
     "title": "Poptart.Desktop",
     "category": "section",
-    "text": "Application"
+    "text": "Application\nDesktop.put!(app::A, windows::UIWindow...) where {A <: UIApplication}\nDesktop.remove!(app::A, windows::UIWindow...) where {A <: UIApplication}"
 },
 
 {
