@@ -353,11 +353,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Controls/#popups-1",
+    "location": "Controls/#Poptart.Controls.TreeItem",
     "page": "Controls",
-    "title": "popups",
+    "title": "Poptart.Controls.TreeItem",
+    "category": "type",
+    "text": "TreeItem(widgets::Vector{<:UIControl} = UIControl[]; tree_type=NK_TREE_TAB, title;;String, state=NK_MINIMIZED)\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#menus-1",
+    "page": "Controls",
+    "title": "menus",
     "category": "section",
-    "text": "ToolTip\nPopup\nMenuBar\nMenu\nMenuItem\nContextual\nContextualItem"
+    "text": "ToolTip\nPopup\nMenuBar\nMenu\nMenuItem\nContextual\nContextualItem\nTreeItem"
 },
 
 {
@@ -393,19 +401,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Controls/#Poptart.Controls.Tree",
-    "page": "Controls",
-    "title": "Poptart.Controls.Tree",
-    "category": "type",
-    "text": "Tree(widgets::Vector{<:UIControl} = UIControl[]; tree_type=NK_TREE_TAB, title;;String, state=NK_MINIMIZED)\n\n\n\n\n\n"
-},
-
-{
     "location": "Controls/#layouts-1",
     "page": "Controls",
     "title": "layouts",
     "category": "section",
-    "text": "StaticRow\nDynamicRow\nSpacing\nGroup\nTree"
+    "text": "StaticRow\nDynamicRow\nSpacing\nGroup"
 },
 
 {
