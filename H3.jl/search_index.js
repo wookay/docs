@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "API",
     "title": "H3.API",
     "category": "section",
-    "text": "note: Note\nmost of the documents take fromhttps://github.com/uber/h3/tree/master/docs/api\nhttps://github.com/uber/h3/blob/master/src/h3lib/include/h3api.h.in"
+    "text": "note: Note\nthe documents taken fromhttps://github.com/uber/h3/tree/master/docs/api\nhttps://github.com/uber/h3/blob/master/src/h3lib/include/h3api.h.in"
 },
 
 {
@@ -85,7 +85,7 @@ var documenterSearchIndex = {"docs": [
     "page": "API",
     "title": "H3.API.h3ToGeoBoundary",
     "category": "function",
-    "text": "h3ToGeoBoundary(h::H3Index)::GeoBoundary\n\nFinds the boundary of the index.\n\n\n\n\n\n"
+    "text": "h3ToGeoBoundary(h::H3Index)::Vector{GeoCoord}\n\nFinds the boundary of the index.\n\n\n\n\n\n"
 },
 
 {
@@ -262,6 +262,182 @@ var documenterSearchIndex = {"docs": [
     "title": "Grid traversal functions",
     "category": "section",
     "text": "kRing\nmaxKringSize\nkRingDistances\nhexRange\nhexRangeDistances\nhexRanges\nhexRing\nh3Line\nh3LineSize\nh3Distance\nexperimentalH3ToLocalIj\nexperimentalLocalIjToH3"
+},
+
+{
+    "location": "API/#H3.API.h3ToParent",
+    "page": "API",
+    "title": "H3.API.h3ToParent",
+    "category": "function",
+    "text": "h3ToParent(h::H3Index, parentRes::Integer)::H3Index\n\nReturns the parent (coarser) index containing h.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.h3ToChildren",
+    "page": "API",
+    "title": "H3.API.h3ToChildren",
+    "category": "function",
+    "text": "h3ToChildren(h::H3Index, childRes::Integer)::Vector{H3Index}\n\nPopulates children with the indexes contained by h at resolution childRes. children must be an array of at least size maxH3ToChildrenSize(h, childRes).\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.maxH3ToChildrenSize",
+    "page": "API",
+    "title": "H3.API.maxH3ToChildrenSize",
+    "category": "function",
+    "text": "maxH3ToChildrenSize(h::H3Index, childRes::Integer)::Int\n\nReturns the size of the array needed by h3ToChildren for these inputs.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.compact",
+    "page": "API",
+    "title": "H3.API.compact",
+    "category": "function",
+    "text": "compact(h3Set::Vector{H3Index})::Vector{H3Index}\n\nCompacts the set h3Set of indexes as best as possible, into the array compactedSet. compactedSet must be at least the size of h3Set in case the set cannot be compacted.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.uncompact",
+    "page": "API",
+    "title": "H3.API.uncompact",
+    "category": "function",
+    "text": "uncompact(compactedSet::Vector{H3Index}, res::Int)::Vector{H3Index}\n\nUncompacts the set compactedSet of indexes to the resolution res.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.maxUncompactSize",
+    "page": "API",
+    "title": "H3.API.maxUncompactSize",
+    "category": "function",
+    "text": "maxUncompactSize(compactedSet::Vector{H3Index}, res::Int)::Int\n\nReturns the size of the array needed by uncompact.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#Hierarchical-grid-functions-1",
+    "page": "API",
+    "title": "Hierarchical grid functions",
+    "category": "section",
+    "text": "h3ToParent\nh3ToChildren\nmaxH3ToChildrenSize\ncompact\nuncompact\nmaxUncompactSize"
+},
+
+{
+    "location": "API/#H3.API.polyfill",
+    "page": "API",
+    "title": "H3.API.polyfill",
+    "category": "function",
+    "text": "polyfill(geoPolygon::GeoPolygon, res::Int)::Vector{H3Index}\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.maxPolyfillSize",
+    "page": "API",
+    "title": "H3.API.maxPolyfillSize",
+    "category": "function",
+    "text": "maxPolyfillSize(geoPolygon::GeoPolygon, res::Int)::Int\n\nmaxPolyfillSize returns the number of hexagons to allocate space for when performing a polyfill on the given GeoJSON-like data structure.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.h3SetToLinkedGeo",
+    "page": "API",
+    "title": "H3.API.h3SetToLinkedGeo",
+    "category": "function",
+    "text": "h3SetToLinkedGeo(h3Set::Vector{H3Index})::Ref{LinkedGeoPolygon}\n\nCreate a LinkedGeoPolygon describing the outline(s) of a set of hexagons. Polygon outlines will follow GeoJSON MultiPolygon order: Each polygon will have one outer loop, which is first in the list, followed by any holes.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.destroyLinkedPolygon",
+    "page": "API",
+    "title": "H3.API.destroyLinkedPolygon",
+    "category": "function",
+    "text": "destroyLinkedPolygon(polygon::Ref{LinkedGeoPolygon})\n\nFree all allocated memory for a linked geo structure. The caller is responsible for freeing memory allocated to the input polygon struct.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#Region-functions-1",
+    "page": "API",
+    "title": "Region functions",
+    "category": "section",
+    "text": "polyfill\nmaxPolyfillSize\nh3SetToLinkedGeo\ndestroyLinkedPolygon"
+},
+
+{
+    "location": "API/#H3.API.degsToRads",
+    "page": "API",
+    "title": "H3.API.degsToRads",
+    "category": "function",
+    "text": "degsToRads(degrees::Union{Cdouble,Integer})::Cdouble\n\nConverts degrees to radians.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.radsToDegs",
+    "page": "API",
+    "title": "H3.API.radsToDegs",
+    "category": "function",
+    "text": "radsToDegs(radians::Union{Cdouble,Integer})::Cdouble\n\nConverts radians to degrees.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.hexAreaKm2",
+    "page": "API",
+    "title": "H3.API.hexAreaKm2",
+    "category": "function",
+    "text": "hexAreaKm2(res::Integer)::Cdouble\n\nAverage hexagon area in square kilometers at the given resolution.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.hexAreaM2",
+    "page": "API",
+    "title": "H3.API.hexAreaM2",
+    "category": "function",
+    "text": "hexAreaM2(res::Integer)::Cdouble\n\nAverage hexagon area in square meters at the given resolution.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.edgeLengthKm",
+    "page": "API",
+    "title": "H3.API.edgeLengthKm",
+    "category": "function",
+    "text": "edgeLengthKm(res::Integer)::Cdouble\n\nAverage hexagon edge length in kilometers at the given resolution.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.edgeLengthM",
+    "page": "API",
+    "title": "H3.API.edgeLengthM",
+    "category": "function",
+    "text": "edgeLengthM(res::Integer)::Cdouble\n\nAverage hexagon edge length in meters at the given resolution.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.numHexagons",
+    "page": "API",
+    "title": "H3.API.numHexagons",
+    "category": "function",
+    "text": "numHexagons(res::Integer)::Int64\n\nNumber of unique H3 indexes at the given resolution.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.getRes0Indexes",
+    "page": "API",
+    "title": "H3.API.getRes0Indexes",
+    "category": "function",
+    "text": "getRes0Indexes()::Vector{H3Index}\n\nAll the resolution 0 H3 indexes.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.res0IndexCount",
+    "page": "API",
+    "title": "H3.API.res0IndexCount",
+    "category": "function",
+    "text": "res0IndexCount()::Cint\n\nNumber of resolution 0 H3 indexes.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#Miscellaneous-H3-functions-1",
+    "page": "API",
+    "title": "Miscellaneous H3 functions",
+    "category": "section",
+    "text": "degsToRads\nradsToDegs\nhexAreaKm2\nhexAreaM2\nedgeLengthKm\nedgeLengthM\nnumHexagons\ngetRes0Indexes\nres0IndexCount"
 },
 
 ]}
