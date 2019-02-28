@@ -29,7 +29,7 @@ var documenterSearchIndex = {"docs": [
     "page": "API",
     "title": "H3.Lib.H3Index",
     "category": "type",
-    "text": "H3Index\n\nthe H3Index fits within a 64-bit unsigned integer\n\n\n\n\n\n"
+    "text": "const H3Index = UInt64\n\nthe H3Index fits within a 64-bit unsigned integer\n\n\n\n\n\n"
 },
 
 {
@@ -37,7 +37,7 @@ var documenterSearchIndex = {"docs": [
     "page": "API",
     "title": "H3.Lib.GeoCoord",
     "category": "type",
-    "text": "GeoCoord\n\nlatitude/longitude in radians\n\n\n\n\n\n"
+    "text": "struct GeoCoord\n    lat::Cdouble\n    lon::Cdouble\nend\n\nlatitude/longitude in radians\n\n\n\n\n\n"
 },
 
 {
@@ -45,7 +45,7 @@ var documenterSearchIndex = {"docs": [
     "page": "API",
     "title": "H3.Lib.GeoBoundary",
     "category": "type",
-    "text": "GeoBoundary\n\ncell boundary in latitude/longitude\n\n\n\n\n\n"
+    "text": "struct GeoBoundary\n    numVerts::Cint\n    verts::NTuple{10, GeoCoord}\nend\n\ncell boundary in latitude/longitude\n\n\n\n\n\n"
 },
 
 {
@@ -53,7 +53,7 @@ var documenterSearchIndex = {"docs": [
     "page": "API",
     "title": "H3.Lib.CoordIJ",
     "category": "type",
-    "text": "CoordIJ\n\nIJ hexagon coordinates\n\n\n\n\n\n"
+    "text": "struct CoordIJ\n    i::Cint\n    j::Cint\nend\n\nIJ hexagon coordinates\n\n\n\n\n\n"
 },
 
 {
@@ -358,6 +358,78 @@ var documenterSearchIndex = {"docs": [
     "title": "Region functions",
     "category": "section",
     "text": "polyfill\nmaxPolyfillSize\nh3SetToLinkedGeo\ndestroyLinkedPolygon"
+},
+
+{
+    "location": "API/#H3.API.h3IndexesAreNeighbors",
+    "page": "API",
+    "title": "H3.API.h3IndexesAreNeighbors",
+    "category": "function",
+    "text": "h3IndexesAreNeighbors(origin::H3Index, destination::H3Index)::Bool\n\nReturns whether or not the provided H3Indexes are neighbors. Returns true if the indexes are neighbors, false otherwise.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.getH3UnidirectionalEdge",
+    "page": "API",
+    "title": "H3.API.getH3UnidirectionalEdge",
+    "category": "function",
+    "text": "getH3UnidirectionalEdge(origin::H3Index, destination::H3Index)::H3Index\n\nReturns a unidirectional edge H3 index based on the provided origin and destination.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.h3UnidirectionalEdgeIsValid",
+    "page": "API",
+    "title": "H3.API.h3UnidirectionalEdgeIsValid",
+    "category": "function",
+    "text": "h3UnidirectionalEdgeIsValid(edge::H3Index)::Bool\n\nDetermines if the provided H3Index is a valid unidirectional edge index. Returns true if it is a unidirectional edge H3Index, otherwise false.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.getOriginH3IndexFromUnidirectionalEdge",
+    "page": "API",
+    "title": "H3.API.getOriginH3IndexFromUnidirectionalEdge",
+    "category": "function",
+    "text": "getOriginH3IndexFromUnidirectionalEdge(edge::H3Index)::H3Index\n\nReturns the origin hexagon from the unidirectional edge H3Index.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.getDestinationH3IndexFromUnidirectionalEdge",
+    "page": "API",
+    "title": "H3.API.getDestinationH3IndexFromUnidirectionalEdge",
+    "category": "function",
+    "text": "getDestinationH3IndexFromUnidirectionalEdge(edge::H3Index)::H3Index\n\nReturns the destination hexagon from the unidirectional edge H3Index.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.getH3IndexesFromUnidirectionalEdge",
+    "page": "API",
+    "title": "H3.API.getH3IndexesFromUnidirectionalEdge",
+    "category": "function",
+    "text": "getH3IndexesFromUnidirectionalEdge(edge::H3Index)::Tuple{H3Index, H3Index}\n\nReturns the origin, destination pair of hexagon IDs for the given edge ID, which are placed at originDestination[0] and originDestination[1] respectively.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.getH3UnidirectionalEdgesFromHexagon",
+    "page": "API",
+    "title": "H3.API.getH3UnidirectionalEdgesFromHexagon",
+    "category": "function",
+    "text": "getH3UnidirectionalEdgesFromHexagon(origin::H3Index)::Vector{H3Index}\n\nProvides all of the unidirectional edges from the current H3Index. edges must be of length 6, and the number of undirectional edges placed in the array may be less than 6.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.getH3UnidirectionalEdgeBoundary",
+    "page": "API",
+    "title": "H3.API.getH3UnidirectionalEdgeBoundary",
+    "category": "function",
+    "text": "getH3UnidirectionalEdgeBoundary(edge::H3Index)::Vector{GeoCoord}\n\nProvides the coordinates defining the unidirectional edge.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#Unidirectional-edge-functions-1",
+    "page": "API",
+    "title": "Unidirectional edge functions",
+    "category": "section",
+    "text": "h3IndexesAreNeighbors\ngetH3UnidirectionalEdge\nh3UnidirectionalEdgeIsValid\ngetOriginH3IndexFromUnidirectionalEdge\ngetDestinationH3IndexFromUnidirectionalEdge\ngetH3IndexesFromUnidirectionalEdge\ngetH3UnidirectionalEdgesFromHexagon\ngetH3UnidirectionalEdgeBoundary"
 },
 
 {
