@@ -41,14 +41,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "API/#H3.Lib.GeoBoundary",
-    "page": "API",
-    "title": "H3.Lib.GeoBoundary",
-    "category": "type",
-    "text": "struct GeoBoundary\n    numVerts::Cint\n    verts::NTuple{10, GeoCoord}\nend\n\ncell boundary in latitude/longitude\n\n\n\n\n\n"
-},
-
-{
     "location": "API/#H3.Lib.CoordIJ",
     "page": "API",
     "title": "H3.Lib.CoordIJ",
@@ -61,7 +53,7 @@ var documenterSearchIndex = {"docs": [
     "page": "API",
     "title": "Types",
     "category": "section",
-    "text": "H3Index\nGeoCoord\nGeoBoundary\nCoordIJ"
+    "text": "H3Index\nGeoCoord\nCoordIJ"
 },
 
 {
