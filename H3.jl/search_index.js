@@ -473,6 +473,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "API/#H3.API.ijToIjk",
+    "page": "API",
+    "title": "H3.API.ijToIjk",
+    "category": "function",
+    "text": "ijToIjk(c::CoordIJ)::CoordIJK\n\nTransforms coordinates from the IJ coordinate system to the IJK+ coordinate system.\n\n\n\n\n\n"
+},
+
+{
     "location": "API/#H3.API.ijkToHex2d",
     "page": "API",
     "title": "H3.API.ijkToHex2d",
@@ -481,11 +489,35 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "API/#H3.API.hex2dToCoordIJK",
+    "location": "API/#H3.API.ijkToIj",
     "page": "API",
-    "title": "H3.API.hex2dToCoordIJK",
+    "title": "H3.API.ijkToIj",
     "category": "function",
-    "text": "hex2dToCoordIJK(v::Vec2d)::CoordIJK\n\nDetermine the containing hex in ijk+ coordinates for a 2D cartesian coordinate vector (from DGGRID).\n\n\n\n\n\n"
+    "text": "ijkToIj(c::CoordIJK)::CoordIJ\n\nTransforms coordinates from the IJK+ coordinate system to the IJ coordinate system.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.ijkDistance",
+    "page": "API",
+    "title": "H3.API.ijkDistance",
+    "category": "function",
+    "text": "ijkDistance(c1::CoordIJK, c2::CoordIJK)::Int\n\nFinds the distance between the two coordinates. Returns result.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.ijkNormalize",
+    "page": "API",
+    "title": "H3.API.ijkNormalize",
+    "category": "function",
+    "text": "ijkNormalize(c::CoordIJK)::CoordIJK\n\nNormalizes ijk coordinates by setting the components to the smallest possible values. Works in place.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.h3ToLocalIjk",
+    "page": "API",
+    "title": "H3.API.h3ToLocalIjk",
+    "category": "function",
+    "text": "h3ToLocalIjk(origin::H3Index, h3::H3Index)::CoordIJK\n\nProduces ijk+ coordinates for an index anchored by an origin. The coordinate space used by this function may have deleted regions or warping due to pentagonal distortion. Coordinates are only comparable if they come from the same origin index. Failure may occur if the index is too far away from the origin or if the index is on the other side of a pentagon.\n\n\n\n\n\n"
 },
 
 {
@@ -494,6 +526,30 @@ var documenterSearchIndex = {"docs": [
     "title": "H3.API.h3ToFaceIjk",
     "category": "function",
     "text": "h3ToFaceIjk(h::H3Index)::FaceIJK\n\nConvert an H3Index to a FaceIJK address.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.localIjkToH3",
+    "page": "API",
+    "title": "H3.API.localIjkToH3",
+    "category": "function",
+    "text": "localIjkToH3(origin::H3Index, ijk::CoordIJK)::H3Index\n\nProduces an index for ijk+ coordinates anchored by an origin. The coordinate space used by this function may have deleted regions or warping due to pentagonal distortion. Failure may occur if the coordinates are too far away from the origin or if the index is on the other side of a pentagon.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.faceIjkToH3",
+    "page": "API",
+    "title": "H3.API.faceIjkToH3",
+    "category": "function",
+    "text": "faceIjkToH3(faceijk::FaceIJK, res::Int)::H3Index\n\nConvert an FaceIJK address to the corresponding H3Index.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.hex2dToCoordIJK",
+    "page": "API",
+    "title": "H3.API.hex2dToCoordIJK",
+    "category": "function",
+    "text": "hex2dToCoordIJK(v::Vec2d)::CoordIJK\n\nDetermine the containing hex in ijk+ coordinates for a 2D cartesian coordinate vector (from DGGRID).\n\n\n\n\n\n"
 },
 
 {
@@ -513,19 +569,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "API/#H3.API.ijkNormalize",
-    "page": "API",
-    "title": "H3.API.ijkNormalize",
-    "category": "function",
-    "text": "ijkNormalize(c::CoordIJK)::CoordIJK\n\nNormalizes ijk coordinates by setting the components to the smallest possible values. Works in place.\n\n\n\n\n\n"
-},
-
-{
     "location": "API/#Coordinate-Systems-1",
     "page": "API",
     "title": "Coordinate Systems",
     "category": "section",
-    "text": "ijkToHex2d\nhex2dToCoordIJK\nh3ToFaceIjk\ngeoToVec3d\ngeoToFaceIjk\nijkNormalize"
+    "text": "ijToIjk\nijkToHex2d\nijkToIj\nijkDistance\nijkNormalize\nh3ToLocalIjk\nh3ToFaceIjk\nlocalIjkToH3\nfaceIjkToH3\nhex2dToCoordIJK\ngeoToVec3d\ngeoToFaceIjk"
 },
 
 {
