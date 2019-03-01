@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "API",
     "title": "H3.API",
     "category": "section",
-    "text": "note: Note\nthe documents taken fromhttps://github.com/uber/h3/tree/master/docs/api\nhttps://github.com/uber/h3/blob/master/src/h3lib/include/h3api.h.in"
+    "text": "note: Note\nthe descriptions are taken fromhttps://github.com/uber/h3/tree/master/docs/api\nhttps://github.com/uber/h3/blob/master/src/h3lib/include/h3api.h.in"
 },
 
 {
@@ -589,7 +589,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Lib",
     "title": "H3.Lib",
     "category": "section",
-    "text": "note: Note\nthe documents taken fromhttps://github.com/uber/h3/tree/master/docs/api\nhttps://github.com/uber/h3/blob/master/src/h3lib/include/h3api.h.in"
+    "text": "note: Note\nthe descriptions are taken fromhttps://github.com/uber/h3/tree/master/docs/api\nhttps://github.com/uber/h3/blob/master/src/h3lib/include/h3api.h.in"
 },
 
 {
