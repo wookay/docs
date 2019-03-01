@@ -25,38 +25,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "API/#H3.Lib.H3Index",
-    "page": "API",
-    "title": "H3.Lib.H3Index",
-    "category": "type",
-    "text": "const H3Index = UInt64\n\nthe H3Index fits within a 64-bit unsigned integer\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#H3.Lib.GeoCoord",
-    "page": "API",
-    "title": "H3.Lib.GeoCoord",
-    "category": "type",
-    "text": "struct GeoCoord\n    lat::Cdouble\n    lon::Cdouble\nend\n\nlatitude/longitude in radians\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#H3.Lib.CoordIJ",
-    "page": "API",
-    "title": "H3.Lib.CoordIJ",
-    "category": "type",
-    "text": "struct CoordIJ\n    i::Cint\n    j::Cint\nend\n\nIJ hexagon coordinates\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#Types-1",
-    "page": "API",
-    "title": "Types",
-    "category": "section",
-    "text": "H3Index\nGeoCoord\nCoordIJ"
-},
-
-{
     "location": "API/#H3.API.geoToH3",
     "page": "API",
     "title": "H3.API.geoToH3",
@@ -502,6 +470,142 @@ var documenterSearchIndex = {"docs": [
     "title": "Miscellaneous H3 functions",
     "category": "section",
     "text": "degsToRads\nradsToDegs\nhexAreaKm2\nhexAreaM2\nedgeLengthKm\nedgeLengthM\nnumHexagons\ngetRes0Indexes\nres0IndexCount"
+},
+
+{
+    "location": "API/#H3.API.ijkToHex2d",
+    "page": "API",
+    "title": "H3.API.ijkToHex2d",
+    "category": "function",
+    "text": "ijkToHex2d(c::CoordIJK)::Vec2d\n\nFind the center point in 2D cartesian coordinates of a hex.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.hex2dToCoordIJK",
+    "page": "API",
+    "title": "H3.API.hex2dToCoordIJK",
+    "category": "function",
+    "text": "hex2dToCoordIJK(v::Vec2d)::CoordIJK\n\nDetermine the containing hex in ijk+ coordinates for a 2D cartesian coordinate vector (from DGGRID).\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.h3ToFaceIjk",
+    "page": "API",
+    "title": "H3.API.h3ToFaceIjk",
+    "category": "function",
+    "text": "h3ToFaceIjk(h::H3Index)::FaceIJK\n\nConvert an H3Index to a FaceIJK address.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.geoToVec3d",
+    "page": "API",
+    "title": "H3.API.geoToVec3d",
+    "category": "function",
+    "text": "geoToVec3d(geo::GeoCoord)::Vec3d\n\nCalculate the 3D coordinate on unit sphere from the latitude and longitude.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.geoToFaceIjk",
+    "page": "API",
+    "title": "H3.API.geoToFaceIjk",
+    "category": "function",
+    "text": "geoToFaceIjk(geo::GeoCoord, res::Int)::FaceIJK\n\nEncodes a coordinate on the sphere to the FaceIJK address of the containing cell at the specified resolution.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.ijkNormalize",
+    "page": "API",
+    "title": "H3.API.ijkNormalize",
+    "category": "function",
+    "text": "ijkNormalize(c::CoordIJK)::CoordIJK\n\nNormalizes ijk coordinates by setting the components to the smallest possible values. Works in place.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#Coordinate-Systems-1",
+    "page": "API",
+    "title": "Coordinate Systems",
+    "category": "section",
+    "text": "ijkToHex2d\nhex2dToCoordIJK\nh3ToFaceIjk\ngeoToVec3d\ngeoToFaceIjk\nijkNormalize"
+},
+
+{
+    "location": "Lib/#",
+    "page": "Lib",
+    "title": "Lib",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "Lib/#H3.Lib-1",
+    "page": "Lib",
+    "title": "H3.Lib",
+    "category": "section",
+    "text": "note: Note\nthe documents taken fromhttps://github.com/uber/h3/tree/master/docs/api\nhttps://github.com/uber/h3/blob/master/src/h3lib/include/h3api.h.in"
+},
+
+{
+    "location": "Lib/#H3.Lib.H3Index",
+    "page": "Lib",
+    "title": "H3.Lib.H3Index",
+    "category": "type",
+    "text": "const H3Index = UInt64\n\nthe H3Index fits within a 64-bit unsigned integer\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.GeoCoord",
+    "page": "Lib",
+    "title": "H3.Lib.GeoCoord",
+    "category": "type",
+    "text": "struct GeoCoord\n    lat::Cdouble\n    lon::Cdouble\nend\n\nlatitude/longitude in radians\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.CoordIJ",
+    "page": "Lib",
+    "title": "H3.Lib.CoordIJ",
+    "category": "type",
+    "text": "struct CoordIJ\n    i::Cint\n    j::Cint\nend\n\nIJ hexagon coordinates\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.Vec2d",
+    "page": "Lib",
+    "title": "H3.Lib.Vec2d",
+    "category": "type",
+    "text": "struct Vec2d\n    x::Cdouble\n    y::Cdouble\nend\n\n2D floating-point vector\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.Vec3d",
+    "page": "Lib",
+    "title": "H3.Lib.Vec3d",
+    "category": "type",
+    "text": "struct Vec3d\n    x::Cdouble\n    y::Cdouble\n    z::Cdouble\nend\n\n3D floating point structure\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.CoordIJK",
+    "page": "Lib",
+    "title": "H3.Lib.CoordIJK",
+    "category": "type",
+    "text": "struct CoordIJK\n    i::Cint\n    j::Cint\n    k::Cint\nend\n\nIJK hexagon coordinates Each axis is spaced 120 degrees apart.\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.FaceIJK",
+    "page": "Lib",
+    "title": "H3.Lib.FaceIJK",
+    "category": "type",
+    "text": "struct FaceIJK\n    face::Cint\n    coord::CoordIJK\nend\n\nFace number and ijk coordinates on that face-centered coordinate system\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#Types-1",
+    "page": "Lib",
+    "title": "Types",
+    "category": "section",
+    "text": "Lib.H3Index\nLib.GeoCoord\nLib.CoordIJ\nLib.Vec2d\nLib.Vec3d\nLib.CoordIJK\nLib.FaceIJK"
 },
 
 ]}
