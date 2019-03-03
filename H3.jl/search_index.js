@@ -229,7 +229,7 @@ var documenterSearchIndex = {"docs": [
     "page": "API",
     "title": "H3.API.h3ToParent",
     "category": "function",
-    "text": "h3ToParent(h::H3Index, parentRes::Integer)::H3Index\n\nReturns the parent (coarser) index containing h.\n\n\n\n\n\n"
+    "text": "h3ToParent(h::H3Index, parentRes::Int)::H3Index\n\nReturns the parent (coarser) index containing h.\n\n\n\n\n\n"
 },
 
 {
@@ -237,7 +237,7 @@ var documenterSearchIndex = {"docs": [
     "page": "API",
     "title": "H3.API.h3ToChildren",
     "category": "function",
-    "text": "h3ToChildren(h::H3Index, childRes::Integer)::Vector{H3Index}\n\nPopulates children with the indexes contained by h at resolution childRes. children must be an array of at least size maxH3ToChildrenSize(h, childRes).\n\n\n\n\n\n"
+    "text": "h3ToChildren(h::H3Index, childRes::Int)::Vector{H3Index}\n\nPopulates children with the indexes contained by h at resolution childRes. children must be an array of at least size maxH3ToChildrenSize(h, childRes).\n\n\n\n\n\n"
 },
 
 {
@@ -245,7 +245,7 @@ var documenterSearchIndex = {"docs": [
     "page": "API",
     "title": "H3.API.maxH3ToChildrenSize",
     "category": "function",
-    "text": "maxH3ToChildrenSize(h::H3Index, childRes::Integer)::Int\n\nReturns the size of the array needed by h3ToChildren for these inputs.\n\n\n\n\n\n"
+    "text": "maxH3ToChildrenSize(h::H3Index, childRes::Int)::Int\n\nReturns the size of the array needed by h3ToChildren for these inputs.\n\n\n\n\n\n"
 },
 
 {
@@ -278,46 +278,6 @@ var documenterSearchIndex = {"docs": [
     "title": "Hierarchical grid functions",
     "category": "section",
     "text": "h3ToParent\nh3ToChildren\nmaxH3ToChildrenSize\ncompact\nuncompact\nmaxUncompactSize"
-},
-
-{
-    "location": "API/#H3.API.polyfill",
-    "page": "API",
-    "title": "H3.API.polyfill",
-    "category": "function",
-    "text": "polyfill(geoPolygon::GeoPolygon, res::Int)::Vector{H3Index}\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#H3.API.maxPolyfillSize",
-    "page": "API",
-    "title": "H3.API.maxPolyfillSize",
-    "category": "function",
-    "text": "maxPolyfillSize(geoPolygon::GeoPolygon, res::Int)::Int\n\nmaxPolyfillSize returns the number of hexagons to allocate space for when performing a polyfill on the given GeoJSON-like data structure.\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#H3.API.h3SetToLinkedGeo",
-    "page": "API",
-    "title": "H3.API.h3SetToLinkedGeo",
-    "category": "function",
-    "text": "h3SetToLinkedGeo(h3Set::Vector{H3Index})::Ref{LinkedGeoPolygon}\n\nCreate a LinkedGeoPolygon describing the outline(s) of a set of hexagons. Polygon outlines will follow GeoJSON MultiPolygon order: Each polygon will have one outer loop, which is first in the list, followed by any holes.\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#H3.API.destroyLinkedPolygon",
-    "page": "API",
-    "title": "H3.API.destroyLinkedPolygon",
-    "category": "function",
-    "text": "destroyLinkedPolygon(polygon::Ref{LinkedGeoPolygon})\n\nFree all allocated memory for a linked geo structure. The caller is responsible for freeing memory allocated to the input polygon struct.\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#Region-functions-1",
-    "page": "API",
-    "title": "Region functions",
-    "category": "section",
-    "text": "polyfill\nmaxPolyfillSize\nh3SetToLinkedGeo\ndestroyLinkedPolygon"
 },
 
 {
@@ -390,78 +350,6 @@ var documenterSearchIndex = {"docs": [
     "title": "Unidirectional edge functions",
     "category": "section",
     "text": "h3IndexesAreNeighbors\ngetH3UnidirectionalEdge\nh3UnidirectionalEdgeIsValid\ngetOriginH3IndexFromUnidirectionalEdge\ngetDestinationH3IndexFromUnidirectionalEdge\ngetH3IndexesFromUnidirectionalEdge\ngetH3UnidirectionalEdgesFromHexagon\ngetH3UnidirectionalEdgeBoundary"
-},
-
-{
-    "location": "API/#H3.API.degsToRads",
-    "page": "API",
-    "title": "H3.API.degsToRads",
-    "category": "function",
-    "text": "degsToRads(degrees::Union{Cdouble,Integer})::Cdouble\n\nConverts degrees to radians.\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#H3.API.radsToDegs",
-    "page": "API",
-    "title": "H3.API.radsToDegs",
-    "category": "function",
-    "text": "radsToDegs(radians::Union{Cdouble,Integer})::Cdouble\n\nConverts radians to degrees.\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#H3.API.hexAreaKm2",
-    "page": "API",
-    "title": "H3.API.hexAreaKm2",
-    "category": "function",
-    "text": "hexAreaKm2(res::Integer)::Cdouble\n\nAverage hexagon area in square kilometers at the given resolution.\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#H3.API.hexAreaM2",
-    "page": "API",
-    "title": "H3.API.hexAreaM2",
-    "category": "function",
-    "text": "hexAreaM2(res::Integer)::Cdouble\n\nAverage hexagon area in square meters at the given resolution.\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#H3.API.edgeLengthKm",
-    "page": "API",
-    "title": "H3.API.edgeLengthKm",
-    "category": "function",
-    "text": "edgeLengthKm(res::Integer)::Cdouble\n\nAverage hexagon edge length in kilometers at the given resolution.\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#H3.API.edgeLengthM",
-    "page": "API",
-    "title": "H3.API.edgeLengthM",
-    "category": "function",
-    "text": "edgeLengthM(res::Integer)::Cdouble\n\nAverage hexagon edge length in meters at the given resolution.\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#H3.API.numHexagons",
-    "page": "API",
-    "title": "H3.API.numHexagons",
-    "category": "function",
-    "text": "numHexagons(res::Integer)::Int64\n\nNumber of unique H3 indexes at the given resolution.\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#H3.API.getRes0Indexes",
-    "page": "API",
-    "title": "H3.API.getRes0Indexes",
-    "category": "function",
-    "text": "getRes0Indexes()::Vector{H3Index}\n\nAll the resolution 0 H3 indexes.\n\n\n\n\n\n"
-},
-
-{
-    "location": "API/#H3.API.res0IndexCount",
-    "page": "API",
-    "title": "H3.API.res0IndexCount",
-    "category": "function",
-    "text": "res0IndexCount()::Cint\n\nNumber of resolution 0 H3 indexes.\n\n\n\n\n\n"
 },
 
 {
@@ -649,11 +537,139 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Lib/#H3.Lib.VertexNode",
+    "page": "Lib",
+    "title": "H3.Lib.VertexNode",
+    "category": "type",
+    "text": "struct VertexNode\n    from::GeoCoord\n    to::GeoCoord\n    next::Ptr{VertexNode}\nend\n\nA single node in a vertex graph, part of a linked list\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.VertexGraph",
+    "page": "Lib",
+    "title": "H3.Lib.VertexGraph",
+    "category": "type",
+    "text": "struct VertexGraph\n    buckets::Ptr{Ptr{VertexNode}}\n    numBuckets::Cint\n    size::Cint\n    res::Cint\nend\n\nA data structure to store a graph of vertices\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.Direction",
+    "page": "Lib",
+    "title": "H3.Lib.Direction",
+    "category": "type",
+    "text": "Direction\n\nH3 digit representing ijk+ axes direction. Values will be within the lowest 3 bits of an integer.\n\n\n\n\n\n"
+},
+
+{
     "location": "Lib/#Types-1",
     "page": "Lib",
     "title": "Types",
     "category": "section",
-    "text": "Lib.H3Index\nLib.GeoCoord\nLib.CoordIJ\nLib.Vec2d\nLib.Vec3d\nLib.CoordIJK\nLib.FaceIJK"
+    "text": "Lib.H3Index\nLib.GeoCoord\nLib.CoordIJ\nLib.Vec2d\nLib.Vec3d\nLib.CoordIJK\nLib.FaceIJK\nLib.VertexNode\nLib.VertexGraph\nLib.Direction"
+},
+
+{
+    "location": "Lib/#H3.Lib.setH3Index",
+    "page": "Lib",
+    "title": "H3.Lib.setH3Index",
+    "category": "function",
+    "text": "setH3Index(refh::Ref{H3Index}, res::Int, baseCell::Int, initDigit::Union{Int, Direction})\n\nInitializes an H3 index.\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.h3GetIndexDigit",
+    "page": "Lib",
+    "title": "H3.Lib.h3GetIndexDigit",
+    "category": "function",
+    "text": "h3GetIndexDigit(h::H3Index, res::Int)::Direction\n\nGets the resolution res integer digit (0-7) of h3. #define H3_GET_INDEX_DIGIT(h3, res)\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.h3GetMode",
+    "page": "Lib",
+    "title": "H3.Lib.h3GetMode",
+    "category": "function",
+    "text": "h3GetMode(h::H3Index)::Int\n\nGets the integer mode of h3. #define H3_GET_MODE(h3)\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.h3SetMode",
+    "page": "Lib",
+    "title": "H3.Lib.h3SetMode",
+    "category": "function",
+    "text": "h3SetMode(refh::Ref{H3Index}, v::Int)\n\nSets the integer mode of h3 to v. #define H3_SET_MODE(h3, v)\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3Index-functions-1",
+    "page": "Lib",
+    "title": "H3Index functions",
+    "category": "section",
+    "text": "Lib.setH3Index\nLib.h3GetIndexDigit\nLib.h3GetMode\nLib.h3SetMode"
+},
+
+{
+    "location": "Lib/#H3.Lib.polyfill",
+    "page": "Lib",
+    "title": "H3.Lib.polyfill",
+    "category": "function",
+    "text": "polyfill(refpolygon::Ref{GeoPolygon}, res::Int)::Vector{H3Index}\n\npolyfill takes a given GeoJSON-like data structure and preallocated, zeroed memory, and fills it with the hexagons that are contained by the GeoJSON-like data structure.\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.maxPolyfillSize",
+    "page": "Lib",
+    "title": "H3.Lib.maxPolyfillSize",
+    "category": "function",
+    "text": "maxPolyfillSize(refpolygon::Ref{GeoPolygon}, res::Int)::Int\n\nmaxPolyfillSize returns the number of hexagons to allocate space for when performing a polyfill on the given GeoJSON-like data structure.\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.h3SetToLinkedGeo",
+    "page": "Lib",
+    "title": "H3.Lib.h3SetToLinkedGeo",
+    "category": "function",
+    "text": "h3SetToLinkedGeo(h3Set::Vector{H3Index})::Ref{LinkedGeoPolygon}\n\nCreate a LinkedGeoPolygon describing the outline(s) of a set of hexagons. Polygon outlines will follow GeoJSON MultiPolygon order: Each polygon will have one outer loop, which is first in the list, followed by any holes.\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.destroyLinkedPolygon",
+    "page": "Lib",
+    "title": "H3.Lib.destroyLinkedPolygon",
+    "category": "function",
+    "text": "destroyLinkedPolygon(refpolygon::Ref{LinkedGeoPolygon})\n\nFree all allocated memory for a linked geo structure. The caller is responsible for freeing memory allocated to the input polygon struct.\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#Region-functions-1",
+    "page": "Lib",
+    "title": "Region functions",
+    "category": "section",
+    "text": "Lib.polyfill\nLib.maxPolyfillSize\nLib.h3SetToLinkedGeo\nLib.destroyLinkedPolygon"
+},
+
+{
+    "location": "Lib/#H3.Lib.initVertexGraph",
+    "page": "Lib",
+    "title": "H3.Lib.initVertexGraph",
+    "category": "function",
+    "text": "initVertexGraph(refgraph::Ref{VertexGraph}, numBuckets::Int, res::Int)\n\nInitialize a new VertexGraph\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#H3.Lib.destroyVertexGraph",
+    "page": "Lib",
+    "title": "H3.Lib.destroyVertexGraph",
+    "category": "function",
+    "text": "destroyVertexGraph(refgraph::Ref{VertexGraph})\n\nDestroy a VertexGraph\'s sub-objects, freeing their memory. The caller is responsible for freeing memory allocated to the VertexGraph struct itself.\n\n\n\n\n\n"
+},
+
+{
+    "location": "Lib/#Vertex-Graph-1",
+    "page": "Lib",
+    "title": "Vertex Graph",
+    "category": "section",
+    "text": "Lib.initVertexGraph\nLib.destroyVertexGraph"
 },
 
 ]}
