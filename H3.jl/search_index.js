@@ -9,6 +9,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "#H3.jl-1",
+    "page": "Home",
+    "title": "H3.jl ⬡",
+    "category": "section",
+    "text": "H3.jl provides a Julia version of H3, Hexagonal hierarchical geospatial indexing system. https://github.com/uber/h3using H3.API\n\nbase = geoToH3(GeoCoord(0, 0), 5)\nrings = kRing(base, 1)\n\nx = Float64[]\ny = Float64[]\nfor boundary in h3ToGeoBoundary.(rings), geo in boundary\n    push!(x, geo.lat)\n    push!(y, geo.lon)\nend\n\nusing UnicodePlots\n@info :plot scatterplot(x, y)<img src=\"https://wookay.github.io/docs/H3.jl/assets/h3/plot.png\" width=\"300px\" alt=\"plot.png\" />"
+},
+
+{
     "location": "API/#",
     "page": "API",
     "title": "API",
