@@ -13,7 +13,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "H3.jl ⬡",
     "category": "section",
-    "text": "H3.jl provides a Julia version of H3, Hexagonal hierarchical geospatial indexing system. https://github.com/uber/h3using H3.API\n\nbase = geoToH3(GeoCoord(0, 0), 5)\nrings = kRing(base, 1)\n\nx = Float64[]\ny = Float64[]\nfor boundary in h3ToGeoBoundary.(rings), geo in boundary\n    push!(x, geo.lon)\n    push!(y, geo.lat)\nend\n\nusing UnicodePlots\n@info :plot scatterplot(x, y)(Image: plot.png)"
+    "text": "H3.jl provides a Julia version of H3, Hexagonal hierarchical geospatial indexing system. https://github.com/uber/h3using H3.API\n\nbase = geoToH3(GeoCoord(0, 0), 5)\nrings = kRing(base, 1)\n\nx = Vector{Float64}()\ny = Vector{Float64}()\nfor boundary in h3ToGeoBoundary.(rings), geo in boundary\n    push!(x, geo.lon)\n    push!(y, geo.lat)\nend\n\nusing UnicodePlots\n@info :plot scatterplot(x, y)(Image: plot.png)"
 },
 
 {
@@ -29,7 +29,7 @@ var documenterSearchIndex = {"docs": [
     "page": "API",
     "title": "H3.API",
     "category": "section",
-    "text": "note: Note\nthe descriptions are taken fromhttps://github.com/uber/h3/tree/master/docs/api\nhttps://github.com/uber/h3/blob/master/src/h3lib/include/h3api.h.in"
+    "text": "note: Note\ndescriptions are taken fromhttps://github.com/uber/h3/tree/master/docs/api\nhttps://github.com/uber/h3/blob/master/src/h3lib/include/h3api.h.in"
 },
 
 {
@@ -361,11 +361,67 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "API/#H3.API.hexAreaKm2",
+    "page": "API",
+    "title": "H3.API.hexAreaKm2",
+    "category": "function",
+    "text": "hexAreaKm2(res::Int)::Cdouble\n\nAverage hexagon area in square kilometers at the given resolution.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.hexAreaM2",
+    "page": "API",
+    "title": "H3.API.hexAreaM2",
+    "category": "function",
+    "text": "hexAreaM2(res::Int)::Cdouble\n\nAverage hexagon area in square meters at the given resolution.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.edgeLengthKm",
+    "page": "API",
+    "title": "H3.API.edgeLengthKm",
+    "category": "function",
+    "text": "edgeLengthKm(res::Int)::Cdouble\n\nAverage hexagon edge length in kilometers at the given resolution.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.edgeLengthM",
+    "page": "API",
+    "title": "H3.API.edgeLengthM",
+    "category": "function",
+    "text": "edgeLengthM(res::Int)::Cdouble\n\nAverage hexagon edge length in meters at the given resolution.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.numHexagons",
+    "page": "API",
+    "title": "H3.API.numHexagons",
+    "category": "function",
+    "text": "numHexagons(res::Int)::Int\n\nNumber of unique H3 indexes at the given resolution.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.getRes0Indexes",
+    "page": "API",
+    "title": "H3.API.getRes0Indexes",
+    "category": "function",
+    "text": "getRes0Indexes()::Vector{H3Index}\n\nAll the resolution 0 H3 indexes.\n\n\n\n\n\n"
+},
+
+{
+    "location": "API/#H3.API.res0IndexCount",
+    "page": "API",
+    "title": "H3.API.res0IndexCount",
+    "category": "function",
+    "text": "res0IndexCount()::Cint\n\nNumber of resolution 0 H3 indexes.\n\n\n\n\n\n"
+},
+
+{
     "location": "API/#Miscellaneous-H3-functions-1",
     "page": "API",
     "title": "Miscellaneous H3 functions",
     "category": "section",
-    "text": "degsToRads\nradsToDegs\nhexAreaKm2\nhexAreaM2\nedgeLengthKm\nedgeLengthM\nnumHexagons\ngetRes0Indexes\nres0IndexCount"
+    "text": "hexAreaKm2\nhexAreaM2\nedgeLengthKm\nedgeLengthM\nnumHexagons\ngetRes0Indexes\nres0IndexCount"
 },
 
 {
@@ -485,7 +541,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Lib",
     "title": "H3.Lib",
     "category": "section",
-    "text": "note: Note\nthe descriptions are taken fromhttps://github.com/uber/h3/tree/master/docs/api\nhttps://github.com/uber/h3/blob/master/src/h3lib/include/h3api.h.in"
+    "text": "note: Note\ndescriptions are taken fromhttps://github.com/uber/h3/tree/master/docs/api\nhttps://github.com/uber/h3/blob/master/src/h3lib/include/h3api.h.in"
 },
 
 {
