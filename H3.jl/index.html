@@ -7,8 +7,8 @@ rings = kRing(base, 1)
 x = Float64[]
 y = Float64[]
 for boundary in h3ToGeoBoundary.(rings), geo in boundary
-    push!(x, geo.lat)
-    push!(y, geo.lon)
+    push!(x, geo.lon)
+    push!(y, geo.lat)
 end
 
 using UnicodePlots
