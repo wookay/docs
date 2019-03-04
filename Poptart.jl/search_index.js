@@ -85,7 +85,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Desktop",
     "title": "Base.empty!",
     "category": "method",
-    "text": "Base.empty!(app::A) where {A <: UIApplication}\n\n\n\n\n\n"
+    "text": "empty!(app::A) where {A <: UIApplication}\n\n\n\n\n\n"
 },
 
 {
@@ -93,7 +93,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Desktop",
     "title": "Desktop.Application",
     "category": "section",
-    "text": "Application\nDesktop.put!(app::A, windows::UIWindow...) where {A <: UIApplication}\nDesktop.remove!(app::A, windows::UIWindow...) where {A <: UIApplication}\nBase.empty!(app::A) where {A <: UIApplication}"
+    "text": "Application\nDesktop.put!(app::A, windows::UIWindow...) where {A <: UIApplication}\nDesktop.remove!(app::A, windows::UIWindow...) where {A <: UIApplication}\nempty!(app::A) where {A <: UIApplication}"
 },
 
 {
@@ -125,7 +125,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Desktop",
     "title": "Base.empty!",
     "category": "method",
-    "text": "Base.empty!(window::W) where {W <: UIWindow}\n\n\n\n\n\n"
+    "text": "empty!(window::W) where {W <: UIWindow}\n\n\n\n\n\n"
 },
 
 {
@@ -133,7 +133,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Desktop",
     "title": "Desktop.Windows",
     "category": "section",
-    "text": "Windows.Window\nWindows.put!(window::W, controls::UIControl...) where {W <: UIWindow}\nWindows.remove!(window::W, controls::UIControl...) where {W <: UIWindow}\nBase.empty!(window::W) where {W <: UIWindow}"
+    "text": "Windows.Window\nWindows.put!(window::W, controls::UIControl...) where {W <: UIWindow}\nWindows.remove!(window::W, controls::UIControl...) where {W <: UIWindow}\nempty!(window::W) where {W <: UIWindow}"
 },
 
 {
@@ -461,7 +461,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Base.empty!",
     "category": "method",
-    "text": "Base.empty!(canvas::Canvas)\n\n\n\n\n\n"
+    "text": "empty!(canvas::Canvas)\n\n\n\n\n\n"
 },
 
 {
@@ -469,7 +469,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "canvas",
     "category": "section",
-    "text": "Canvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)\nBase.empty!(canvas::Canvas)"
+    "text": "Canvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)\nempty!(canvas::Canvas)"
 },
 
 {
