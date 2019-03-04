@@ -49,6 +49,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Desktop/#Poptart.Desktop-1",
+    "page": "Desktop",
+    "title": "Poptart.Desktop",
+    "category": "section",
+    "text": "Desktop"
+},
+
+{
     "location": "Desktop/#Poptart.Desktop.Application",
     "page": "Desktop",
     "title": "Poptart.Desktop.Application",
@@ -81,9 +89,9 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Desktop/#Poptart.Desktop.Application-1",
+    "location": "Desktop/#Desktop.Application-1",
     "page": "Desktop",
-    "title": "Poptart.Desktop.Application",
+    "title": "Desktop.Application",
     "category": "section",
     "text": "Application\nDesktop.put!(app::A, windows::UIWindow...) where {A <: UIApplication}\nDesktop.remove!(app::A, windows::UIWindow...) where {A <: UIApplication}\nBase.empty!(app::A) where {A <: UIApplication}"
 },
@@ -121,9 +129,9 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Desktop/#Poptart.Desktop.Windows-1",
+    "location": "Desktop/#Desktop.Windows-1",
     "page": "Desktop",
-    "title": "Poptart.Desktop.Windows",
+    "title": "Desktop.Windows",
     "category": "section",
     "text": "Windows.Window\nWindows.put!(window::W, controls::UIControl...) where {W <: UIWindow}\nWindows.remove!(window::W, controls::UIControl...) where {W <: UIWindow}\nBase.empty!(window::W) where {W <: UIWindow}"
 },
@@ -161,9 +169,9 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Desktop/#Poptart.Desktop.Themes-1",
+    "location": "Desktop/#Desktop.Themes-1",
     "page": "Desktop",
-    "title": "Poptart.Desktop.Themes",
+    "title": "Desktop.Themes",
     "category": "section",
     "text": "Desktop.Themes.WhiteTheme\nDesktop.Themes.DarkTheme\nDesktop.Themes.color_table\nDesktop.Themes.set_style!"
 },
@@ -181,7 +189,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Controls",
     "category": "section",
-    "text": ""
+    "text": "Controls"
 },
 
 {
@@ -465,6 +473,46 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#Poptart.Controls.Mouse.leftClick",
+    "page": "Controls",
+    "title": "Poptart.Controls.Mouse.leftClick",
+    "category": "function",
+    "text": "leftClick(control::C; kwargs...) where {C <: UIControl}\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.Mouse.rightClick",
+    "page": "Controls",
+    "title": "Poptart.Controls.Mouse.rightClick",
+    "category": "function",
+    "text": "rightClick(control::C; kwargs...) where {C <: UIControl}\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.Mouse.doubleClick",
+    "page": "Controls",
+    "title": "Poptart.Controls.Mouse.doubleClick",
+    "category": "function",
+    "text": "doubleClick(control::C; kwargs...) where {C <: UIControl}\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Poptart.Controls.Mouse.hover",
+    "page": "Controls",
+    "title": "Poptart.Controls.Mouse.hover",
+    "category": "function",
+    "text": "hover(control::C; kwargs...) where {C <: UIControl}\n\n\n\n\n\n"
+},
+
+{
+    "location": "Controls/#Mouse-1",
+    "page": "Controls",
+    "title": "Mouse",
+    "category": "section",
+    "text": "Mouse.leftClick\nMouse.rightClick\nMouse.doubleClick\nMouse.hover"
+},
+
+{
     "location": "Drawings/#",
     "page": "Drawings",
     "title": "Drawings",
@@ -477,7 +525,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Drawings",
     "title": "Poptart.Drawings",
     "category": "section",
-    "text": ""
+    "text": "Drawings"
 },
 
 {
@@ -581,7 +629,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Drawings",
     "title": "paints",
     "category": "section",
-    "text": "Drawings.stroke(element::E) where {E <: DrawingElement}\nDrawings.fill(element::E) where {E <: DrawingElement}"
+    "text": "Drawings.stroke(element::E) where {E <: DrawingElement}\nDrawings.fill(element::E) where {E <: DrawingElement}stroke ∘ fill"
 },
 
 ]}
