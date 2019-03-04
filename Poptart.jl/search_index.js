@@ -73,11 +73,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "Desktop/#Poptart.Desktop-1",
+    "location": "Desktop/#Base.empty!-Union{Tuple{A}, Tuple{A}} where A<:UIApplication",
     "page": "Desktop",
-    "title": "Poptart.Desktop",
+    "title": "Base.empty!",
+    "category": "method",
+    "text": "Base.empty!(app::A) where {A <: UIApplication}\n\n\n\n\n\n"
+},
+
+{
+    "location": "Desktop/#Poptart.Desktop.Application-1",
+    "page": "Desktop",
+    "title": "Poptart.Desktop.Application",
     "category": "section",
-    "text": "Application\nDesktop.put!(app::A, windows::UIWindow...) where {A <: UIApplication}\nDesktop.remove!(app::A, windows::UIWindow...) where {A <: UIApplication}"
+    "text": "Application\nDesktop.put!(app::A, windows::UIWindow...) where {A <: UIApplication}\nDesktop.remove!(app::A, windows::UIWindow...) where {A <: UIApplication}\nBase.empty!(app::A) where {A <: UIApplication}"
 },
 
 {
@@ -105,11 +113,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Desktop/#Base.empty!-Union{Tuple{W}, Tuple{W}} where W<:UIWindow",
+    "page": "Desktop",
+    "title": "Base.empty!",
+    "category": "method",
+    "text": "Base.empty!(window::W) where {W <: UIWindow}\n\n\n\n\n\n"
+},
+
+{
     "location": "Desktop/#Poptart.Desktop.Windows-1",
     "page": "Desktop",
     "title": "Poptart.Desktop.Windows",
     "category": "section",
-    "text": "Windows.Window\nWindows.put!(window::W, controls::UIControl...) where {W <: UIWindow}\nWindows.remove!(window::W, controls::UIControl...) where {W <: UIWindow}"
+    "text": "Windows.Window\nWindows.put!(window::W, controls::UIControl...) where {W <: UIWindow}\nWindows.remove!(window::W, controls::UIControl...) where {W <: UIWindow}\nBase.empty!(window::W) where {W <: UIWindow}"
 },
 
 {
@@ -433,11 +449,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Controls/#Base.empty!-Tuple{Canvas}",
+    "page": "Controls",
+    "title": "Base.empty!",
+    "category": "method",
+    "text": "Base.empty!(canvas::Canvas)\n\n\n\n\n\n"
+},
+
+{
     "location": "Controls/#canvas-1",
     "page": "Controls",
     "title": "canvas",
     "category": "section",
-    "text": "Canvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)"
+    "text": "Canvas\nControls.put!(canvas::Canvas, elements::Drawings.Drawing...)\nControls.remove!(canvas::Canvas, elements::Drawings.Drawing...)\nBase.empty!(canvas::Canvas)"
 },
 
 {
