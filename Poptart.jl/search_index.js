@@ -445,7 +445,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Base.put!",
     "category": "method",
-    "text": "Controls.put!(canvas::Canvas, elements::Drawings.Drawing...)\n\n\n\n\n\n"
+    "text": "Controls.put!(canvas::Canvas, elements::Union{Drawing, TextBox}...)\n\n\n\n\n\n"
 },
 
 {
@@ -453,7 +453,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Controls",
     "title": "Poptart.Interfaces.remove!",
     "category": "method",
-    "text": "Controls.remove!(canvas::Canvas, elements::Drawings.Drawing...)\n\n\n\n\n\n"
+    "text": "Controls.remove!(canvas::Canvas, elements::Union{Drawing, TextBox}...)\n\n\n\n\n\n"
 },
 
 {
@@ -601,11 +601,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "Drawings/#Poptart.Drawings.TextBox",
+    "page": "Drawings",
+    "title": "Poptart.Drawings.TextBox",
+    "category": "type",
+    "text": "TextBox(; text::String, font::Union{String, Font}, rect, color::RGBA)\n\n\n\n\n\n"
+},
+
+{
     "location": "Drawings/#shapes-1",
     "page": "Drawings",
     "title": "shapes",
     "category": "section",
-    "text": "Line\nRect\nRectMultiColor\nCircle\nTriangle\nArc\nCurve\nPolyline\nPolygon"
+    "text": "Line\nRect\nRectMultiColor\nCircle\nTriangle\nArc\nCurve\nPolyline\nPolygon\nTextBox"
 },
 
 {
