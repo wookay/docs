@@ -23,11 +23,10 @@ didClick(slider1) do event
 end</code></pre><p><img src="https://wookay.github.io/docs/Poptart.jl/assets/poptart/app.png" alt="app.png"/></p><h3><a class="nav-anchor" id="Poptart.Drawings-1" href="#Poptart.Drawings-1">Poptart.Drawings</a></h3><pre><code class="language-julia">using Poptart.Desktop # Application Windows put!
 using Poptart.Controls # Canvas
 using Poptart.Drawings # Line Rect Circle Triangle Arc Curve Polyline Polygon stroke fill
-using Nuklear.LibNuklear: NK_WINDOW_TITLE
 using Colors: RGBA
 
 canvas = Canvas()
-window1 = Windows.Window(items=[canvas], title=&quot;A&quot;, frame=(x=0, y=0, width=500, height=400), flags=NK_WINDOW_TITLE)
+window1 = Windows.Window(items=[canvas], title=&quot;Drawings&quot;, frame=(x=0, y=0, width=500, height=400))
 Application(windows=[window1], title=&quot;App&quot;, frame=(width=500, height=400))
 
 strokeColor = RGBA(0,0.7,0,1)
