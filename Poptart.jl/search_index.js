@@ -61,7 +61,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Desktop",
     "title": "Poptart.Desktop.Application",
     "category": "type",
-    "text": "Application(; title::String=\"App\", frame::NamedTuple{(:width,:height)}=(width=400, height=300), windows=[Windows.Window(title=\"\", frame=(x=0,y=0,frame...))])\n\n\n\n\n\n"
+    "text": "Application(; title::String=\"App\",\n              frame::NamedTuple{(:width,:height)}=(width=400, height=300),\n              windows=[Windows.Window(title=\"Title\", frame=(x=0,y=0,frame...))],\n              bgcolor=RGBA(0.10, 0.18, 0.24, 1),\n              closed=Condition())\n\n\n\n\n\n"
 },
 
 {
