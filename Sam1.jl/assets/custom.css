@@ -6,11 +6,11 @@ html.theme--documenter-dark article code {
     color: #00cbf4;
 }
 
-html.theme--documenter-dark .content table td {
+html .content table td {
     vertical-align: middle;
 }
 
-html.theme--documenter-dark .content table th  {
+html .content table th  {
     vertical-align: bottom;
 }
 
