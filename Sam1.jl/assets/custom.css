@@ -6,12 +6,18 @@ html.theme--documenter-dark article code {
     color: #00cbf4;
 }
 
+html .content table th  {
+    vertical-align: bottom;
+}
 html .content table td {
     vertical-align: middle;
 }
 
-html .content table th  {
+html.theme--documenter-dark .content table th  {
     vertical-align: bottom;
+}
+html.theme--documenter-dark .content table td {
+    vertical-align: middle;
 }
 
 h1#무장-일람 ~ table tr 
