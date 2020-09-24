@@ -29,11 +29,22 @@ html.theme--documenter-dark .content table tr:nth-child(even) {
        background: #101010;
    }
 
-
+html .content h1#무장-일람 ~ table tr 
+    th:nth-child(3) {
+        white-space: nowrap;
+    }
 
 html .content h1#무장-일람 ~ table tr 
-    th {
-        padding: 3px;
+    th:nth-child(5),
+    th:nth-child(6),
+    th:nth-child(7),
+    th:nth-child(8),
+    th:nth-child(9),
+    th:nth-child(10),
+    th:nth-child(11),
+    th:nth-child(12),
+    th:nth-child(13) {
+        font-size: small;
     }
 
 html .content h1#무장-일람 ~ table tr
@@ -44,8 +55,7 @@ html .content h1#무장-일람 ~ table tr
 html .content h1#무장-일람 ~ table tr
     td:nth-child(1),
     td:nth-child(2),
-    td:nth-child(3),
-    td:nth-child(4) {
+    td:nth-child(3) {
         white-space: nowrap;
     }
 
