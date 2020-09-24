@@ -16,17 +16,27 @@ html .content table td {
 html.theme--documenter-dark .content table th  {
     vertical-align: bottom;
 }
+
 html.theme--documenter-dark .content table td {
     vertical-align: middle;
 }
 
+html .content table tr:nth-child(even) {
+       background: #eeeeee;
+   }
 
-h1#무장-일람 ~ table tr 
+html.theme--documenter-dark .content table tr:nth-child(even) {
+       background: #101010;
+   }
+
+
+
+html .content h1#무장-일람 ~ table tr 
     th {
         padding: 3px;
     }
 
-h1#무장-일람 ~ table tr
+html .content h1#무장-일람 ~ table tr
     td {
         padding: 3px;
     }
@@ -37,6 +47,11 @@ html .content h1#무장-일람 ~ table tr
     td:nth-child(3),
     td:nth-child(4) {
         white-space: nowrap;
+    }
+
+html .content h1#무장-일람 ~ table tr
+    td:nth-child(4) code {
+        font-size: small;
     }
 
 html .content h1#무장-일람 ~ table tr
