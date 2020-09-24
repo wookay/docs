@@ -29,12 +29,12 @@ html.theme--documenter-dark .content table tr:nth-child(even) {
        background: #101010;
    }
 
-html .content h1#무장-일람 ~ table tr 
+html .content h1#무장-일람 ~ table tr
     th:nth-child(3) {
         white-space: nowrap;
     }
 
-html .content h1#무장-일람 ~ table tr 
+html .content h1#무장-일람 ~ table tr
     th:nth-child(5),
     th:nth-child(6),
     th:nth-child(7),
