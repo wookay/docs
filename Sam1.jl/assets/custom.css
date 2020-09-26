@@ -60,7 +60,12 @@ html .content h1#무장-일람 ~ table tr
     }
 
 html .content h1#무장-일람 ~ table tr
-    td:nth-child(4) code {
+    td:nth-child(2) { /* 名 */
+        font-size: xx-large;
+    }
+
+html .content h1#무장-일람 ~ table tr
+    td:nth-child(4) code { /* EDIT */
         font-size: small;
     }
 
