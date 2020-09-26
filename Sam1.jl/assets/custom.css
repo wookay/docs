@@ -115,3 +115,8 @@ html .content h1#州 ~ table tr
     th:nth-child(14) {
         font-size: small;
     }
+
+html .content h1#州 ~ table tr
+    td:nth-child(5) {
+        font-size: small;
+    }
